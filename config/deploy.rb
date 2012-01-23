@@ -1,10 +1,11 @@
 require 'bundler/capistrano'
 
+load 'deploy/assets'
 set :application, "pfm"
 set :deploy_to, "/var/www/apps/pfm"
 
 set :scm, :git
-set :repository,  "git@github.com:ekurennyy/pfm_prj.git"
+set :repository,  "git@github.com:mb4nction/DarkDough.git"
 
 set :deploy_via, :copy
 set :copy_strategy, :export
