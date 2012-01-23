@@ -1,6 +1,5 @@
 require 'bundler/capistrano'
 
-load 'deploy/assets'
 set :application, "pfm"
 set :deploy_to, "/var/www/apps/pfm"
 
