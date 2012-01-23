@@ -1,4 +1,12 @@
 Pfm::Application.routes.draw do
+
+  match '/home' => 'static#home'
+  match '/about' => 'static#about'
+  match '/how_it_works' => 'static#how_it_works'
+  match '/faq' => 'static#faq'
+  match '/terms_of_use' => 'static#terms_of_use'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +56,7 @@ Pfm::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static#home'
 
   # See how all your routes lay out with "rake routes"
 
