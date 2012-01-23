@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pfm</title>
+  <title><%= title %></title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,11 +9,9 @@
 <body>
 
   <div id="wrapper">
-    <menu>
-      Nav menu
-    </menu>
-
+    <%= render 'shared/menu' %>
     <%= yield %>
+    <%= render 'shared/footer' %>
   </div>
 
 </body>
