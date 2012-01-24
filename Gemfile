@@ -6,6 +6,7 @@ gem 'json'
 
 # Authentication and authorization
 gem "devise", "1.5.3"
+gem "carmen", "0.2.12"
 
 # Gems used only for assets and not required
 # in production environments by default.

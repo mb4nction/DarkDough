@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
   validates :email, :uniqueness => true
+  validates :country, :inclusion => { :in => Carmen::country_names }
 end

@@ -39,6 +39,7 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carmen (0.2.12)
     childprocess (0.3.0)
       ffi (~> 1.0.6)
     coffee-rails (3.1.1)
@@ -153,6 +154,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (= 1.1.2)
+  carmen (= 0.2.12)
   coffee-rails (~> 3.1.1)
   devise (= 1.5.3)
   jquery-rails
