@@ -13,9 +13,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :country, :presence => true
   validates :first_name, :last_name, :length => { :maximum => 30 }
-  validates :password, :presence => true, :confirmation => true, :length => { :within => 6..40 }
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
-  validates :email, :uniqueness => true
   validates :country, :inclusion => { :in => Carmen::country_names }
 end
