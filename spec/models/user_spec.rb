@@ -71,6 +71,11 @@ describe User do
     user_with_duplicate_email.should_not be_valid
   end
 
+  it "should have valid country" do
+    user = Factory(:user, :country => "Ukraine")
+    Carmen::country_names.should include(user.country)
+  end
+
   describe "password validation" do
     it "should require a password" do
       User.new(@user_attr.merge(:password => "", :password_confirmation => "")).
