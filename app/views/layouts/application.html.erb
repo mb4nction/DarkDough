@@ -11,6 +11,9 @@
   <div id="wrapper">
     <%= render 'shared/menu' %>
     <%= yield %>
+
+    <br /><br /><%= link_to "Get started here", new_user_registration_path unless user_signed_in? %>
+
     <%= render 'shared/footer' %>
   </div>
 
