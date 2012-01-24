@@ -25,6 +25,7 @@ end
 group :test do
   gem "rspec-rails", "2.6.1"
   gem "spork", "~> 0.9.0rc9"
+  gem 'factory_girl_rails', '1.0'
 end
 
 gem 'jquery-rails'
