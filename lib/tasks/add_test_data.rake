@@ -6,8 +6,12 @@ namespace :db do
                  :email => "user1@mailinator.com", :country => "Urkaine", :phone => "0123456789",
                  :password => "epyfnm", :password_confirmation => "epyfnm")
 
-     User.create!(:first_name => "Mark", :last_name => "B.",
-                  :email => "user2@mailinator.com", :country => "Great Britain", :phone => "0123456789",
+     User.create!(:first_name => "Vadim", :last_name => "Kondratiev",
+                  :email => "vvk@anahoret.com", :country => "Ukraine", :phone => "0502221126",
+                  :password => "password", :password_confirmation => "password")
+
+     User.create!(:first_name => "Mark", :last_name => "Bell",
+                  :email => "411bellerophon@gmail.com", :country => "UK", :phone => "07552303894",
                   :password => "password", :password_confirmation => "password")
   end
 end
