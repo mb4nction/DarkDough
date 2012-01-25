@@ -1,7 +1,7 @@
 Pfm::Application.routes.draw do
 
   devise_for :users, :path_prefix => 'd'
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :edit, :update]
 
   match '/home' => 'static#home'
   match '/about' => 'static#about'

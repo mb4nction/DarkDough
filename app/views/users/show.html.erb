@@ -4,4 +4,6 @@
   Email: <%= @user.email %><br />
   Phone number: <%= @user.phone_number %><br />
   Country: <%= @user.country %>
+  <br /><br />
+  <%= link_to "Edit profile", edit_user_path(@user) %>
 </div>
