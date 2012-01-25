@@ -7,9 +7,9 @@
         <%= full_name(current_user) %>
       </span>
       <ul class="user-menu">
-        <li>Accounts</li>
+        <li><%= link_to "Accounts", '#' %></li>
         <li><%= link_to "Profile", current_user %></li>
-        <li>Help</li>
+        <li><%= link_to "Help", '#' %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
       </ul>
 
