@@ -10,6 +10,15 @@
 
   <div id="wrapper">
     <%= render 'shared/menu' %>
+
+    <%- flash.each do |key, msg| -%>
+      <div id="<%= key %>">
+        <p style="float:right;"><%= link_to_function 'X', "$('##{key}').fadeOut(500)" %></p>
+        <p><%= msg %></p>
+        <div class="clear"></div>
+      </div>
+    <%- end -%>
+
     <%= yield %>
 
     <br /><br /><%= link_to "Get started here", new_user_registration_path unless user_signed_in? %>

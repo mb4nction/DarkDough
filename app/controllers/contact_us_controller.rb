@@ -10,7 +10,7 @@ class ContactUsController < ApplicationController
     else
       @contact_us.save!
       UserMailer.contact_us(@contact_us).deliver
-      redirect_to root_url
+      redirect_to (root_url, :notice => "Email was successfully sended")
     end
   end
 end
