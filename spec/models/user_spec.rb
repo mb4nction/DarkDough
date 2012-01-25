@@ -94,7 +94,7 @@ describe User do
     end
 
     it "should reject long passwords" do
-      long = "a"*41
+      long = "a"*129
       hash = @user_attr.merge(:password => long, :password_confirmation => long)
       User.new(hash).should_not be_valid
     end
