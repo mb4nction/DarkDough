@@ -8,6 +8,8 @@ Pfm::Application.routes.draw do
   match '/faq' => 'static#faq'
   match '/terms_of_use' => 'static#terms_of_use'
 
+  resource :contact_us, :only => [:create]
+  match '/contact_us' => 'contact_us#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
