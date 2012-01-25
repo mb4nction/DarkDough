@@ -1,3 +1,6 @@
+EMAIL = 'pfm.sup.psodhfoih2904@gmail.com'
+PASSWORD = "pfmepyfnm"
+
 Pfm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
