@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(:version => 20120126120411) do
 
   create_table "acumen_tests", :force => true do |t|
-    t.string   "code"
+    t.string   "code",                          :null => false
     t.string   "result"
-    t.integer  "user_id"
+    t.boolean  "finished",   :default => false
+    t.integer  "user_id",                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20120126120411) do
     t.string   "question"
     t.string   "answer"
     t.integer  "answer_number"
-    t.integer  "acumen_test_id"
+    t.integer  "acumen_test_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

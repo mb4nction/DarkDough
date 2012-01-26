@@ -5,7 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.string :answer
       t.integer :answer_number
 
-      t.references :acumen_test
+      t.references :acumen_test, :null => false
 
       t.timestamps
     end

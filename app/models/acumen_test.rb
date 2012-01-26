@@ -3,4 +3,6 @@ class AcumenTest < ActiveRecord::Base
 
   belongs_to :user
   has_many :answers
+
+  TESTS = [ :qualitative, :quantitative, :cash_flow ]
 end
