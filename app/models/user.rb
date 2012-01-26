@@ -16,4 +16,7 @@ class User < ActiveRecord::Base
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
   validates :country, :inclusion => { :in => Carmen::country_names }
+
+  has_many :acumen_tests
+  has_many :answers, :through => :acumen_tests
 end

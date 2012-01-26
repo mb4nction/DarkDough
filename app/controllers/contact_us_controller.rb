@@ -6,7 +6,7 @@ class ContactUsController < ApplicationController
   def create
     @contact_us = ContactUs.new(params[:contact_us])
     if !@contact_us.valid?
-      render :action => 'new'
+      render :new
     else
       @contact_us.save!
       UserMailer.contact_us(@contact_us).deliver

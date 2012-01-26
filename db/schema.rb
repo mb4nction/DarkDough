@@ -10,7 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125063920) do
+ActiveRecord::Schema.define(:version => 20120126120411) do
+
+  create_table "acumen_tests", :force => true do |t|
+    t.string   "code"
+    t.string   "result"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answers", :force => true do |t|
+    t.string   "question"
+    t.string   "answer"
+    t.integer  "answer_number"
+    t.integer  "acumen_test_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contact_us", :force => true do |t|
     t.string   "full_name"
