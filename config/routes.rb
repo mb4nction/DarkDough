@@ -7,6 +7,7 @@ Pfm::Application.routes.draw do
       get :show
       get :edit
       put :update
+      resources :answers
     end
   end
 
