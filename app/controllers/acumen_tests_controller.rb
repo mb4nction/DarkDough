@@ -10,11 +10,10 @@ class AcumenTestsController < ApplicationController
   end
 
   def create
-    @acumen_test = AcumenTest.new(params[:acumen_test])
+    @acumen_test = current_user.acumen_tests.build(params[:acumen_test])
     if @acumen_test.valid?
       @acumen_test.save
       redirect_to root_path
-
     else
       render :new
     end

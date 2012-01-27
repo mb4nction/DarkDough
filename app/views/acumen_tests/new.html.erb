@@ -1,2 +1,11 @@
 <h1>Create the Acumen Test</h1>
-<p>Implementing in process...</p>
+<p>Implementation in process...</p>
+
+<%= form_for [@user, @acumen_test], :url => { :action => "create" } do |f| -%>
+  <%= render 'shared/error_messages', :object => f.object %>
+
+  <i>Answers form will be placed here!</i>
+
+  <%#= f.submit "Submit" %>
+<% end -%>
+

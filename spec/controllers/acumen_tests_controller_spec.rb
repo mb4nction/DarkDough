@@ -1,24 +1,30 @@
 require 'spec_helper'
 
-describe AcumenTestController do
+describe AcumenTestsController do
+  render_views
+
+  before :each do
+    @user = Factory(:user)
+    sign_in @user
+  end
 
   describe "GET 'show'" do
     it "should be successful" do
-      get 'show'
+      get :show, :user_id => @user
       response.should be_success
     end
   end
 
   describe "GET 'edit'" do
     it "should be successful" do
-      get 'edit'
+      get :edit, :user_id => @user
       response.should be_success
     end
   end
 
   describe "GET 'update'" do
     it "should be successful" do
-      get 'update'
+      get :update, :user_id => @user
       response.should be_success
     end
   end
