@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(:version => 20120126120411) do
 
   create_table "acumen_tests", :force => true do |t|
-    t.string   "code",                          :null => false
     t.string   "result"
     t.boolean  "finished",   :default => false
     t.integer  "user_id",                       :null => false

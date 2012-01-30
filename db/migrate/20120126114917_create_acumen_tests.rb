@@ -1,7 +1,6 @@
 class CreateAcumenTests < ActiveRecord::Migration
   def change
     create_table :acumen_tests do |t|
-      t.string :code, :null => false
       t.string :result
       t.boolean :finished, :default => false
 

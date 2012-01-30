@@ -1,11 +1,19 @@
 <h1>Create the Acumen Test</h1>
 <p>Implementation in process...</p>
 
-<%= form_for [@user, @acumen_test], :url => { :action => "create" } do |f| -%>
+<%= form_for [@user, @acumen_test], :url => { :action => "create" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
-  <i>Answers form will be placed here!</i>
+  <%= f.fields_for :answers do |a| %>
+    <%# Answer::QUESTIONS.sort_by{|k,v| k}.each do |key, value| %>
+      <div>
+        <%#= a.hidden_field :answer_code, :value => key %>
+        <%#= a.label :answer, value %><br />
+        <%#= a.text_field :answer %> <!-- (<%#= key %>) -->
+      </div><br />
+    <%# end %>
+  <% end -%>
 
-  <%#= f.submit "Submit" %>
+  <%= f.submit "Submit" %>
 <% end -%>
 

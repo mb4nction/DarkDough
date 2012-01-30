@@ -5,22 +5,20 @@ class AcumenTestsController < ApplicationController
   end
 
   def new
-    @user = current_user
     @acumen_test = AcumenTest.new
+    @acumen_test.answers.build
   end
 
   def create
-    @acumen_test = current_user.acumen_tests.build(params[:acumen_test])
-    if @acumen_test.valid?
-      @acumen_test.save
-      redirect_to root_path
+    @acumen_test = current_user.acumen_tests.build params[:acumen_test]
+    if @acumen_test.save
+      render :show
     else
       render :new
     end
   end
 
   def edit
-    @acumen_test = AcumenTest.first
   end
 
   def update
