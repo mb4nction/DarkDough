@@ -2,11 +2,14 @@ class AcumenTestsController < ApplicationController
   before_filter :authenticate_user!
 
   def show
+    @acumen_test = current_user.acumen_tests.first
   end
 
   def new
     @acumen_test = AcumenTest.new
-    @acumen_test.answers.build
+    Answer::QUESTIONS.sort_by{ |k,v| k }.each do |code, title|
+      @acumen_test.answers.build :answer_code => code, :question_title => title
+    end
   end
 
   def create
@@ -19,6 +22,8 @@ class AcumenTestsController < ApplicationController
   end
 
   def edit
+    @acumen_test = current_user.acumen_tests.last
+    @test_answers = @acumen_test.answers.find(:all, :order => 'answer_code')
   end
 
   def update

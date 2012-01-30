@@ -1,2 +1,21 @@
-<h1>AcumenTest#edit</h1>
-<p>Find me in app/views/acumen_test/edit.html.erb</p>
+<h1>Edit Acumen Test</h1>
+
+<%= form_for [current_user, @acumen_test] do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+
+  <% @test_answers.each do |answer| %>
+    <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :answer_code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% (0..4).each do |n| %>
+        <%= answer_form.radio_button :answer, Answer::ANSWERS[n] %>
+        <%= Answer::ANSWERS_TITLES[n] %><br />
+      <% end %><br />
+    </p>
+    <% end -%>
+  <% end %>
+
+  <%= f.submit "Submit" %>
+<% end -%>

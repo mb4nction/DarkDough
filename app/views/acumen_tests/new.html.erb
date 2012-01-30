@@ -1,18 +1,21 @@
 <h1>Create the Acumen Test</h1>
-<p>Implementation in process...</p>
 
-<%= form_for [@user, @acumen_test], :url => { :action => "create" } do |f| %>
+<%= form_for [current_user, @acumen_test], :url => { :action => "create" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
-  <%= f.fields_for :answers do |a| %>
-    <%# Answer::QUESTIONS.sort_by{|k,v| k}.each do |key, value| %>
-      <div>
-        <%#= a.hidden_field :answer_code, :value => key %>
-        <%#= a.label :answer, value %><br />
-        <%#= a.text_field :answer %> <!-- (<%#= key %>) -->
-      </div><br />
-    <%# end %>
-  <% end -%>
+  <% @acumen_test.answers.each do |answer| %>
+    <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :answer_code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% (0..4).each do |n| %>
+        <%= answer_form.radio_button :answer, Answer::ANSWERS[n] %>
+        <%= Answer::ANSWERS_TITLES[n] %><br />
+      <% end %><br />
+    </p>
+    <% end -%>
+  <% end %>
 
   <%= f.submit "Submit" %>
 <% end -%>
