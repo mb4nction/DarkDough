@@ -1,5 +1,6 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :answer, :answer_code
+  attr_accessor :question_title
+  attr_accessible :answer, :answer_code, :question_title
 
   belongs_to :acumen_test
 
@@ -112,4 +113,7 @@ class Answer < ActiveRecord::Base
     "t3q30" => "How old were you when you began earning an income (exclude internships or national service)?",
     "t3q31" => "At what age do you plan to retire?"
   }
+
+  ANSWERS = [-2, -1, 0, 1, 2]
+  ANSWERS_TITLES = ["Strongly disagree", "Moderately disagree", "Neither agree nor disagree", "Moderately agree", "Strongly agree"]
 end
