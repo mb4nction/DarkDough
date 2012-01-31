@@ -1,0 +1,199 @@
+<h3>Qualitative Test</h3>
+
+<p>
+  What information do I need to gather before taking this test?
+</p>
+
+<ul>
+  <li>Absolutely nothing but an open mind!</li>
+</ul>
+This evaluation should take you 10–15 mins<br />
+Personality Typing Questionnaire<br />
+You shouldn’t tell others how much you have<br />
+<ul>
+  <% Answer::ANSWERS.each do |key| %>
+    <% key.each do |k,v| %>
+      <li><%= v %></li>
+    <% end %><br />
+  <% end %><br />
+</ul>
+
+<% for answer in @acumen_test.answers[0...28] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %>
+        <% end %><br />
+      <% end %><br />
+    </p>
+  <% end %>
+<% end %>
+
+<% if @acumen_test.answers[28] %>
+  <% answer = @acumen_test.answers[28] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS_2.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %><br />
+        <% end %><br />
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+
+<% if @acumen_test.answers[29]  %>
+  <% answer = @acumen_test.answers[29] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS_3.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %>
+        <% end %><br />
+      <% end %><br />
+    </p>
+  <% end %>
+<% end %>
+
+Have financial setbacks from any of the following events significantly affected you or your parents? Tick as appropriate.<br /><br />
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Me</th>
+      <th>Parent</th>
+      <th>Neither</th>
+      <th>Both</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for answer in @acumen_test.answers[30...44] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+            <%= answer.question_title %>
+            <%= answer_form.hidden_field :code  %>
+          </td>
+          <% Answer::ANSWERS_4.each do |key| %>
+            <% key.each do |k,v| %>
+              <td><%= answer_form.radio_button :result, k %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table><br />
+
+
+<% if @acumen_test.answers[44]  %>
+  <% answer = @acumen_test.answers[44] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS_5.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %>
+        <% end %><br />
+      <% end %><br />
+    <% end %>
+  </p>
+<% end %>
+
+<% if @acumen_test.answers[45]  %>
+    <% answer = @acumen_test.answers[45] %>
+    <%= f.fields_for :answers, answer do |answer_form| %>
+      <p>
+        <%= answer_form.hidden_field :code  %>
+        <%= answer.question_title %><br /><br />
+
+        <% Answer::ANSWERS_6.each do |key| %>
+          <%= answer_form.check_box :result %>
+          <%= key %><br />
+      <% end %><br />
+    <% end %>
+  </p>
+<% end %>
+
+<% if @acumen_test.answers[46]  %>
+  <% answer = @acumen_test.answers[46] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS_7.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %>
+        <% end %><br />
+      <% end %><br />
+    </p>
+  <% end %>
+<% end %>
+
+
+<% if @acumen_test.answers[47]  %>
+  <% answer = @acumen_test.answers[47] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer_form.text_field :result, :style => "display: none;"%>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS_8.each do |value| %>
+        <%= text_field_tag :result %>
+        <%= value %><br />
+      <% end %><br />
+    </p>
+  <% end %>
+<% end %>
+
+<% if @acumen_test.answers[48]  %>
+  <% answer = @acumen_test.answers[48] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer_form.text_field :result, :style => "display: none;"%>
+      <%= answer.question_title %><br /><br />
+      <% 5.times do |i| %>
+        <%= i+1 %>. <%= text_field_tag :result_field %><br />
+      <% end %><br />
+    </p>
+  <% end %>
+<% end %>
+
+<% if @acumen_test.answers[49] %>
+  <% answer = @acumen_test.answers[49] %>
+  <%= f.fields_for :answers, answer do |answer_form| %>
+
+    <p>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br /><br />
+
+      <% Answer::ANSWERS.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %>
+        <% end %><br />
+      <% end %><br />
+    </p>
+
+  <% end %>
+<% end %>

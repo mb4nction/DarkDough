@@ -56,15 +56,15 @@ class Answer < ActiveRecord::Base
     "t1q49" => "What traditions and values in your family or community are important and should be carried on?",
     "t1q50" => "The amount of money you have impacts your level of happiness ",
 
-    "t2q10" => "Cash",
-    "t2q20" => "Current & Savings account balances",
-    "t2q30" => "Fixed deposits",
-    "t2q40" => "Cash surrender value of life insurance",
-    "t2q50" => "Stocks",
-    "t2q60" => "Bonds",
-    "t2q70" => "Investment property",
-    "t2q80" => "Funds",
-    "t2q90" => "Pension account balance",
+    "t2q01" => "Cash",
+    "t2q02" => "Current & Savings account balances",
+    "t2q03" => "Fixed deposits",
+    "t2q04" => "Cash surrender value of life insurance",
+    "t2q05" => "Stocks",
+    "t2q06" => "Bonds",
+    "t2q07" => "Investment property",
+    "t2q08" => "Funds",
+    "t2q09" => "Pension account balance",
     "t2q10" => "Market value of primary residence (if own property)",
     "t2q11" => "Automobiles",
     "t2q12" => "Household furniture/fittings/appliances/generator",
@@ -106,7 +106,7 @@ class Answer < ActiveRecord::Base
     "t3q23" => "Rent (enter annual amount)",
     "t3q24" => "Credit card payments",
     "t3q25" => "Loan payments",
-    "t3q26" => "Insurance premiums",
+    "t3q26" => "Insurancxze premiums",
     "t3q27" => "House maintenance/repairs",
     "t3q28" => "Total expenditures",
     "t3q29" => "Cash surplus/deficit",
@@ -114,6 +114,39 @@ class Answer < ActiveRecord::Base
     "t3q31" => "At what age do you plan to retire?"
   }
 
-  ANSWERS = [-2, -1, 0, 1, 2]
-  ANSWERS_TITLES = ["Strongly disagree", "Moderately disagree", "Neither agree nor disagree", "Moderately agree", "Strongly agree"]
+
+  ANSWERS = [ { "-2" => "Strongly disagree" },
+              { "-1" => "Moderately disagree" },
+              { "0"  => "Neither agree nor disagree" },
+              { "1"  => "Moderately agree" },
+              { "2"  => "Strongly agree" } ]
+
+  ANSWERS_2 = [ { "-2" => "Spend more on lifestyle now and have less savings in retirement",
+                  "2" => "Spend less on lifestyle now and have more savings in retirement" } ]
+
+  ANSWERS_3 = [{"2" => "Yes" }, { "-2" => "No"}]
+
+  ANSWERS_4_ARRAY = [ "t1q31", "t1q32", "t1q33", "t1q34", "t1q35", "t1q36", "t1q37", "t1q38", "t1q39",
+                      "t1q40", "t1q41", "t1q42", "t1q43", "t1q44" ]
+
+  ANSWERS_4 = [ { "1"  => "Me" },
+                { "1"  => "Parents" },
+                { "-2" => "Neither" },
+                { "2"  => "Both" } ]
+
+  ANSWERS_5 = [ { "2"  => "Extremely" },
+                { "1"  => "Very" },
+                { "0"  => "Moderately" },
+                { "-1" => "Mildly" },
+                { "-2" => "Not at all" } ]
+
+  ANSWERS_6 = [ "Recreation", "Travel", "Education", "Family", "Spirituality/Religion", "Financial" ]
+
+  ANSWERS_7 = [ { "2" => "Need or would like additional income" },
+                { "-2" => "Have sufficient assets" } ]
+
+  ANSWERS_8 = [ "Legacy - Charitable giving to schools, foundations, religious bodies or institutes",
+                 "Lifestyle – Spending on homes, recreation, travel, education, memberships, healthcare, and luxuries",
+                 "Thrift – Ensuring I have enough until the end of my life" ]
+
 end

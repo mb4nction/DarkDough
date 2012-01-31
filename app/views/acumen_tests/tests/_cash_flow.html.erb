@@ -1,0 +1,53 @@
+<h3>Statement of Cash Inflows &amp; Outflows</h3>
+
+<p>
+  What information do I need to gather before taking this test?
+</p>
+<ul>
+  <li>Payslips</li>
+  <li>Dividend details (listed and private companies)</li>
+  <li>Coupon payments (for bonds)</li>
+  <li>Business income (for entrepreneurs/self-employed)</li>
+  <li>Pension payment (if retired and drawing a pension)</li>
+  <li>Details of gifts/grants (for students, volunteers, pro-bono workers)</li>
+  <li>Alimony/child support receipts/payments</li>
+  <li>Utility bills</li>
+  <li>Interest payments on all loans</li>
+</ul>
+<p>This evaluation should take you 15–20mins</p><br /><br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Income (cash inflows) average monthly amounts unless stated otherwise</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for answer in @acumen_test.answers[74...103] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+            <%= answer_form.hidden_field :code  %>
+            <%= answer.question_title %>
+          </td>
+          <td>
+            <%= answer_form.text_field :result %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  </tbody>
+</table><br /><br />
+
+Finally, 2 simple questions
+<% for answer in @acumen_test.answers[103...105] %>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer.question_title %><br />
+      <%= answer_form.text_field :result %>
+    <% end %>
+  </p>
+<% end %>
