@@ -5,8 +5,8 @@
     <%= render 'shared/error_messages', :object => f.object %>
 
     <%= render 'acumen_tests/tests/qualitative', :f => f %>
-    <%#= render 'acumen_tests/tests/quantitative', :f => f %>
-    <%#= render 'acumen_tests/tests/cash_flow', :f => f %>
+    <%= render 'acumen_tests/tests/quantitative', :f => f %>
+    <%= render 'acumen_tests/tests/cash_flow', :f => f %>
 
     <br /><br />
     <%= f.submit "Submit" %>
