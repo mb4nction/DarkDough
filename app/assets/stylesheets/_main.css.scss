@@ -9,6 +9,20 @@ body {
   background: #fff;
 }
 
+table {
+  border: 1px solid #ccc;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  td:first-child { text-align: left; }
+}
+
 #wrapper {
   width: 960px;
   margin: 0 auto;
@@ -19,6 +33,8 @@ body {
     padding: 10px 0;
     border: 1px solid #cbc9c2;
     background-color: #fefbf3;
+
+    > a { padding: 5px; }
 
     .user-menu-wrapper {
       float: right;
