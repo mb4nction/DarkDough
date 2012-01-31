@@ -8,7 +8,7 @@ class AcumenTestsController < ApplicationController
   def new
     @acumen_test = AcumenTest.new
     Answer::QUESTIONS.sort_by{ |k,v| k }.each do |code, title|
-      @acumen_test.answers.build :answer_code => code, :question_title => title
+      @acumen_test.answers.build :code => code, :question_title => title
     end
   end
 
@@ -23,7 +23,7 @@ class AcumenTestsController < ApplicationController
 
   def edit
     @acumen_test = current_user.acumen_tests.last
-    @test_answers = @acumen_test.answers.find(:all, :order => 'answer_code')
+    @test_answers = @acumen_test.answers.find(:all, :order => 'code')
   end
 
   def update

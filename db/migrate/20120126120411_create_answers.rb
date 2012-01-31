@@ -1,8 +1,9 @@
 class CreateAnswers < ActiveRecord::Migration
   def change
     create_table :answers do |t|
-      t.string :answer
-      t.string :answer_code
+      t.string :result
+      t.string :code
+      t.string :text
 
       t.references :acumen_test, :null => false
 

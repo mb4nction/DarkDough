@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   attr_accessor :question_title
-  attr_accessible :answer, :answer_code, :question_title
+  attr_accessible :result, :text, :code, :question_title
 
   belongs_to :acumen_test
 

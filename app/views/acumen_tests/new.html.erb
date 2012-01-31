@@ -1,16 +1,16 @@
 <h1>Create the Acumen Test</h1>
 
-<%= form_for [current_user, @acumen_test], :url => { :action => "create" } do |f| %>
+<%= form_for @acumen_test do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <% @acumen_test.answers.each do |answer| %>
     <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
-      <%= answer_form.hidden_field :answer_code  %>
+      <%= answer_form.hidden_field :code  %>
       <%= answer.question_title %><br /><br />
 
       <% (0..4).each do |n| %>
-        <%= answer_form.radio_button :answer, Answer::ANSWERS[n] %>
+        <%= answer_form.radio_button :result, Answer::ANSWERS[n] %>
         <%= Answer::ANSWERS_TITLES[n] %><br />
       <% end %><br />
     </p>

@@ -10,7 +10,14 @@
         <li><%= link_to "Accounts", '#' %></li>
         <li><%= link_to "Profile", current_user %></li>
         <li><%= link_to "Help", '#' %></li>
-        <li><%= link_to "Create Acumen Test", new_user_acumen_test_path(current_user) %></li>
+
+        <% if !current_user.acumen_tests.any? %>
+          <li><%= link_to "Create Acumen Test", new_acumen_test_path %></li>
+        <% elsif current_user.acumen_tests.any? && !current_user.acumen_tests.first.finished? %>
+          <li><%= link_to "Continue Acumen Test", edit_acumen_test_path(current_user.acumen_tests.first) %></li>
+        <% else %>
+          <li><%= link_to "Acumen Test Result", acumen_test_path(current_user.acumen_tests.first) %></li>
+        <% end %>
 
         <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 

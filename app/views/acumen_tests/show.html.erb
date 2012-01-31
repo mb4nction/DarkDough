@@ -4,4 +4,4 @@
 Result <i>(if present)</i>: <%= current_user.acumen_tests.first.try(:result) %>
 
 <br /><br />
-<%= link_to "Edit Acumen Test", edit_user_acumen_test_path(current_user, @acumen_test) %>
+<%= link_to "Edit Acumen Test", edit_acumen_test_path(@acumen_test) %>
