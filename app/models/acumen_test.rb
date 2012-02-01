@@ -5,4 +5,8 @@ class AcumenTest < ActiveRecord::Base
   has_many :answers
 
   accepts_nested_attributes_for :answers
+
+  def finished?
+    finished ? "finished" : "not finished yet"
+  end
 end

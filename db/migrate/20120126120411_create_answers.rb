@@ -3,6 +3,7 @@ class CreateAnswers < ActiveRecord::Migration
     create_table :answers do |t|
       t.string :result
       t.string :code
+      t.text :question
 
       t.references :acumen_test, :null => false
 

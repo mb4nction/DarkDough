@@ -18,11 +18,12 @@ You shouldn’t tell others how much you have<br />
   <% end %><br />
 </ul>
 
-<% for answer in @acumen_test.answers[0...28] %>
+<% for answer in test_answers[0...28] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
       <%= answer_form.hidden_field :code  %>
-      <%= answer.question_title %><br /><br />
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS.each do |key| %>
         <% key.each do |k,v| %>
@@ -34,12 +35,13 @@ You shouldn’t tell others how much you have<br />
   <% end %>
 <% end %>
 
-<% if @acumen_test.answers[28] %>
-  <% answer = @acumen_test.answers[28] %>
+<% if test_answers[28] %>
+  <% answer = test_answers[28] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
       <%= answer_form.hidden_field :code  %>
-      <%= answer.question_title %><br /><br />
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS_2.each do |key| %>
         <% key.each do |k,v| %>
@@ -51,12 +53,13 @@ You shouldn’t tell others how much you have<br />
   <% end %>
 <% end %>
 
-<% if @acumen_test.answers[29]  %>
-  <% answer = @acumen_test.answers[29] %>
+<% if test_answers[29]  %>
+  <% answer = test_answers[29] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
       <%= answer_form.hidden_field :code  %>
-      <%= answer.question_title %><br /><br />
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS_3.each do |key| %>
         <% key.each do |k,v| %>
@@ -80,12 +83,13 @@ Have financial setbacks from any of the following events significantly affected 
     </tr>
   </thead>
   <tbody>
-    <% for answer in @acumen_test.answers[30...44] %>
+    <% for answer in test_answers[30...44] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-            <%= answer.question_title %>
-            <%= answer_form.hidden_field :code  %>
+            <%= answer.question %>
+            <%= answer_form.hidden_field :code %>
+            <%= answer_form.hidden_field :question %>
           </td>
           <% Answer::ANSWERS_4.each do |key| %>
             <% key.each do |k,v| %>
@@ -99,12 +103,13 @@ Have financial setbacks from any of the following events significantly affected 
 </table><br />
 
 
-<% if @acumen_test.answers[44]  %>
-  <% answer = @acumen_test.answers[44] %>
+<% if test_answers[44]  %>
+  <% answer = test_answers[44] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
-      <%= answer_form.hidden_field :code  %>
-      <%= answer.question_title %><br /><br />
+      <%= answer_form.hidden_field :code %>
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS_5.each do |key| %>
         <% key.each do |k,v| %>
@@ -116,12 +121,13 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% if @acumen_test.answers[45]  %>
-    <% answer = @acumen_test.answers[45] %>
+<% if test_answers[45]  %>
+    <% answer = test_answers[45] %>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <p>
-        <%= answer_form.hidden_field :code  %>
-        <%= answer.question_title %><br /><br />
+        <%= answer_form.hidden_field :code %>
+        <%= answer_form.hidden_field :question %>
+        <%= answer.question %><br /><br />
 
         <% Answer::ANSWERS_6.each do |key| %>
           <%= answer_form.check_box :result %>
@@ -131,12 +137,13 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% if @acumen_test.answers[46]  %>
-  <% answer = @acumen_test.answers[46] %>
+<% if test_answers[46]  %>
+  <% answer = test_answers[46] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
-      <%= answer_form.hidden_field :code  %>
-      <%= answer.question_title %><br /><br />
+      <%= answer_form.hidden_field :code %>
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS_7.each do |key| %>
         <% key.each do |k,v| %>
@@ -149,13 +156,14 @@ Have financial setbacks from any of the following events significantly affected 
 <% end %>
 
 
-<% if @acumen_test.answers[47]  %>
-  <% answer = @acumen_test.answers[47] %>
+<% if test_answers[47]  %>
+  <% answer = test_answers[47] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
-      <%= answer_form.hidden_field :code  %>
+      <%= answer_form.hidden_field :code %>
+      <%= answer_form.hidden_field :question %>
       <%= answer_form.text_field :result, :style => "display: none;"%>
-      <%= answer.question_title %><br /><br />
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS_8.each do |value| %>
         <%= text_field_tag :result %>
@@ -165,13 +173,14 @@ Have financial setbacks from any of the following events significantly affected 
   <% end %>
 <% end %>
 
-<% if @acumen_test.answers[48]  %>
-  <% answer = @acumen_test.answers[48] %>
+<% if test_answers[48]  %>
+  <% answer = test_answers[48] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
     <p>
       <%= answer_form.hidden_field :code  %>
+      <%= answer_form.hidden_field :question %>
       <%= answer_form.text_field :result, :style => "display: none;"%>
-      <%= answer.question_title %><br /><br />
+      <%= answer.question %><br /><br />
       <% 5.times do |i| %>
         <%= i+1 %>. <%= text_field_tag :result_field %><br />
       <% end %><br />
@@ -179,13 +188,14 @@ Have financial setbacks from any of the following events significantly affected 
   <% end %>
 <% end %>
 
-<% if @acumen_test.answers[49] %>
-  <% answer = @acumen_test.answers[49] %>
+<% if test_answers[49] %>
+  <% answer = test_answers[49] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
 
     <p>
-      <%= answer_form.hidden_field :code  %>
-      <%= answer.question_title %><br /><br />
+      <%= answer_form.hidden_field :code %>
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
       <% Answer::ANSWERS.each do |key| %>
         <% key.each do |k,v| %>

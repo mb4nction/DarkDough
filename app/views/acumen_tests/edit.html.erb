@@ -1,14 +1,2 @@
 <h1>Edit Acumen Test</h1>
-
-<div class="block">
-  <%= form_for @acumen_test do |f| %>
-    <%= render 'shared/error_messages', :object => f.object %>
-
-    <%= render 'qualitative', :f => f %>
-    <%= render 'quantitative', :f => f %>
-    <%= render 'cash_flow', :f => f %>
-
-    <br /><br />
-    <%= f.submit "Submit" %>
-  <% end -%>
-</div>
+<%= render 'acumen_tests/form', :acumen_test => @acumen_test %>

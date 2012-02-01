@@ -7,8 +7,10 @@ class AcumenTestsController < ApplicationController
 
   def new
     @acumen_test = AcumenTest.new
-    Answer::QUESTIONS.sort_by{ |k,v| k }.each do |code, title|
-      @acumen_test.answers.build :code => code, :question_title => title
+    Answer::QUESTIONS.each do |i|
+      i.each do |code, title|
+        @acumen_test.answers.build :code => code, :question => title
+      end
     end
   end
 
@@ -27,5 +29,11 @@ class AcumenTestsController < ApplicationController
   end
 
   def update
+    @acumen_test = current_user.acumen_tests.last
+    if @acumen_test.update_attributes params[:acumen_test]
+      render :show
+    else
+      render :edit
+    end
   end
 end

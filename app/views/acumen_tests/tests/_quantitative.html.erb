@@ -23,12 +23,13 @@
     </tr>
   </thead>
   <tbody>
-    <% for answer in @acumen_test.answers[50...58] %>
+    <% for answer in test_answers[50...58] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-            <%= answer_form.hidden_field :code  %>
-            <%= answer.question_title %>
+            <%= answer_form.hidden_field :code %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
           </td>
           <td>
             <%= answer_form.text_field :result %>
@@ -42,12 +43,13 @@
       <td></td>
     </tr>
 
-    <% for answer in @acumen_test.answers[58...66] %>
+    <% for answer in test_answers[58...66] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-            <%= answer_form.hidden_field :code  %>
-            <%= answer.question_title %>
+            <%= answer_form.hidden_field :code %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
           </td>
           <td>
             <%= answer_form.text_field :result %>
@@ -66,12 +68,13 @@
       <td></td>
     </tr>
 
-    <% for answer in @acumen_test.answers[66...73] %>
+    <% for answer in test_answers[66...73] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-            <%= answer_form.hidden_field :code  %>
-            <%= answer.question_title %>
+            <%= answer_form.hidden_field :code %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
           </td>
           <td>
             <%= answer_form.text_field :result %>

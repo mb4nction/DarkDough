@@ -1,14 +1,2 @@
 <h1>Acumen Test</h1>
-
-<div class="block">
-  <%= form_for @acumen_test do |f| %>
-    <%= render 'shared/error_messages', :object => f.object %>
-
-    <%= render 'acumen_tests/tests/qualitative', :f => f %>
-    <%= render 'acumen_tests/tests/quantitative', :f => f %>
-    <%= render 'acumen_tests/tests/cash_flow', :f => f %>
-
-    <br /><br />
-    <%= f.submit "Submit" %>
-  <% end -%>
-</div>
+<%= render 'acumen_tests/form', :acumen_test => @acumen_test %>
