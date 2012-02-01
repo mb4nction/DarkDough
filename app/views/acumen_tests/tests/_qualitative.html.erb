@@ -19,8 +19,8 @@ You shouldn’t tell others how much you have<br />
 </ul>
 
 <% for answer in test_answers[0...28] %>
-  <%= f.fields_for :answers, answer do |answer_form| %>
-    <p>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code  %>
       <%= answer_form.hidden_field :question %>
       <%= answer.question %><br /><br />
@@ -31,14 +31,14 @@ You shouldn’t tell others how much you have<br />
           <%= v %>
         <% end %><br />
       <% end %><br />
-    </p>
-  <% end %>
+    <% end %>
+  </p>
 <% end %>
 
 <% if test_answers[28] %>
   <% answer = test_answers[28] %>
-  <%= f.fields_for :answers, answer do |answer_form| %>
-    <p>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code  %>
       <%= answer_form.hidden_field :question %>
       <%= answer.question %><br /><br />
@@ -49,14 +49,14 @@ You shouldn’t tell others how much you have<br />
           <%= v %><br />
         <% end %><br />
       <% end %>
-    </p>
-  <% end %>
+    <% end %>
+  </p>
 <% end %>
 
 <% if test_answers[29]  %>
   <% answer = test_answers[29] %>
-  <%= f.fields_for :answers, answer do |answer_form| %>
-    <p>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code  %>
       <%= answer_form.hidden_field :question %>
       <%= answer.question %><br /><br />
@@ -67,8 +67,8 @@ You shouldn’t tell others how much you have<br />
           <%= v %>
         <% end %><br />
       <% end %><br />
-    </p>
-  <% end %>
+    <% end %>
+  </p>
 <% end %>
 
 Have financial setbacks from any of the following events significantly affected you or your parents? Tick as appropriate.<br /><br />
@@ -122,16 +122,18 @@ Have financial setbacks from any of the following events significantly affected 
 <% end %>
 
 <% if test_answers[45]  %>
-    <% answer = test_answers[45] %>
+  <% answer = test_answers[45] %>
+  <p class="checkboxes">
     <%= f.fields_for :answers, answer do |answer_form| %>
-      <p>
-        <%= answer_form.hidden_field :code %>
-        <%= answer_form.hidden_field :question %>
-        <%= answer.question %><br /><br />
+      <%= answer_form.hidden_field :code %>
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
 
-        <% Answer::ANSWERS_6.each do |key| %>
-          <%= answer_form.check_box :result %>
-          <%= key %><br />
+
+      <%= answer_form.text_field :result, :value => "", :class => "custom_result" %>
+      <% Answer::ANSWERS_6.each do |key| %>
+        <%= check_box_tag :answer_result %>
+        <%= key %><br />
       <% end %><br />
     <% end %>
   </p>
@@ -139,8 +141,8 @@ Have financial setbacks from any of the following events significantly affected 
 
 <% if test_answers[46]  %>
   <% answer = test_answers[46] %>
-  <%= f.fields_for :answers, answer do |answer_form| %>
-    <p>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code %>
       <%= answer_form.hidden_field :question %>
       <%= answer.question %><br /><br />
@@ -151,45 +153,40 @@ Have financial setbacks from any of the following events significantly affected 
           <%= v %>
         <% end %><br />
       <% end %><br />
-    </p>
-  <% end %>
+    <% end %>
+  </p>
 <% end %>
 
-
-<% if test_answers[47]  %>
-  <% answer = test_answers[47] %>
-  <%= f.fields_for :answers, answer do |answer_form| %>
-    <p>
-      <%= answer_form.hidden_field :code %>
-      <%= answer_form.hidden_field :question %>
-      <%= answer_form.text_field :result, :style => "display: none;"%>
-      <%= answer.question %><br /><br />
-
-      <% Answer::ANSWERS_8.each do |value| %>
-        <%= text_field_tag :result %>
-        <%= value %><br />
-      <% end %><br />
-    </p>
-  <% end %>
-<% end %>
-
-<% if test_answers[48]  %>
-  <% answer = test_answers[48] %>
-  <%= f.fields_for :answers, answer do |answer_form| %>
-    <p>
+<% for answer in test_answers[47...50] %>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code  %>
       <%= answer_form.hidden_field :question %>
-      <%= answer_form.text_field :result, :style => "display: none;"%>
-      <%= answer.question %><br /><br />
-      <% 5.times do |i| %>
-        <%= i+1 %>. <%= text_field_tag :result_field %><br />
-      <% end %><br />
-    </p>
-  <% end %>
+      <%= answer_form.text_field :result %>
+      <%= answer.question %>
+    <% end %>
+  </p>
 <% end %>
 
-<% if test_answers[49] %>
-  <% answer = test_answers[49] %>
+<% if test_answers[50]  %>
+  <% answer = test_answers[50] %>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
+      <%= answer_form.text_field :result, :class => "custom_result"%>
+      <span class="result_fields">
+        <% 5.times do |i| %>
+          <%= i+1 %>. <%= text_field_tag :result_field %><br />
+        <% end %><br />
+      </span>
+    <% end %>
+  </p>
+<% end %>
+
+<% if test_answers[51] %>
+  <% answer = test_answers[51] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
 
     <p>

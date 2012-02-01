@@ -51,9 +51,11 @@ class Answer < ActiveRecord::Base
     {"t1q45" => "How concerned are you that you will not have enough money in retirement?"},
     {"t1q46" => "In which of the following domains do you have unmet life goals and aspirations? Tick as appropriate."},
     {"t1q47" => "Do you feel you have sufficient assets to accomplish your goals and realise your dreams?"},
-    {"t1q48" => "After you retire, what are likely to be your financial priorities? (Please rank from 1–3, where 1 is most important)"},
-    {"t1q49" => "What traditions and values in your family or community are important and should be carried on?"},
-    {"t1q50" => "The amount of money you have impacts your level of happiness "},
+    {"t1q48" => "Legacy - Charitable giving to schools, foundations, religious bodies or institutes"},
+    {"t1q49" => "Lifestyle – Spending on homes, recreation, travel, education, memberships, healthcare, and luxuries"},
+    {"t1q50" => "Thrift – Ensuring I have enough until the end of my life"},
+    {"t1q51" => "What traditions and values in your family or community are important and should be carried on?"},
+    {"t1q52" => "The amount of money you have impacts your level of happiness "},
 
     {"t2q01" => "Cash"},
     {"t2q02" => "Current & Savings account balances"},
@@ -143,9 +145,4 @@ class Answer < ActiveRecord::Base
 
   ANSWERS_7 = [ { "2" => "Need or would like additional income" },
                 { "-2" => "Have sufficient assets" } ]
-
-  ANSWERS_8 = [ "Legacy - Charitable giving to schools, foundations, religious bodies or institutes",
-                 "Lifestyle – Spending on homes, recreation, travel, education, memberships, healthcare, and luxuries",
-                 "Thrift – Ensuring I have enough until the end of my life" ]
-
 end
