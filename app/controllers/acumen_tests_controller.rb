@@ -1,8 +1,9 @@
 class AcumenTestsController < ApplicationController
   before_filter :authenticate_user!
+  after_filter :check_finished, :only => :update
 
   def show
-    @acumen_test = current_user.acumen_tests.first
+    @acumen_test = current_user.acumen_tests.last
   end
 
   def new
@@ -31,9 +32,15 @@ class AcumenTestsController < ApplicationController
   def update
     @acumen_test = current_user.acumen_tests.last
     if @acumen_test.update_attributes params[:acumen_test]
-      render :show
+      redirect_to @acumen_test, :notice => "Answers updated"
     else
       render :edit
     end
+  end
+
+  private
+
+  def check_finished
+    current_user.acumen_tests.last.finish_it!
   end
 end

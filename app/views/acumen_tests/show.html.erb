@@ -5,3 +5,5 @@
 <p>Result <i>(if present)</i>: <%= current_user.acumen_tests.first.try(:result) %></p>
 <br />
 <%= acumen_test_menu(current_user) %>
+
+<p>If you would like to to reenter the Acumen Test, click <%= link_to "here", new_acumen_test_path %></p>
