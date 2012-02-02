@@ -1,15 +1,4 @@
 $(function(){
-  var checkboxesCount = function() {
-    var container = $(".checkboxes"),
-        checkboxes = container.find("input[type=checkbox]"),
-        resultInput = checkboxes.siblings("input.custom_result");
-
-    checkboxes.change(function() {
-      resultInput.val(checkboxes.filter(":checked").length);
-    })
-  };
-
-
   var customAnswersCount = function() {
     var container = $(".result_fields"),
         inputs = container.find("input"),
@@ -30,7 +19,7 @@ $(function(){
     var container = $(".result_fields"),
         inputs = container.find("input"),
         resultInput = container.siblings(".custom_result");
-  
+
     var counter = 0;
     for (i=0;i<=4;i++) {
       if (inputs[i] && inputs[i].value) {
@@ -40,7 +29,6 @@ $(function(){
     resultInput.val(counter);
   }
 
-  checkboxesCount();
   customAnswersCountStart();
   customAnswersCount();
 });
