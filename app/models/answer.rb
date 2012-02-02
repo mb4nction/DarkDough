@@ -49,13 +49,18 @@ class Answer < ActiveRecord::Base
     {"t1q43" => "Addictions"},
     {"t1q44" => "Natural disaster"},
     {"t1q45" => "How concerned are you that you will not have enough money in retirement?"},
-    {"t1q46" => "In which of the following domains do you have unmet life goals and aspirations? Tick as appropriate."},
-    {"t1q47" => "Do you feel you have sufficient assets to accomplish your goals and realise your dreams?"},
-    {"t1q48" => "Legacy - Charitable giving to schools, foundations, religious bodies or institutes"},
-    {"t1q49" => "Lifestyle – Spending on homes, recreation, travel, education, memberships, healthcare, and luxuries"},
-    {"t1q50" => "Thrift – Ensuring I have enough until the end of my life"},
-    {"t1q51" => "What traditions and values in your family or community are important and should be carried on?"},
-    {"t1q52" => "The amount of money you have impacts your level of happiness "},
+    {"t1q46" => "Recreation"},
+    {"t1q47" => "Travel"},
+    {"t1q48" => "Education"},
+    {"t1q49" => "Family"},
+    {"t1q50" => "Spirituality/Religion"},
+    {"t1q51" => "Financial"},
+    {"t1q52" => "Do you feel you have sufficient assets to accomplish your goals and realise your dreams?"},
+    {"t1q53" => "Legacy - Charitable giving to schools, foundations, religious bodies or institutes"},
+    {"t1q54" => "Lifestyle – Spending on homes, recreation, travel, education, memberships, healthcare, and luxuries"},
+    {"t1q55" => "Thrift – Ensuring I have enough until the end of my life"},
+    {"t1q56" => "What traditions and values in your family or community are important and should be carried on?"},
+    {"t1q57" => "The amount of money you have impacts your level of happiness "},
 
     {"t2q01" => "Cash"},
     {"t2q02" => "Current & Savings account balances"},
@@ -141,8 +146,6 @@ class Answer < ActiveRecord::Base
                 { "-1" => "Mildly" },
                 { "-2" => "Not at all" } ]
 
-  ANSWERS_6 = [ "Recreation", "Travel", "Education", "Family", "Spirituality/Religion", "Financial" ]
-
-  ANSWERS_7 = [ { "2" => "Need or would like additional income" },
+  ANSWERS_6 = [ { "2" => "Need or would like additional income" },
                 { "-2" => "Have sufficient assets" } ]
 end

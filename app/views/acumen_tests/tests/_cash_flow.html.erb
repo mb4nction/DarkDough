@@ -24,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    <% for answer in test_answers[76...105] %>
+    <% for answer in test_answers[81...110] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -43,7 +43,7 @@
 </table><br /><br />
 
 Finally, 2 simple questions
-<% for answer in test_answers[105...107] %>
+<% for answer in test_answers[110...112] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code %>

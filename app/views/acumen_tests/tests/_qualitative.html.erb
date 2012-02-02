@@ -121,33 +121,33 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% if test_answers[45]  %>
-  <% answer = test_answers[45] %>
-  <p class="checkboxes">
+<hr />
+"In which of the following domains do you have unmet life goals and aspirations? Tick as appropriate."
+<p>
+  <% for answer in test_answers[45..50] %>
     <%= f.fields_for :answers, answer do |answer_form| %>
-      <%= answer_form.hidden_field :code %>
-      <%= answer_form.hidden_field :question %>
-      <%= answer.question %><br /><br />
-
-
-      <%= answer_form.text_field :result, :value => "", :class => "custom_result" %>
-      <% Answer::ANSWERS_6.each do |key| %>
-        <%= check_box_tag :answer_result %>
-        <%= key %><br />
-      <% end %><br />
+      <tr>
+        <td>
+          <%= answer_form.check_box :result %>
+          <%= answer.question %>
+          <%= answer_form.hidden_field :code %>
+          <%= answer_form.hidden_field :question %><br />
+        </td>
+      </tr>
     <% end %>
-  </p>
-<% end %>
+  <% end %>
+</p>
+<hr />
 
-<% if test_answers[46]  %>
-  <% answer = test_answers[46] %>
+<% if test_answers[51]  %>
+  <% answer = test_answers[51] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code %>
       <%= answer_form.hidden_field :question %>
       <%= answer.question %><br /><br />
 
-      <% Answer::ANSWERS_7.each do |key| %>
+      <% Answer::ANSWERS_6.each do |key| %>
         <% key.each do |k,v| %>
           <%= answer_form.radio_button :result, k %>
           <%= v %>
@@ -157,7 +157,7 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% for answer in test_answers[47...50] %>
+<% for answer in test_answers[52...55] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code  %>
@@ -168,8 +168,8 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% if test_answers[50]  %>
-  <% answer = test_answers[50] %>
+<% if test_answers[55]  %>
+  <% answer = test_answers[55] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code  %>
@@ -185,8 +185,8 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% if test_answers[51] %>
-  <% answer = test_answers[51] %>
+<% if test_answers[56] %>
+  <% answer = test_answers[56] %>
   <%= f.fields_for :answers, answer do |answer_form| %>
 
     <p>
