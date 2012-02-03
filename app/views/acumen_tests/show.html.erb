@@ -6,4 +6,6 @@
 <br />
 <%= acumen_test_menu(current_user) %>
 
+<%= render 'acumen_test_results', :acumen_test => @acumen_test if @acumen_test.qualitative_test_finished? %>
+<br /><br />
 <p>If you would like to to reenter the Acumen Test, click <%= link_to "here", new_acumen_test_path %></p>
