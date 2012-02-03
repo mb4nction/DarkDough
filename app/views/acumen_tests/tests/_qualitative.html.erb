@@ -9,7 +9,8 @@
 </ul>
 This evaluation should take you 10–15 mins<br />
 Personality Typing Questionnaire<br />
-You shouldn’t tell others how much you have<br />
+
+<p>You shouldn’t tell others how much you have</p>
 <ul>
   <% Answer::ANSWERS.each do |key| %>
     <% key.each do |k,v| %>
@@ -155,6 +156,7 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
+After you retire, what are likely to be your financial priorities? (Please rank from 1–3, where 1 is most important)
 <% for answer in test_answers[52...55] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
@@ -166,7 +168,7 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-<% if test_answers[55]  %>
+<% if test_answers[55] %>
   <% answer = test_answers[55] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>

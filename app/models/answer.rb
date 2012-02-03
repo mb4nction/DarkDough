@@ -5,6 +5,8 @@ class Answer < ActiveRecord::Base
 
   scope :answers_by_code, lambda { |q| { :conditions => ["code like :q", {:q => "%#{q}%"}] } }
 
+  COMPANY_INCOME_TAX = "0.32"
+
   QUESTIONS = [
     {"t1q01" => "A portion of your money invariably gets wasted. To think otherwise is a sign of folly or inexperience"},
     {"t1q02" => "People who are always broke are undisciplined"},
@@ -87,7 +89,6 @@ class Answer < ActiveRecord::Base
     {"t2q21" => "Bills outstanding"},
     {"t2q22" => "Mortgage loans"},
     {"t2q23" => "Investors’ equity capital in own business"},
-    {"t2q24" => "There are a number of ways to increase your net worth"},
 
     {"t3q01" => "Gross salary/wages"},
     {"t3q02" => "Less PAYE"},
@@ -114,11 +115,11 @@ class Answer < ActiveRecord::Base
     {"t3q23" => "Rent (enter annual amount)"},
     {"t3q24" => "Credit card payments"},
     {"t3q25" => "Loan payments"},
-    {"t3q26" => "Insurancxze premiums"},
+    {"t3q26" => "Insurance premiums"},
     {"t3q27" => "House maintenance/repairs"},
     {"t3q28" => "Total expenditures"},
     {"t3q29" => "Cash surplus/deficit"},
-    {"t3q30" => "How old were you when you began earning an income (exclude internships or national service)?"},
+    {"t3q30" => "How old were you when you began earning an income?"},
     {"t3q31" => "At what age do you plan to retire?"}
   ]
 

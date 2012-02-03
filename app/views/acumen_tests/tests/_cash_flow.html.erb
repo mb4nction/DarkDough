@@ -24,7 +24,86 @@
     </tr>
   </thead>
   <tbody>
-    <% for answer in test_answers[80...109] %>
+    <% for answer in test_answers[80...82] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+            <%= answer_form.hidden_field :code %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
+          </td>
+          <td>
+            <%= answer_form.text_field :result %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if test_answers[82] %>
+      <% answer = test_answers[82] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+              <%= answer_form.hidden_field :code  %>
+              <%= answer_form.hidden_field :question %>
+              <%= answer.question %>
+            </td>
+          <td><%= answer_form.check_box :result, :id => "apply_paye"%></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% for answer in test_answers[83...91] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+            <%= answer_form.hidden_field :code %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
+          </td>
+          <td>
+            <%= answer_form.text_field :result %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <% if test_answers[91] %>
+      <% answer = test_answers[91] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+              <%= answer_form.hidden_field :code  %>
+              <%= answer_form.hidden_field :question %>
+              <%= answer.question %>
+            </td>
+          <td><%= answer_form.check_box :result, :id => "apply_income_tax" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <% if test_answers[92] %>
+      <% answer = test_answers[92] %>
+      <%= f.fields_for :answers, answer do |answer_form| %>
+        <tr>
+          <td>
+              <%= answer_form.hidden_field :code  %>
+              <%= answer_form.hidden_field :question %>
+              <%= answer.question %>
+            </td>
+          <td><%= answer_form.text_field :result %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <tr>
+      <td><strong>Total income</strong></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Expenditures (cash outflows) average monthly amounts unless stated otherwise</strong>
+      </td>
+      <td></td>
+    </tr>
+    <% for answer in test_answers[93...109] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -48,8 +127,8 @@ Finally, 2 simple questions
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code %>
       <%= answer_form.hidden_field :question %>
-      <%= answer_form.text_field :result %>
       <%= answer.question %>
+      <%= answer_form.select :result, (1..99).to_a, :selected => (answer.result || "22") %>
     <% end %>
   </p>
 <% end %>
