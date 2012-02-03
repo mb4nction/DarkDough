@@ -152,7 +152,7 @@ class Answer < ActiveRecord::Base
   ANSWERS_6 = [ { "2" => "Need or would like additional income" },
                 { "-2" => "Have sufficient assets" } ]
 
-
+  # qulitative test
   WORRY = ["t1q01", "t1q03", "t1q10", "t1q11", "t1q31", "t1q32", "t1q33", "t1q34", "t1q35", "t1q36", "t1q37",
            "t1q38", "t1q39", "t1q40", "t1q41", "t1q42", "t1q43", "t1q44", "t1q45", "t1q52", "t1q57"]
 
@@ -167,4 +167,9 @@ class Answer < ActiveRecord::Base
 
   THRILL_SEEKING = ["t1q06", "t1q08", "t1q09", "t1q12", "t1q17", "t1q18", "t1q19", "t1q21", "t1q23", "t1q27"]
   THRILL_SEEKING_DEDUCT = ["t1q20"]
+
+  # quantitative test
+  TOTAL_INVESTMENTS = ["t2q01", "t2q02", "t2q03", "t2q04", "t2q05", "t2q06", "t2q07", "t2q08"]
+  TOTAL_ASSETS = ["t2q09", "t2q10", "t2q11", "t2q12", "t2q13", "t2q14", "t2q15", "t2q16"]
+  TOTAL_LIABILITIES = ["t2q17", "t2q18", "t2q19", "t2q20", "t2q21", "t2q22", "t2q23"]
 end

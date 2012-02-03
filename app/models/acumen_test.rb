@@ -33,15 +33,35 @@ class AcumenTest < ActiveRecord::Base
     !(test_answers('t1').map(&:result).include?(nil) || test_answers('t1').map(&:result).include?(""))
   end
 
-  # def quantitative_result
-  # end
-  #
-  # def cash_flow_result
-  # end
+  def quantitative_test_finished?
+    !(test_answers('t2').map(&:result).include?(nil) || test_answers('t2').map(&:result).include?(""))
+  end
 
   def test_answers(code)
     self.answers.answers_by_code(code)
   end
+
+  def qualitative_result
+    first_test_answers = test_answers('t1')
+    result = {:worry => worry_count(first_test_answers),
+              :self_interest => self_interest_count(first_test_answers),
+              :discipline => discipline_count(first_test_answers),
+              :motivation => motivation_count(first_test_answers),
+              :thrill_seeking => thrill_seeking_count(first_test_answers) }
+  end
+
+  def quantitative_result
+    second_test_answers = test_answers('t2')
+    result = {:total_investments => total_investments_count(second_test_answers),
+              :total_assets => total_assets_count(second_test_answers),
+              :total_liabilities => total_liabilities_count(second_test_answers),
+              :current_ratio => current_ratio_count(second_test_answers),
+              :debt_ratio => debt_ratio_count(second_test_answers) }
+
+  end
+
+  # def cash_flow_result
+  # end
 
   def goals_and_aspirations
     gaa_array = ["t1q46", "t1q47", "t1q48", "t1q49", "t1q50", "t1q51"]
@@ -107,15 +127,6 @@ class AcumenTest < ActiveRecord::Base
     return 0
   end
 
-  def qualitative_count
-    first_test_answers = test_answers('t1')
-    result = {:worry => worry_count(first_test_answers),
-              :self_interest => self_interest_count(first_test_answers),
-              :discipline => discipline_count(first_test_answers),
-              :motivation => motivation_count(first_test_answers),
-              :thrill_seeking => thrill_seeking_count(first_test_answers)}
-  end
-
   def worry_count(test_answers)
     worry_array = []
     Answer::WORRY.each do |code|
@@ -175,5 +186,44 @@ class AcumenTest < ActiveRecord::Base
     end
     thrill_seeking_deduct = thrill_seeking_deduct_array.compact.map(&:to_i).sum
     thrill_seeking_result = thrill_seeking - thrill_seeking_deduct
+  end
+
+  # quantitative calculations
+  def total_investments_count(test_answers)
+    results_array = []
+    Answer::TOTAL_INVESTMENTS.each do |code|
+      test_answers.find{ |answer| results_array << answer.result if (answer.code == code)}
+    end
+    result = results_array.compact.map(&:to_i).sum
+  end
+
+  def total_assets_count(test_answers)
+    results_array = []
+    Answer::TOTAL_ASSETS.each do |code|
+      test_answers.find{ |answer| results_array << answer.result if (answer.code == code)}
+    end
+    result = results_array.compact.map(&:to_i).sum
+  end
+
+  def total_liabilities_count(test_answers)
+    results_array = []
+    Answer::TOTAL_LIABILITIES.each do |code|
+      test_answers.find{ |answer| results_array << answer.result if (answer.code == code)}
+    end
+    result = results_array.compact.map(&:to_i).sum
+  end
+
+  def current_ratio_count(test_answers)
+    res = (total_assets_count(test_answers).to_f / total_liabilities_count(test_answers).to_f).to_f
+    sprintf("%.2f", res).to_f
+  end
+
+  def debt_ratio_count(test_answers)
+    res = (total_liabilities_count(test_answers).to_f / net_worth_count(test_answers).to_f).to_f
+    sprintf("%.2f", res).to_f
+  end
+
+  def net_worth_count(test_answers)
+    total_assets_count(test_answers) - total_liabilities_count(test_answers)
   end
 end
