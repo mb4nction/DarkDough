@@ -1,6 +1,6 @@
 class AcumenTestsController < ApplicationController
   before_filter :authenticate_user!
-  after_filter :check_finished, :calculate_the_test, :only => :update
+  after_filter :check_finished, :only => :update
 
   def show
     @acumen_test = current_user.acumen_tests.last
@@ -42,9 +42,5 @@ class AcumenTestsController < ApplicationController
 
   def check_finished
     current_user.acumen_tests.last.finish_it!
-  end
-
-  def calculate_the_test
-    current_user.acumen_tests.last.calculate_acumen_test
   end
 end

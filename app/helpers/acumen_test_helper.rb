@@ -1,6 +1,23 @@
 module AcumenTestHelper
   def worry_test_resulting
-    res = first_test_count[:worry]
+    res = qualitative_count[:worry]
+    case res.to_i
+    when 14..18
+      result =  "Exceptionally high"
+    when 8..13
+      result =  "Very high"
+    when -5..7
+      result =  "Average"
+    when -14..-6
+      result =  "Below average"
+    when -18..-15
+      result =  "Negligible"
+    end
+    return result
+  end
+
+  def discipline_test_resulting
+    res = qualitative_count[:discipline]
     case res.to_i
     when 14..18
       result =  "Exceptionally high"
@@ -17,7 +34,7 @@ module AcumenTestHelper
   end
 
   def self_interest_test_resulting
-    res = first_test_count[:discipline]
+    res = qualitative_count[:discipline]
     case res.to_i
     when 22..30
       result =  "Exceptionally high"
@@ -34,7 +51,7 @@ module AcumenTestHelper
   end
 
   def thrill_seeking_test_resulting
-    res = first_test_count[:thrill_seeking]
+    res = qualitative_count[:thrill_seeking]
     case res.to_i
     when 15..22
       result =  "Exceptionally high"
@@ -49,5 +66,5 @@ module AcumenTestHelper
     end
     return result
   end
-  
+
 end

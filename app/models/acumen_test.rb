@@ -26,9 +26,8 @@ class AcumenTest < ActiveRecord::Base
     end
   end
 
-  def calculate_acumen_test
-
-  end
+  # def calculate_acumen_test
+  # end
 
   def qualitative_test_finished?
     !(test_answers('t1').map(&:result).include?(nil) || test_answers('t1').map(&:result).include?(""))
@@ -108,7 +107,7 @@ class AcumenTest < ActiveRecord::Base
     return 0
   end
 
-  def first_test_count
+  def qualitative_count
     first_test_answers = test_answers('t1')
     result = {:worry => worry_count(first_test_answers),
               :self_interest => self_interest_count(first_test_answers),
@@ -142,7 +141,7 @@ class AcumenTest < ActiveRecord::Base
 
   def discipline_count(test_answers)
     discipline_array = []
-    Answer::WORRY.each do |code|
+    Answer::DISCIPLINE.each do |code|
       test_answers.find{ |answer| discipline_array << answer.result if (answer.code == code) }
     end
     discipline_result = discipline_array.compact.map(&:to_i).sum
