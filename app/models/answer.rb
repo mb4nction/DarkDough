@@ -138,7 +138,7 @@ class Answer < ActiveRecord::Base
   ANSWERS_4_ARRAY = [ "t1q31", "t1q32", "t1q33", "t1q34", "t1q35", "t1q36", "t1q37", "t1q38", "t1q39",
                       "t1q40", "t1q41", "t1q42", "t1q43", "t1q44" ]
 
-  ANSWERS_4 = [ { "1"  => "Me" },
+  ANSWERS_4 = [ { "0"  => "Me" },
                 { "1"  => "Parents" },
                 { "-2" => "Neither" },
                 { "2"  => "Both" } ]
@@ -153,8 +153,9 @@ class Answer < ActiveRecord::Base
                 { "-2" => "Have sufficient assets" } ]
 
   # qulitative test
-  WORRY = ["t1q01", "t1q03", "t1q10", "t1q11", "t1q31", "t1q32", "t1q33", "t1q34", "t1q35", "t1q36", "t1q37",
-           "t1q38", "t1q39", "t1q40", "t1q41", "t1q42", "t1q43", "t1q44", "t1q45", "t1q52", "t1q57"]
+  WORRY = ["t1q01", "t1q03", "t1q10", "t1q11", "t1q45", "t1q52", "t1q57"]
+  WORRY_EVENTS = ["t1q31", "t1q32", "t1q33", "t1q34", "t1q35", "t1q36", "t1q37",
+                  "t1q38", "t1q39", "t1q40", "t1q41", "t1q42", "t1q43", "t1q44"]
 
   SELF_INTEREST = ["t1q01", "t1q02", "t1q04", "t1q05", "t1q06", "t1q07", "t1q08", "t1q16", "t1q22", "t1q26",
                    "t1q28", "t1q54", "t1q53"]

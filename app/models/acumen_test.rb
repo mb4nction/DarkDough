@@ -127,12 +127,33 @@ class AcumenTest < ActiveRecord::Base
     return 0
   end
 
+  def worry_events_count(test_answers)
+    worry_array = []
+    Answer::WORRY_EVENTS.each do |code|
+      test_answers.find{ |answer| worry_array << answer.result if (answer.code == code) }
+    end
+    res_array = []
+    worry_array.each do |elem|
+      case elem
+      when "0"
+        res_array << "1"
+      when "1"
+        res_array << "1"
+      when "2"
+        res_array << "2"
+      when "-2"
+        res_array << "-2"
+      end
+    end
+    result = res_array.compact.map(&:to_i).sum
+  end
+
   def worry_count(test_answers)
     worry_array = []
     Answer::WORRY.each do |code|
       test_answers.find{ |answer| worry_array << answer.result if (answer.code == code) }
     end
-    worry_result = worry_array.compact.map(&:to_i).sum
+    worry_result = worry_array.compact.map(&:to_i).sum + worry_events_count(test_answers)
   end
 
   def self_interest_count(test_answers)
