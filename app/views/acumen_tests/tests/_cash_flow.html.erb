@@ -24,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    <% for answer in test_answers[80...82] %>
+    <% for answer in test_answers[81...83] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -38,8 +38,8 @@
         </tr>
       <% end %>
     <% end %>
-    <% if test_answers[82] %>
-      <% answer = test_answers[82] %>
+    <% if test_answers[83] %>
+      <% answer = test_answers[83] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -51,7 +51,7 @@
         </tr>
       <% end %>
     <% end %>
-    <% for answer in test_answers[83...91] %>
+    <% for answer in test_answers[84...92] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -66,8 +66,8 @@
       <% end %>
     <% end %>
 
-    <% if test_answers[91] %>
-      <% answer = test_answers[91] %>
+    <% if test_answers[92] %>
+      <% answer = test_answers[92] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -80,8 +80,8 @@
       <% end %>
     <% end %>
 
-    <% if test_answers[92] %>
-      <% answer = test_answers[92] %>
+    <% if test_answers[93] %>
+      <% answer = test_answers[93] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -103,7 +103,7 @@
       </td>
       <td></td>
     </tr>
-    <% for answer in test_answers[93...109] %>
+    <% for answer in test_answers[94...110] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -122,7 +122,7 @@
 </table><br /><br />
 
 Finally, 2 simple questions
-<% for answer in test_answers[109...111] %>
+<% for answer in test_answers[110...112] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code %>

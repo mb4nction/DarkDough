@@ -64,7 +64,8 @@ class Answer < ActiveRecord::Base
     {"t1q54" => "Lifestyle – Spending on homes, recreation, travel, education, memberships, healthcare, and luxuries"},
     {"t1q55" => "Thrift – Ensuring I have enough until the end of my life"},
     {"t1q56" => "What traditions and values in your family or community are important and should be carried on?"},
-    {"t1q57" => "The amount of money you have impacts your level of happiness "},
+    {"t1q57" => "The amount of money you have impacts your level of happiness"},
+    {"t1q58" => "You shouldn’t tell others how much you have"},
 
     {"t2q01" => "Cash"},
     {"t2q02" => "Current & Savings account balances"},
@@ -153,12 +154,12 @@ class Answer < ActiveRecord::Base
                 { "-2" => "Have sufficient assets" } ]
 
   # qulitative test
-  WORRY = ["t1q01", "t1q03", "t1q10", "t1q11", "t1q45", "t1q52", "t1q57"]
+  WORRY = ["t1q01", "t1q03", "t1q10", "t1q11", "t1q45", "t1q52", "t1q57", "t1q58"]
   WORRY_EVENTS = ["t1q31", "t1q32", "t1q33", "t1q34", "t1q35", "t1q36", "t1q37",
                   "t1q38", "t1q39", "t1q40", "t1q41", "t1q42", "t1q43", "t1q44"]
 
   SELF_INTEREST = ["t1q01", "t1q02", "t1q04", "t1q05", "t1q06", "t1q07", "t1q08", "t1q16", "t1q22", "t1q26",
-                   "t1q28", "t1q54", "t1q53"]
+                   "t1q28", "t1q54", "t1q53", "t1q58"]
   SELF_INTEREST_DEDUCT = ["t1q18", "t1q53"]
 
   DISCIPLINE = ["t1q02", "t1q07", "t1q13", "t1q15", "t1q20", "t1q22", "t1q26", "t1q28", "t1q30"]

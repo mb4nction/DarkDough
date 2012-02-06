@@ -8,16 +8,27 @@
   <li>Absolutely nothing but an open mind!</li>
 </ul>
 This evaluation should take you 10–15 mins<br />
-Personality Typing Questionnaire<br />
+Personality Typing Questionnaire<br /><br />
 
-<p>You shouldn’t tell others how much you have</p>
-<ul>
-  <% Answer::ANSWERS.each do |key| %>
-    <% key.each do |k,v| %>
-      <li><%= v %></li>
-    <% end %><br />
-  <% end %><br />
-</ul>
+
+<% if test_answers[57] %>
+  <% answer = test_answers[57] %>
+  <p>
+    <%= f.fields_for :answers, answer do |answer_form| %>
+      <%= answer_form.hidden_field :code  %>
+      <%= answer_form.hidden_field :question %>
+      <%= answer.question %><br /><br />
+
+      <% Answer::ANSWERS.each do |key| %>
+        <% key.each do |k,v| %>
+          <%= answer_form.radio_button :result, k %>
+          <%= v %>
+        <% end %><br />
+      <% end %>
+    <% end %>
+  </p>
+<% end %>
+
 
 <% for answer in test_answers[0...28] %>
   <p>
@@ -122,7 +133,7 @@ Have financial setbacks from any of the following events significantly affected 
   </p>
 <% end %>
 
-"In which of the following domains do you have unmet life goals and aspirations? Tick as appropriate."
+In which of the following domains do you have unmet life goals and aspirations? Tick as appropriate.
 <p>
   <% for answer in test_answers[45..50] %>
     <%= f.fields_for :answers, answer do |answer_form| %>
