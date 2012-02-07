@@ -2,6 +2,23 @@ module AcumenTestHelper
   def worry_test_resulting
     res = qualitative_result[:worry]
     case res.to_i
+    when 30..44
+      result =  "Exceptionally high"
+    when 13..31
+      result =  "Very high"
+    when -12..12
+      result =  "Average"
+    when -31..-13
+      result =  "Below average"
+    when -44..-32
+      result =  "Negligible"
+    end
+    return result
+  end
+
+  def motivation_test_resulting
+    res = qualitative_result[:motivation]
+    case res.to_i
     when 14..18
       result =  "Exceptionally high"
     when 8..13
@@ -15,6 +32,7 @@ module AcumenTestHelper
     end
     return result
   end
+
 
   def discipline_test_resulting
     res = qualitative_result[:discipline]
@@ -34,7 +52,7 @@ module AcumenTestHelper
   end
 
   def self_interest_test_resulting
-    res = qualitative_result[:discipline]
+    res = qualitative_result[:self_interest]
     case res.to_i
     when 22..30
       result =  "Exceptionally high"
@@ -67,4 +85,19 @@ module AcumenTestHelper
     return result
   end
 
+  def set_user_group(test_result)
+    case test_result
+    when "Exceptionally high"
+      user_group = "Livewires"
+    when "Very high"
+      user_group = "Sovereigns"
+    when "Average"
+      user_group = "Swashbucklers"
+    when "Below average"
+      user_group = "Adherents"
+    when "Negligible"
+      user_group = "Nihilists"
+    end
+    return user_group
+  end
 end

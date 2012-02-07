@@ -18,7 +18,7 @@ class AcumenTestsController < ApplicationController
   def create
     @acumen_test = current_user.acumen_tests.build params[:acumen_test]
     if @acumen_test.save
-      render :show
+      redirect_to @acumen_test
     else
       render :new
     end
