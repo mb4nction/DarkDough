@@ -60,7 +60,9 @@ class AcumenTest < ActiveRecord::Base
               :total_assets => total_assets_count(quantitative_answers),
               :total_liabilities => total_liabilities_count(quantitative_answers),
               :current_ratio => current_ratio_count(quantitative_answers),
-              :debt_ratio => debt_ratio_count(quantitative_answers) }
+              :debt_ratio => debt_ratio_count(quantitative_answers),
+              :net_worth => net_worth_count(quantitative_answers),
+              :net_worth_to_income_ratio => net_worth_to_income_ratio_count(quantitative_answers) }
 
   end
 
@@ -255,6 +257,12 @@ class AcumenTest < ActiveRecord::Base
     total_assets_count(test_answers) - total_liabilities_count(test_answers)
   end
 
+  def net_worth_to_income_ratio_count(test_answers)
+    res = (net_worth_count(test_answers).to_f / total_assets_count(test_answers).to_f).to_f
+    sprintf("%.2f", res).to_f
+  end
+
+  # cash flow calculations
   def total_income_count
     
   end
