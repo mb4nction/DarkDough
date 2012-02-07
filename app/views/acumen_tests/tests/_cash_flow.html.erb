@@ -95,7 +95,8 @@
     <% end %>
 
     <tr>
-      <td><strong>Total income</strong></td><td></td>
+      <td><strong>Total income</strong></td>
+      <td><%= acumen_test.total_income_count unless acumen_test.new_record? %></td>
     </tr>
     <tr>
       <td>
@@ -119,7 +120,7 @@
     <% end %>
     <tr>
       <td><strong>Total expenditures</strong></td>
-      <td></td>
+      <td><%= acumen_test.total_expenditures_count unless acumen_test.new_record? %></td>
     </tr>
 
   </tbody>

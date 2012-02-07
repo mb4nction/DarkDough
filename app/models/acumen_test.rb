@@ -1,7 +1,7 @@
 class AcumenTest < ActiveRecord::Base
   include AcumenTestHelper
 
-  attr_accessible :code, :result, :answers_attributes
+  attr_accessible :result, :finished, :answers_attributes
 
   belongs_to :user
   has_many :answers
@@ -70,70 +70,6 @@ class AcumenTest < ActiveRecord::Base
     cash_flow_answers = test_answers('t3')
     result = {:total_income => total_income_count(cash_flow_answers),
               :total_expenditures => total_expenditures_count(cash_flow_answers) }
-  end
-
-  def goals_and_aspirations
-    gaa_array = ["t1q46", "t1q47", "t1q48", "t1q49", "t1q50", "t1q51"]
-    result_array = []
-    gaa_array.each do |arr|
-      test_answers('t1').find{ |answer| result_array << answer.result if (answer.code == arr) }
-    end
-    res = result_array.map(&:to_i).sum
-    case res
-      when 0
-        result = "-2"
-      when 1
-        result = "-1"
-      when 2
-        result = "1"
-      when 3,4,5
-        result = "2"
-    end
-    return result.to_i
-  end
-
-  def traditions
-    answer_result = test_answers('t1').find_by_code("t1q56").result
-    case answer_result.to_i
-    when 0
-      result = "-2"
-    when 1
-      result = "-1"
-    when 2
-      result = "1"
-    when 3,4,5
-      result = "2"
-    end
-    return result.to_i
-  end
-
-  def financial_priorities_algorithm(res)
-    case res
-    when nil
-      result = "0"
-    when "1"
-      result = 2
-    when "2"
-      result = 1
-    when "3"
-      result = 0.5
-    end
-    return result
-  end
-
-  def legacy
-    answer_result = test_answers('t1').find_by_code("t1q53").result
-    financial_priorities_algorithm(answer_result)
-  end
-
-  def lifestyle
-    answer_result = test_answers('t1').find_by_code("t1q54").result
-    financial_priorities_algorithm(answer_result)
-  end
-
-  def thrift
-    answer_result = test_answers('t1').find_by_code("t1q55").result
-    return 0
   end
 
   def worry_events_count(test_answers)
@@ -222,7 +158,7 @@ class AcumenTest < ActiveRecord::Base
   def total_investments_count(test_answers)
     results_array = []
     Answer::TOTAL_INVESTMENTS.each do |code|
-      test_answers.find{ |answer| results_array << answer.result if (answer.code == code)}
+      test_answers.find{ |answer| results_array << answer.result if (answer.code == code) }
     end
     result = results_array.compact.map(&:to_i).sum
   end
@@ -230,7 +166,7 @@ class AcumenTest < ActiveRecord::Base
   def total_assets_count(test_answers)
     results_array = []
     Answer::TOTAL_ASSETS.each do |code|
-      test_answers.find{ |answer| results_array << answer.result if (answer.code == code)}
+      test_answers.find{ |answer| results_array << answer.result if (answer.code == code) }
     end
     result = results_array.compact.map(&:to_i).sum
   end
@@ -238,7 +174,7 @@ class AcumenTest < ActiveRecord::Base
   def total_liabilities_count(test_answers)
     results_array = []
     Answer::TOTAL_LIABILITIES.each do |code|
-      test_answers.find{ |answer| results_array << answer.result if (answer.code == code)}
+      test_answers.find{ |answer| results_array << answer.result if (answer.code == code) }
     end
     result = results_array.compact.map(&:to_i).sum
   end
@@ -264,10 +200,15 @@ class AcumenTest < ActiveRecord::Base
 
   # cash flow calculations
   def total_income_count
-    
+    income_count + gross_salary_and_less_paye_count + net_business_income
   end
 
   def total_expenditures_count
-
+    test_answers = self.test_answers('t3')
+    result_array = []
+    Answer::TOTAL_EXPENDITURES.each do |code|
+      test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
+    end
+    result_array.compact.map(&:to_i).sum
   end
 end

@@ -100,4 +100,102 @@ module AcumenTestHelper
     end
     return user_group
   end
+
+  def goals_and_aspirations
+    gaa_array = ["t1q46", "t1q47", "t1q48", "t1q49", "t1q50", "t1q51"]
+    result_array = []
+    gaa_array.each do |arr|
+      test_answers('t1').find{ |answer| result_array << answer.result if (answer.code == arr) }
+    end
+    res = result_array.map(&:to_i).sum
+    case res
+      when 0
+        result = "-2"
+      when 1
+        result = "-1"
+      when 2
+        result = "1"
+      when 3,4,5
+        result = "2"
+    end
+    return result.to_i
+  end
+
+  def traditions
+    answer_result = test_answers('t1').find_by_code("t1q56").result
+    case answer_result.to_i
+    when 0
+      result = "-2"
+    when 1
+      result = "-1"
+    when 2
+      result = "1"
+    when 3,4,5
+      result = "2"
+    end
+    return result.to_i
+  end
+
+  def financial_priorities_algorithm(res)
+    case res
+    when nil
+      result = "0"
+    when "1"
+      result = 2
+    when "2"
+      result = 1
+    when "3"
+      result = 0.5
+    end
+    return result
+  end
+
+  def legacy
+    answer_result = test_answers('t1').find_by_code("t1q53").result
+    financial_priorities_algorithm(answer_result)
+  end
+
+  def lifestyle
+    answer_result = test_answers('t1').find_by_code("t1q54").result
+    financial_priorities_algorithm(answer_result)
+  end
+
+  def thrift
+    answer_result = test_answers('t1').find_by_code("t1q55").result
+    return 0
+  end
+
+  # cash flow calculations
+  def apply_paye?
+    self.answers.find_by_code('t3q03').result == "1"
+  end
+
+  def apply_income_tax?
+    self.answers.find_by_code('t3q12').result == "1"
+  end
+
+  def income_count
+    test_answers = self.test_answers('t3')
+    result_array = []
+    Answer::TOTAL_INCOME.each do |code|
+      test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
+    end
+    result = apply_paye? ? result_array.compact.map(&:to_i).sum : result_array.compact.map(&:to_i).sum
+  end
+
+  def gross_salary_and_less_paye_count
+    test_answers = self.test_answers('t3')
+    result_array = []
+    Answer::GROSS_SALARY_AND_LESS_PAYE.each do |code|
+      test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
+    end
+    result = result_array.compact.map(&:to_i).sum
+  end
+
+  def net_business_income
+    test_answers = self.test_answers('t3')
+    p self.answers.find_by_code("t3q13").result
+    answer_result = self.answers.find_by_code("t3q13").result
+    result = apply_income_tax? ? (answer_result.to_i - answer_result.to_i * Answer::COMPANY_INCOME_TAX) : answer_result.to_i
+  end
 end

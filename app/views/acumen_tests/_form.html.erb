@@ -6,7 +6,7 @@
 
     <%= render 'acumen_tests/tests/qualitative', :f => f, :test_answers => test_answers %>
     <%= render 'acumen_tests/tests/quantitative', :f => f, :test_answers => test_answers %>
-    <%= render 'acumen_tests/tests/cash_flow', :f => f, :test_answers => test_answers %>
+    <%= render 'acumen_tests/tests/cash_flow', :f => f, :test_answers => test_answers, :acumen_test => acumen_test %>
 
     <p><%= f.submit "Submit" %></p>
   <% end -%>

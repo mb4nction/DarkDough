@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
 
   scope :answers_by_code, lambda { |q| { :conditions => ["code like :q", {:q => "%#{q}%"}] } }
 
-  COMPANY_INCOME_TAX = "0.32"
+  COMPANY_INCOME_TAX = 0.32
 
   QUESTIONS = [
     {"t1q01" => "A portion of your money invariably gets wasted. To think otherwise is a sign of folly or inexperience"},
@@ -174,5 +174,8 @@ class Answer < ActiveRecord::Base
   TOTAL_LIABILITIES = ["t2q17", "t2q18", "t2q19", "t2q20", "t2q21", "t2q22", "t2q23"]
 
   # cash flow tets
-  TOTAL_INCOME = [["t3q01", "t3q02", "t3q04", "t3q05", "t3q06", "t3q07", "t3q08", "t3q09", "t3q10", "t3q11"]]
+  GROSS_SALARY_AND_LESS_PAYE = ["t3q01", "t3q02"]
+  TOTAL_INCOME = ["t3q04", "t3q05", "t3q06", "t3q07", "t3q08", "t3q09", "t3q10", "t3q11"]
+  TOTAL_EXPENDITURES = ["t3q14", "t3q15", "t3q16", "t3q17", "t3q18", "t3q19", "t3q20", "t3q21", "t3q22",
+                        "t3q23", "t3q24", "t3q25", "t3q26", "t3q27"]
 end
