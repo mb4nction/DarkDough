@@ -118,8 +118,6 @@ class Answer < ActiveRecord::Base
     {"t3q25" => "Loan payments"},
     {"t3q26" => "Insurance premiums"},
     {"t3q27" => "House maintenance/repairs"},
-    {"t3q28" => "Total expenditures"},
-    {"t3q29" => "Cash surplus/deficit"},
     {"t3q30" => "How old were you when you began earning an income?"},
     {"t3q31" => "At what age do you plan to retire?"}
   ]

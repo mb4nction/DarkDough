@@ -43,10 +43,10 @@
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-              <%= answer_form.hidden_field :code  %>
-              <%= answer_form.hidden_field :question %>
-              <%= answer.question %>
-            </td>
+            <%= answer_form.hidden_field :code  %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
+          </td>
           <td><%= answer_form.check_box :result, :id => "apply_paye"%></td>
         </tr>
       <% end %>
@@ -71,10 +71,10 @@
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-              <%= answer_form.hidden_field :code  %>
-              <%= answer_form.hidden_field :question %>
-              <%= answer.question %>
-            </td>
+            <%= answer_form.hidden_field :code  %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
+          </td>
           <td><%= answer_form.check_box :result, :id => "apply_income_tax" %></td>
         </tr>
       <% end %>
@@ -85,10 +85,10 @@
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
-              <%= answer_form.hidden_field :code  %>
-              <%= answer_form.hidden_field :question %>
-              <%= answer.question %>
-            </td>
+            <%= answer_form.hidden_field :code  %>
+            <%= answer_form.hidden_field :question %>
+            <%= answer.question %>
+          </td>
           <td><%= answer_form.text_field :result %></td>
         </tr>
       <% end %>
@@ -103,7 +103,7 @@
       </td>
       <td></td>
     </tr>
-    <% for answer in test_answers[94...110] %>
+    <% for answer in test_answers[94...108] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -117,6 +117,10 @@
         </tr>
       <% end %>
     <% end %>
+    <tr>
+      <td><strong>Total expenditures</strong></td>
+      <td></td>
+    </tr>
 
   </tbody>
 </table><br /><br />
