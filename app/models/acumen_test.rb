@@ -37,31 +37,38 @@ class AcumenTest < ActiveRecord::Base
     !(test_answers('t2').map(&:result).include?(nil) || test_answers('t2').map(&:result).include?(""))
   end
 
+  def cash_flow_test_finished?
+    !(test_answers('t3').map(&:result).include?(nil) || test_answers('t3').map(&:result).include?(""))
+  end
+
   def test_answers(code)
     self.answers.answers_by_code(code)
   end
 
   def qualitative_result
-    first_test_answers = test_answers('t1')
-    result = {:worry => worry_count(first_test_answers),
-              :self_interest => self_interest_count(first_test_answers),
-              :discipline => discipline_count(first_test_answers),
-              :motivation => motivation_count(first_test_answers),
-              :thrill_seeking => thrill_seeking_count(first_test_answers) }
+    qualitative_answers = test_answers('t1')
+    result = {:worry => worry_count(qualitative_answers),
+              :self_interest => self_interest_count(qualitative_answers),
+              :discipline => discipline_count(qualitative_answers),
+              :motivation => motivation_count(qualitative_answers),
+              :thrill_seeking => thrill_seeking_count(qualitative_answers) }
   end
 
   def quantitative_result
-    second_test_answers = test_answers('t2')
-    result = {:total_investments => total_investments_count(second_test_answers),
-              :total_assets => total_assets_count(second_test_answers),
-              :total_liabilities => total_liabilities_count(second_test_answers),
-              :current_ratio => current_ratio_count(second_test_answers),
-              :debt_ratio => debt_ratio_count(second_test_answers) }
+    quantitative_answers = test_answers('t2')
+    result = {:total_investments => total_investments_count(quantitative_answers),
+              :total_assets => total_assets_count(quantitative_answers),
+              :total_liabilities => total_liabilities_count(quantitative_answers),
+              :current_ratio => current_ratio_count(quantitative_answers),
+              :debt_ratio => debt_ratio_count(quantitative_answers) }
 
   end
 
-  # def cash_flow_result
-  # end
+  def cash_flow_result
+    cash_flow_answers = test_answers('t3')
+    result = {:total_income => total_income_count(cash_flow_answers),
+              :total_expenditures => total_expenditures_count(cash_flow_answers) }
+  end
 
   def goals_and_aspirations
     gaa_array = ["t1q46", "t1q47", "t1q48", "t1q49", "t1q50", "t1q51"]
@@ -138,7 +145,7 @@ class AcumenTest < ActiveRecord::Base
       when "0"
         res_array << "1"
       when "1"
-        res_array << "1"
+        res_array << "0.5"
       when "2"
         res_array << "2"
       when "-2"
@@ -246,5 +253,13 @@ class AcumenTest < ActiveRecord::Base
 
   def net_worth_count(test_answers)
     total_assets_count(test_answers) - total_liabilities_count(test_answers)
+  end
+
+  def total_income_count
+    
+  end
+
+  def total_expenditures_count
+
   end
 end

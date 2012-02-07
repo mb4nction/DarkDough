@@ -172,4 +172,7 @@ class Answer < ActiveRecord::Base
   TOTAL_INVESTMENTS = ["t2q01", "t2q02", "t2q03", "t2q04", "t2q05", "t2q06", "t2q07", "t2q08"]
   TOTAL_ASSETS = ["t2q09", "t2q10", "t2q11", "t2q12", "t2q13", "t2q14", "t2q15", "t2q16"]
   TOTAL_LIABILITIES = ["t2q17", "t2q18", "t2q19", "t2q20", "t2q21", "t2q22", "t2q23"]
+
+  # cash flow tets
+  TOTAL_INCOME = [["t3q01", "t3q02", "t3q04", "t3q05", "t3q06", "t3q07", "t3q08", "t3q09", "t3q10", "t3q11"]]
 end
