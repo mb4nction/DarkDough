@@ -216,7 +216,7 @@ module AcumenTestHelper
     business_income = self.answers.find_by_code('t3q09').result.to_f
     less_income_tax = self.answers.find_by_code('t3q10').result.to_f
 
-    apply_income_tax? ? business_income - business_income * COMPANY_INCOME_TAX : business_income - less_income_tax
+    apply_income_tax? ? business_income - business_income * Answer::COMPANY_INCOME_TAX : business_income - less_income_tax
   end
 
   def base_income
