@@ -19,8 +19,8 @@
 <table>
   <thead>
     <tr>
-      <th>Income (cash inflows) average monthly amounts unless stated otherwise</th>
-      <th></th>
+      <th>Income (cash inflows)</th>
+      <td><small><i>average monthly amounts <br />unless stated otherwise</i></small></td>
     </tr>
   </thead>
   <tbody>
@@ -51,7 +51,13 @@
         </tr>
       <% end %>
     <% end %>
-    <% for answer in test_answers[84...92] %>
+
+    <tr>
+      <td>Net salary/wages</td>
+      <td><%= acumen_test.net_salary unless acumen_test.new_record? %></td>
+    </tr>
+
+    <% for answer in test_answers[84...91] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -66,8 +72,8 @@
       <% end %>
     <% end %>
 
-    <% if test_answers[92] %>
-      <% answer = test_answers[92] %>
+    <% if test_answers[91] %>
+      <% answer = test_answers[91] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -80,8 +86,8 @@
       <% end %>
     <% end %>
 
-    <% if test_answers[93] %>
-      <% answer = test_answers[93] %>
+    <% if test_answers[92] %>
+      <% answer = test_answers[92] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -99,12 +105,10 @@
       <td><%= acumen_test.total_income_count unless acumen_test.new_record? %></td>
     </tr>
     <tr>
-      <td>
-        <strong>Expenditures (cash outflows) average monthly amounts unless stated otherwise</strong>
-      </td>
-      <td></td>
+      <td><strong>Expenditures (cash outflows)</strong></td>
+      <td><small><i>average monthly amounts <br />unless stated otherwise</i></small></td>
     </tr>
-    <% for answer in test_answers[94...108] %>
+    <% for answer in test_answers[93...107] %>
       <%= f.fields_for :answers, answer do |answer_form| %>
         <tr>
           <td>
@@ -127,7 +131,7 @@
 </table><br /><br />
 
 Finally, 2 simple questions
-<% for answer in test_answers[108...110] %>
+<% for answer in test_answers[107...109] %>
   <p>
     <%= f.fields_for :answers, answer do |answer_form| %>
       <%= answer_form.hidden_field :code %>

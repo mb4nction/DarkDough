@@ -107,7 +107,7 @@ module AcumenTestHelper
     gaa_array.each do |arr|
       test_answers('t1').find{ |answer| result_array << answer.result if (answer.code == arr) }
     end
-    res = result_array.map(&:to_i).sum
+    res = result_array.map(&:to_f).sum
     case res
       when 0
         result = "-2"
@@ -171,31 +171,60 @@ module AcumenTestHelper
   end
 
   def apply_income_tax?
-    self.answers.find_by_code('t3q12').result == "1"
+    self.answers.find_by_code('t3q11').result == "1"
   end
 
-  def income_count
-    test_answers = self.test_answers('t3')
-    result_array = []
-    Answer::TOTAL_INCOME.each do |code|
-      test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
-    end
-    result = apply_paye? ? result_array.compact.map(&:to_i).sum : result_array.compact.map(&:to_i).sum
+  # income calculations
+  def net_salary
+    gross_salary = self.answers.find_by_code('t3q01').result.to_f
+    less_paye = self.answers.find_by_code('t3q02').result.to_f
+
+    apply_paye? ? gross_salary - paye(residual_amount) : gross_salary - less_paye
   end
 
-  def gross_salary_and_less_paye_count
-    test_answers = self.test_answers('t3')
-    result_array = []
-    Answer::GROSS_SALARY_AND_LESS_PAYE.each do |code|
-      test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
+  def paye(user_residual_amount)
+    case user_residual_amount
+    when 0..30000
+      res = user_residual_amount * 0.05
+    when 30000..60000
+      res = 1500 + (user_residual_amount - 30000) * 0.1
+    when 60000..110000
+      res = 4500 + (user_residual_amount - 60000) * 0.15
+    when 110000..160000
+      res = 21000 + (user_residual_amount - 110000) * 0.2
+    else
+      res = 53000 + (user_residual_amount - 160000) + 0.25
     end
-    result = result_array.compact.map(&:to_i).sum
+    sprintf("%.2f", res).to_f
+  end
+
+  def residual_amount
+    income = base_income + self.answers.find_by_code('t3q01').result.to_f
+    # TODO: implement number_of_children part when we have this informaiton about users
+    number_of_children = 0
+    personal_allowance = income * 0.2 + 5000
+    claims_for_children = number_of_children * 2500
+    res = income - personal_allowance - claims_for_children - Answer::INCOME_EXCEPT_FROM_TAX
   end
 
   def net_business_income
-    test_answers = self.test_answers('t3')
-    p self.answers.find_by_code("t3q13").result
-    answer_result = self.answers.find_by_code("t3q13").result
-    result = apply_income_tax? ? (answer_result.to_i - answer_result.to_i * Answer::COMPANY_INCOME_TAX) : answer_result.to_i
+    business_income = self.answers.find_by_code('t3q09').result.to_f
+    less_income_tax = self.answers.find_by_code('t3q10').result.to_f
+
+    apply_income_tax? ? business_income - business_income * COMPANY_INCOME_TAX : business_income - less_income_tax
+  end
+
+  def base_income
+    test_answers = test_answers('t3')
+    result_array = []
+    Answer::INCOME.each do |code|
+      test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
+    end
+    result = result_array.compact.map(&:to_f).sum
+  end
+
+  def rent_count
+    year_rent = self.answers.find_by_code('t3q22').result.to_f
+    sprintf("%.2f", (year_rent / 12)).to_f
   end
 end

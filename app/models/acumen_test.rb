@@ -8,6 +8,8 @@ class AcumenTest < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers
 
+  INCOME_EXCEPT_FROM_TAX = 30000
+
   def finished?
     finished ? "finished" : "not finished yet"
   end
@@ -63,13 +65,11 @@ class AcumenTest < ActiveRecord::Base
               :debt_ratio => debt_ratio_count(quantitative_answers),
               :net_worth => net_worth_count(quantitative_answers),
               :net_worth_to_income_ratio => net_worth_to_income_ratio_count(quantitative_answers) }
-
   end
 
   def cash_flow_result
-    cash_flow_answers = test_answers('t3')
-    result = {:total_income => total_income_count(cash_flow_answers),
-              :total_expenditures => total_expenditures_count(cash_flow_answers) }
+    result = {:total_income => total_income_count,
+              :total_expenditures => total_expenditures_count }
   end
 
   def worry_events_count(test_answers)
@@ -160,7 +160,7 @@ class AcumenTest < ActiveRecord::Base
     Answer::TOTAL_INVESTMENTS.each do |code|
       test_answers.find{ |answer| results_array << answer.result if (answer.code == code) }
     end
-    result = results_array.compact.map(&:to_i).sum
+    result = results_array.compact.map(&:to_f).sum
   end
 
   def total_assets_count(test_answers)
@@ -168,7 +168,7 @@ class AcumenTest < ActiveRecord::Base
     Answer::TOTAL_ASSETS.each do |code|
       test_answers.find{ |answer| results_array << answer.result if (answer.code == code) }
     end
-    result = results_array.compact.map(&:to_i).sum
+    result = results_array.compact.map(&:to_f).sum
   end
 
   def total_liabilities_count(test_answers)
@@ -176,7 +176,7 @@ class AcumenTest < ActiveRecord::Base
     Answer::TOTAL_LIABILITIES.each do |code|
       test_answers.find{ |answer| results_array << answer.result if (answer.code == code) }
     end
-    result = results_array.compact.map(&:to_i).sum
+    result = results_array.compact.map(&:to_f).sum
   end
 
   def current_ratio_count(test_answers)
@@ -194,13 +194,13 @@ class AcumenTest < ActiveRecord::Base
   end
 
   def net_worth_to_income_ratio_count(test_answers)
-    res = (net_worth_count(test_answers).to_f / total_assets_count(test_answers).to_f).to_f
+    res = (net_worth_count(test_answers).to_f / total_income_count.to_f).to_f
     sprintf("%.2f", res).to_f
   end
 
   # cash flow calculations
   def total_income_count
-    income_count + gross_salary_and_less_paye_count + net_business_income
+    net_salary + net_business_income + base_income
   end
 
   def total_expenditures_count
@@ -209,6 +209,11 @@ class AcumenTest < ActiveRecord::Base
     Answer::TOTAL_EXPENDITURES.each do |code|
       test_answers.find{ |answer| result_array << answer.result if (answer.code == code) }
     end
-    result_array.compact.map(&:to_i).sum
+    result_array << rent_count
+    result_array.compact.map(&:to_f).sum
+  end
+
+  def cash_surplus_deficite
+    total_income_count - total_expenditures_count
   end
 end

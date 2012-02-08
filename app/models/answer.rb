@@ -94,32 +94,31 @@ class Answer < ActiveRecord::Base
     {"t3q01" => "Gross salary/wages"},
     {"t3q02" => "Less PAYE"},
     {"t3q03" => "Or … Apply PAYE? Y/N"},
-    {"t3q04" => "Net salary/wages"},
-    {"t3q05" => "Interest /dividend income"},
-    {"t3q06" => "Gain on sale of stocks/bonds/investment bonds"},
-    {"t3q07" => "Receipts from pension/retirement plans"},
-    {"t3q08" => "Gifts/grants"},
-    {"t3q09" => "Alimony/child support receipts"},
-    {"t3q10" => "Business income"},
-    {"t3q11" => "Less Income tax"},
-    {"t3q12" => "Or … Apply Company Income Tax? Y/N"},
-    {"t3q13" => "Net Business income"},
-    {"t3q14" => "Auto expenses"},
-    {"t3q15" => "Food"},
-    {"t3q16" => "Telephone & utilities"},
-    {"t3q17" => "Medical & dental expenses"},
-    {"t3q18" => "Entertainment/recreation"},
-    {"t3q19" => "Donations/tithe & offerings"},
-    {"t3q20" => "Gifts"},
-    {"t3q21" => "Other"},
-    {"t3q22" => "Mortgage payment"},
-    {"t3q23" => "Rent (enter annual amount)"},
-    {"t3q24" => "Credit card payments"},
-    {"t3q25" => "Loan payments"},
-    {"t3q26" => "Insurance premiums"},
-    {"t3q27" => "House maintenance/repairs"},
-    {"t3q30" => "How old were you when you began earning an income?"},
-    {"t3q31" => "At what age do you plan to retire?"}
+    {"t3q04" => "Interest /dividend income"},
+    {"t3q05" => "Gain on sale of stocks/bonds/investment bonds"},
+    {"t3q06" => "Receipts from pension/retirement plans"},
+    {"t3q07" => "Gifts/grants"},
+    {"t3q08" => "Alimony/child support receipts"},
+    {"t3q09" => "Business income"},
+    {"t3q10" => "Less Income tax"},
+    {"t3q11" => "Or … Apply Company Income Tax? Y/N"},
+    {"t3q12" => "Net Business income"},
+    {"t3q13" => "Auto expenses"},
+    {"t3q14" => "Food"},
+    {"t3q15" => "Telephone & utilities"},
+    {"t3q16" => "Medical & dental expenses"},
+    {"t3q17" => "Entertainment/recreation"},
+    {"t3q18" => "Donations/tithe & offerings"},
+    {"t3q19" => "Gifts"},
+    {"t3q20" => "Other"},
+    {"t3q21" => "Mortgage payment"},
+    {"t3q22" => "Rent (enter annual amount)"},
+    {"t3q23" => "Credit card payments"},
+    {"t3q24" => "Loan payments"},
+    {"t3q25" => "Insurance premiums"},
+    {"t3q26" => "House maintenance/repairs"},
+    {"t3q27" => "How old were you when you began earning an income?"},
+    {"t3q28" => "At what age do you plan to retire?"}
   ]
 
 
@@ -174,8 +173,7 @@ class Answer < ActiveRecord::Base
   TOTAL_LIABILITIES = ["t2q17", "t2q18", "t2q19", "t2q20", "t2q21", "t2q22", "t2q23"]
 
   # cash flow tets
-  GROSS_SALARY_AND_LESS_PAYE = ["t3q01", "t3q02"]
-  TOTAL_INCOME = ["t3q04", "t3q05", "t3q06", "t3q07", "t3q08", "t3q09", "t3q10", "t3q11"]
-  TOTAL_EXPENDITURES = ["t3q14", "t3q15", "t3q16", "t3q17", "t3q18", "t3q19", "t3q20", "t3q21", "t3q22",
-                        "t3q23", "t3q24", "t3q25", "t3q26", "t3q27"]
+  INCOME = ['t3q04', 't3q05', 't3q06', 't3q07', 't3q08']
+  TOTAL_EXPENDITURES = ['t3q13', 't3q14', 't3q15', 't3q16', 't3q17', 't3q18', 't3q19',
+                        't3q20', 't3q21', 't3q23', 't3q24', 't3q25', 't3q26']
 end
