@@ -204,7 +204,12 @@ module AcumenTestHelper
     number_of_children = 0
     personal_allowance = income * 0.2 + 5000
     claims_for_children = number_of_children * 2500
-    res = income - personal_allowance - claims_for_children - Answer::INCOME_EXCEPT_FROM_TAX
+
+    if income < 30000
+      res = income - personal_allowance - claims_for_children
+    else
+      res = income - personal_allowance - claims_for_children - AcumenTest::INCOME_EXCEPT_FROM_TAX
+    end
   end
 
   def net_business_income
