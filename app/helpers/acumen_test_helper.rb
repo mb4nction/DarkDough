@@ -184,6 +184,8 @@ module AcumenTestHelper
 
   def paye(user_residual_amount)
     case user_residual_amount
+    when -999999..0
+      res = 0
     when 0..30000
       res = user_residual_amount * 0.05
     when 30000..60000
