@@ -37,4 +37,14 @@ describe StaticController do
       response.should be_success
     end
   end
+
+  describe "GET 'help_create_account'" do
+    it "should be success" do
+      @user = Factory(:user)
+      sign_in @user
+
+      get :help_create_account, :user => @user
+      response.should be_success
+    end
+  end
 end
