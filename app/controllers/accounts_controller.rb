@@ -12,6 +12,7 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    @bank = Bank.find_by_id(@account.bank_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +36,6 @@ class AccountsController < ApplicationController
 
   def create
     @account = current_user.accounts.build params[:account]
-    # @account = Account.new(params[:account])
 
     respond_to do |format|
       if @account.save

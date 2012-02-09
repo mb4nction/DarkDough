@@ -13,6 +13,10 @@ Factory.define :account do |account|
   account.status "active"
 end
 
+Factory.define :bank do |bank|
+  bank.name   "Union bank"
+end
+
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end

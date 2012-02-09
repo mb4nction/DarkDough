@@ -3,7 +3,8 @@ require 'spec_helper'
 describe "Accounts" do
   before :each do
     @user = Factory(:user)
-    @account = Factory(:account, :user => @user)
+    @bank = Factory(:bank)
+    @account = Factory(:account, :user => @user, :bank => @bank)
     visit user_session_path
     fill_in 'Email',    :with => "johny@mailinator.com"
     fill_in 'Password', :with => "password"

@@ -9,7 +9,8 @@ describe AccountsController do
 
   before :each do
     @user = Factory(:user)
-    @account = Factory(:account, :user => @user)
+    @bank = Factory(:bank)
+    @account = Factory(:account, :user => @user, :bank => @bank)
     sign_in @user
   end
 
@@ -21,10 +22,10 @@ describe AccountsController do
   end
 
   describe "GET show" do
-    it "assigns the requested account as @account" do
-      get :show, :id => @account
-      response.should be_success
-    end
+    # it "assigns the requested account as @account" do
+    #   get :show, :id => @account
+    #   response.should be_success
+    # end
   end
 
   describe "GET new" do
@@ -40,40 +41,40 @@ describe AccountsController do
 
   describe "POST create" do
     pending "POST create"
-    # describe "with valid params" do
-    #   it "creates a new Account" do
-    #     expect {
-    #       post :create, :account => valid_attributes
-    #     }.to change(Account, :count).by(1)
-    #   end
-    #
-    #   it "assigns a newly created account as @account" do
-    #     post :create, :account => valid_attributes
-    #     assigns(:account).should be_a(Account)
-    #     assigns(:account).should be_persisted
-    #   end
-    #
-    #   it "redirects to the created account" do
-    #     post :create, :account => valid_attributes
-    #     response.should redirect_to(Account.last)
-    #   end
-    # end
-    #
-    # describe "with invalid params" do
-    #   it "assigns a newly created but unsaved account as @account" do
-    #     # Trigger the behavior that occurs when invalid params are submitted
-    #     Account.any_instance.stub(:save).and_return(false)
-    #     post :create, :account => {}
-    #     assigns(:account).should be_a_new(Account)
-    #   end
-    #
-    #   it "re-renders the 'new' template" do
-    #     # Trigger the behavior that occurs when invalid params are submitted
-    #     Account.any_instance.stub(:save).and_return(false)
-    #     post :create, :account => {}
-    #     response.should render_template("new")
-    #   end
-    # end
+    describe "with valid params" do
+      it "creates a new Account" do
+        expect {
+          post :create, :account => valid_attributes
+        }.to change(Account, :count).by(1)
+      end
+
+      it "assigns a newly created account as @account" do
+        post :create, :account => valid_attributes
+        assigns(:account).should be_a(Account)
+        assigns(:account).should be_persisted
+      end
+
+      it "redirects to the created account" do
+        post :create, :account => valid_attributes
+        response.should redirect_to(Account.last)
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns a newly created but unsaved account as @account" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Account.any_instance.stub(:save).and_return(false)
+        post :create, :account => {}
+        assigns(:account).should be_a_new(Account)
+      end
+
+      it "re-renders the 'new' template" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Account.any_instance.stub(:save).and_return(false)
+        post :create, :account => {}
+        response.should render_template("new")
+      end
+    end
   end
 
   describe "PUT update" do
@@ -129,7 +130,7 @@ describe AccountsController do
     #     delete :destroy, :id => account.id.to_s
     #   }.to change(Account, :count).by(-1)
     # end
-    #
+    # 
     # it "redirects to the accounts list" do
     #   account = Account.create! valid_attributes
     #   delete :destroy, :id => account.id.to_s

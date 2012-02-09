@@ -5,6 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :status
 
       t.references :user, :null => false
+      t.references :bank
 
       t.timestamps
     end
