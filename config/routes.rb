@@ -4,6 +4,7 @@ Pfm::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update]
 
   resources :acumen_tests
+  resources :accounts
 
   match '/home' => 'static#home'
   match '/about' => 'static#about'

@@ -8,6 +8,11 @@ Factory.define :user do |user|
   user.password_confirmation "password"
 end
 
+Factory.define :account do |account|
+  account.name   "Johny's account"
+  account.status "active"
+end
+
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end

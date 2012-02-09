@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_account
 
   def show
     @user = current_user
@@ -16,5 +17,11 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  private
+
+  def check_account
+    redirect_to '/accounts/new' unless current_user.accounts.any?
   end
 end
