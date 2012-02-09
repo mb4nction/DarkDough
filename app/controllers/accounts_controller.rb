@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @accounts = Account.all
+    @accounts = current_user.accounts.all
 
     respond_to do |format|
       format.html # index.html.erb
