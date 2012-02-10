@@ -1,0 +1,35 @@
+@import "mixins";
+
+.profile-nav {
+  margin: 0 10px -3px;
+  padding: 0;
+  z-index: 1;
+
+  li {
+    @include inline-block;
+    @include radius;
+    border: 1px solid #ccc;
+    padding: 5px 5px 8px;
+    list-style-type: none;
+
+    &:hover, &.active-tab {
+      background-color: #eee;
+      cursor: pointer;
+    }
+  }
+}
+
+.profile-nav + .tabs {
+  position: relative;
+  z-index: 2;  
+}
+
+.tabs > .block {
+  display: none;
+  margin-top: 0;
+  background-color: #fff;
+  
+  &.active-tab {
+    display: block !important;
+  }
+}
