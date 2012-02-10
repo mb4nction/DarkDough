@@ -21,7 +21,7 @@
   </div>&nbsp;&nbsp;&nbsp;
   <div class="field" style="display:inline-block;">
     <%= f.label :bank %><br />
-    <%= collection_select(:account, :bank_id, Bank.all, :id, :name) %>
+    <%= collection_select(:account, :bank_id, Bank.all, :id, :name, {}, {:class => "chosen"}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

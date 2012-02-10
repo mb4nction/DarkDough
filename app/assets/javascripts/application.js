@@ -7,3 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// vendor folder
+//= require chosen.jquery.min.js
