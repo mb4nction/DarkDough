@@ -25,7 +25,7 @@ role :db,  "#{deploy_by_user}#{ip}", :primary => true # This is where Rails migr
 namespace :deploy do
   desc "Insert test data"
   task :insert_test_data, :roles => :app  do
-    run "cd #{release_path}; RAILS_ENV=production bundle exec rake db:add_users"
+    run "cd #{release_path}; RAILS_ENV=production bundle exec rake db:seed"
   end
 
   task :restart, :roles => :app do
