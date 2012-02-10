@@ -1,29 +1,32 @@
 <h1>Edit profile</h1>
-<br />
-<%= form_for @user do |f| -%>
-  <%= render 'shared/error_messages', :object => f.object %>
 
-  <div>
-    <%= f.label :first_name, "First Name" %><br />
-    <%= f.text_field :first_name %></div>
-
-  <div>
-    <%= f.label :last_name, "Last Name" %><br />
-    <%= f.text_field :last_name %></div>
-
-  <div>
-    <%= f.label :email, "Email" %><br />
-    <%= f.text_field :email %></div>
-
-  <div>
-    <%= f.label :phone_number, "Phone number" %><br />
-    <%= f.text_field :phone_number %></div>
-
-  <div>
-    <%= f.label :country, "Country" %><br />
-    <%= f.select :country, Carmen::country_names %></div>
-
+<div class="block">
   <br />
-  <div><%= f.submit "Update" %></div>
+  <%= form_for @user do |f| -%>
+    <%= render 'shared/error_messages', :object => f.object %>
 
-<% end -%>
+    <div>
+      <%= f.label :first_name, "First Name" %><br />
+      <%= f.text_field :first_name %></div>
+
+    <div>
+      <%= f.label :last_name, "Last Name" %><br />
+      <%= f.text_field :last_name %></div>
+
+    <div>
+      <%= f.label :email, "Email" %><br />
+      <%= f.text_field :email %></div>
+
+    <div>
+      <%= f.label :phone_number, "Phone number" %><br />
+      <%= f.text_field :phone_number %></div>
+
+    <div>
+      <%= f.label :country, "Country" %><br />
+      <%= f.select :country, Carmen::country_names %></div>
+
+    <br />
+    <div><%= f.submit "Update" %></div>
+
+  <% end -%>
+</div>
