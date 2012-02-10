@@ -1,5 +1,6 @@
 <h1>Your profile page</h1>
 
+
 <div class="block">
   First name: <%= @user.first_name %><br />
   Last name: <%= @user.last_name %><br />
@@ -7,5 +8,31 @@
   Phone number: <%= @user.phone_number %><br />
   Country: <%= @user.country %>
   <br /><br />
-  <%= link_to "Edit profile", edit_user_path(@user) %>
+  <%= link_to "Edit profile", edit_user_path(@user) %><br /><br />
+
+  <ul class="profile-nav">
+    <li class="transactions active-tab">Transactions</li>
+    <li class="budgets">Budgets</li>
+    <li class="goals">Goals</li>
+    <li class="trends">Trends</li>
+  </ul>
+
+  <div class="tabs">
+    <div class="block active-tab" id="transactions">
+      <h2>Transactions</h2>
+      <p>Your Transactions</p>
+    </div>
+    <div class="block" id="budgets">
+      <h2>Budgets</h2>
+      <p>Your Budgets</p>
+    </div>
+    <div class="block" id="goals">
+      <h2>Goals</h2>
+      <p>Your Goals</p>
+    </div>
+    <div class="block" id="trends">
+      <h2>Trends</h2>
+      <p>Your Trends</p>
+    </div>
+  </div>
 </div>
