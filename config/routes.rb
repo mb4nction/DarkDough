@@ -6,7 +6,11 @@ Pfm::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update]
 
   resources :acumen_tests
-  resources :accounts
+  resources :accounts do
+    collection do
+      get :list
+    end
+  end
 
   match '/home' => 'static#home'
   match '/about' => 'static#about'

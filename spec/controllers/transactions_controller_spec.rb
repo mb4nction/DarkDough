@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TransactionsController do
 
   def valid_attributes
-    { :category => "Phone", :amount => 123, :user_id => '1' }
+    { :category => "Phone", :amount => 123, :user_id => '1', :description => "Some description" }
   end
 
   before :each do

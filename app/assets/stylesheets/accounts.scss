@@ -1,0 +1,34 @@
+@import "mixins";
+// Place all the styles related to the Accounts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+form.hidden { display: none; }
+
+.block {
+  #accounts, #transactions {
+    float: left;
+    vertical-align: top;
+  }
+
+  #accounts {
+    min-width: 35%;
+
+    #accounts_list a {
+      display: block;
+      border: 1px solid #ccc;
+      margin-top: -1px;
+      text-decoration: none;
+    }
+  }
+
+  #transactions {
+    margin-left: -1px;
+    h4 { padding-left: 20px; }
+
+    .transactions_list {
+      padding-left: 20px;
+      border-left: 1px solid #eee;
+    }
+  }
+}

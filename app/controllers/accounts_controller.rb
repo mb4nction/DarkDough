@@ -3,6 +3,18 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = current_user.accounts.all
+    if params[:search]
+      if Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.present?
+        @account_name = Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.name
+        @transactions = Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.transactions.all
+      else
+        @account_name = "all accounts"
+        @transactions = current_user.transactions.all
+      end
+    else
+      @account_name = "all accounts"
+      @transactions = current_user.transactions.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,5 +82,9 @@ class AccountsController < ApplicationController
       format.html { redirect_to accounts_url }
       format.json { head :ok }
     end
+  end
+
+  def list
+    @accounts = current_user.accounts.all
   end
 end
