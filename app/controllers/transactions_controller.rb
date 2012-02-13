@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render :json => @transactions }
     end
   end
@@ -12,17 +12,15 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render :json => @transaction }
     end
   end
 
   def new
     @transaction = Transaction.new
-    @accounts = current_user.accounts.all
-
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render :json => @transaction }
     end
   end
@@ -39,7 +37,7 @@ class TransactionsController < ApplicationController
         format.html { redirect_to @transaction, :notice => 'Transaction was successfully created.' }
         format.json { render :json => @transaction, :status => :created, :location => @transaction }
       else
-        format.html { render :action => "new" }
+        format.html { render :new }
         format.json { render :json => @transaction.errors, :status => :unprocessable_entity }
       end
     end

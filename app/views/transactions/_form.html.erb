@@ -1,19 +1,9 @@
 <%= form_for(@transaction) do |f| %>
-  <% if @transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-
-      <ul>
-      <% @transaction.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    <%= f.select :category, Transaction::CATEGORIES %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
@@ -29,7 +19,7 @@
   </div>
   <div class="field">
     <%= f.label :account_id, "Account" %><br />
-    <%= f.select :account_id, @accounts.collect{ |a| [a.name, a.id] }, { :include_blank => true } %>
+    <%= f.select :account_id, current_user.accounts.all.collect{ |a| [a.name, a.id] }, { :include_blank => true } %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -3,4 +3,6 @@ class Transaction < ActiveRecord::Base
 
   validates :category, :amount, :presence => true
   validates :amount, :numericality => true
+
+  CATEGORIES = YAML.load_file("#{Rails.root}/config/categories.yml")
 end
