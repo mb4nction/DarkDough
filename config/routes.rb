@@ -1,5 +1,7 @@
 Pfm::Application.routes.draw do
 
+  resources :transactions
+
   devise_for :users, :path_prefix => 'd'
   resources :users, :only => [:show, :edit, :update]
 

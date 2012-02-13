@@ -13,6 +13,13 @@ Factory.define :account do |account|
   account.status "active"
 end
 
+Factory.define :transaction do |transaction|
+  transaction.category "Phone"
+  transaction.description "Some description"
+  transaction.amount "123"
+  transaction.note "Some note"
+end
+
 Factory.define :bank do |bank|
   bank.name   "Union bank"
 end

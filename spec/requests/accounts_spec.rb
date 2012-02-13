@@ -15,7 +15,7 @@ describe "Accounts" do
     it "should be success" do
       get accounts_path
       response.should be_success
-      response.should have_selector(:h1, :content => "Listing accounts")
+      response.should have_selector(:h1, :content => "Accounts")
       response.should have_selector(:a, :content => "New Account", :href => "/accounts/new")
     end
   end

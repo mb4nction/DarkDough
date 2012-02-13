@@ -20,4 +20,5 @@ class User < ActiveRecord::Base
   has_many :acumen_tests
   has_many :answers, :through => :acumen_tests
   has_many :accounts
+  has_many :transactions
 end
