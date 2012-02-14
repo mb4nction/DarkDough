@@ -1,0 +1,19 @@
+<%= form_for(@budget) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.select :category, Transaction::CATEGORIES %>
+  </div>
+  <div class="field">
+    <%= f.label :period %><br />
+    <%= f.select :period, budget_periods %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

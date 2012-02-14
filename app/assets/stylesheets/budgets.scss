@@ -1,0 +1,16 @@
+@import 'mixins';
+
+.block {
+  #incomes, #spending, #goals {
+    h3 {
+      @include inline-block;
+      width: 100px;
+    }
+
+    h3 + p { @include inline-block;}
+    
+    div {
+      margin-left: 100px;
+    }
+  }
+}

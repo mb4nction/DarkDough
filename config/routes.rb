@@ -12,6 +12,12 @@ Pfm::Application.routes.draw do
     end
   end
 
+  resources :budgets do
+    collection do
+      get :list
+    end
+  end
+
   match '/home' => 'static#home'
   match '/about' => 'static#about'
   match '/how_it_works' => 'static#how_it_works'

@@ -5,7 +5,7 @@
 
 form.hidden { display: none; }
 
-.block {
+.block.accounts {
   #accounts, #transactions {
     float: left;
     vertical-align: top;
@@ -24,6 +24,7 @@ form.hidden { display: none; }
 
   #transactions {
     margin-left: -1px;
+
     h4 { padding-left: 20px; }
 
     .transactions_list {

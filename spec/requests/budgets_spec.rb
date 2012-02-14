@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "Transactions" do
-  describe "GET /transactions" do
+describe "Budgets" do
+  describe "GET /budgets" do
     pending "it should be tested"
   end
 end

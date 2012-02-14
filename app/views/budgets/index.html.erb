@@ -1,0 +1,41 @@
+<div class="block">
+  <h1>Budgets</h1>
+
+  <br />
+  <div id="incomes">
+    <h3>Income</h3>
+    <i>Amount: <%= @income_budgets.map(&:amount).sum %></i>
+    <hr />
+    <% @income_budgets.each do |income| %>
+      <div>
+        <%= income.category %>
+        <%= income.amount %>
+      </div>
+    <% end %>
+  </div>
+
+  <br />
+  <div id="spending">
+    <h3>Spending</h3>
+    <i>Amount: <%= @spending_budgets.map(&:amount).sum %></i>
+    <hr />
+    <% @spending_budgets.each do |spending| %>
+      <div>
+        <%= spending.category %>
+        <%= spending.amount %>
+      </div>
+    <% end %>
+  </div>
+
+  <br />
+  <div id="goals">
+    <h3>Goals</h3>
+    <hr />
+    <p>
+      Goals comming soon...
+    </p>
+  </div>
+
+  <br />
+  <%= link_to "View all Budgets", list_budgets_path %> or <%= link_to 'Create New Budget', new_budget_path %>
+</div>

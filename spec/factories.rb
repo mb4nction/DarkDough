@@ -20,6 +20,12 @@ Factory.define :transaction do |transaction|
   transaction.note "Some note"
 end
 
+Factory.define :budget do |budget|
+  budget.category "Phone"
+  budget.period "1 month"
+  budget.amount "1234"
+end
+
 Factory.define :bank do |bank|
   bank.name   "Union bank"
 end
