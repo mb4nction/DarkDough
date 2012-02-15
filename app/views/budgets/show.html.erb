@@ -15,6 +15,13 @@
   <%= @budget.period %>
 </p>
 
+<% if @budget.start %>
+  <p>
+    <b>Started at:</b>
+    <%= @budget.start.strftime("%b %d") %>
+  </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_budget_path(@budget) %> |
 <%= link_to 'Back', list_budgets_path %>

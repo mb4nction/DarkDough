@@ -13,4 +13,8 @@ module ApplicationHelper
       link_to "Acumen Test Result", acumen_test_path(user.acumen_tests.last)
     end
   end
+
+  def display_if(cond, val='block')
+    "style = 'display: #{cond ? val : 'none'};'"
+  end
 end

@@ -4,7 +4,7 @@
   <br />
   <div id="incomes">
     <h3>Income</h3>
-    <i>Amount: <%= @income_budgets.map(&:amount).sum %></i>
+    <i>Amount: <%= @income_budgets.map(&:amount).sum %></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "add income budget", new_budget_path(:category => 'Income') %>
     <hr />
     <% @income_budgets.each do |income| %>
       <div>

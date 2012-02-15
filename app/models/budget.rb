@@ -1,6 +1,4 @@
 class Budget < ActiveRecord::Base
-  PERIODS = %w(1 3)
-
   belongs_to :user
 
   validates :category, :amount, :period, :presence => true

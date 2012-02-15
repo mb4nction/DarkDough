@@ -1,19 +1,41 @@
 <%= form_for(@budget) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.select :category, Transaction::CATEGORIES %>
+  <div class="field" <%= display_if(params[:category].nil?) %>>
+    <% if  params[:category].nil? %>
+      <%= f.label :category %><br />
+      <%= f.select :category, Transaction::CATEGORIES %>
+    <% else %>
+      <%= f.label :category %><br />
+      <%= f.select :category, Transaction::CATEGORIES, :selected => params[:category] unless params[:category].nil? %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :period %><br />
-    <%= f.select :period, budget_periods %>
+
+  <div class="field radios">
+    <div>When will this happen?</div>
+
+    <%= radio_button_tag "period", "once", true %>
+    <%= label_tag "period_once", "Once" %>
+
+    <%= radio_button_tag "period", "monthly" %>
+    <%= label_tag "period_monthly", "Every month" %>
+
+    <%= radio_button_tag "period", "few_month" %>
+    <%= label_tag "period_few_month", "Every few month" %>
   </div>
+
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="period hidden">
+    every <%= select_tag :period, options_for_select(period_select) %>
   </div>
+  <div class="start hidden">
+    My next is in <%= f.date_select :start, :use_short_month => true, :discard_day => true, :start_year => Time.now.year, :include_blank => true %>
+  </div>
+  <div class="field hidden"><%= f.text_field :period %></div>
+
+  <br />
+  <div class="actions"><%= f.submit %></div>
 <% end %>
