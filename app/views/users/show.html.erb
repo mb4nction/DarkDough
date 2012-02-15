@@ -20,12 +20,48 @@
   <div class="tabs">
     <div class="block active-tab" id="transactions">
       <h2>Transactions</h2>
-      <p>Your Transactions</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.category %></td>
+              <td><%= transaction.description %></td>
+              <td><%= transaction.amount %></td>
+              <td><%= transaction.note %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
     <div class="block" id="budgets">
       <h2>Budgets</h2>
-      <p>Your Budgets</p>
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @budgets.each do |budget| %>
+            <tr>
+              <td><%= budget.category %></td>
+              <td><%= budget.amount %></td>
+              <td><%= budget.period %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
     <div class="block" id="goals">
       <h2>Goals</h2>
       <p>Your Goals</p>
