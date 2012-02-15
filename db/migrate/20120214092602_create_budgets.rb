@@ -4,6 +4,7 @@ class CreateBudgets < ActiveRecord::Migration
       t.string :category
       t.decimal :amount
       t.string :period
+      t.datetime :start
 
       t.references :user
 

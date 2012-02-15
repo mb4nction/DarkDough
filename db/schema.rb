@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20120214092602) do
     t.string   "category"
     t.decimal  "amount",     :precision => 10, :scale => 0
     t.string   "period"
+    t.datetime "start"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
