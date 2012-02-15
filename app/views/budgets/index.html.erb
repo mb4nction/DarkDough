@@ -10,6 +10,7 @@
       <div>
         <%= income.category %>
         <%= income.amount %>
+        <small><i><%= link_to "edit", edit_budget_path(income) %></i></small>
       </div>
     <% end %>
   </div>
@@ -23,6 +24,7 @@
       <div>
         <%= spending.category %>
         <%= spending.amount %>
+        <small><i><%= link_to "edit", edit_budget_path(spending) %></i></small>
       </div>
     <% end %>
   </div>
