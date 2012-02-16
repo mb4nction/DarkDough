@@ -12,8 +12,13 @@ $(function() {
 
     inputs.click(function() {
       if (this.id == 'period_few_month') {
-        $('option:eq(' + currentMonthNumber + ')', month).attr('selected', 'selected');
-        $('option:first', year).next().attr('selected', 'selected');
+        if ($('#budget_year').length > 0) {
+          $('option[value= ' + $('#budget_year').text() + ']', year).attr('selected', 'selected');
+          $('option[value=' + parseInt($('#budget_month').text() + ']'), month).attr('selected', 'selected');
+        } else {
+          $('option:eq(' + currentMonthNumber + ')', month).attr('selected', 'selected');
+          $('option:first', year).attr('selected', 'selected');
+        }
         period.val($('option:selected', fakePeriod).val());
         startContainer.show();
         periodContainer.show();
@@ -34,7 +39,6 @@ $(function() {
 
     fakePeriod.change(function() { period.val($('option:selected', fakePeriod).val()); });
 
-    console.log(period.val());
     if (period.val() == 0) {
       $('#period_once').click();
       period.val(0);
