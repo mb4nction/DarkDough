@@ -8,6 +8,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @transactions }
+      format.csv { export_to_csv }
     end
   end
 
@@ -74,5 +75,32 @@ class TransactionsController < ApplicationController
 
   def find_account
     redirect_to new_account_path unless current_user.accounts.any?
+  end
+
+  protected
+
+  def export_to_csv
+    @transactions = Transaction.find(:all, :order => "category ASC")
+    @outfile = "transactions_" + I18n.l(Time.now, :format => :short) + ".csv"
+    csv_data = FasterCSV.generate(:col_sep => "\t", :force_quotes  => true) do |csv|
+      csv << [
+        "Category",
+        "Amount",
+        "Created",
+        "Description",
+        "Note"
+      ]
+      @transactions.each do |transaction|
+        csv << [
+          transaction.category,
+          transaction.amount,
+          transaction.created_at,
+          transaction.description,
+          transaction.note
+        ]
+      end
+    end
+
+    send_data csv_data, :type => 'text/csv; charset=utf-8;'
   end
 end

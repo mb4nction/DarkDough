@@ -27,3 +27,5 @@
 <br />
 
 <%= link_to 'New Transaction', new_transaction_path %>
+<br />
+<%= link_to "Export to CSV", request.parameters.merge({:format => :csv}) %>
