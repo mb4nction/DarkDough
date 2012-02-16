@@ -25,7 +25,7 @@
     <h4>Transactions for <i>"<%= @account_name %>"</i></h4>
     <div class="transactions_list">
       <% @transactions.each do |transaction| %>
-        <%= transaction.created_at.strftime("%b %d") %> |
+        <%=l transaction.created_at, :format => :short %> |
         <%= transaction.description %>
         <%= transaction.amount %><br />
       <% end %>

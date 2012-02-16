@@ -18,7 +18,7 @@
 <% if @budget.start %>
   <p>
     <b>Started at:</b>
-    <%= @budget.start.strftime("%b %d") %>
+    <%=l @budget.start, :format => :short %>
   </p>
 <% end %>
 
