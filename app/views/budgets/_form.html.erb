@@ -7,7 +7,7 @@
       <%= f.select :category, Transaction::CATEGORIES %>
     <% else %>
       <%= f.label :category %><br />
-      <%= f.select :category, Transaction::CATEGORIES, :selected => params[:category] unless params[:category].nil? %>
+      <%= f.select :category, Transaction::CATEGORIES, {}, {:selected => (params[:category] unless params[:category].nil?), :disabled => true} %>
     <% end %>
   </div>
 
