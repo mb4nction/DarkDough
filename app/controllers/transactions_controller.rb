@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_account
 
   def index
     @transactions = Transaction.all
@@ -67,5 +68,11 @@ class TransactionsController < ApplicationController
       format.html { redirect_to transactions_url }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def find_account
+    redirect_to new_account_path unless current_user.accounts.any?
   end
 end
