@@ -8,6 +8,7 @@ describe TransactionsController do
 
   before :each do
     @user = Factory(:user)
+    @account = Factory(:account, :user => @user)
     @transaction = Factory(:transaction, :user => @user)
     sign_in @user
   end

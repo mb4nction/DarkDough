@@ -58,7 +58,7 @@ describe BudgetsController do
 
       it "redirects to the created budget" do
         post :create, :budget => valid_attributes
-        response.should redirect_to(Budget.last)
+        response.should redirect_to(budgets_url)
       end
     end
 
@@ -100,7 +100,7 @@ describe BudgetsController do
       it "redirects to the budget" do
         budget = Budget.create! valid_attributes
         put :update, :id => budget.id, :budget => valid_attributes
-        response.should redirect_to(budget)
+        response.should redirect_to(budgets_url)
       end
     end
 
