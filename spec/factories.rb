@@ -11,6 +11,7 @@ end
 Factory.define :account do |account|
   account.name   "Johny's account"
   account.status "active"
+  account.amount "1000"
 end
 
 Factory.define :transaction do |transaction|

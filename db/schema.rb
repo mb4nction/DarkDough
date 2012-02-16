@@ -15,7 +15,8 @@ ActiveRecord::Schema.define(:version => 20120214092602) do
   create_table "accounts", :force => true do |t|
     t.string   "name"
     t.string   "status"
-    t.integer  "user_id",    :null => false
+    t.decimal  "amount",     :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.integer  "user_id",                                                    :null => false
     t.integer  "bank_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -46,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20120214092602) do
 
   create_table "budgets", :force => true do |t|
     t.string   "category"
-    t.decimal  "amount",     :precision => 10, :scale => 0
+    t.decimal  "amount",     :precision => 10, :scale => 2, :default => 0.0
     t.string   "period"
     t.datetime "start"
     t.integer  "user_id"
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20120214092602) do
   create_table "transactions", :force => true do |t|
     t.string   "category"
     t.text     "description"
-    t.decimal  "amount",      :precision => 10, :scale => 0
+    t.decimal  "amount",      :precision => 10, :scale => 2
     t.text     "note"
     t.integer  "account_id"
     t.integer  "user_id",                                    :null => false
