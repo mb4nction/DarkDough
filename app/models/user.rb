@@ -22,4 +22,16 @@ class User < ActiveRecord::Base
   has_many :accounts
   has_many :transactions
   has_many :budgets
+
+  def transactions_sum_by_category(category)
+    arr = []
+    self.transactions.each do |transaction|
+      arr << transaction if transaction.category == category
+    end
+    arr.map{|tr| tr.amount}.sum
+  end
+
+  def transactions_categories
+    self.transactions.map{ |transaction| transaction.category }.uniq!
+  end
 end

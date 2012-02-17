@@ -45,3 +45,19 @@
   <br />
   <%= link_to "View all Budgets", list_budgets_path %> or <%= link_to 'Create New Budget', new_budget_path %>
 </div>
+<br />
+<h3>Budgets totals</h3>
+<table>
+  <tr>
+    <th>Category:</th>
+    <th>Sum by transactions:</th>
+    <th>Total:</th>
+  </tr>
+  <% @budgets.each do |budget| %>
+  <tr>
+    <td><%= budget.category %></td>
+    <td><%= current_user.transactions_sum_by_category(budget.category) %></td>
+    <td><%= budget.amount - current_user.transactions_sum_by_category(budget.category) %></td>
+  </tr>
+  <% end %>
+</table>
