@@ -15,8 +15,11 @@ namespace :db do
                           :category => "Phone", :amount => 10*(n+1), :user_id => "1")
       Transaction.create!(:description => "The #{n+1} 'income' category transactions.",
                           :category => "Income", :amount => 100*(n+1), :user_id => "1")
-      Budget.create!(:category => "Income", :amount => 50*(n+1), :period => "1", :user_id => "1")
-      Budget.create!(:category => "Medicine", :amount => 25*(n+1), :period => "1",
+    end
+
+    5.times do |n|
+      Budget.create!(:category => Transaction::CATEGORIES[n], :amount => 25 * n, :period => "1", :user_id => "1")
+      Budget.create!(:category => Transaction::CATEGORIES[n+5], :amount => 25, :period => "1",
                      :user_id => "1", :start => Time.now - 2.days)
     end
   end
