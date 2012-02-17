@@ -82,7 +82,7 @@ class TransactionsController < ApplicationController
   def export_to_csv
     @transactions = Transaction.find(:all, :order => "category ASC")
     @outfile = "transactions_" + I18n.l(Time.now, :format => :short) + ".csv"
-    csv_data = FasterCSV.generate(:col_sep => "\t", :force_quotes  => true) do |csv|
+    csv_data = FasterCSV.generate(:force_quotes  => true) do |csv|
       csv << [
         "Category",
         "Amount",
