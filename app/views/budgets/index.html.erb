@@ -3,8 +3,10 @@
 
   <div id="budgets_search_container">
     <%= form_tag budgets_path, :method => "get", :id => 'budgets_search' do %>
-      <%= text_field_tag :budgets_search_start, params[:budgets_search_start], :class => "datepicker" %>
-      <%= text_field_tag :budgets_search_end, params[:budgets_search_end], :class => "datepicker" %>
+      <%= text_field_tag :budgets_search_start, params[:budgets_search_start],
+                         :class => "datepicker", :placeholder => "Start date" %>
+      <%= text_field_tag :budgets_search_end, params[:budgets_search_end],
+                         :class => "datepicker", :placeholder => "End date" %>
       <%= submit_tag "Search by period" %> or <%= link_to "view all", budgets_path, :id => "view_all_budgets" %>
     <% end -%>
   </div>

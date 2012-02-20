@@ -33,8 +33,10 @@ namespace :db do
                    :user_id => "1", :start => Time.now - 2.days)
     Budget.create!(:category => Transaction::CATEGORIES[7], :amount => 25, :period => "1",
                    :user_id => "1", :start => Time.now - 2.days)
-    Budget.create!(:category => Transaction::CATEGORIES[8], :amount => 25, :period => "1",
+    b08 = Budget.create!(:category => Transaction::CATEGORIES[8], :amount => 25, :period => "1",
                    :user_id => "1", :start => Time.now - 2.days)
+    b08.created_at = Date.today + 2.days
+    b08.save
     b09 = Budget.create(:category => Transaction::CATEGORIES[9], :amount => 25, :period => "1",
                    :user_id => "1", :start => Time.now - 2.days)
     b09.created_at = Date.today - 32.days
