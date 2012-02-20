@@ -21,7 +21,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new
 
     respond_to do |format|
-      format.htm
+      format.html
       format.json { render :json => @goal }
     end
   end
