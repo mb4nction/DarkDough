@@ -18,10 +18,10 @@ class User < ActiveRecord::Base
   validates :country, :inclusion => { :in => Carmen::country_names }
 
   has_many :acumen_tests
-  has_many :answers, :through => :acumen_tests
   has_many :accounts
   has_many :transactions
   has_many :budgets
+  has_many :answers, :through => :acumen_tests
 
   def transactions_sum_by_category(category)
     arr = []

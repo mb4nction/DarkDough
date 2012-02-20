@@ -1,11 +1,11 @@
 Pfm::Application.routes.draw do
 
-  resources :transactions
 
   devise_for :users, :path_prefix => 'd'
   resources :users, :only => [:show, :edit, :update]
 
   resources :acumen_tests
+
   resources :accounts do
     collection do
       get :list
@@ -17,6 +17,9 @@ Pfm::Application.routes.draw do
       get :list
     end
   end
+
+  resources :goals
+  resources :transactions
 
   match '/home' => 'static#home'
   match '/about' => 'static#about'
