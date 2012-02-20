@@ -1,4 +1,11 @@
 $(function() {
+  // init datepicker for serching budgets date range
+  $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+  $('#budgets_search').submit(function() {
+    $.get(this.action, $(this).serialize(), null, "script");
+    return false;
+  });
+
   var budgetOptions = function() {
     var inputs = $('.field.radios input'),
         period = $('#budget_period'),

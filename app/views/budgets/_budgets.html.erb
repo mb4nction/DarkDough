@@ -1,0 +1,30 @@
+<div id="incomes">
+  <h3>Income</h3>
+  <i>Amount: <%= @income_budgets.map(&:amount).sum %></i>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= link_to "add income", new_budget_path(:category => 'Income') %>
+  <hr />
+  <% @income_budgets.each do |income| %>
+    <div>
+      <%= income.category %>
+      <%= income.amount %>
+      <small><i><%= link_to "edit", edit_budget_path(income, :category => income.category) %></i></small>
+    </div>
+  <% end %>
+</div>
+
+<br />
+<div id="spending">
+  <h3>Spending</h3>
+  <i>Amount: <%= @spending_budgets.map(&:amount).sum %></i>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= link_to "add spending", new_budget_path %>
+  <hr />
+  <% @spending_budgets.each do |spending| %>
+    <div>
+      <%= spending.category %>
+      <%= spending.amount %>
+      <small><i><%= link_to "edit", edit_budget_path(spending, :category => spending.category) %></i></small>
+    </div>
+  <% end %>
+</div>

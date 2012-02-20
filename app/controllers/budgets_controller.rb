@@ -2,12 +2,13 @@ class BudgetsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @budgets = Budget.all
-    @income_budgets = Budget.income.all
-    @spending_budgets = Budget.spending.all
+    @budgets =  current_user.budgets.search(params[:budgets_search_start], params[:budgets_search_end])
+    @income_budgets = current_user.budgets.income.search(params[:budgets_search_start], params[:budgets_search_end])
+    @spending_budgets = current_user.budgets.spending.search(params[:budgets_search_start], params[:budgets_search_end])
 
     respond_to do |format|
       format.html
+      format.js
       format.json { render :json => @budgets }
     end
   end

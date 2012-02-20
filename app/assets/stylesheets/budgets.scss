@@ -8,9 +8,8 @@
     }
 
     h3 + p { @include inline-block;}
-    
-    div {
-      margin-left: 100px;
-    }
+    div { margin-left: 100px; }
   }
+
+  #budgets_search_container { margin-bottom: 10px; }
 }
