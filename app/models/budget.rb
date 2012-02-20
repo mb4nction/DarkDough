@@ -1,8 +1,9 @@
 class Budget < ActiveRecord::Base
+  attr_accessible :category, :amount, :period, :start, :user_id
   belongs_to :user
 
   validates :category, :amount, :period, :presence => true
-  validates :amount, :numericality => true
+  validates :amount, :period, :numericality => true
 
   scope :income, where(:category => 'income')
   scope :spending, lambda { where("category != ?", "income") }
