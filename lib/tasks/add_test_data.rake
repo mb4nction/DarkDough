@@ -17,10 +17,31 @@ namespace :db do
                           :category => "Income", :amount => 100*(n+1), :user_id => "1")
     end
 
-    5.times do |n|
-      Budget.create!(:category => Transaction::CATEGORIES[n], :amount => 25 * n, :period => "1", :user_id => "1")
-      Budget.create!(:category => Transaction::CATEGORIES[n+5], :amount => 25, :period => "1",
-                     :user_id => "1", :start => Time.now - 2.days)
-    end
+
+    Budget.create!(:category => Transaction::CATEGORIES[1], :amount => 25, :period => "1", :user_id => "1")
+    Budget.create!(:category => Transaction::CATEGORIES[2], :amount => 50, :period => "1", :user_id => "1")
+    Budget.create!(:category => Transaction::CATEGORIES[3], :amount => 75, :period => "1", :user_id => "1")
+
+    b04 = Budget.create!(:category => Transaction::CATEGORIES[4], :amount => 100, :period => "1", :user_id => "1")
+    b04.created_at = Date.today - 20.days
+    b04.save
+    b05 = Budget.create(:category => Transaction::CATEGORIES[5], :amount => 125, :period => "1", :user_id => "1")
+    b05.created_at = Date.today - 15.days
+    b05.save
+
+    Budget.create!(:category => Transaction::CATEGORIES[6], :amount => 25, :period => "1",
+                   :user_id => "1", :start => Time.now - 2.days)
+    Budget.create!(:category => Transaction::CATEGORIES[7], :amount => 25, :period => "1",
+                   :user_id => "1", :start => Time.now - 2.days)
+    Budget.create!(:category => Transaction::CATEGORIES[8], :amount => 25, :period => "1",
+                   :user_id => "1", :start => Time.now - 2.days)
+    b09 = Budget.create(:category => Transaction::CATEGORIES[9], :amount => 25, :period => "1",
+                   :user_id => "1", :start => Time.now - 2.days)
+    b09.created_at = Date.today - 32.days
+    b09.save
+    b10 = Budget.create(:category => Transaction::CATEGORIES[10], :amount => 25, :period => "1",
+                   :user_id => "1", :start => Time.now - 2.days)
+    b10.created_at = Date.today - 1.month
+    b10.save
   end
 end
