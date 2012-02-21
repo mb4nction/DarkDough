@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @goals = Goal.all
 
@@ -27,11 +29,11 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    @goal = Goal.find(params[:id])
+    @goal = current_user.goals.find(params[:id])
   end
 
   def create
-    @goal = Goal.new(params[:goal])
+    @goal = current_user.goals.new(params[:goal])
 
     respond_to do |format|
       if @goal.save

@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :transactions
   has_many :budgets
   has_many :answers, :through => :acumen_tests
+  has_many :goals
 
   def transactions_sum_by_category(category)
     arr = []

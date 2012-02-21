@@ -1,27 +1,22 @@
 <%= form_for(@goal) do |f| %>
-  <% if @goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
-
-      <ul>
-      <% @goal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "Give it a title" %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    <%= f.label :category, "Choose a category" %><br />
+    <%= f.select :category, Goal::GOAL_CATEGORIES %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :account_id, "Choose account" %><br />
+    <%= collection_select(:goal, :account_id, current_user.accounts.all, :id, :name,
+            {:include_blank => true, :prompt => 'Select an Account'}, {:class => "chosen"}) %>
   </div>
   <div class="field">
     <%= f.label :current_balance %><br />
@@ -29,10 +24,10 @@
   </div>
   <div class="field">
     <%= f.label :planned_date %><br />
-    <%= f.date_select :planned_date %>
+    <%= f.date_select :planned_date, :discard_day => true %>
   </div>
   <div class="field">
-    <%= f.label :contribution %><br />
+    <%= f.label :contribution, "Your monthly contribution" %><br />
     <%= f.text_field :contribution %>
   </div>
   <div class="actions">

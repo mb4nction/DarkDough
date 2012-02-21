@@ -3,13 +3,13 @@ class CreateGoals < ActiveRecord::Migration
     create_table :goals do |t|
       t.string :title
       t.string :category
-      t.decimal :amount
-      t.decimal :current_balance
+      t.decimal :amount, :precision => 10, :scale => 2, :default => 0
+      t.decimal :current_balance, :precision => 10, :scale => 2, :default => 0
       t.date :planned_date
-      t.decimal :contribution
+      t.decimal :contribution, :precision => 10, :scale => 2, :default => 0
 
       t.references :account
-      t.references :user
+      t.references :user, :null => false
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120220141513) do
+ActiveRecord::Schema.define(:version => 20120221094824) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20120220141513) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "accounts_goals", :id => false, :force => true do |t|
+    t.integer "account_id"
+    t.integer "goal_id"
+  end
+
+  add_index "accounts_goals", ["account_id", "goal_id"], :name => "index_accounts_goals_on_account_id_and_goal_id"
+  add_index "accounts_goals", ["goal_id", "account_id"], :name => "index_accounts_goals_on_goal_id_and_account_id"
 
   create_table "acumen_tests", :force => true do |t|
     t.string   "result"
@@ -66,12 +74,12 @@ ActiveRecord::Schema.define(:version => 20120220141513) do
   create_table "goals", :force => true do |t|
     t.string   "title"
     t.string   "category"
-    t.decimal  "amount",          :precision => 10, :scale => 0
-    t.decimal  "current_balance", :precision => 10, :scale => 0
+    t.decimal  "amount",          :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "current_balance", :precision => 10, :scale => 2, :default => 0.0
     t.date     "planned_date"
-    t.decimal  "contribution",    :precision => 10, :scale => 0
+    t.decimal  "contribution",    :precision => 10, :scale => 2, :default => 0.0
     t.integer  "account_id"
-    t.integer  "user_id"
+    t.integer  "user_id",                                                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
