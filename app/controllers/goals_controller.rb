@@ -14,7 +14,7 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render :json => @goal }
     end
   end
@@ -47,6 +47,7 @@ class GoalsController < ApplicationController
   end
 
   def update
+    params[:goal][:account_ids] ||= []
     @goal = Goal.find(params[:id])
 
     respond_to do |format|

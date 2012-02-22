@@ -14,17 +14,22 @@
     <%= f.text_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :account_id, "Choose account" %><br />
-    <%= collection_select(:goal, :account_id, current_user.accounts.all, :id, :name,
-            {:include_blank => true, :prompt => 'Select an Account'}, {:class => "chosen"}) %>
+    <% for account in Account.find(:all) do %>
+    <div>
+      <%= check_box_tag "goal[account_ids][]", account.id, @goal.accounts.include?(account) %>
+      <%= account.name %>
+    </div>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :current_balance %><br />
-    <%= f.text_field :current_balance %>
-  </div>
+    Your available balance is:
+    <span id="goal_current_balance">
+      <%= current_user.accounts.first.amount %>
+    </span>
+    </div>
   <div class="field">
     <%= f.label :planned_date %><br />
-    <%= f.date_select :planned_date, :discard_day => true %>
+    <%= f.date_select :planned_date, :discard_day => true, :start_year => Date.today.year.next %>
   </div>
   <div class="field">
     <%= f.label :contribution, "Your monthly contribution" %><br />

@@ -11,3 +11,4 @@
 // vendor folder
 //= require chosen.jquery.min.js
 //= require jquery-ui-1.8.17.custom.min.js
+//= require underscore-min.js

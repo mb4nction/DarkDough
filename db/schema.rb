@@ -74,12 +74,10 @@ ActiveRecord::Schema.define(:version => 20120221094824) do
   create_table "goals", :force => true do |t|
     t.string   "title"
     t.string   "category"
-    t.decimal  "amount",          :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "current_balance", :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "amount",       :precision => 10, :scale => 2, :default => 0.0
     t.date     "planned_date"
-    t.decimal  "contribution",    :precision => 10, :scale => 2, :default => 0.0
-    t.integer  "account_id"
-    t.integer  "user_id",                                                         :null => false
+    t.decimal  "contribution", :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "user_id",                                                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
