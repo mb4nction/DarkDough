@@ -15,17 +15,14 @@
   </div>
   <div class="field">
     <% for account in Account.find(:all) do %>
-    <div>
-      <%= check_box_tag "goal[account_ids][]", account.id, @goal.accounts.include?(account) %>
-      <%= account.name %>
+    <div class="available_accounts">
+      <%= check_box_tag "goal[account_ids][]", account.id, @goal.accounts.include?(account), :id => "goal_account_ids_#{account.id}" %>
+      <%= account.name %> <small>(available: <em><%= account.amount %></em>)</small>
     </div>
     <% end %>
   </div>
   <div class="field">
-    Your available balance is:
-    <span id="goal_current_balance">
-      <%= current_user.accounts.first.amount %>
-    </span>
+    Your balance is: <span id="goal_current_balance"></span>
     </div>
   <div class="field">
     <%= f.label :planned_date %><br />

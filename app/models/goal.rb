@@ -10,4 +10,8 @@ class Goal < ActiveRecord::Base
   validates :title, :category, :amount, :contribution, :planned_date, :presence => true
   validates :category, :inclusion => { :in => GOAL_CATEGORIES }
   validates :amount, :numericality => true
+
+  def available_balance
+    accounts.map{ |account| account.amount}.sum.to_f
+  end
 end
