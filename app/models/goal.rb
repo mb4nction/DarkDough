@@ -14,4 +14,8 @@ class Goal < ActiveRecord::Base
   def available_balance
     accounts.map{ |account| account.amount}.sum.to_f
   end
+
+  def todays_balance
+    self.amount - available_balance
+  end
 end
