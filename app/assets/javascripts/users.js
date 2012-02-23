@@ -1,8 +1,4 @@
 $(function(){
-  $('.user').click(function(){
-    $('.user-menu').toggle();
-  })
-
   // tabs on user profile page
   $(".tabs .block:not('.active-tab')").hide();
 

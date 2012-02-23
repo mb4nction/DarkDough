@@ -1,0 +1,10 @@
+@import 'mixins';
+
+input[type=text] {
+  @include radius(2px);
+  margin: 5px 0;
+  background: #fff;
+  border: 1px solid #e1dde6;
+  color: #3e4050;
+  font: 14px/22px helvetica, verdana, arial, sans-serif;
+}

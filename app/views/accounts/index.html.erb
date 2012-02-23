@@ -16,9 +16,10 @@
       <% end -%>
     </div>
 
-    <br />
-
-    <%= link_to "View all accounts", list_accounts_path %> or <%= link_to 'Create New Account', new_account_path %>
+    <p>
+      <%= link_to "View all accounts", list_accounts_path %> or
+      <%= link_to 'Create New Account', new_account_path %>
+    </p>
   </div>
 
   <div id="transactions">
@@ -33,6 +34,11 @@
       Total amount: <%= @transactions.map{ |tr| tr.amount}.sum %>
     </div>
   </div>
+
+    <p style="float:left; margin-left: 20px;">
+      <%= link_to "View all transactions", transactions_path %> or
+      <%= link_to 'Create New Transaction', new_transaction_path %>
+    </p>
 
   <br class="clear" />
 </div>

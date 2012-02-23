@@ -8,5 +8,10 @@
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
           border-radius: $radius;
+}
 
+@mixin box-shadow($left, $right, $distance, $color) {
+  -moz-box-shadow: $left $right $distance $color;
+  -webkit-box-shadow: $left $right $distance $color;
+  box-shadow: $left $right $distance $color;
 }

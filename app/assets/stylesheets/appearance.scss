@@ -1,0 +1,63 @@
+@import 'mixins';
+
+body { background: image-url('bg/main.png'); }
+
+header {
+  background: image-url('bg/menu_top.png') left top repeat-x;
+
+  menu {
+    height: 58px;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0;
+
+    #logo {
+      @include inline-block;
+      margin: 17px 0;
+      padding: 3px 0;
+    }
+
+    .user-menu-wrapper {
+      position: relative;
+      float: right;
+      margin: 15px 0;
+
+      .user-menu {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          @include inline-block;
+          color: #ccc;
+          
+          i {
+            @include inline-block;
+            padding: 7px 0;
+          }
+
+          a {
+            @include inline-block;
+            padding: 7px 12px;
+            font: 13px Helvetica, verdana, arial, sans-serif;
+            color: #e4ddef;
+            text-shadow: 0 1px 1px rgba(0,0,0,.31);
+            text-decoration: none;
+
+            &.sign_out {
+              padding:  7px 10px 7px 22px;
+              background: image-url('ico/user.png') 6px 7px no-repeat;
+            }
+
+            &:hover {
+              @include radius(3px);
+              background-color: #3a2d4a;
+              color: #fefefe;
+              text-shadow: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

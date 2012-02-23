@@ -1,4 +1,4 @@
-body {
+/*body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -14,6 +14,12 @@ pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px; }
+*/
+
+/*div {
+  &.field, &.actions {
+    margin-bottom: 10px; } }
+*/
 
 a {
   color: #000;
@@ -22,12 +28,7 @@ a {
   &:hover {
     text-decoration: none; } }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px; } }
-
-#notice {
-  color: green; }
+#notice { color: green; }
 
 .field_with_errors {
   padding: 2px;
