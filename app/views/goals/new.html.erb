@@ -1,7 +1,7 @@
 <div class="block goal">
   <h1>Create a Goal</h1>
 
-  <%= render 'form' %>
+  <%= params[:type] ? render_goal_form(params[:type]) : (render 'form') %>
 
   <%= link_to 'Back', goals_path %>
 </div>

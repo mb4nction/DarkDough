@@ -4,11 +4,15 @@ class Goal < ActiveRecord::Base
 
   attr_accessible :title, :category, :amount, :contribution, :planned_date, :user_id, :account_ids
 
+  GOAL_PREDEFINED_CATEGORIES = ["Pay off Credit Card Debt", "Pay off Loans", "Save for an emergency",
+                                "Save for Retirement", "Buy a Home", "Buy a Car", "Save for College",
+                                "Take a Trip", "Improve my Home"]
+
   GOAL_CATEGORIES = ["Babies and Kids", "Bill and Taxes", "Electronics", "Gifts and Shopping",
                      "Wedding", "Other", "Furniture"]
 
   validates :title, :category, :amount, :contribution, :planned_date, :presence => true
-  validates :category, :inclusion => { :in => GOAL_CATEGORIES }
+  validates :category, :inclusion => { :in => GOAL_PREDEFINED_CATEGORIES | GOAL_CATEGORIES }
   validates :amount, :numericality => true
 
   def available_balance

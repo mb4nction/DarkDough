@@ -30,6 +30,7 @@ header {
         li {
           @include inline-block;
           color: #ccc;
+          float: left;
           
           i {
             @include inline-block;

@@ -20,7 +20,7 @@
     <td><%= goal.planned_date %></td>
     <td><%= goal.contribution %></td>
     <td><%= link_to 'Show', goal %></td>
-    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+    <td><%= edit_goal(goal) %></td>
     <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -28,4 +28,4 @@
 
 <br />
 
-<%= link_to 'Add Goal', new_goal_path %>
+<%= link_to 'Add Goal', select_goals_path %>

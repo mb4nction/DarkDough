@@ -1,0 +1,47 @@
+<h1>Choose a Goal:</h1>
+
+<div id="choose_goal_category">
+  <%#= link_to "Pay off Credit Card Debt", new_goal_path(:type => 'pay_off_credit_card_debt') %>
+  <%= link_to '#' do %>
+     Pay off Credit Card Debt <small>(not implemented)</small>
+  <% end %>
+  <%#= link_to "Pay off Loans", new_goal_path(:type => "pay_off_loans") %>
+  <%= link_to '#'  do %>
+    Pay off Loans <small>(not implemented)</small>
+  <% end %>
+
+  <%= link_to "Save for an emergency", new_goal_path(:type => "save_for_an_emergency") %>
+
+  <%#= link_to "Save for Retirement", new_goal_path(:type => "save_for_retirement") %>
+  <%= link_to '#' do %>
+    Save for Retirement <small>(not implemented)</small>
+  <% end %>
+
+
+  <%#= link_to "Buy a Home", new_goal_path(:type => "buy_a_home") %>
+  <%= link_to '#' do %>
+    Buy a Home <small>(not implemented)</small>
+  <% end %>
+
+  <%#= link_to "Buy a Car", new_goal_path(:type => "buy_a_car") %>
+  <%= link_to '#' do %>
+    Buy a Car <small>(not implemented)</small>
+  <% end %>
+
+  <%#= link_to "Save for College", new_goal_path(:type => "save_for_college") %>
+  <%= link_to '#' do %>
+    Save for College <small>(not implemented)</small>
+  <% end %>
+
+  <%#= link_to "Take a Trip", new_goal_path(:type => "take_a_trip") %>
+  <%= link_to '#' do %>
+    Take a Trip <small>(not implemented)</small>
+  <% end %>
+
+  <%#= link_to "Improve my Home", new_goal_path(:type => "improve_my_home") %>
+  <%= link_to '#' do %>
+    Improve my Home <small>(not implemented)</small>
+  <% end %>
+
+  <%= link_to "Create Custom Goal", new_goal_path %>
+</div>

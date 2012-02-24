@@ -18,7 +18,11 @@ Pfm::Application.routes.draw do
     end
   end
 
-  resources :goals
+  resources :goals do
+    collection do
+      get :select
+    end
+  end
   resources :transactions
 
   match '/home' => 'static#home'

@@ -1,0 +1,40 @@
+<%= form_for(@goal) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+
+  <%= hidden_field_tag "goal[category]", "Save for an emergency" %>
+  <div class="field">
+    <%= f.label :title, "Give it a title" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  Enter your average monthly spending:
+  <div class="field">
+    <%= label_tag :spending %>
+    <%= text_field_tag :spending, '', :id => "emergency_spending" %>
+  </div>
+
+  <div class="field">
+    How many months without income do you want to be prepared for?
+    <%= select_month 1, :use_month_numbers => true, :field_name => "spending" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount, 'Your goal amount' %><br />
+    <%= f.text_field :amount, :id => "spending_goal_amount" %>
+  </div>
+  <%= render :partial => 'goal_accounts' %>
+  <div class="field">
+    Your balance is: <span id="goal_current_balance"></span>
+    </div>
+  <div class="field">
+    <%= f.label :planned_date %><br />
+    <%= f.date_select :planned_date, :discard_day => true, :start_year => Date.today.year.next %>
+  </div>
+  <div class="field">
+    <%= f.label :contribution, "Your monthly contribution" %><br />
+    <%= f.text_field :contribution %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -20,7 +20,7 @@
           <%= check_box_tag "goal[account_ids][]", account.id, @goal.accounts.include?(account),
               { :id => "goal_account_ids_#{account.id}",
                 :disabled => check_account_dedicated(account) } %>
-          <%= account.name %> <small><em>(already dedicated)</em></small>
+          <%= account.name %> <small>(<em><%= account.amount %></em>already dedicated)</small>
         </div>
       <% else %>
         <div class="available_accounts">
@@ -28,7 +28,6 @@
               { :id => "goal_account_ids_#{account.id}" } %>
           <%= account.name %> <small>(available: <em><%= account.amount %></em>)</small>
         </div>
-
       <% end %>
     <% end %>
   </div>

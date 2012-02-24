@@ -78,7 +78,7 @@ describe GoalsController do
         # specifies that the Goal created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Goal.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        Goal.any_instance.should_receive(:update_attributes).with({'these' => 'params', 'account_ids' => []})
         put :update, :id => goal.id, :goal => {'these' => 'params'}
       end
 

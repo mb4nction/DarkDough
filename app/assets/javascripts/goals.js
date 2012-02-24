@@ -3,7 +3,6 @@ $(function() {
     var balance_fields = $('.available_accounts').find('em'),
         checkedCheckboxes = $('.available_accounts').find('input:checked'),
         amount = 0;
-
     checkedCheckboxes.each(function() {
       amount += parseFloat($(this).parent().find('em').text());
     });
@@ -33,7 +32,7 @@ $(function() {
   },
 
   calculateContribution = function() {
-    var amount = parseFloat($('#goal_amount').val()),
+    var amount = parseFloat($('#goal_amount').val() || $('#spending_goal_amount').val()),
         balance = parseFloat($('#goal_current_balance').text()),
         contribution = $('#goal_contribution').val();
 
@@ -46,8 +45,29 @@ $(function() {
     fields.each(function(elem) {
       elem.bind('change', function() {calculateContribution()})
     });
+  },
+
+  // calculation Amount for 'Save for an emergency' form
+  amountCalculation = function() {
+    var spending = $('#emergency_spending'),
+        spendingMonths = $('#date_spending');
+
+    selectedMonth = spendingMonths.find("option:selected").val();
+    spend = spending.val() * selectedMonth;
+    $('#spending_goal_amount').val(spend);
+    calculateContribution();
+  },
+
+  amountPresentation = function() {
+    var feildsBind = _([$('#emergency_spending'), $('#date_spending')]);
+
+    amountCalculation();
+    feildsBind.each(function(elem) {
+      elem.bind('change', function() {amountCalculation()})
+    });
   };
 
   presentContributionToUser();
   goalBalance();
+  amountPresentation();
 });

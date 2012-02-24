@@ -70,4 +70,6 @@ class GoalsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def select; end
 end
