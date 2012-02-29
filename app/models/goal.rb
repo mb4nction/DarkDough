@@ -4,9 +4,10 @@ class Goal < ActiveRecord::Base
 
   attr_accessible :title, :category, :amount, :contribution, :planned_date, :user_id, :account_ids
 
-  GOAL_PREDEFINED_CATEGORIES = ["Pay off Credit Card Debt", "Pay off Loans", "Save for an emergency",
-                                "Save for Retirement", "Buy a Home", "Buy a Car", "Save for College",
-                                "Take a Trip", "Improve my Home"]
+  GOAL_PREDEFINED_CATEGORIES = ["Family/Personal Vacation", "School Tuition", "Save for an emergency",
+                                "Mortgage Contribution", "Buy Home", "Build Home", "Investment Opportunity",
+                                "Safety Net", "Business Capital", "Wedding", "Anniversary/Birthday",
+                                "Charitable Giving", "Car", "House Rent", "Repay Debt", "Create Custom Goal"]
 
   GOAL_CATEGORIES = ["Babies and Kids", "Bill and Taxes", "Electronics", "Gifts and Shopping",
                      "Wedding", "Other", "Furniture"]
