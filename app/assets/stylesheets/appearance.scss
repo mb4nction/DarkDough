@@ -31,10 +31,10 @@ header {
           @include inline-block;
           color: #ccc;
           float: left;
-          
+
           i {
             @include inline-block;
-            padding: 7px 0;
+            padding: 5px;
           }
 
           a {
