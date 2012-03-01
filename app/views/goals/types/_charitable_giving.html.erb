@@ -1,9 +1,10 @@
 <h2>Charitable Giving</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "charitable_giving" } do |f| %>
+<%= form_for @goal do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "Charitable Giving" %>
+  <%= hidden_field_tag "type", "charitable_giving" %>
   <div class="field">
     <%= f.label :title, "Give it a title" %><br />
     <%= f.text_field :title %>

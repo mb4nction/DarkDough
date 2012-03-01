@@ -1,9 +1,10 @@
 <h2>Family/Personal Vacation partial</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "family_personal_vacation" } do |f| %>
+<%= form_for @goal do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "Family/Personal Vacation" %>
+  <%= hidden_field_tag "type", "family_personal_vacation" %>
   <div class="field">
     <%= f.label :title, "Give it a title" %><br />
     <%= f.text_field :title %>

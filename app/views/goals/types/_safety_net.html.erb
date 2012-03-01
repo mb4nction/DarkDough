@@ -1,9 +1,10 @@
 <h2>Safety Net</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "safety_net" } do |f| %>
+<%= form_for @goal do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "Safety Net" %>
+  <%= hidden_field_tag "type", "safety_net" %>
   <div class="field">
     <%= f.label :title, "Give it a title" %><br />
     <%= f.text_field :title %>
