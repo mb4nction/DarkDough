@@ -45,5 +45,7 @@ namespace :db do
                    :user_id => "1", :start => Time.now - 2.days)
     b10.created_at = Date.today - 1.month
     b10.save
+
+    Account.create!(:name => 'Test account', :status => 'active', :bank_id => '3', :amount => 1000, :user_id => 1)
   end
 end
