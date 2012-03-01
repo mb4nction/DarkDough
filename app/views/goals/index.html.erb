@@ -22,7 +22,7 @@
       <td><%= goal.planned_date %></td>
       <td><%= goal.contribution %></td>
       <td><%= link_to 'Show', goal %></td>
-      <td><%= edit_goal(goal) %></td>
+      <td><%= edit_goal(goal) unless goal.finished? %></td>
       <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
       <td class="finish_goal_td">
         <% if goal.can_be_finished? %>

@@ -1,3 +1,9 @@
+<% if @goal.finished? %>
+  <p>
+    <b>Status: finished</b>
+  </p>
+<% end %>
+
 <p>
   <b>Title:</b>
   <%= @goal.title %>
@@ -56,6 +62,8 @@
   </p>
 <% end %>
 
-<%= edit_goal(@goal) %>
-|
+<% unless @goal.finished? %>
+  <%= edit_goal(@goal) %>
+  |
+<% end %>
 <%= link_to 'Back', goals_path %>
