@@ -2,7 +2,7 @@ class Goal < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :accounts
 
-  attr_accessible :title, :category, :amount, :contribution, :planned_date, :user_id, :account_ids
+  attr_accessible :title, :category, :amount, :contribution, :planned_date, :user_id, :account_ids, :finished
 
   GOAL_PREDEFINED_CATEGORIES = ["Family/Personal Vacation", "School Tuition", "Save for an emergency",
                                 "Mortgage Contribution", "Buy Home", "Build Home", "Investment Opportunity",
