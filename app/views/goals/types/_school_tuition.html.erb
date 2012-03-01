@@ -3,7 +3,7 @@
 <%= form_for @goal, :url => { :action => :create, :type => "school_tuition" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
-  <%= hidden_field_tag "goal[category]", "School tuition" %>
+  <%= hidden_field_tag "goal[category]", "School Tuition" %>
   <div class="field">
     <%= f.label :title, "Give it a title" %><br />
     <%= f.text_field :title %>
