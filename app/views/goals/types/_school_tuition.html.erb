@@ -1,6 +1,6 @@
 <h2>School tuition</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "school_tuition"} do |f| %>
+<%= form_for @goal, :url => { :action => :create, :type => "school_tuition" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "School tuition" %>

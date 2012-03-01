@@ -23,4 +23,8 @@ class Goal < ActiveRecord::Base
   def todays_balance
     self.amount - available_balance
   end
+
+  def can_be_finished?
+    (todays_balance <= 0) && (self.finished == false)
+  end
 end

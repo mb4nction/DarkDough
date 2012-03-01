@@ -46,6 +46,12 @@
           </tr>
         <% end %>
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Total:</td>
+          <td><%= @goal.available_balance %></td>
+        </tr>
+      </tfoot>
     </table>
   </p>
 <% end %>

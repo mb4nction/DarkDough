@@ -1,6 +1,6 @@
 <h2>Business capital</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "business_capital"} do |f| %>
+<%= form_for @goal, :url => { :action => :create, :type => "business_capital" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "Business capital" %>

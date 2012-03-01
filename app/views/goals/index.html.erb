@@ -1,30 +1,38 @@
 <h1>Listing goals</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Category</th>
-    <th>Amount</th>
-    <th>Planned date</th>
-    <th>Contribution</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div id="goals_list">
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Planned date</th>
+      <th>Contribution</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @goals.each do |goal| %>
-  <tr>
-    <td><%= goal.title %></td>
-    <td><%= goal.category %></td>
-    <td><%= goal.amount %></td>
-    <td><%= goal.planned_date %></td>
-    <td><%= goal.contribution %></td>
-    <td><%= link_to 'Show', goal %></td>
-    <td><%= edit_goal(goal) %></td>
-    <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% @goals.each do |goal| %>
+    <tr>
+      <td><%= goal.title %></td>
+      <td><%= goal.category %></td>
+      <td><%= goal.amount %></td>
+      <td><%= goal.planned_date %></td>
+      <td><%= goal.contribution %></td>
+      <td><%= link_to 'Show', goal %></td>
+      <td><%= edit_goal(goal) %></td>
+      <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td class="finish_goal_td">
+        <% if goal.can_be_finished? %>
+          <%= render :partial => "finish_goal", :locals => { :goal => goal } %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
 
 <br />
 

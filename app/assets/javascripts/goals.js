@@ -65,9 +65,30 @@ $(function() {
     feildsBind.each(function(elem) {
       elem.bind('change', function() {amountCalculation()})
     });
+  },
+
+  // finish goal
+  finishGoal = function() {
+    var finishGoallinks = $('.finish_goal_td .finish_goal');
+
+    finishGoallinks.click(function(){
+      var form = $(this).parent(),
+          goalCheckbox = form.find('input[type=checkbox]');
+
+      if (!goalCheckbox.is(':checked')) {
+        goalCheckbox.click();
+      }
+      form.submit(function(){
+        $.get(this.action, $(this).serialize(), null, "script");
+      });
+
+      form.find('input[type=submit]').click();
+      return false;
+    });
   };
 
   presentContributionToUser();
   goalBalance();
   amountPresentation();
+  finishGoal();
 });

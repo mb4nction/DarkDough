@@ -1,6 +1,6 @@
 <h2>House Rent</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "house_rent"} do |f| %>
+<%= form_for @goal, :url => { :action => :create, :type => "house_rent" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "House Rent" %>

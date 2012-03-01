@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
   ACCOUNT_STATUSES = ['active', 'closed']
 
-  attr_accessible :name, :status, :bank_id
+  attr_accessible :name, :status, :bank_id, :user_id, :amount
 
   validates :name, :status, :presence => true
   validates :status, :inclusion => { :in => ACCOUNT_STATUSES }

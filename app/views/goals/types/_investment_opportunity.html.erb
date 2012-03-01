@@ -1,6 +1,6 @@
 <h2>Investmant opportunity</h2>
 
-<%= form_for @goal, :url => { :action => :create, :type => "investment_opportunity"} do |f| %>
+<%= form_for @goal, :url => { :action => :create, :type => "investment_opportunity" } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <%= hidden_field_tag "goal[category]", "Investmant opportunity" %>
