@@ -38,7 +38,17 @@ class TransactionsController < ApplicationController
     @transaction = current_user.transactions.build(params[:transaction])
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, :notice => 'Transaction was successfully created.' }
+        format.html do
+          if transaction_higher_budget?
+            budget = budget_by_transaction(@transaction)
+            UserMailer.budget_exceed(current_user, budget).deliver
+            redirect_to @transaction,
+                        :notice => 'Transaction was successfully created.',
+                        :alert => "Your budget with '#{@transaction.category}' category is exceeded."
+          else
+            redirect_to @transaction, :notice => 'Transaction was successfully created.'
+          end
+        end
         format.json { render :json => @transaction, :status => :created, :location => @transaction }
       else
         format.html { render :new }
@@ -52,7 +62,17 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
-        format.html { redirect_to @transaction, :notice => 'Transaction was successfully updated.' }
+        format.html do
+          if transaction_higher_budget?
+            budget = budget_by_transaction(@transaction)
+            UserMailer.budget_exceed(current_user, budget).deliver
+            redirect_to @transaction,
+                        :notice => 'Transaction was successfully updated.',
+                        :alert => "Your budget with '#{@transaction.category}' category is exceeded."
+          else
+            redirect_to @transaction, :notice => 'Transaction was successfully updated.'
+         end
+        end
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -75,6 +95,15 @@ class TransactionsController < ApplicationController
 
   def find_account
     redirect_to new_account_path unless current_user.accounts.any?
+  end
+
+  def budget_by_transaction(transaction)
+    current_user.budgets.find_by_category(transaction.category)
+  end
+
+  def transaction_higher_budget?
+    @transaction = Transaction.find params[:id]
+    budget_by_transaction(@transaction).amount < @transaction.amount
   end
 
   protected
