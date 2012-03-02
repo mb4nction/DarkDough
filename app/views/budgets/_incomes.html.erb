@@ -1,0 +1,24 @@
+<div id="incomes">
+  <h3>Income</h3>
+  <div class="amount">
+    $<%= current_user.transactions_sum_by_category("Income") %> so far of
+    $<%= @income_budgets.map(&:amount).sum %>
+  </div>
+
+  <%= link_to "Create a new income", new_budget_path(:category => 'Income'), :class => "new-budget" %>
+
+  <% if @income_budgets.any? %>
+    <div id="incomes-list">
+      <% @income_budgets.each do |income| %>
+        <div class="income item">
+          Income <%= link_to "edit", edit_budget_path(income, :category => income.category) %>
+          <div class="spent">
+            $<%= current_user.transactions_sum_by_category("Income") %> of
+            $<%= @income_budgets.map(&:amount).sum %>
+          </div>
+          <div class="progress"></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

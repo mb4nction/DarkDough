@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
   def transactions_categories
     self.transactions.map{ |transaction| transaction.category }.uniq!
   end
+
+  def spending_amount
+    transactions.spending_transactions.map(&:amount).sum
+  end
 end

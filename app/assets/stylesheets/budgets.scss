@@ -1,15 +1,46 @@
 @import 'mixins';
 
 .block {
-  #incomes, #spending, #goals {
+  #budgets_search_container { margin-bottom: 10px; }
+
+  #incomes, #spending {
     h3 {
-      @include inline-block;
-      width: 100px;
+      margin-bottom: 0;
+      font-weight: normal;
     }
 
-    h3 + p { @include inline-block;}
-    table { margin-left: 103px; }
-  }
+    .item {
+      margin-bottom: 10px;
 
-  #budgets_search_container { margin-bottom: 10px; }
+      &.income, &.spending {
+        .spent {
+          float: right;
+          margin-bottom: 5px;
+        }
+
+        .progress {
+          @include radius(3px);
+          height: 15px;
+          background-color: #eee;
+          border: 1px solid #ccc;
+          clear: right;
+        }
+      }
+    }
+
+    .amount { font-size: 13px; }
+
+    .new-budget {
+      @include radius(5px);
+      @include box-sizing;
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px dashed #e1dde6;
+      background-color: #fcfcfc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
 }

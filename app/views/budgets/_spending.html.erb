@@ -1,0 +1,25 @@
+<div id="spending">
+  <h3>Spending</h3>
+  <div class="amount">
+    $<%= current_user.spending_amount %> spent of
+    $<%= @spending_budgets.map(&:amount).sum %>
+  </div>
+
+  <%= link_to "Create a new budget", new_budget_path, :class => "new-budget" %>
+
+  <% if @spending_budgets.any? %>
+    <div id="spending-list">
+      <% @spending_budgets.each do |spending| %>
+        <div class="spending item">
+          <%= spending.category %>
+          <%= link_to "edit", edit_budget_path(spending, :category => spending.category) %>
+          <div class="spent">
+            $<%= current_user.transactions_sum_by_category(spending.category) %> of
+            $<%= spending.amount %>
+          </div>
+          <div class="progress"></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

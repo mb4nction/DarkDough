@@ -1,6 +1,6 @@
-<div class="block">
-  <h1>Budgets</h1>
+<h1>Budgets</h1>
 
+<div class="block">
   <div id="budgets_search_container">
     <%= form_tag budgets_path, :method => "get", :id => 'budgets_search' do %>
       <%= text_field_tag :budgets_search_start, params[:budgets_search_start],
@@ -13,34 +13,10 @@
 
   <br />
   <div id="result">
-    <%= render 'budgets' %>
+    <%= render 'incomes' %>
+    <%= render 'spending' %>
   </div>
 
-  <br />
-  <div id="goals">
-    <h3>Goals</h3>
-    <hr />
-    <p>
-      Goals comming soon...
-    </p>
-  </div>
-
-  <br />
-  <%= link_to "View all Budgets", list_budgets_path %> or <%= link_to 'Create New Budget', new_budget_path %>
+  <%= link_to "View all Budgets", list_budgets_path %> <i>&nbsp;or&nbsp;</i>
+  <%= link_to 'Create New Budget', new_budget_path %>
 </div>
-<br />
-<h3>Budgets totals</h3>
-<table>
-  <tr>
-    <th>Category:</th>
-    <th>Sum by transactions:</th>
-    <th>Total:</th>
-  </tr>
-  <% @budgets.each do |budget| %>
-  <tr>
-    <td><%= budget.category %></td>
-    <td><%= current_user.transactions_sum_by_category(budget.category) %></td>
-    <td><%= budget.amount - current_user.transactions_sum_by_category(budget.category) %></td>
-  </tr>
-  <% end %>
-</table>

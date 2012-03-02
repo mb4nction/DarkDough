@@ -6,4 +6,7 @@ class Transaction < ActiveRecord::Base
   validates :amount, :numericality => true
 
   CATEGORIES = YAML.load_file("#{Rails.root}/config/categories.yml")
+
+  scope :transactions_by_category, lambda { |q| {:conditions => ["category like :q", {:q => "%#{q}%"}]} }
+  scope :spending_transactions, lambda { where("category != ?", "income") }
 end
