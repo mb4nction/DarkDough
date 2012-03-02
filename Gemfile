@@ -20,8 +20,7 @@ group :development do
   gem "rspec-rails", "2.6.1"
   gem 'webrat', '0.7.1'
   gem 'capybara', '1.1.2'
-  gem 'ruby-debug'
-end
+  end
 
 group :test do
   gem "rspec-rails", "2.6.1"
