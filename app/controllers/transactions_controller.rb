@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         format.html do
-          if transaction_higher_budget?
+          if transaction_higher_budget?(@transaction)
             budget = budget_by_transaction(@transaction)
             UserMailer.budget_exceed(current_user, budget).deliver
             redirect_to @transaction,
@@ -63,7 +63,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
         format.html do
-          if transaction_higher_budget?
+          if transaction_higher_budget?(@transaction)
             budget = budget_by_transaction(@transaction)
             UserMailer.budget_exceed(current_user, budget).deliver
             redirect_to @transaction,
@@ -101,8 +101,7 @@ class TransactionsController < ApplicationController
     current_user.budgets.find_by_category(transaction.category)
   end
 
-  def transaction_higher_budget?
-    @transaction = Transaction.find params[:id]
+  def transaction_higher_budget?(transaction)
     budget_by_transaction(@transaction).amount < @transaction.amount
   end
 
