@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   def budget_exceed(user, budget)
     @user = user
     @budget = budget
-    mail :to => "ek@ek.anahoret.com",
+    mail :to => user.email,
          :from => "pfm.sup.psodhfoih2904@gmail.com",
          :content_type => 'text/html',
          :subject => "Budget 24-7 | Your budget is exceeded"
