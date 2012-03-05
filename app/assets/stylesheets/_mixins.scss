@@ -16,6 +16,12 @@
   box-shadow: $left $right $distance $color;
 }
 
+@mixin single-box-shadow($left, $right, $distance, $spread, $color) {
+  -moz-box-shadow: $left $right $distance $spread $color;
+  -webkit-box-shadow: $left $right $distance $spread $color;
+  box-shadow: $left $right $distance $spread $color;
+}
+
 @mixin box-sizing($val: border-box) {
   -webkit-box-sizing: $val;
   -moz-box-sizing: $val;
