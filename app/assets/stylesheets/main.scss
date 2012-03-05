@@ -59,6 +59,15 @@ table {
   background: white;
 }
 
+menu, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
 /* chosen */
 .chosen { min-width: 100px; }
 

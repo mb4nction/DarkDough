@@ -24,6 +24,7 @@ Pfm::Application.routes.draw do
     end
   end
   resources :transactions
+  resources :trends, :only => :index
 
   match '/home' => 'static#home'
   match '/about' => 'static#about'

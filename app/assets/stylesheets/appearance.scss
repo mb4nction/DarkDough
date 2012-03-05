@@ -23,10 +23,6 @@ header {
       margin: 15px 0;
 
       .user-menu {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-
         li {
           @include inline-block;
           color: #ccc;

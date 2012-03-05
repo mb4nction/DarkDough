@@ -46,7 +46,7 @@ describe TransactionsController do
     describe "with valid params" do
       it "creates a new Transaction" do
         expect {
-          post :create, :transaction => valid_attributes
+          post :create, :transaction => @attr
         }.to change(Transaction, :count).by(1)
       end
 
