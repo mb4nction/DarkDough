@@ -17,6 +17,38 @@
   <div id="graph">
     <%= render :partial => 'trends_menu' %>
     <%= image_tag "bubbles(removed).png", :title => "title", :class => "class" %>
+
+    <div id="spending_container" class="bubble-info active">
+      Spending transactions<br />
+      <% @spending_transactions.each do |spending| %>
+        <%= spending.category %> |
+        <%= percentage(spending.amount / current_user.spending_amount) %>%<br />
+      <% end %>
+    </div>
+
+    <div id="income_container" class="bubble-info">
+      Income transactions<br />
+      <% @income_transactions.each do |income| %>
+        <%= income.category %> | <%= income.amount %><br />
+      <% end %>
+    </div>
+
+    <div id="net_income_container" class="bubble-info">
+      Your income $<%= current_user.total_income %><br />
+      Your spending $<%= current_user.spending_amount %>
+    </div>
+
+    <div id="assets_container" class="bubble-info">
+      No assets now
+    </div>
+
+    <div id="debts_container" class="bubble-info">
+      No debts now
+    </div>
+
+    <div id="net_worth_container" class="bubble-info">
+      No Net Worth now
+    </div>
   </div>
 
   <div id="report">
@@ -24,19 +56,23 @@
 
     <div id="base_report">
       <p>
-        $610.58<span>at Saks</span>
+
+        $<%= @top_merchant[1] %><span> at <%= @top_merchant[0] %></span>
         <span class="info">Top Merchant</span>
       </p>
       <p>
-        3<span>at Chipotle</span>
+
+        <%= @most_purchased[1] %><span> at <%= @most_purchased[0] %></span>
         <span class="info">Most Purchases</span>
       </p>
       <p>
-        $610.58<span>Saks</span>
+        $<%= @most_expensive.amount %><span> at <%= @most_expensive.description %></span>
         <span class="info">Most Expensive per Visit</span>
       </p>
     </div>
-
+    <!--
+      TODO shoul be calculated
+    -->
     <%= render :partial => 'sub_category_data' %>
 
   </div>

@@ -7,6 +7,10 @@ class Transaction < ActiveRecord::Base
 
   CATEGORIES = YAML.load_file("#{Rails.root}/config/categories.yml")
 
-  scope :transactions_by_category, lambda { |q| {:conditions => ["category like :q", {:q => "%#{q}%"}]} }
+  scope :by_category, lambda { |q| {:conditions => ["category like :q", {:q => "%#{q}%"}]} }
   scope :spending_transactions, lambda { where("category != ?", "income") }
+
+  def amounts_sum(category)
+    by_category(category).map(&:amount).sum
+  end
 end

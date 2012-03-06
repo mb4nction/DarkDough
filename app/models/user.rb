@@ -39,4 +39,40 @@ class User < ActiveRecord::Base
   def spending_amount
     transactions.spending_transactions.map(&:amount).sum
   end
+
+  def most_purchased
+    most_category = ''
+    elems = 0
+    transactions_categories.each do |category|
+      if transactions.by_category(category).count > elems
+        most_category = category
+        elems = transactions.by_category(category).count
+      end
+    end
+    return most_category, elems
+  end
+
+  def top_merchant
+    top_category = ''
+    amount = 0
+    (transactions_categories-['Income']).each do |category|
+      if transactions.by_category(category).map(&:amount).sum > amount
+        top_category = category
+        amount = transactions.by_category(category).map(&:amount).sum
+      end
+    end
+    return top_category, amount.to_f
+  end
+
+  def total_income
+    transactions_sum_by_category("Income")
+  end
+
+  def spending
+
+  end
+
+  def income
+
+  end
 end
