@@ -18,4 +18,26 @@
     <%= render :partial => 'trends_menu' %>
     <%= image_tag "bubbles(removed).png", :title => "title", :class => "class" %>
   </div>
+
+  <div id="report">
+    <h4>Report</h4>
+
+    <div id="base_report">
+      <p>
+        $610.58<span>at Saks</span>
+        <span class="info">Top Merchant</span>
+      </p>
+      <p>
+        3<span>at Chipotle</span>
+        <span class="info">Most Purchases</span>
+      </p>
+      <p>
+        $610.58<span>Saks</span>
+        <span class="info">Most Expensive per Visit</span>
+      </p>
+    </div>
+
+    <%= render :partial => 'sub_category_data' %>
+
+  </div>
 </div>

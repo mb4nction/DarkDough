@@ -4,6 +4,19 @@
   font-family: Helvetica,Arial,sans-serif;
   color: #3e4050;
 
+  h4 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  a {
+    color: #29a3c7;
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  > div { margin-bottom: 20px; }
+
   #trends_calendar {
     #period { font-size: 18px; }
 
@@ -13,21 +26,15 @@
       a {
         @include inline-block;
         margin: 20px 10px 10px;
-        text-decoration: none;
-        font-size: 12px;
-        color: #29a3c7;
+
       }
     }
   }
 
   #graph {
-    h4 {
-      font-size: 18px;
-      font-weight: normal;
-    }
-
     menu {
       @include inline-block;
+      width: 280px;
       vertical-align: top;
 
       ul {
@@ -77,6 +84,78 @@
               width: 13px;
               height: 20px;
               background: image-url('ico/trends_menu_corner.png') 100% center no-repeat;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #report {
+    > div {
+      @include inline-block;
+      vertical-align: top;
+    }
+
+    #base_report {
+      width: 280px;
+      font-size: 14px;
+      font-weight: bold;
+
+      span {
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      .info {
+        display: block;
+        margin-top: 2px;
+        font-size: 11px;
+        color: #9a9999;
+        font-weight: normal;
+      }
+    }
+
+    #sub_category_data {
+      table {
+        border: none;
+        font-size: 12px;
+        border-collapse: collapse;
+        padding: 0;
+        margin: 0;
+
+        td, th {
+          border: none;
+          text-align: left;
+          padding: 5px 10px 5px 0;
+        }
+
+        th {
+          font-size: 11px;
+          font-weight: normal;
+          color: #9a9999;
+        }
+
+        tr {
+          border-top: 1px dashed #dfdee1;
+
+          &:first-child { border: none; }
+
+          &.show-all td {
+            padding: 15px 0;
+          }
+        }
+
+        tfoot {
+          border-top: 1px solid #9e9fa7;
+
+          td {
+            padding-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+
+            &:first-child {
+              font-weight: normal;
             }
           }
         }
