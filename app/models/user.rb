@@ -67,12 +67,4 @@ class User < ActiveRecord::Base
   def total_income
     transactions_sum_by_category("Income")
   end
-
-  def spending
-
-  end
-
-  def income
-
-  end
 end

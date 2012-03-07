@@ -20,17 +20,15 @@
 
     <div id="spending_container" class="bubble-info active">
       Spending transactions<br />
-      <% @spending_transactions.each do |spending| %>
-        <%= spending.category %> |
-        <%= percentage(spending.amount / current_user.spending_amount) %>%<br />
+      <% categorized_spending(@spending_transactions, current_user).each do |spending| %>
+        <%= spending[0] %> |
+        <%= percentage(spending[1] / current_user.spending_amount) %>%<br />
       <% end %>
     </div>
 
     <div id="income_container" class="bubble-info">
-      Income transactions<br />
-      <% @income_transactions.each do |income| %>
-        <%= income.category %> | <%= income.amount %><br />
-      <% end %>
+      <%= categorized_income(@income_transactions)[0] %> |
+      <%= categorized_income(@income_transactions)[1] %>
     </div>
 
     <div id="net_income_container" class="bubble-info">
