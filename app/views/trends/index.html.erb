@@ -11,6 +11,9 @@
     </div>
     <div id="calendar">
       <%= image_tag "calendar(remove).png", :style => "width:920px;" %>
+      Timeline <small><i>in process</i></small>:
+      <div class="tl-months"></div>
+      <div id="timeline"></div>
     </div>
   </div>
 
@@ -18,7 +21,7 @@
     <%= render :partial => 'trends_menu' %>
     <%= image_tag "bubbles(removed).png", :title => "title", :class => "class" %>
 
-    <div id="spending_container" class="bubble-info active">
+    <div class="spending_container bubble-info active">
       Spending transactions<br />
       <% categorized_spending(@spending_transactions, current_user).each do |spending| %>
         <%= spending[0] %> |
@@ -26,52 +29,32 @@
       <% end %>
     </div>
 
-    <div id="income_container" class="bubble-info">
+    <div class="income_container bubble-info">
       <%= categorized_income(@income_transactions)[0] %> |
       <%= categorized_income(@income_transactions)[1] %>
     </div>
 
-    <div id="net_income_container" class="bubble-info">
-      Your income $<%= current_user.total_income %><br />
-      Your spending $<%= current_user.spending_amount %>
+    <div class="net_income_container bubble-info">
+      Your income $<%= @income_amount %><br />
+      Your spending $<%= @spending_amount %>
     </div>
 
-    <div id="assets_container" class="bubble-info">
+    <div class="assets_container bubble-info">
       No assets now
     </div>
 
-    <div id="debts_container" class="bubble-info">
+    <div class="debts_container bubble-info">
       No debts now
     </div>
 
-    <div id="net_worth_container" class="bubble-info">
+    <div class="net_worth_container bubble-info">
       No Net Worth now
     </div>
   </div>
 
   <div id="report">
     <h4>Report</h4>
-
-    <div id="base_report">
-      <p>
-
-        $<%= @top_merchant[1] %><span> at <%= @top_merchant[0] %></span>
-        <span class="info">Top Merchant</span>
-      </p>
-      <p>
-
-        <%= @most_purchased[1] %><span> at <%= @most_purchased[0] %></span>
-        <span class="info">Most Purchases</span>
-      </p>
-      <p>
-        $<%= @most_expensive.amount %><span> at <%= @most_expensive.description %></span>
-        <span class="info">Most Expensive per Visit</span>
-      </p>
-    </div>
-    <!--
-      TODO shoul be calculated
-    -->
+    <%= render :partial => 'base_report' %>
     <%= render :partial => 'sub_category_data' %>
-
   </div>
 </div>

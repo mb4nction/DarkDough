@@ -57,7 +57,7 @@
       }
 
       &#main_filter {
-        @include single-box-shadow(3px, 0, 2px, -2px, rgba(0,0,0,.1));
+        @include box-shadow(3px 0 2px -2px rgba(0,0,0,.1));
         margin-right: 28px;
 
         &:hover li.active {
@@ -96,6 +96,12 @@
   > div {
     @include inline-block;
     vertical-align: top;
+
+    &.bubble-info {
+      display: none;
+
+      &.active { @include inline-block; }
+    }
   }
 
   #base_report {
@@ -142,9 +148,7 @@
 
         &:first-child { border: none; }
 
-        &.show-all td {
-          padding: 15px 0;
-        }
+        &.show-all td { padding: 15px 0; }
       }
 
       tfoot {
@@ -164,11 +168,43 @@
   }
 }
 
-
 .bubble-info {
   display: none;
 
-  &.active {
-    display: block;
+  &.active { display: block; }
+}
+
+#timeline {
+  @include radius(0);
+  position: relative;
+  height: 50px;
+  background: #d1d2d5;
+
+  .ui-slider-horizontal { height: 50px; }
+  .ui-widget-header {
+    @include radius(2px);
+    @include gradient(#fff, #eee);
+    @include box-shadow(0 0 2px  rgba(0,0,0,.3));
+    top: -4px;
+    height: 50px;
+    border-top: 4px solid #9d86bf;
+    border: 4px solid #9d86bf;
+    border-bottom: 4px solid #9078b3;
+  }
+
+  .ui-slider-handle {
+    @include radius(2px);
+    @include box-shadow(0 0 2px rgba(0,0,0,.3));
+    top: -4px;
+    height: 58px;
+    width: 13px;
+    border: none;
+    background: #9d86bf image-url('bg/timeline_corner.png') center center no-repeat;
+    outline: none;
+    z-index: 1;
+
+    + .ui-slider-handle {
+      margin-left: 0;
+    }
   }
 }

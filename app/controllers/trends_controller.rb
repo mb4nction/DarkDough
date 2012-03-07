@@ -8,5 +8,7 @@ class TrendsController < ApplicationController
 
     @spending_transactions = current_user.transactions.spending_transactions
     @income_transactions = current_user.transactions.by_category("Income")
+    @income_amount = current_user.total_income
+    @spending_amount = current_user.spending_amount
   end
 end
