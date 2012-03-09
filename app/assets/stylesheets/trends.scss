@@ -16,6 +16,8 @@
   }
 
   > div { margin-bottom: 20px; }
+
+  #trends_statistic { @include inline-block; }
 }
 
 #trends_calendar {
@@ -27,7 +29,6 @@
     a {
       @include inline-block;
       margin: 20px 10px 10px;
-
     }
   }
 }
@@ -171,7 +172,7 @@
 .bubble-info {
   display: none;
 
-  &.active { display: block; }
+  &.active { @include inline-block; }
 }
 
 #timeline {

@@ -2,7 +2,7 @@
 
 <div class="block" id="trends">
   <div id="trends_calendar">
-    <div id="period">November - December, 2011</div>
+    <div class="tl-months"></div>
     <div class="predefined">
       <%= link_to "This month", '#' %>
       <%= link_to "Last month", '#' %>
@@ -10,51 +10,28 @@
       <%= link_to "All time", '#' %>
     </div>
     <div id="calendar">
+      <div id="timeline"></div><br />
       <%= image_tag "calendar(remove).png", :style => "width:920px;" %>
-      Timeline <small><i>in process</i></small>:
-      <div class="tl-months"></div>
-      <div id="timeline"></div>
+      <%= form_tag trends_path, :method => "get", :id => "trends_search" do %>
+        <%= text_field_tag :trends_start, params[:trends_start] %>
+        <%= text_field_tag :trends_end, params[:trends_end] %>
+        <%= submit_tag "Search", :id => "trends_search" %>
+      <% end %>
     </div>
   </div>
 
   <div id="graph">
     <%= render :partial => 'trends_menu' %>
-    <%= image_tag "bubbles(removed).png", :title => "title", :class => "class" %>
+    <%#= image_tag "bubbles(removed).png", :title => "title", :class => "class" %>
 
-    <div class="spending_container bubble-info active">
-      Spending transactions<br />
-      <% categorized_spending(@spending_transactions, current_user).each do |spending| %>
-        <%= spending[0] %> |
-        <%= percentage(spending[1] / current_user.spending_amount) %>%<br />
-      <% end %>
-    </div>
-
-    <div class="income_container bubble-info">
-      <%= categorized_income(@income_transactions)[0] %> |
-      <%= categorized_income(@income_transactions)[1] %>
-    </div>
-
-    <div class="net_income_container bubble-info">
-      Your income $<%= @income_amount %><br />
-      Your spending $<%= @spending_amount %>
-    </div>
-
-    <div class="assets_container bubble-info">
-      No assets now
-    </div>
-
-    <div class="debts_container bubble-info">
-      No debts now
-    </div>
-
-    <div class="net_worth_container bubble-info">
-      No Net Worth now
+    <div id="trends_statistic" class="">
+      <%= render :partial => 'trends' %>
     </div>
   </div>
 
   <div id="report">
     <h4>Report</h4>
     <%= render :partial => 'base_report' %>
-    <%= render :partial => 'sub_category_data' %>
+    <%#= render :partial => 'sub_category_data' %>
   </div>
 </div>

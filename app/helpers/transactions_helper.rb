@@ -4,17 +4,17 @@ module TransactionsHelper
   end
 
   def categorized_income(transactions)
-    income = ['Income', transactions.by_category("Income").map(&:amount).sum.to_f]
+    income = ['Income', transactions.find_all{|tr| tr.category == "Income"}.map(&:amount).sum.to_f]
   end
 
-  def transactions_categories(user)
-    user.transactions.map{ |transaction| transaction.category }.uniq!
+  def transactions_categories(transactions)
+    transactions.map{ |transaction| transaction.category }.uniq!
   end
 
-  def categorized_spending(transactions, user)
+  def categorized_spending(transactions)
     spending = []
-    (transactions_categories(user)-['Income']).each do |category|
-      spending << [category, transactions.by_category(category).map(&:amount).sum.to_f]
+    (transactions_categories(transactions)-['Income']).each do |category|
+      spending << [category, transactions.find_all{|tr| tr.category == category}.map(&:amount).sum.to_f]
     end
     spending = Hash[*spending.flatten!]
   end
