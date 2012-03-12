@@ -36,8 +36,8 @@ $(function(){
     values: [11, 12],
     animate: true,
     create: function() {
-      $('.tl-months').text(full_months[$('#timeline').slider('values', 0) + 1] + " - " + full_months[$('#timeline').slider('values', 1)]);
       createTimeline();
+      $('.tl-months').text(full_months[curr_month -1]  + " - " + full_months[curr_month -1]);
       $('#trends_start').val(curr_year + "-" + curr_month + "-01");
       $('#trends_end').val(curr_year + "-" + next_month + "-01");
       // highlightSelectedPeriod();
@@ -56,10 +56,10 @@ $(function(){
   });
 
   var setPeriod = function(ui) {
-    var first_selected = timelineHash[ui.values[0] +1],
-        last_selected = timelineHash[ui.values[1] ]+1;
+    var first_selected = timelineHash[ui.values[0] + 1],
+        last_selected = timelineHash[ui.values[1] ] + 1;
 
-    $('.tl-months').text(full_months[ui.values[0] + 1] + ' - ' + full_months[ui.values[1]]);
+    $('.tl-months').text(full_months[first_selected - 1] + ' - ' + full_months[last_selected - 2]);
     $('#trends_start').val(curr_year + "-" + first_selected + "-01");
     $('#trends_end').val(curr_year + "-" + last_selected + "-01");
     $('#trends_search').submit();

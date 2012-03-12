@@ -11,7 +11,7 @@
     </div>
     <div id="calendar">
       <div id="timeline"></div><br />
-      <%= image_tag "calendar(remove).png", :style => "width:920px;" %>
+      <%#= image_tag "calendar(remove).png", :style => "width:920px;" %>
       <%= form_tag trends_path, :method => "get", :id => "trends_search" do %>
         <%= text_field_tag :trends_start, params[:trends_start] %>
         <%= text_field_tag :trends_end, params[:trends_end] %>
