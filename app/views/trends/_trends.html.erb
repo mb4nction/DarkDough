@@ -1,8 +1,12 @@
 <div class="spending_container bubble-info active">
-  Spending transactions<br />
-  <% categorized_spending(@spending_transactions).each do |spending| %>
-    <%= spending[0] %> |
-    <%= percentage(spending[1] / @spending_transactions.map(&:amount).sum.to_f) %>%<br />
+  <% if @spending_transactions.any? %>
+    Spending transactions<br />
+    <% categorized_spending(@spending_transactions).each do |key, value| %>
+      <%= key %> |
+      <%= sprintf("%.2f", (value / @spending_transactions.map(&:amount).sum.to_f)).to_f %>%<br />
+    <% end %>
+  <% else %>
+    You haven't spending transactions in this period
   <% end %>
 </div>
 

@@ -8,7 +8,7 @@ module TransactionsHelper
   end
 
   def transactions_categories(transactions)
-    transactions.map{ |transaction| transaction.category }.uniq!
+    transactions.map{ |transaction| transaction.category }.uniq
   end
 
   def categorized_spending(transactions)

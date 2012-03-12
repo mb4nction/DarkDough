@@ -179,12 +179,12 @@
   @include radius(0);
   position: relative;
   height: 50px;
-  background: #d1d2d5;
+  background: #656673;
 
   .ui-slider-horizontal { height: 50px; }
   .ui-widget-header {
     @include radius(2px);
-    @include gradient(#fff, #eee);
+    background: transparent;
     @include box-shadow(0 0 2px  rgba(0,0,0,.3));
     top: -4px;
     height: 50px;
@@ -204,8 +204,27 @@
     outline: none;
     z-index: 1;
 
-    + .ui-slider-handle {
-      margin-left: 0;
+    + .ui-slider-handle { margin-left: 0; }
+  }
+}
+
+#calendar {
+  .timeline-month {
+    @include inline-block;
+    @include box-sizing;
+    padding: 5px 18px;
+    width: 8.33%;
+    height: 52px;
+    background: #656673;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+
+    &.selected {
+      @include gradient(#fff, #eee);
+      text-shadow: 1px 1px 1px #fff;
+      color: #000;
     }
   }
 }
