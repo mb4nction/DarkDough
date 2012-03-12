@@ -212,9 +212,11 @@
   .timeline-month {
     @include inline-block;
     @include box-sizing;
+    position: relative;
+    top: -2px;
     padding: 5px 18px;
     width: 8.33%;
-    height: 52px;
+    height: 50px;
     background: #656673;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 11px;
