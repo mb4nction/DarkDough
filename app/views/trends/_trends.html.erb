@@ -1,4 +1,48 @@
+<script type="text/javascript+protovis">
+  /* Produce a flat hierarchy of the Flare classes. */
+  var classes = pv.nodes(pv.flatten(flare).leaf(Number).array());
+  classes.slice(1).forEach(function(d) {
+    d.nodeName = "flare." + d.nodeValue.keys.join(".");
+    var i = d.nodeName.lastIndexOf(".");
+    d.className = d.nodeName.substring(i + 1);
+    d.packageName = d.nodeName.substring(0, i);
+    d.nodeValue = d.nodeValue.value;
+  });
+
+  /* For pretty number formatting. */
+  var format = pv.Format.number();
+
+  var vis = new pv.Panel()
+      .width(400)
+      .height(400);
+
+  vis.add(pv.Layout.Pack)
+      .top(-50)
+      .bottom(-50)
+      .nodes(classes)
+      .size(function(d) d.nodeValue)
+      .spacing(0)
+      .order(null)
+    .node.add(pv.Dot)
+      .fillStyle(pv.Colors.category20().by(function(d) d.packageName))
+      .strokeStyle(function() this.fillStyle().darker())
+      .visible(function(d) d.parentNode)
+      .title(function(d) d.nodeName + ": " + format(d.nodeValue))
+    .anchor("center").add(pv.Label)
+      .text(function(d) d.className.substring(0, Math.sqrt(d.nodeValue) >> 4));
+
+  vis.render();
+</script>
+
 <div class="spending_container bubble-info active">
+  <div>
+    <script type='text/javascript'>
+      var flare = { <%= render :partial => 'spending.json' %> };
+    </script>
+
+  </div>
+
+
   <% if @spending_transactions.any? %>
     Spending transactions<br />
     <% categorized_spending(@spending_transactions).each do |key, value| %>
@@ -6,7 +50,7 @@
       <%= sprintf("%.2f", (value / @spending_transactions.map(&:amount).sum.to_f)).to_f %>%<br />
     <% end %>
   <% else %>
-    You haven't spending transactions in this period
+    You do not have any spending transactions in this period.
   <% end %>
 </div>
 
