@@ -12,60 +12,10 @@ $(function(){
       next_month = curr_month + 1,
       curr_year = current_date.getFullYear();
 
-  var createTimeline = function() {
-      var container = $('#timeline'),
-          cal = _.template("<div class='timeline-month <%= curs %>'><%= month %></div>"),
-          today = new Date(),
-          aMonth = today.getMonth(),
-          i;
-          timelineHash = {};
-
-      for (i=11; i>=0; i--) {
-        container.prepend(cal({ month: months[aMonth], curs: months[aMonth] }));
-        timelineHash[i] = revert_months[months[aMonth]];
-        aMonth--;
-        if (aMonth < 0) { aMonth = 11; }
-      }
-    };
-
-  $('#timeline').slider({
-    range: true,
-    min: 0,
-    max: 12,
-    step: 1,
-    values: [11, 12],
-    animate: true,
-    create: function() {
-      createTimeline();
-      $('.tl-months').text(full_months[curr_month -1]  + " - " + full_months[curr_month -1]);
-      $('#trends_start').val(curr_year + "-" + curr_month + "-01");
-      $('#trends_end').val(curr_year + "-" + next_month + "-01");
-      $('.timeline-month:last').addClass('selected');
-    },
-    stop: function(event, ui) { setPeriod(ui); },
-    slide: function(event, ui) { highlightSelectedPeriod(ui); }
-  });
-
   $('#trends_search').submit(function(){
     $.get(this.action, $(this).serialize(), null, "script");
     return false;
   });
-
-  var setPeriod = function(ui) {
-    var first_selected = timelineHash[ui.values[0] + 1],
-        last_selected = timelineHash[ui.values[1] + 1];
-
-    if (timelineHash[ui.values[0] + 1] == 0) { var first_selected = 12 };
-    if (ui.values[0] + 1 == 12) { var first_selected = 3 };
-    if (timelineHash[ui.values[1] + 1] == 0) { var last_selected = 12 };
-    if (ui.values[1] + 1 == 12) { var last_selected = 3 };
-    if (ui.values[1] + 1 == 13) { var last_selected = 4 };
-    $('.tl-months').text(full_months[first_selected - 1] + ' - ' + full_months[last_selected - 2]);
-
-    $('#trends_start').val(curr_year + "-" + first_selected + "-01");
-    $('#trends_end').val(curr_year + "-" + last_selected + "-01");
-    $('#trends_search').submit();
-  },
 
   subcategoryFilterLink = function() {
     var links = $('#sub_filter li');
@@ -93,21 +43,81 @@ $(function(){
     }))
   },
 
-  highlightSelectedPeriod = function(ui) {
-    var start = months[timelineHash[ui.values[0]]],
-        end = months[timelineHash[ui.values[1]] - 1];
+  createTimeline = function() {
+    var timelineContainer = $('#timeline'),
+        template = _.template("<div class='timeline-month <%= month_class %>' id='<%= month_id %>'><%= month %></div>"),
+        today = new Date(),
+        aMonth = today.getMonth();
+        // Global variables
+        timelineHashForStart = {};
+        timelineHashForEnd = {};
+    for (var i=11; i>=0; i--) {
+      var new_month_start = today.getMonth() + 1,
+          new_month_end = today.getMonth() + 2;
 
-    if ((timelineHash[ui.values[1]]) == 0 ) {
-      var end = months[11]
-    };
 
-    $('#timeline div').removeClass('selected');
-    $('#timeline div.' + start).addClass('selected');
-    $('#timeline div.' + end).addClass('selected');
-    if (start !== end) {
-      $('#timeline div.' + start).nextUntil('#timeline div.' + end).addClass('selected');
-    };
+      timelineContainer.prepend(template({
+        month_class: months[aMonth],
+        month: months[aMonth],
+        month_id: (today.getFullYear() + '-' + new_month_start + '-01')
+      }));
+      timelineHashForStart[i] = (today.getFullYear() + '-' + new_month_start + '-01');
+      if (new_month_end == 13) {
+        timelineHashForEnd[i] = ((today.getFullYear() + 1) + '-01' + '-01');
+      } else {
+        timelineHashForEnd[i] = (today.getFullYear() + '-' + new_month_end + '-01');
+      }
 
+      aMonth--;
+      today.setMonth(today.getMonth() - 1);
+      if (aMonth < 0) { aMonth = 11; }
+    }
+  };
+
+  $('#timeline').slider({
+    min: 0,
+    max: 12,
+    values: [11,12],
+    range: true,
+    animate: true,
+    create: function(event, ui) {
+      createTimeline();
+      $('.tl-months').text(full_months[curr_month -1]  + " - " + full_months[curr_month -1]);
+      $('#trends_start').val(curr_year + "-" + curr_month + "-01");
+      $('#trends_end').val(curr_year + "-" + next_month + "-01");
+      $('.timeline-month:last').addClass('selected');
+    },
+    slide: function(event, ui){
+      highlightPeriod(ui);
+    },
+    stop: function(event, ui) {
+      setRange(ui);
+    }
+  });
+
+  var setRange = function(ui) {
+    var rangeStart = timelineHashForStart[ui.values[0]],
+        rangeEnd = timelineHashForEnd[ui.values[1] - 1],
+        startField = $('#trends_start'),
+        endField = $('#trends_end');
+    startField.val(rangeStart);
+    endField.val(rangeEnd);
+    $('#trends_search').submit();
+  },
+
+  highlightPeriod = function(ui) {
+    var elems = $('#timeline div'),
+        startElem = timelineHashForStart[ui.values[0]],
+        endElem =  timelineHashForStart[ui.values[1] - 1],
+        today = new Date(),
+        new_month_end = today.getMonth() + 1;
+
+    elems.removeClass('selected');
+    $('#' + startElem).addClass('selected');
+    $('#' + endElem).addClass('selected');
+    if (startElem !== endElem) {
+      $('#' + startElem).nextUntil('#' + endElem).addClass('selected');
+    }
   };
 
   subcategoryFilterLink();
