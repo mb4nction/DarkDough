@@ -1,10 +1,8 @@
 $(function(){
   var months = { 0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun',
                  6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec' },
-      revert_months = { 'Jan': 0, 'Feb': 1 , 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
-                 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 },
-      full_months = { 0: 'January', 1: 'February', 2: 'March', 3: 'April', 4: 'May', 5: 'Jun',
-                      6: 'July', 7: 'August', 8: 'September', 9: 'October', 10: 'November', 11: 'December'},
+      full_months = { 'Jan': 'January', 'Feb': 'February', 'Mar': 'March', 'Apr': 'April', 'May': 'May', 'Jun': 'Jun',
+                      'Jul': 'July', 'Aug': 'August', 'Sep': 'September', 'Oct': 'October', 'Nov': 'November', 'Dec': 'December'},
 
       current_date = new Date(),
       curr_date = current_date.getDate(),
@@ -43,6 +41,7 @@ $(function(){
     }))
   },
 
+  // Creating the Timeline what finished by the current month
   createTimeline = function() {
     var timelineContainer = $('#timeline'),
         template = _.template("<div class='timeline-month <%= month_class %>' id='<%= month_id %>'><%= month %></div>"),
@@ -53,8 +52,8 @@ $(function(){
         timelineHashForEnd = {};
     for (var i=11; i>=0; i--) {
       var new_month_start = today.getMonth() + 1,
-          new_month_end = today.getMonth() + 2;
-
+          new_month_end = today.getMonth() + 2,
+          start_year_mark;
 
       timelineContainer.prepend(template({
         month_class: months[aMonth],
@@ -67,11 +66,16 @@ $(function(){
       } else {
         timelineHashForEnd[i] = (today.getFullYear() + '-' + new_month_end + '-01');
       }
-
       aMonth--;
       today.setMonth(today.getMonth() - 1);
       if (aMonth < 0) { aMonth = 11; }
     }
+
+    timelindeHashOfMonths = {};
+    var cont = $('#timeline div');
+    for (var i = 0; i < 12; i++){
+      timelindeHashOfMonths[i] = $('#timeline div')[i].className.split(/\s+/)[1];
+    };
   };
 
   $('#timeline').slider({
@@ -82,15 +86,16 @@ $(function(){
     animate: true,
     create: function(event, ui) {
       createTimeline();
-      $('.tl-months').text(full_months[curr_month -1]  + " - " + full_months[curr_month -1]);
+      $('.tl-months').text(full_months[timelindeHashOfMonths[11]]  + " - " + full_months[timelindeHashOfMonths[11]]);
       $('#trends_start').val(curr_year + "-" + curr_month + "-01");
       $('#trends_end').val(curr_year + "-" + next_month + "-01");
       $('.timeline-month:last').addClass('selected');
     },
     slide: function(event, ui){
       highlightPeriod(ui);
+      showFullMonthsRange(ui);
     },
-    stop: function(event, ui) {
+    change: function(event, ui) {
       setRange(ui);
     }
   });
@@ -118,8 +123,56 @@ $(function(){
     if (startElem !== endElem) {
       $('#' + startElem).nextUntil('#' + endElem).addClass('selected');
     }
+  },
+
+  showFullMonthsRange = function(ui) {
+    var startMonthText = timelindeHashOfMonths[ui.values[0]],
+        endMonthText = timelindeHashOfMonths[ui.values[1] - 1];
+    $('.tl-months').text(full_months[startMonthText] + ' - ' + full_months[endMonthText]);
+  },
+
+  timelinePeriodLinks = function() {
+    // links
+    var oneMonth = $('#timeline_one_month'),
+        lastMonth = $('#timeline_last_month'),
+        year = $('#timeline_year'),
+        all = $('#timeline_all');
+
+    oneMonth.click(function(){
+      $('#timeline div').removeClass('selected');
+      $('#timeline').slider("option", "values", [11,12]);
+      $('#timeline div.timeline-month').last().addClass('selected');
+      return false;
+    });
+
+    lastMonth.click(function(){
+      /*
+        TODO Talk to Mark about this behaviour
+      */
+      $('#timeline div').removeClass('selected');
+      $('#timeline').slider("option", "values", [11,12]);
+      $('#timeline div.timeline-month').last().addClass('selected');
+      return false;
+    });
+
+    year.click(function() {
+      var today = new Date(),
+          curr_year = today.getFullYear(),
+          index = $('#timeline div.Dec').index() + 1;
+      $('#timeline div').removeClass('selected');
+      $('#timeline').slider("option", "values", [index,12]);
+      $('div[id^=' + curr_year + ']').addClass('selected');
+      return false;
+    });
+
+    all.click(function() {
+      $('#timeline').slider("option", "values", [0,12]);
+      $('#timeline div').addClass('selected');
+      return false;
+    });
   };
 
   subcategoryFilterLink();
   toggleCategories();
+  timelinePeriodLinks();
 });
