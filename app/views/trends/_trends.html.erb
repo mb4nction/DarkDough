@@ -3,11 +3,12 @@
     Spending transactions<br />
     <% categorized_spending(@spending_transactions).each do |key, value| %>
       <%= key %> |
-      <%= sprintf("%.2f", (value / @spending_transactions.map(&:amount).sum.to_f)).to_f %>%<br />
+      <%= (sprintf("%.2f", (value / @spending_amount)).to_f * 100).to_i %>%<br />
     <% end %>
   <% else %>
     You do not have any spending transactions in this period.
   <% end %>
+
 </div>
 
 <div class="income_container bubble-info">
