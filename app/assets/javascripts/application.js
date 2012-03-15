@@ -13,3 +13,4 @@
 //= require jquery-ui-1.8.17.custom.min.js
 //= require underscore-min.js
 //= require protovis.min.js
+//= require d3.v2.min.js
