@@ -2,10 +2,11 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
 
+  CATEGORIES = YAML.load_file("#{Rails.root}/config/categories.yml")
+
   validates :category, :amount, :description, :presence => true
   validates :amount, :numericality => true
-
-  CATEGORIES = YAML.load_file("#{Rails.root}/config/categories.yml")
+  validates :category, :inclusion => { :in => CATEGORIES }
 
   scope :by_category, lambda { |q| {:conditions => ["category like :q", {:q => "%#{q}%"}]} }
   scope :spending_transactions, lambda { where("category != ?", "income") }

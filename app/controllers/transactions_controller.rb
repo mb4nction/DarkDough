@@ -39,9 +39,8 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         format.html do
-          if transaction_higher_budget?(@transaction)
-            budget = budget_by_transaction(@transaction)
-            UserMailer.budget_exceed(current_user, budget).deliver
+          if budget_by_transaction(@transaction) && transaction_higher_budget?(@transaction)
+            UserMailer.budget_exceed(current_user, @budget).deliver
             redirect_to @transaction,
                         :notice => 'Transaction was successfully created.',
                         :alert => "Your budget with '#{@transaction.category}' category is exceeded."
@@ -63,9 +62,8 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
         format.html do
-          if transaction_higher_budget?(@transaction)
-            budget = budget_by_transaction(@transaction)
-            UserMailer.budget_exceed(current_user, budget).deliver
+          if budget_by_transaction(@transaction) && transaction_higher_budget?(@transaction)
+            UserMailer.budget_exceed(current_user, @budget).deliver
             redirect_to @transaction,
                         :notice => 'Transaction was successfully updated.',
                         :alert => "Your budget with '#{@transaction.category}' category is exceeded."
@@ -98,11 +96,13 @@ class TransactionsController < ApplicationController
   end
 
   def budget_by_transaction(transaction)
-    current_user.budgets.find_by_category(transaction.category)
+    @budget = current_user.budgets.find_by_category(transaction.category)
   end
 
   def transaction_higher_budget?(transaction)
-    budget_by_transaction(@transaction).amount < @transaction.amount
+    if budget_by_transaction(transaction)
+      budget_by_transaction(transaction).amount < transaction.amount
+    end
   end
 
   protected
