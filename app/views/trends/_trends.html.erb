@@ -1,4 +1,4 @@
-<div class="spending_container bubble-info active">
+<div class="spending_container svg bubble-info active">
   <% if @spending_transactions.any? %>
     Spending transactions<br />
     <% categorized_spending(@spending_transactions).each do |key, value| %>
@@ -9,26 +9,32 @@
     You do not have any spending transactions in this period.
   <% end %>
 
+  <div class="hidden data"><%= categorized_spending(@spending_transactions).map{ |key, val| val}.join(",") %></div>
+  <div class="hidden data-sum"><%= @spending_amount %></div>
 </div>
 
-<div class="income_container bubble-info">
+<div class="income_container svg bubble-info">
   <%= categorized_income(@income_transactions)[0] %> |
   <%= categorized_income(@income_transactions)[1] %>
 </div>
 
-<div class="net_income_container bubble-info">
+<div class="net_income_container svg bubble-info">
   Your income $<%= @income_amount %><br />
   Your spending $<%= @spending_amount %>
 </div>
 
-<div class="assets_container bubble-info">
+<div class="assets_container svg bubble-info">
   No assets now
 </div>
 
-<div class="debts_container bubble-info">
+<div class="debts_container svg bubble-info">
   No debts now
 </div>
 
-<div class="net_worth_container bubble-info">
+<div class="net_worth_container svg bubble-info">
   No Net Worth now
 </div>
+
+<%= javascript_tag  do%>
+  $('#trends_search').implementSvg();
+<% end %>

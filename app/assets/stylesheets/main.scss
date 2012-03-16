@@ -68,6 +68,16 @@ li {
   list-style-type: none;
 }
 
+/* TODO d3.js part. Should be removed */
+.chart {
+  rect {
+    stroke: white;
+    fill: steelblue;
+  }
+
+  text { fill: white; }
+}
+
 /* chosen */
 .chosen { min-width: 100px; }
 
