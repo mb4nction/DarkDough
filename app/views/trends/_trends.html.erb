@@ -15,12 +15,18 @@
 
 <div class="income_container svg bubble-info">
   <%= categorized_income(@income_transactions)[0] %> |
-  <%= categorized_income(@income_transactions)[1] %>
+  <%= categorized_income(@income_transactions)[1] %>%
+  <br />
+  <div class="hidden data"><%= categorized_income(@income_transactions)[1] %></div>
+  <div class="hidden data-sum"><%= categorized_income(@income_transactions)[1] %></div>
 </div>
 
-<div class="net_income_container svg bubble-info">
+<div class="net_income_container svg bubble-info" style="vertical-align: top;">
   Your income $<%= @income_amount %><br />
   Your spending $<%= @spending_amount %>
+  <br />
+  <div class="hidden data"><%= @income_amount %>,<%= @spending_amount %></div>
+  <div class="hidden data-sum"><%= @income_amount + @spending_amount %></div>
 </div>
 
 <div class="assets_container svg bubble-info">

@@ -7,49 +7,48 @@
 (function($) {
   $.fn.implementSvg = function() {
     var init = function() {
-      var $this = $(this),
-          $containersForDrawing = $('div[class*=container].svg');
+      var $containersForDrawing = $('div[class*=container].svg');
 
-      var container = $('.spending_container');
-      var data = container.find('.data').text().split(',');
-      var sum = parseFloat($('.data-sum').text());
-      for (i in data) {
-        data[i] = Math.round((parseFloat(data[i]) / sum) * 1000) / 10;
-      };
+      $containersForDrawing.each(function() {
+        var data = $(this).find('.data').text().split(','),
+            elemCount = data.length;
+            sum = parseFloat($(this).find('.data-sum').text());
+        for (i in data) {
+          data[i] = Math.round((parseFloat(data[i]) / sum) * 1000) / 10;
+        };
 
-      var chart = d3.select(".spending_container.bubble-info")
-                    .append("svg")
-                    .attr("class", "chart")
-                    .attr("width", 600)
-                    .attr("height", 200);
-      var x = d3.scale.linear()
-                .domain([0, d3.max(data)])
-                .range([40, 600]);
+        if (!isNaN(sum)) {
+          var containerClass = $(this).attr('class').split(/\s+/)[0];
 
-      chart.selectAll("rect").data(data).enter()
-                             .append("rect")
-                             .attr("y", function(d, i) { return i * 25; })
-                             .attr("width", x)
-                             .attr("height", 25);
+          var chart = d3.select("." + containerClass)
+                        .append("svg")
+                        .attr("class", "chart")
+                        .attr("width", 500)
+                        .attr("height", 200);
+          var x = d3.scale.linear()
+                    .domain([0, d3.max(data)])
+                    .range([40, 500]);
 
-      var y = d3.scale.ordinal().domain(data).rangeBands([0, 125]);
+          chart.selectAll("rect").data(data).enter()
+                                 .append("rect")
+                                 .attr("y", function(d, i) { return i * 25; })
+                                 .attr("width", x)
+                                 .attr("height", 25);
 
-      chart.selectAll("text").data(data).enter().append("text")
-                             .attr("x", x)
-                             .attr("y", function(d) {return y(d) + y.rangeBand() / 2})
-                             .attr("dx", -3)
-                             .attr("dy", ".35em")
-                             .attr("text-anchor", "end")
-                             .text(String);
+          var y = d3.scale.ordinal().domain(data).rangeBands([0, elemCount * 25]);
+
+          chart.selectAll("text").data(data).enter()
+                                 .append("text")
+                                 .attr("x", x)
+                                 .attr("y", function(d) {return y(d) + y.rangeBand() / 2})
+                                 .attr("dx", -3)
+                                 .attr("dy", ".35em")
+                                 .attr("text-anchor", "end")
+                                 .text(String);
+        }
+      });
     };
 
-
-
-
     return init.call(this);
-
-    // return this.each(function() {
-    //   init.call(this);
-    // });
   }
 })(jQuery)
