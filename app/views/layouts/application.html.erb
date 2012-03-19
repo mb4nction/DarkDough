@@ -24,10 +24,11 @@
       <%= yield %>
 
       <br /><br /><%= link_to "Get started here", new_user_registration_path unless user_signed_in? %>
-
-      <%= render 'shared/footer' %>
+      <div class="footer_push"></div>
     </div>
-
   </div>
+  <footer>
+    <%= render 'shared/footer' %>
+  </footer>
 </body>
 </html>
