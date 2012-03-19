@@ -17,7 +17,15 @@
 
   > div { margin-bottom: 20px; }
 
-  #trends_statistic { @include inline-block; }
+  #trends_statistic {
+    @include inline-block;
+
+    > div {
+      display: none;
+
+      &.active { display: block; }
+    }
+  }
 }
 
 #trends_calendar {

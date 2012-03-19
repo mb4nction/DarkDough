@@ -18,7 +18,15 @@ $(function(){
   subcategoryFilterLink = function() {
     var links = $('#sub_filter li');
 
-    links.click(function(){
+    links.on("click", function(event) {
+      var partial = $('#' + event.target.id + "_partial"),
+          partials = $('div[id$=partial]'),
+          categoryActiveLinkId = $('#main_filter li.active a').attr('id'),
+          subPartial = $("." + categoryActiveLinkId + "_container", partial);
+      partials.removeClass('active');
+      partial.addClass('active');
+      subPartial.addClass("active");
+
       $(this).siblings().removeClass('active');
       $(this).addClass('active');
       return false;

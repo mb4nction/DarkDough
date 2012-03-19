@@ -32,10 +32,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><%= categorized_income(@income_transactions)[0] %></td>
-        <td>$<%= categorized_income(@income_transactions)[1] %></td>
-      </tr>
+      <% categorized_income(@income_transactions).each do |key, val| %>
+        <tr>
+          <td><%= key %></td>
+          <td>$<%= @income_amount %></td>
+        </tr>
+      <% end %>
     </tbody>
     <tfoot>
       <tr>

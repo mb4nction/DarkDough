@@ -10,6 +10,7 @@
       var $containersForDrawing = $('div[class*=container].svg');
 
       $containersForDrawing.each(function() {
+        // get data
         var data = $(this).find('.data').text().split(','),
             elemCount = data.length;
             sum = parseFloat($(this).find('.data-sum').text());
@@ -19,8 +20,8 @@
 
         if (!isNaN(sum)) {
           var containerClass = $(this).attr('class').split(/\s+/)[0];
-
-          var chart = d3.select("." + containerClass)
+          var partialId = $(this).parent().attr('id');
+          var chart = d3.select("#" + partialId + " ." + containerClass)
                         .append("svg")
                         .attr("class", "chart")
                         .attr("width", 500)
