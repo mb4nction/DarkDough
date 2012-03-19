@@ -1,4 +1,4 @@
-<div id="sub_category_data" class="spending_container bubble-info active">
+<div class="spending_container bubble-info active">
   <table>
     <thead>
       <tr>
@@ -17,13 +17,13 @@
     <tfoot>
       <tr>
         <td>Total</td>
-        <td>$<%= current_user.spending_amount %></td>
+        <td>$<%= @spending_amount %></td>
       </tr>
     </tfoot>
   </table>
 </div>
 
-<div id="sub_category_data" class="income_container bubble-info">
+<div class="income_container bubble-info">
   <table>
     <thead>
       <tr>
@@ -42,13 +42,13 @@
     <tfoot>
       <tr>
         <td>Total</td>
-        <td>$<%= current_user.spending_amount %></td>
+        <td>$<%= @income_amount %></td>
       </tr>
     </tfoot>
   </table>
 </div>
 
-<div id="sub_category_data" class="net_income_container bubble-info">
+<div class="net_income_container bubble-info">
   <table>
     <thead>
       <tr>
