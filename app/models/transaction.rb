@@ -10,7 +10,7 @@ class Transaction < ActiveRecord::Base
 
   scope :by_category, lambda { |q| {:conditions => ["category like :q", {:q => "%#{q}%"}]} }
   scope :spending_transactions, lambda { where("category != ?", "income") }
-  scope :in_last_month, :conditions => ["created_at >= ?", 1.month.ago]
+  scope :in_this_month, :conditions => ["created_at >= ?", Date.today.beginning_of_month]
 
   def amounts_sum(category)
     by_category(category).map(&:amount).sum
@@ -22,9 +22,9 @@ class Transaction < ActiveRecord::Base
       find(:all, :conditions => ['created_at >= ? AND created_at <= ?', start_date, end_date.to_date + 1.day])
     else
       if category == 'spending'
-        spending_transactions.in_last_month
+        spending_transactions.in_this_month
       else
-        by_category("Income").in_last_month
+        by_category("Income").in_this_month
       end
     end
   end
@@ -34,7 +34,7 @@ class Transaction < ActiveRecord::Base
       end_date == '' ? end_date = Time.now.utc : end_date
       find(:all, :conditions => ['created_at >= ? AND created_at <= ?', start_date, end_date.to_date + 1.day]).map{|transaction| transaction.amount}.sum
     else
-      in_last_month.find(:all).map{|transaction| transaction.amount}.sum
+      in_this_month.find(:all).map{|transaction| transaction.amount}.sum
     end
   end
 end
