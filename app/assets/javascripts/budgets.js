@@ -167,9 +167,9 @@ $(function() {
         all = $('#timeline_all');
 
     oneMonth.click(function(){
-      $('#timeline div').removeClass('selected');
-      $('#timeline').slider("option", "values", [11,12]);
-      $('#timeline div.timeline-month').last().addClass('selected');
+      $('#budgets_timeline div').removeClass('selected');
+      $('#budgets_timeline').slider("option", "values", [11,12]);
+      $('#budgets_timeline div.timeline-month').last().addClass('selected');
       return false;
     });
 
@@ -177,25 +177,25 @@ $(function() {
       /*
         TODO Talk to Mark about this behaviour
       */
-      $('#timeline div').removeClass('selected');
-      $('#timeline').slider("option", "values", [11,12]);
-      $('#timeline div.timeline-month').last().addClass('selected');
+      $('#budgets_timeline div').removeClass('selected');
+      $('#budgets_timeline').slider("option", "values", [11,12]);
+      $('#budgets_timeline div.timeline-month').last().addClass('selected');
       return false;
     });
 
     year.click(function() {
       var today = new Date(),
           curr_year = today.getFullYear(),
-          index = $('#timeline div.Dec').index() + 1;
-      $('#timeline div').removeClass('selected');
-      $('#timeline').slider("option", "values", [index,12]);
+          index = $('#budgets_timeline div.Dec').index() + 1;
+      $('#budgets_timeline div').removeClass('selected');
+      $('#budgets_timeline').slider("option", "values", [index,12]);
       $('div[id^=' + curr_year + ']').addClass('selected');
       return false;
     });
 
     all.click(function() {
-      $('#timeline').slider("option", "values", [0,12]);
-      $('#timeline div').addClass('selected');
+      $('#budgets_timeline').slider("option", "values", [0,12]);
+      $('#budgets_timeline div').addClass('selected');
       return false;
     });
   };
