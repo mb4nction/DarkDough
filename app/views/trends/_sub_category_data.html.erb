@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <% categorized_spending(@spending_transactions).each do |spending| %>
+      <% categorized(@spending_transactions).each do |spending| %>
         <tr>
           <td><%= spending[0] %></td>
           <td>$<%= spending[1] %></td>
@@ -32,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <% categorized_income(@income_transactions).each do |key, val| %>
+      <% categorized(@income_transactions).each do |key, val| %>
         <tr>
           <td><%= key %></td>
           <td>$<%= @income_amount %></td>

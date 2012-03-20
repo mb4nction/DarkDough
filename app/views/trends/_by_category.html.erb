@@ -1,7 +1,7 @@
 <div id="by_category_partial" class="active">
   <div class="spending_container svg bubble-info active">
     <% if @spending_transactions.any? %>
-      <% categorized_spending(@spending_transactions).each do |key, value| %>
+      <% categorized(@spending_transactions).each do |key, value| %>
         <%= key %> |
         <%= (sprintf("%.3f", (value / @spending_amount)).to_f * 100).to_f %>%<br />
       <% end %>
@@ -9,19 +9,19 @@
       You do not have any spending transactions in this period.
     <% end %>
 
-    <div class="hidden data"><%= categorized_spending(@spending_transactions).map{ |key, val| val}.join(",") %></div>
+    <div class="hidden data"><%= categorized(@spending_transactions).map{ |key, val| val}.join(",") %></div>
     <div class="hidden data-sum"><%= @spending_amount %></div>
   </div>
 
   <div class="income_container svg bubble-info by_category">
     <% if @income_transactions %>
-      <% categorized_income(@income_transactions).map do |key, val| %>
+      <% categorized(@income_transactions).map do |key, val| %>
         <%= [key] %> &ndash; <%= val %><br />
       <% end %>
     <% else %>
       You do not have any income transactions in this period.
     <% end %>
-    <div class="hidden data"><%= categorized_income(@income_transactions).map{ |key, val| val}.join(',') %></div>
+    <div class="hidden data"><%= categorized(@income_transactions).map{ |key, val| val}.join(',') %></div>
     <div class="hidden data-sum"><%= @income_amount %></div>
   </div>
 

@@ -15,51 +15,27 @@ module TransactionsHelper
     transactions.map{ |transaction| transaction.description }.uniq.sort
   end
 
-  def categorized_income(transactions)
-    income = []
+  def categorized(transactions)
+    categorized_transactions = []
     (transactions_categories(transactions)).each do |category|
-      income << [category, transactions.find_all{|tr| tr.category == category}.map(&:amount).sum.to_f]
+      categorized_transactions << [category, transactions.find_all{|tr| tr.category == category}.map(&:amount).sum.to_f]
     end
-    income = Hash[*income.flatten!]
+    categorized_transactions = Hash[*categorized_transactions.flatten!]
   end
 
-  def categorized_spending(transactions)
-    spending = []
-    (transactions_categories(transactions)-['Income']).each do |category|
-      spending << [category, transactions.find_all{|tr| tr.category == category}.map(&:amount).sum.to_f]
-    end
-    spending = Hash[*spending.flatten!]
-  end
-
-  def monthly_income(transactions)
-    income = []
+  def monthly(transactions)
+    monthly_transactions = []
     (transactions_months(transactions)).each do |month|
-      income << [month, transactions.find_all{ |tr| tr.created_at.month == month}.map(&:amount).sum.to_f]
+      monthly_transactions << [month, transactions.find_all{ |tr| tr.created_at.month == month}.map(&:amount).sum.to_f]
     end
-    income = Hash[*income.flatten!]
+    monthly_transactions = Hash[*monthly_transactions.flatten!]
   end
 
-  def monthly_spending(transactions)
-    spending = []
-    (transactions_months(transactions)).each do |month|
-      spending << [month, transactions.find_all{ |tr| tr.created_at.month == month}.map(&:amount).sum.to_f]
-    end
-    spending = Hash[*spending.flatten!]
-  end
-
-  def merchanized_income(transactions)
-    income = []
+  def merchanized(transactions)
+    merchanized_transactions = []
     (transactions_descriptions(transactions)).each do |description|
-      income << [description, transactions.find_all{ |tr| tr.description == description }.map(&:amount).sum.to_f]
+      merchanized_transactions << [description, transactions.find_all{ |tr| tr.description == description }.map(&:amount).sum.to_f]
     end
-    income = Hash[*income.flatten!]
-  end
-
-  def merchanized_spending(transactions)
-    spending = []
-    (transactions_descriptions(transactions)).each do |description|
-      spending << [description, transactions.find_all{ |tr| tr.description == description }.map(&:amount).sum.to_f]
-    end
-    spending = Hash[*spending.flatten!]
+    merchanized_transactions = Hash[*merchanized_transactions.flatten!]
   end
 end
