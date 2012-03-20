@@ -1,6 +1,6 @@
 @import 'mixins';
 
-#trends {
+#trends, #budgets {
   font-family: Helvetica,Arial,sans-serif;
   color: #3e4050;
 
@@ -28,7 +28,7 @@
   }
 }
 
-#trends_calendar {
+#trends_calendar, #budgets_calendar {
   #period { font-size: 18px; }
 
   .predefined {
@@ -183,7 +183,7 @@
   &.active { @include inline-block; }
 }
 
-#timeline {
+#timeline, #budgets_timeline {
   @include radius(0);
   position: relative;
   height: 50px;
@@ -212,6 +212,8 @@
     background: #9d86bf image-url('bg/timeline_corner.png') center center no-repeat;
     outline: none;
     z-index: 1;
+
+    &:hover { cursor: move; }
 
     + .ui-slider-handle { margin-left: 0; }
   }

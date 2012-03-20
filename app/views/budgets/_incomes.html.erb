@@ -11,10 +11,14 @@
     <div id="incomes-list">
       <% @income_budgets.each do |income| %>
         <div class="income item">
-          Income <%= link_to "edit", edit_budget_path(income, :category => income.category) %>
+          Income <%= link_to "edit", edit_budget_path(income, :category => income.category), :class => "edit" %>
           <div class="spent">
-            $<%= current_user.transactions_sum_by_category("Income") %> of
-            $<%= @income_budgets.map(&:amount).sum %>
+            <div class="b-start">
+              $<div class="start"><%= current_user.transactions_sum_by_category("Income") %></div>
+            </div> &nbsp;&nbsp;of&nbsp;&nbsp;
+            <div class="b-end">
+              $<div class="end"><%= @income_budgets.map(&:amount).sum %></div>
+            </div>
           </div>
           <div class="progress"></div>
         </div>

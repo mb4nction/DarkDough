@@ -24,6 +24,25 @@
           background-color: #eee;
           border: 1px solid #ccc;
           clear: right;
+          overflow: hidden;
+
+          div { @include radius(3px); }
+          .charged { @include gradient(#f77141, #f56d3d); }
+          .active-bar { @include gradient(#94c355, #8fbb51); }
+        }
+      }
+
+      .spent {
+        font-size: 12px;
+        color: #9a9999;
+
+        .b-start, .b-end, .start, .end {
+          @include inline-block;
+          font-weight: bold;
+        }
+
+        .b-start, .start {
+          color: #4b4d5c;
         }
       }
     }
@@ -36,11 +55,23 @@
       display: block;
       width: 100%;
       margin: 10px 0;
-      padding: 10px;
+      padding: 10px 10px 10px 30px;
       border: 1px dashed #e1dde6;
-      background-color: #fcfcfc;
       text-decoration: none;
       font-weight: bold;
+      color: #b6b1be;
+      background: #fcfcfc image-url('ico/add_budget.png') 10px 10px no-repeat;
     }
+  }
+}
+
+
+#budgets {
+  .edit {
+    @include inline-block;
+    width: 12px;
+    height: 12px;
+    text-indent: -9999px;
+    background: image-url('ico/edit.png') center center no-repeat;
   }
 }

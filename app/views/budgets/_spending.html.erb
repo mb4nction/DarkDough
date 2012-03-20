@@ -12,10 +12,14 @@
       <% @spending_budgets.each do |spending| %>
         <div class="spending item">
           <%= spending.category %>
-          <%= link_to "edit", edit_budget_path(spending, :category => spending.category) %>
+          <%= link_to "edit", edit_budget_path(spending, :category => spending.category), :class => "edit" %>
           <div class="spent">
-            $<%= current_user.transactions_sum_by_category(spending.category) %> of
-            $<%= spending.amount %>
+            <div class="b-start">
+              $<div class="start"><%= current_user.transactions_sum_by_category(spending.category) %></div>
+            </div> &nbsp;&nbsp;of&nbsp;&nbsp;
+            <div class="b-end">
+              $<div class="end"><%= spending.amount %></div>
+            </div>
           </div>
           <div class="progress"></div>
         </div>
