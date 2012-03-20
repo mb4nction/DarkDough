@@ -1,3 +1,33 @@
 <div id="by_merchant_partial">
-  by merchant
+  <div class="spending_container svg bubble-info">
+    <% if @spending_transactions %>
+      <% merchanized_spending(@spending_transactions).map do |key, val| %>
+        <%= key %> &ndash; <%= val %><br />
+      <% end %>
+    <% else %>
+      You do not have any spending transactions.
+    <% end %>
+    <div class="hidden data"><%= merchanized_spending(@spending_transactions).map{ |key, val| val}.join(",") %></div>
+    <div class="hidden data-sum"><%= @spending_amount %></div>
+  </div>
+
+  <div class="income_container svg bubble-info by_category">
+  </div>
+
+  <div class="net_income_container svg bubble-info by_category" style="vertical-align: top;">
+    No 'Net Income' for Filter "By merchant"
+  </div>
+
+  <div class="assets_container svg bubble-info by_category">
+    No assets now
+  </div>
+
+  <div class="debts_container svg bubble-info by_category">
+    No debts now
+  </div>
+
+  <div class="net_worth_container svg bubble-info by_category">
+    No Net Worth now
+  </div>
+
 </div>
