@@ -1,11 +1,19 @@
 <div id="incomes">
   <h3>Income</h3>
   <div class="amount">
-    $<%= current_user.transactions_sum_by_category("Income") %> so far of
-    $<%= @income_budgets.map(&:amount).sum %>
+    <div class="sum">
+      <div class="cur">$</div><%= current_user.transactions_sum_by_category("Income") %>
+    </div>
+    so far of
+    <div class="sum">
+      <div class="cur">$</div><%= @income_budgets.map(&:amount).sum %>
+    </div>
   </div>
 
-  <%= link_to "Create a new income", new_budget_path(:category => 'Income'), :class => "new-budget" %>
+  <%= link_to "Create a new income", new_budget_path(:category => 'Income'), :class => "new-budget", :title => "New budget" %>
+  <div id="create_new_budget">
+    <%= render 'form' %>
+  </div>
 
   <% if @income_budgets.any? %>
     <div id="incomes-list">

@@ -36,8 +36,18 @@
 
     a {
       @include inline-block;
-      margin: 20px 10px 10px;
+      margin: 10px 10px 20px;
     }
+  }
+}
+
+#graph, #report {
+  padding: 0 20px;
+
+  .bubble-info {
+    display: none;
+
+    &.active { @include inline-block; }
   }
 }
 
@@ -177,18 +187,13 @@
   }
 }
 
-.bubble-info {
-  display: none;
-
-  &.active { @include inline-block; }
-}
-
 #timeline, #budgets_timeline {
   @include radius(0);
   position: relative;
   height: 50px;
-  width: 900px;
+  width: 936px;
   background: #656673;
+  margin: 0 9px;
 
   .ui-slider-horizontal { height: 50px; }
   .ui-widget-header {
@@ -226,7 +231,7 @@
     position: relative;
     float: left;
     padding: 5px 18px;
-    width: 75px;
+    width: 78px;
     height: 50px;
     background: #656673;
     font-family: Helvetica,Arial,sans-serif;

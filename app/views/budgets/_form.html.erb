@@ -1,32 +1,34 @@
-<%= form_for(@budget) do |f| %>
+<%= form_for @budget, :remote => true do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field" <%= display_if(params[:category].nil?) %>>
     <% if  params[:category].nil? %>
-      <%= f.label :category %><br />
+      <p><%= f.label :category, 'Choose a category' %></p>
       <%= f.select :category, Transaction::CATEGORIES %>
     <% else %>
-      <%= f.label :category %><br />
+      <p><%= f.label :category %></p>
       <%= f.select :category, Transaction::CATEGORIES, :selected => (params[:category] unless params[:category].nil?) %>
     <% end %>
   </div>
 
   <div class="field radios">
-    <div>When will this happen?</div>
+    <p>When will this happen?</p>
 
-    <%= radio_button_tag "period", "once", true %>
-    <%= label_tag "period_once", "Once" %>
+    <div class="radiogroup">
+      <%= radio_button_tag "period", "monthly" %>
+      <%= label_tag "period_monthly", "Every month" %>
 
-    <%= radio_button_tag "period", "monthly" %>
-    <%= label_tag "period_monthly", "Every month" %>
+      <%= radio_button_tag "period", "few_month" %>
+      <%= label_tag "period_few_month", "Every few month" %>
 
-    <%= radio_button_tag "period", "few_month" %>
-    <%= label_tag "period_few_month", "Every few month" %>
+      <%= radio_button_tag "period", "once", true %>
+      <%= label_tag "period_once", "Once" %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
+    <p><%= f.label :amount %></p>
+    $ <%= f.text_field :amount %>
   </div>
   <div class="period hidden">
     every <%= select_tag :period, options_for_select(period_select, @budget.period) %>
@@ -42,6 +44,5 @@
   </div>
   <div class="field hidden"><%= f.text_field :period %></div>
 
-  <br />
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions hidden"><%= f.submit %></div>
 <% end %>

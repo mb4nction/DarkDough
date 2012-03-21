@@ -1,10 +1,8 @@
 @import 'mixins';
 
-.block#budgets {
-  padding: 20px 0;
-
+.block {
   .budgets-months {
-    padding: 20px 20px 0;
+    padding: 0 20px;
     font-size: 18px;
   }
 
@@ -18,8 +16,35 @@
   width: 730px;
   padding-left: 20px;
 
+  > .amount {
+    padding: 5px 0;
+    color: #9a9999;
+    font-size: 12px;
+
+    .sum {
+      @include inline-block;
+      font-weight: bold;
+
+      .cur {
+        @include inline-block;
+        font-size: 11px;
+      }
+    }
+  }
+
   .item {
     margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #9a9999;
+
+    .edit {
+      @include inline-block;
+      width: 14px;
+      height: 16px;
+      text-indent: -9999px;
+      background: image-url('ico/edit.png') center center no-repeat;
+    }
 
     &.income, &.spending {
       .spent {
@@ -63,7 +88,7 @@
     @include box-sizing;
     display: block;
     width: 100%;
-    margin: 10px 0;
+    margin: 10px 0 20px;
     padding: 10px 10px 10px 30px;
     border: 1px dashed #e1dde6;
     text-decoration: none;
@@ -77,14 +102,6 @@
   h3 {
     margin-bottom: 0;
     font-weight: normal;
-  }
-
-  .edit {
-    @include inline-block;
-    width: 12px;
-    height: 12px;
-    text-indent: -9999px;
-    background: image-url('ico/edit.png') center center no-repeat;
   }
 
   #result {
@@ -142,3 +159,38 @@
     }
   }
 }
+
+#budget_category_chzn {
+  @include drop-down;
+  min-width: 203px;
+}
+
+form[id*=budget] {
+  div:first-child + .field { margin-top: 0; }
+
+  .field {
+    margin-top: 30px;
+
+    p { margin: 5px 0 7px; }
+  }
+
+  > .period {
+    margin: 10px 0 0;
+
+    #period_chzn {
+      @include drop-down;
+      min-width: 90px;
+    }
+  }
+
+  > .start {
+    margin: 10px 0 15px;
+
+    #budget_start_2i_chzn, #budget_start_1i_chzn {
+      @include drop-down;
+      min-width: 90px;
+    }
+  }
+}
+
+#create_new_budget { display: none; }
