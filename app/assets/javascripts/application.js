@@ -16,3 +16,4 @@
 //= require d3.v2.min.js
 
 //= require jquery.radio.js
+//= require jquery.progressBar.js

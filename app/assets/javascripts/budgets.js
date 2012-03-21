@@ -11,7 +11,7 @@ $(function() {
         fakePeriod = $('#period'),
         year = $('#budget_start_1i'),
         month = $('#budget_start_2i'),
-        startContainer = $('.start'),
+        startContainer = $('form .start'),
         periodContainer = $('.period')
 
         currentMonthNumber = (new Date().getMonth() + 1);
@@ -200,28 +200,6 @@ $(function() {
     });
   };
 
-  var progressBar = function() {
-    var items = _($('.item'));
-    items.each(function(elem){
-      var progressBar = $('.progress', elem),
-          amount = parseFloat($('.end', elem).text()),
-          spended = parseFloat($('.start', elem).text()),
-          itemWidth = elem.offsetWidth,
-          progressWidth;
-
-      if (amount < spended) {
-        progressWidth = 100;
-        progressBar.prepend("<div style='width:100%;' class='charged'>&nbsp;</div>");
-      } else if (spended == 0) {
-        progressWidth = 0;
-        progressBar.prepend("<div class='active-bar' style='width:" + progressWidth + "px;'>&nbsp;</div>");
-      } else {
-        progressWidth = itemWidth *(spended / amount);
-        progressBar.prepend("<div class='active-bar' style='width:" + progressWidth + "px;'>&nbsp;</div>");
-      };
-    })
-  };
-
   // forms. jQuery.ui used
   $('#create_new_budget').dialog({
     autoOpen: false,
@@ -257,5 +235,6 @@ $(function() {
   timelinePeriodLinks();
 
   budgetOptions();
-  progressBar();
+
+  $('#result').progressBar();
 });
