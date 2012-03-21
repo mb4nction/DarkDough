@@ -2,6 +2,7 @@ class BudgetsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @budget = Budget.new
     @budgets =  current_user.budgets.search(params[:budgets_start], params[:budgets_end])
     @income_budgets = current_user.budgets.income.search(params[:budgets_start], params[:budgets_end])
     @spending_budgets = current_user.budgets.spending.search(params[:budgets_start], params[:budgets_end])
@@ -71,9 +72,5 @@ class BudgetsController < ApplicationController
       format.html { redirect_to budgets_url }
       format.json { head :ok }
     end
-  end
-
-  def list
-    @budgets = Budget.all
   end
 end

@@ -12,11 +12,7 @@ Pfm::Application.routes.draw do
     end
   end
 
-  resources :budgets do
-    collection do
-      get :list
-    end
-  end
+  resources :budgets
 
   resources :goals do
     collection do

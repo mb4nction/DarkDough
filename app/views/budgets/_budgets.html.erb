@@ -18,7 +18,7 @@
     <dt>Left over, $</dt>
     <dd><%= @income_budgets.map(&:amount).sum - @spending_budgets.map(&:amount).sum %></dd>
     <!--
-      TODO менять цвет в зависимости от того, + или - мы имеем
+      TODO change color if we have minus in amount
     -->
   </dl>
 </aside>
