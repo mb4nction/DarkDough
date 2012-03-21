@@ -14,3 +14,5 @@
 //= require underscore-min.js
 //= require protovis.min.js
 //= require d3.v2.min.js
+
+//= require jquery.radio.js
