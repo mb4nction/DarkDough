@@ -1,0 +1,99 @@
+<div class="block right tabbed email">
+  <h4>Email &amp; alerts</h4>
+  <dl>
+    <dt>Primary email</dt>
+    <dd></dd>
+    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+  </dl>
+  <dl>
+    <dt>Secondary email</dt>
+    <dd></dd>
+    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+  </dl>
+  <dl>
+    <dt>Send summary emails</dt>
+    <dd></dd>
+    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+  </dl>
+  <dl>
+    <dt>Send advice emails</dt>
+    <dd></dd>
+    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+  </dl>
+  <dl>
+    <dt>Your mobile number</dt>
+    <dd></dd>
+    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+  </dl>
+  <dl>
+    <dt>Send summary texts</dt>
+    <dd></dd>
+    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+  </dl>
+
+  <h4>Send alerts for</h4>
+  <dl>
+    <dt>
+      <%= check_box_tag 'low_balance', false %>
+      Low balance
+    </dt>
+    <dd>if the balance of any of my accounts drops below</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'bill_reminder', false %>
+      Bill Reminders
+    </dt>
+    <dd>before my bills are due, by</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'credit_available', false %>
+      Credit Available
+    </dt>
+    <dd>if my credit available drops below</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'total_credit_available', false %>
+      Total Credit Available
+    </dt>
+    <dd>if my credit usage is high enough to hurt my credit score</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'unusual_spending', false %>
+      Unusual Spending
+    </dt>
+    <dd>if my credit usage is high enough to hurt my credit score</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'overbudget', false %>
+      Overbudget
+    </dt>
+    <dd>if I exceed one of my budgets</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'interest_rate', false %>
+      Interest Rate
+    </dt>
+    <dd>if my interest rate changes</dd>
+    <dd class="edit"></dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= check_box_tag 'bank_fees', false %>
+      Bank Fees
+    </dt>
+    <dd>if my bank charges me any fees above</dd>
+    <dd class="edit"></dd>
+  </dl>
+</div>

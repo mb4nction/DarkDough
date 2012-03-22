@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @transactions = current_user.transactions
-    @budgets = current_user.budgets
+    @accounts = current_user.accounts
   end
 
   def edit

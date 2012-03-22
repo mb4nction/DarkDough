@@ -1,74 +1,12 @@
-<h1>Your profile page</h1>
+<h1>Profile</h1>
 
+<%= render :partial => 'user_profile_menu' %>
 
-<div class="block">
-  First name: <%= @user.first_name %><br />
-  Last name: <%= @user.last_name %><br />
-  Email: <%= @user.email %><br />
-  Phone number: <%= @user.phone_number %><br />
-  Country: <%= @user.country %>
-  <br /><br />
-  <%= link_to "Edit profile", edit_user_path(@user) %><br /><br />
+<%= render :partial => 'user_about' %>
+<%= render :partial => 'user_settings' %>
+<%= render :partial => 'user_email' %>
+<%= render :partial => 'user_accounts' %>
+<%= render :partial => 'user_hidden_accounts' %>
+<%= render :partial => 'user_delete_account' %>
 
-  <ul class="profile-nav">
-    <li class="transactions active-tab">Transactions</li>
-    <li class="budgets">Budgets</li>
-    <li class="goals">Goals</li>
-    <li class="trends">Trends</li>
-  </ul>
-
-  <div class="tabs">
-    <div class="block active-tab" id="transactions">
-      <h2>Transactions</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @transactions.each do |transaction| %>
-            <tr>
-              <td><%= transaction.category %></td>
-              <td><%= transaction.description %></td>
-              <td><%= transaction.amount %></td>
-              <td><%= transaction.note %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="block" id="budgets">
-      <h2>Budgets</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Period</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @budgets.each do |budget| %>
-            <tr>
-              <td><%= budget.category %></td>
-              <td><%= budget.amount %></td>
-              <td><%= budget.period %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      </div>
-    <div class="block" id="goals">
-      <h2>Goals</h2>
-      <p>Your Goals</p>
-    </div>
-    <div class="block" id="trends">
-      <h2>Trends</h2>
-      <p>Your Trends</p>
-    </div>
-  </div>
-</div>
+<%= link_to "Edit profile", edit_user_path(@user) %><br /><br />

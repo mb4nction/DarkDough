@@ -1,16 +1,19 @@
 $(function(){
-  // tabs on user profile page
-  $(".tabs .block:not('.active-tab')").hide();
+  var userMenu = function() {
+    var links = $('menu.left-side a'),
+        containers = $('.block.tabbed');
 
-  $(".profile-nav li").click(function(){
-    thisId = $(this).attr("class").split(' ')[0];
+    links.click(function() {
+      var linkClass = $(this).attr('class').split(/\s+/)[0],
+          container = $('.block.right.' + linkClass);
 
-    if (!$(this).hasClass('active-tab')) {
-      $(".profile-nav li").removeClass('active-tab');
-      $(".tabs .block").removeClass('active-tab');
-      $(this).toggleClass('active-tab');
-      $(".tabs").find('#' + thisId).addClass('active-tab');
-    }
-  });
+      links.removeClass('active');
+      $(this).addClass('active');
+      containers.removeClass('active');
+      container.addClass('active');
+    })
+  };
+
+  userMenu();
 });
 

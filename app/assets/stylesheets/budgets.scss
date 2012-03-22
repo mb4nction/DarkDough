@@ -1,15 +1,11 @@
 @import 'mixins';
 
 .block {
-  .budgets-months {
+  .budgets-months, .tl-months {
     padding: 0 20px;
     font-size: 18px;
   }
 
-  > a {
-    @include inline-block;
-    padding-left: 20px;
-  }
 }
 
 #incomes, #spending {
@@ -38,14 +34,14 @@
     line-height: 16px;
     color: #9a9999;
 
-    .edit {
+/*    .edit {
       @include inline-block;
       width: 14px;
       height: 16px;
       text-indent: -9999px;
       background: image-url('ico/edit.png') center center no-repeat;
     }
-
+*/
     &.income, &.spending {
       .spent {
         float: right;
@@ -84,17 +80,7 @@
   .amount { font-size: 13px; }
 
   .new-budget {
-    @include radius(5px);
-    @include box-sizing;
-    display: block;
-    width: 100%;
-    margin: 10px 0 20px;
-    padding: 10px 10px 10px 30px;
-    border: 1px dashed #e1dde6;
-    text-decoration: none;
-    font-weight: bold;
-    color: #b6b1be;
-    background: #fcfcfc image-url('ico/add_budget.png') 10px 10px no-repeat;
+    @include add-link;
   }
 }
 

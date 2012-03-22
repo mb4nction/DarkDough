@@ -1,36 +1,221 @@
 @import "mixins";
 
-.profile-nav {
-  margin: 0 10px -3px;
-  padding: 0;
-  z-index: 1;
+menu.left-side {
+  @include box-shadow(2px  2px  2px  rgba(0,0,0,.11));
+  @include inline-block;
+  background: white;
+  vertical-align: top;
 
   li {
-    @include inline-block;
-    @include radius;
-    border: 1px solid #ccc;
-    padding: 5px 5px 8px;
-    list-style-type: none;
+    border-top: 1px solid #efefef;
 
-    &:hover, &.active-tab {
-      background-color: #eee;
-      cursor: pointer;
+    &:first-child { border: none; }
+
+    a {
+      @include inline-block;
+      @include box-sizing;
+      position: relative;
+      width: 260px;
+      height: 70px;
+      padding: 20px 25px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+      color: #000;
+      font-family: Helvetica,Arial,sans-serif;
+
+      span {
+        display: block;
+        padding-top: 5px;
+        font-size: 11px;
+        font-weight: normal;
+        color: #9a9999;
+      }
+
+      &.active, &:hover {
+        background-color: #9c85be;
+        color: #fff;
+
+        span { color: #fff; }
+
+        i {
+          @include inline-block;
+          position: absolute;
+          left: 100%;
+          top: 26px;
+          width: 8px;
+          height: 17px;
+          background: image-url('bg/profile_menu_corner.png') left center no-repeat;
+        }
+      }
+
+      &:hover i { display: none; }
+      &:hover.active i { @include inline-block; }
     }
   }
 }
 
-.profile-nav + .tabs {
-  position: relative;
-  z-index: 2;  
+.block.right.tabbed {
+  display: none;
+
+  h4:first-child { margin: 0 0 10px; }
+  h4 { margin: 35px 0 10px; }
+
+  dl {
+    margin: 0;
+    font-size: 12px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    border-top: 1px solid #efefef;
+    clear: right;
+
+    dt, dd {
+      @include inline-block;
+      padding: 10px 0 10px 10px;
+      margin: 0;
+    }
+
+    dt {
+      @include box-sizing;
+      color: #3e4050;
+      width: 200px;
+    }
+
+    dd { color: #9a9999; }
+    dd + dd { float: right; }
+  }
+
+  h4 + dl { border: none; }
+
+  &.active { @include inline-block; }
+
+  .add-account { @include add-link; }
 }
 
-.tabs > .block {
-  display: none;
-  margin-top: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  
-  &.active-tab {
-    display: block !important;
+.block.accounts {
+  .account {
+    @include box-sizing;
+    position: relative;
+    min-height: 120px;
+    margin-bottom: 10px;
+    padding: 20px 160px 20px 20px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    color: #3e4050;
+    background-color: #f6f6f6;
+
+    .amount {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 18px;
+    }
+
+    .buttons {
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+
+      .button:first-child {
+        margin-right: 10px;
+      }
+
+      .button.delete {
+        position: relative;
+        padding-left: 25px;
+
+        i {
+          @include inline-block;
+          height: 10px;
+          width: 10px;
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          background: image-url('ico/delete.png') center center no-repeat;
+        }
+      }
+    }
+
+    img {
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .status {
+      @include inline-block;
+      @include radius(2px);
+      position: absolute;
+      top: 10px;
+      left: 175px;
+      padding: 4px 15px;
+      color: #fff;
+      text-shadow: 0 -1px 0px rgba(0,0,0,.21);
+      font-weight: bold;
+      font-size: 12px;
+
+      &.active { background-color: #a5ce71; }
+      &.inactive { background-color: #f06838; }
+    }
+
+    .name { font-size: 12px; }
+
+    .times {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #9a9999;
+
+      span {
+        @include inline-block;
+        &:first-child {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+
+.block.hidden_accounts {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 12px;
+
+  .info { color: #9a9999; }
+
+  h5 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #3e4050;
+    margin: 30px 0 5px;
+  }
+
+  ul {
+    margin: 15px 0;
+
+    li {
+      margin: 5px 0;
+    }
+  }
+}
+
+.block.delete_account {
+  min-height: 425px;
+  font-family: Helvetica,Arial,sans-serif;
+
+  .info {
+    margin: 20px 0;
+    font-size: 12px;
+    color: #9a9999;
+  }
+
+  .buttons {
+    .button {
+      @include button;
+      color: #656673;
+      margin-right: 10px;
+
+      &.accented {
+        @include button-accented;
+      }
+    }
   }
 }

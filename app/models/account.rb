@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  ACCOUNT_STATUSES = ['active', 'closed']
+  ACCOUNT_STATUSES = ['active', 'inactive']
 
   attr_accessible :name, :status, :bank_id, :user_id, :amount
 

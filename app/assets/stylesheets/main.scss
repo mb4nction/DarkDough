@@ -27,6 +27,12 @@ h3 {
   font-size: 18px;
 }
 
+h4 {
+  font-size: 18px;
+  color: #3e4050;
+  font-weight: normal;
+}
+
 table {
   border: 1px solid #ccc;
   border-spacing: 0;
@@ -62,8 +68,13 @@ table {
   padding: 20px;
   background: white;
 
-  &.wide {
-    padding: 20px 0;
+  &.wide { padding: 20px 0; }
+  &.right {
+    @include inline-block;
+    @include box-sizing;
+    width: 675px;
+    margin: 0 0 0 20px;
+    vertical-align: top;
   }
 }
 
@@ -73,6 +84,22 @@ menu, ul, li {
 }
 
 li { list-style-type: none; }
+
+a.edit {
+  @include inline-block;
+  width: 14px;
+  height: 16px;
+  text-indent: -9999px;
+  background: image-url('ico/edit.png') center center no-repeat;
+}
+
+a.update {
+  @include button;
+}
+
+a.delete {
+  @include button;
+}
 
 /* TODO d3.js part. Should be removed */
 .chart {
