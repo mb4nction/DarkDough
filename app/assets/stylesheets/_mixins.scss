@@ -83,6 +83,7 @@
   font-family: Helvetica,Arial,sans-serif;
   font-size: 12px;
   color: #b6b1be;
+  cursor: pointer;
 
   &:hover { @include gradient(#efefef, #fff); }
 }

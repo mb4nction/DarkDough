@@ -2,39 +2,57 @@
   <h4>Email &amp; alerts</h4>
   <dl>
     <dt>Primary email</dt>
-    <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd>
+      <%= current_user.email %>
+    </dd>
+    <dd><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <%= form_for current_user do |f| -%>
+      <%= f.email_field :email %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
   </dl>
   <dl>
     <dt>Secondary email</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
   <dl>
     <dt>Send summary emails</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
   <dl>
     <dt>Send advice emails</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
   <dl>
     <dt>Your mobile number</dt>
-    <dd></dd>
+    <dd class="<%= activated_if(current_user.phone_number) %>">
+      <%= current_user.phone_number ? current_user.phone_number : 'You don\'t have a phone number now' %>
+    </dd>
     <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <%= form_for current_user do |f| -%>
+      <%= f.phone_field :phone_number %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
   </dl>
   <dl>
     <dt>Send summary texts</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
 
   <h4>Send alerts for</h4>
   <dl>
     <dt>
-      <%= check_box_tag 'low_balance', false %>
+      <%= check_box_tag 'low_balance', '1', true %>
       Low balance
     </dt>
     <dd>if the balance of any of my accounts drops below</dd>

@@ -55,6 +55,11 @@ menu.left-side {
   }
 }
 
+#user-settings {
+  @include inline-block;
+  vertical-align: top;
+}
+
 .block.right.tabbed {
   display: none;
 
@@ -69,19 +74,65 @@ menu.left-side {
     border-top: 1px solid #efefef;
     clear: right;
 
+    form { display: none; }
+
+    &.active {
+      background-color: #f6f6f6;
+
+      dt { vertical-align: top; }
+
+      dd { display: none; }
+
+      form {
+        @include inline-block;
+        padding: 10px 0 10px 10px;
+
+        input[type=text], input[type=email], input[type=tel] {
+          @include box-sizing;
+          max-width: 200px;
+        }
+
+        #user_country_chzn {
+          min-width: 260px;
+
+          .chzn-results { width: 260px; }
+        }
+
+        .buttons {
+          margin-top: 10px;
+
+          input[type=submit] { @include button-accented }
+
+          a.cancel {
+            @include button;
+            color: #656673;
+          }
+        }
+      }
+    }
+
     dt, dd {
       @include inline-block;
       padding: 10px 0 10px 10px;
       margin: 0;
+      vertical-align: top;
     }
 
     dt {
       @include box-sizing;
       color: #3e4050;
-      width: 200px;
+      width: 210px;
+      vertical-align: middle;
     }
 
-    dd { color: #9a9999; }
+    dd {
+      color: #9a9999;
+      font-weight: normal;
+
+      &.activated {
+        font-weight: bold;
+      }
+    }
     dd + dd { float: right; }
   }
 
@@ -90,6 +141,12 @@ menu.left-side {
   &.active { @include inline-block; }
 
   .add-account { @include add-link; }
+
+  a.edit {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+  }
 }
 
 .block.accounts {
@@ -193,6 +250,8 @@ menu.left-side {
 
     li {
       margin: 5px 0;
+
+      form { @include inline-block; }
     }
   }
 }

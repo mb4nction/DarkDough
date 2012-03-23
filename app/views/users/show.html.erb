@@ -2,11 +2,12 @@
 
 <%= render :partial => 'user_profile_menu' %>
 
-<%= render :partial => 'user_about' %>
-<%= render :partial => 'user_settings' %>
-<%= render :partial => 'user_email' %>
-<%= render :partial => 'user_accounts' %>
-<%= render :partial => 'user_hidden_accounts' %>
-<%= render :partial => 'user_delete_account' %>
+<div id="user-settings">
+  <%= render :partial => 'user_info' %>
+</div>
 
-<%= link_to "Edit profile", edit_user_path(@user) %><br /><br />
+<div id="myd"></div>
+
+<%= javascript_tag do %>
+  $('#user-settings').customForm();
+<% end %>

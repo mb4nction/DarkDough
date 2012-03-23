@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+  USER_AGES = (8..100)
+  GENDERS = %w(male female)
+
   attr_accessor   :tos_confirmation
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :phone_number, :email,
                   :password, :password_confirmation, :country, :tos_confirmation,
-                  :email, :password, :password_confirmation, :remember_me
+                  :email, :password, :password_confirmation, :remember_me,
+                  :age, :gender, :accounts_attributes
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,6 +20,8 @@ class User < ActiveRecord::Base
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
   validates :country, :inclusion => { :in => Carmen::country_names }
+  validates :age, :inclusion => { :in => USER_AGES }
+  validates :gender, :inclusion => { :in => GENDERS }
 
   has_many :acumen_tests
   has_many :accounts
@@ -23,6 +29,8 @@ class User < ActiveRecord::Base
   has_many :budgets
   has_many :answers, :through => :acumen_tests
   has_many :goals
+
+  accepts_nested_attributes_for :accounts
 
   def transactions_sum_by_category(category)
     arr = []

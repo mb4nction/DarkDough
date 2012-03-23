@@ -1,11 +1,11 @@
 $(function(){
   var userMenu = function() {
-    var links = $('menu.left-side a'),
-        containers = $('.block.tabbed');
+    var links = $('menu.left-side a');
 
     links.click(function() {
       var linkClass = $(this).attr('class').split(/\s+/)[0],
-          container = $('.block.right.' + linkClass);
+          container = $('.block.right.' + linkClass),
+          containers = $('.block.tabbed');
 
       links.removeClass('active');
       $(this).addClass('active');

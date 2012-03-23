@@ -12,7 +12,11 @@
   <ul class="account">
     <% @accounts.each do |account| %>
       <li>
-        <%= check_box_tag 'hidden', '0' %>
+        <%= form_for current_user, :remote => true do |f| -%>
+          <%= f.fields_for :accounts, account do |account_fields| -%>
+            <%= account_fields.check_box :status, {}, 'active', 'inactive' %>
+          <% end -%>
+        <% end -%>
         <strong><%= Bank.find_by_id(account.bank_id).name %></strong>
         <%= account.name %>
       </li>

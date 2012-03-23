@@ -23,7 +23,9 @@
 
       <%= yield %>
 
-      <br /><br /><%= link_to "Get started here", new_user_registration_path unless user_signed_in? %>
+      <% unless user_signed_in? %>
+        <br /><br /><%= link_to "Get started here", new_user_registration_path  %>
+      <% end %>
       <div class="footer_push"></div>
     </div>
   </div>

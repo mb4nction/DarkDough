@@ -4,17 +4,29 @@ module ApplicationHelper
     @title.nil? ? "#{site_title}" : "#{@title}"
   end
 
-  def acumen_test_menu(user)
+  def acumen_test_menu(user, html_class)
     if !user.acumen_tests.any?
-      link_to "Create Acumen Test", new_acumen_test_path
+      link_to "Create Acumen Test", new_acumen_test_path, :class => html_class
     elsif !user.acumen_tests.last.finished == true
-      link_to "Continue Acumen Test", edit_acumen_test_path(user.acumen_tests.last)
+      link_to "Continue Acumen Test", edit_acumen_test_path(user.acumen_tests.last), :class => html_class
     elsif user.acumen_tests.last.finished?
-      link_to "Acumen Test Result", acumen_test_path(user.acumen_tests.last)
+      link_to "Acumen Test Result", acumen_test_path(user.acumen_tests.last), :class => html_class
     end
   end
 
   def display_if(cond, val='block')
     "style = 'display: #{cond ? val : 'none'};'"
+  end
+
+  def activated_if(cond)
+    if cond
+      'activated'
+    end
+  end
+
+  def current_page_menu(controller_name)
+    if controller.controller_name == controller_name
+      'active'
+    end
   end
 end

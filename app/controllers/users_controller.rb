@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_filter :check_account
 
   def show
-    @user = current_user
+    params[:user] ? @user = current_user.update_attributes(params[:user]) : @user = current_user
     @accounts = current_user.accounts
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit

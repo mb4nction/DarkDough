@@ -1,60 +1,123 @@
 <div class="block right tabbed about active">
   <h4>About you</h4>
   <dl>
+    <dt>First name</dt>
+    <dd class="activated">
+      <%= current_user.first_name %>
+    </dd>
+    <dd><%= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
+    <%= form_for current_user, :remote => true do |f| -%>
+      <%= f.text_field :first_name %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
+  </dl>
+  <dl>
+    <dt>Last name</dt>
+    <dd class="activated">
+      <%= current_user.last_name %>
+    </dd>
+    <dd><%= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
+    <%= form_for current_user do |f| -%>
+      <%= f.text_field :last_name %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
+  </dl>
+  <dl>
     <dt>Age</dt>
-    <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="<%= activated_if(current_user.age) %>">
+      <%= current_user.age ? current_user.age : 'You don\'t specified age yet' %>
+    </dd>
+    <dd><%= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
+    <%= form_for current_user do |f| -%>
+      <%= f.text_field :age %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
   </dl>
   <dl>
     <dt>Gender</dt>
-    <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="<%= activated_if(current_user.gender) %>">
+      <%= current_user.gender ? current_user.gender : 'You don\'t specified gender yet' %>
+    </dd>
+    <dd><%= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
+    <%= form_for current_user do |f| -%>
+      <%= f.select :gender, User::GENDERS %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
   </dl>
   <dl>
     <dt>Marital status</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
   <dl>
     <dt>Education level</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
   <dl>
     <dt>Credit scope</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
   <dl>
     <dt>Profession</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
 
   <h4>Your household</h4>
   <dl>
     <dt>Income range</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd>
+      <%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %>
+    </dd>
   </dl>
   <dl>
     <dt>Zip code</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
   <dl>
     <dt>Country</dt>
-    <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd class="<%= activated_if(current_user.country) %>">
+      <%= current_user.country ? current_user.country : 'You don\'t specified country yet' %>
+    </dd>
+    <dd>
+      <%= link_to 'Edit', '#', :class => "edit", :title => "Edit" %>
+    </dd>
+    <%= form_for current_user do |f| -%>
+      <%= f.select :country, Carmen::country_names %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'cancel' %>
+      </div>
+    <% end -%>
   </dl>
   <dl>
     <dt>Residential status</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd>
+      <%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %>
+    </dd>
   </dl>
   <dl>
     <dt>Household size</dt>
     <dd></dd>
-    <dd class="edit"><%= link_to 'Edit', '#', :class => "edit" %></dd>
+    <dd>
+      <%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %>
+    </dd>
   </dl>
 </div>
