@@ -164,7 +164,7 @@ menu.left-side {
     .amount {
       position: absolute;
       right: 20px;
-      top: 10px;
+      top: 20px;
       font-size: 18px;
     }
 
@@ -202,7 +202,7 @@ menu.left-side {
       @include inline-block;
       @include radius(2px);
       position: absolute;
-      top: 10px;
+      top: 20px;
       left: 175px;
       padding: 4px 15px;
       color: #fff;

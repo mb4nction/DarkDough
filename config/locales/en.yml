@@ -18,6 +18,7 @@ en:
       short: "%b %d"
       long: "%Y-%m-%d %H:%M"
       time: '%H:%M'
+      universal: '%d.%m.%Y'
   datetime:
     format:
       date: '%Y-%m-%d'

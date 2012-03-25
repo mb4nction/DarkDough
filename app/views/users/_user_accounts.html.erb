@@ -12,10 +12,10 @@
       </div>
       <div class="times">
         <span>
-          <strong>Updated:</strong> <%= account.created_at %>
+          <strong>Updated:</strong> <%= time_ago_in_words account.created_at %>
         </span>
         <span>
-          <strong>Added:</strong> <%= account.updated_at %>
+          <strong>Added:</strong> <%=l account.updated_at, :format => :universal %>
         </span>
       </div>
       <span class="amount">
