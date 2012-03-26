@@ -11,19 +11,19 @@ namespace :db do
     3.times do |n|
       Bank.create!(:name => "Bank #{n+1}")
 
-      Transaction.create!(:description => "Phone's transactions.",
-                          :category => "Phone", :amount => 10*(n+1), :user_id => "1")
-      Transaction.create!(:description => "#{n+1} 'income' transactions.",
-                          :category => "Income", :amount => 100*(n+1), :user_id => "1")
+      Transaction.create!(:description => "Phone's transactions.", :category => "Phone",
+                          :amount => 10*(n+1), :user_id => "1", :account_id => "1")
+      Transaction.create!(:description => "#{n+1} 'income' transactions.", :category => "Income",
+                          :amount => 100*(n+1), :user_id => "1", :account_id => "2")
     end
 
-    Transaction.create!(:description => "Shoes", :category => "Shoping", :amount => 600, :user_id => "1", :created_at => "2012-01-14")
-    Transaction.create!(:description => "Dinner", :category => "Restaurants", :amount => 4000, :user_id => "1", :created_at => "2012-01-23")
-    Transaction.create!(:description => "Medicine", :category => "Medicine", :amount => 800, :user_id => "1", :created_at => "2012-02-13")
-    Transaction.create!(:description => "Medicine", :category => "Medicine", :amount => 4000, :user_id => "1", :created_at => "2012-01-11")
-    Transaction.create!(:description => "Somewhere", :category => "Clothes", :amount => 125, :user_id => "1", :created_at => "2012-02-25")
-    Transaction.create!(:description => "Income", :category => "Income", :amount => 2000, :user_id => "1", :created_at => "2012-01-07")
-    Transaction.create!(:description => "Income", :category => "Income", :amount => 3000, :user_id => "1", :created_at => "2012-02-05")
+    Transaction.create!(:description => "Shoes", :category => "Shoping", :amount => 600, :user_id => "1", :created_at => "2012-01-14", :account_id => "1")
+    Transaction.create!(:description => "Dinner", :category => "Restaurants", :amount => 4000, :user_id => "1", :created_at => "2012-01-23", :account_id => "2")
+    Transaction.create!(:description => "Medicine", :category => "Medicine", :amount => 800, :user_id => "1", :created_at => "2012-02-13", :account_id => "2")
+    Transaction.create!(:description => "Medicine", :category => "Medicine", :amount => 4000, :user_id => "1", :created_at => "2012-01-11", :account_id => "1")
+    Transaction.create!(:description => "Somewhere", :category => "Clothes", :amount => 125, :user_id => "1", :created_at => "2012-02-25", :account_id => "2")
+    Transaction.create!(:description => "Income", :category => "Income", :amount => 2000, :user_id => "1", :created_at => "2012-01-07", :account_id => "1")
+    Transaction.create!(:description => "Income", :category => "Income", :amount => 3000, :user_id => "1", :created_at => "2012-02-05", :account_id => "1")
 
     Budget.create!(:category => Transaction::CATEGORIES[1], :amount => 25, :period => "1", :user_id => "1")
     Budget.create!(:category => Transaction::CATEGORIES[2], :amount => 550, :period => "1", :user_id => "1")
@@ -54,5 +54,6 @@ namespace :db do
     b10.save
 
     Account.create!(:name => 'Test account', :status => 'active', :bank_id => '3', :amount => 1000, :user_id => 1)
+    Account.create!(:name => 'Test account 2', :status => 'active', :bank_id => '2', :amount => 200, :user_id => 1)
   end
 end
