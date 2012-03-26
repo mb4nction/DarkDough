@@ -5,7 +5,7 @@ namespace :db do
 
     User.create!(:first_name => "Eugene", :last_name => "K.",
                  :email => "user1@mailinator.com", :country => "Ukraine", :phone => "0123456789",
-                 :password => "epyfnm", :password_confirmation => "epyfnm", :age => '26', :gender => 'male')
+                 :password => "epyfnm", :password_confirmation => "epyfnm", :age => '26', :gender => 'Male')
 
     Rake::Task['db:reset'].invoke
     3.times do |n|

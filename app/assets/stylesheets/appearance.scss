@@ -96,6 +96,7 @@ footer {
     ul {
       @include inline-block;
       margin-right: 45px;
+      vertical-align: top;
 
       li {
         margin-bottom: 13px;

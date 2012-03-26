@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   USER_AGES = (8..100)
-  GENDERS = %w(male female)
+  GENDERS = %w(Male Female Unspecified)
 
   attr_accessor   :tos_confirmation
 
