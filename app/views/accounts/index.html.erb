@@ -1,44 +1,11 @@
-<h1>Accounts - Transactions</h1>
+<h1>Accounts</h1>
 
-<div class="block accounts">
-  <div id="accounts">
-    <h4>Accounts</h4>
+<%= render :partial => 'accounts_list_menu' %>
 
-    <div id="accounts_list">
-      <%= link_to "All accounts", "#" %>
-      <% @accounts.each do |account| %>
-        <%= link_to account.name, '#' %>
-      <% end %>
+<div id="accounts">
+  <%= render :partial => 'all_accounts' %>
 
-      <%= form_tag accounts_path, :method => "get", :class => "hidden" do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-      <% end -%>
-    </div>
-
-    <p>
-      <%= link_to "View all accounts", list_accounts_path %> or
-      <%= link_to 'Create New Account', new_account_path %>
-    </p>
-  </div>
-
-  <div id="transactions">
-    <h4>Transactions for <i>"<%= @account_name %>"</i></h4>
-    <div class="transactions_list">
-      <% @transactions.each do |transaction| %>
-        <%=l transaction.created_at, :format => :short %> |
-        <%= transaction.description %>
-        <%= transaction.amount %><br />
-      <% end %>
-      <hr />
-      Total amount: <%= @transactions.map{ |tr| tr.amount}.sum %>
-    </div>
-  </div>
-
-    <p style="float:left; margin-left: 20px;">
-      <%= link_to "View all transactions", transactions_path %> or
-      <%= link_to 'Create New Transaction', new_transaction_path %>
-    </p>
-
-  <br class="clear" />
+  <% @accounts.each do |account| %>
+    <%= render 'account_item', :account => account %>
+  <% end %>
 </div>

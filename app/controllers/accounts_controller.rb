@@ -3,6 +3,8 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = current_user.accounts.all
+    @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
+    @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
     if params[:search]
       if Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.present?
         @account_name = Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.name

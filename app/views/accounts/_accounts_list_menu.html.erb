@@ -1,0 +1,19 @@
+<menu class="left-side">
+  <ul>
+    <li>
+      <%= link_to "#", :class => "all active" do %>
+        All accounts
+        <span><%= pluralize(@accounts.count, 'account') %></span>
+        <i></i>
+      <% end %>
+    </li>
+    <% @accounts.each do |account| %>
+      <li>
+        <%= link_to "#", :class => "#{account.id}" do %>
+          <%= account.name %>
+          <i></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</menu>

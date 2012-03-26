@@ -1,30 +1,63 @@
 @import "mixins";
 
-.block.accounts {
-  #accounts, #transactions {
-    float: left;
-    vertical-align: top;
-  }
+#accounts {
+  @include inline-block;
+  font-family: Helvetica,Arial,sans-serif;
 
-  #accounts {
-    min-width: 35%;
+  .totals {
+    margin: 20px 0;
+    font-size: 18px;
 
-    #accounts_list a {
+    .cash, .debt {
+      @include inline-block;
+      margin-right: 40px;
+    }
+
+    .cash { color: #84bc3d; }
+    .debt { color: #f56c3c; }
+
+    span {
       display: block;
-      border: 1px solid #ccc;
-      margin-top: -1px;
-      text-decoration: none;
+      font-size: 11px;
+      color: #9a9999;
     }
   }
 
-  #transactions {
-    margin-left: -1px;
+  .date, .desc, .category, .amount {
+    @include inline-block;
+    @include box-sizing;
+    padding: 5px;
+  }
 
-    h4 { padding-left: 20px; }
+  .date {
+    width: 50px;
+    color: #9a9999;
+  }
 
-    .transactions_list {
-      padding-left: 20px;
-      border-left: 1px solid #eee;
-    }
+  .desc {
+    width: 300px;
+  }
+
+  .category {
+    width: 100px;
+    color: #9a9999;
+  }
+
+  .amount {
+    width: 60px;
+  }
+
+  .sort {
+    color: #9a9999;
+    font-size: 11px;
+  }
+
+  .transaction {
+    font-size: 12px;
+    clear: right;
+  }
+
+  .edit {
+    float: right;
   }
 }
