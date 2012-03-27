@@ -18,7 +18,7 @@
       });
 
       links.click(function() {
-        var linkContainer = $(this).parents('dl');
+        var linkContainer = $(this).parents('.edited-item');
 
         $(this).hide();
         linkContainer.toggleClass('active');
@@ -49,7 +49,7 @@
       });
 
       cancelLinks.click(function() {
-        var container = $(this).parents('dl'),
+        var container = $(this).parents('.edited-item'),
             editLink = $('a.edit', container);
 
         editLink.show();

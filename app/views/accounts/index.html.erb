@@ -3,9 +3,9 @@
 <%= render :partial => 'accounts_list_menu' %>
 
 <div id="accounts">
-  <%= render :partial => 'all_accounts' %>
-
-  <% @accounts.each do |account| %>
-    <%= render 'account_item', :account => account %>
-  <% end %>
+  <%= render :partial => 'accounts' %>
 </div>
+
+<%= javascript_tag do %>
+  $('#accounts').customForm();
+<% end %>

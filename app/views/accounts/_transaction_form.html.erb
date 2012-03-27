@@ -1,33 +1,33 @@
-<%= form_for transaction, :remote => true do |f| -%>
-  <%= render 'shared/error_messages', :object => f.object %>
+<%= form_for account, :remote => true do |f| -%>
+  <%= f.fields_for :transactions, transaction do |transactions_fields| -%>
+    <div class="date">
+      <%= transactions_fields.text_field :created_at, :value => transaction.created_at.strftime('%b %d') %>
+    </div>
+    <div class="desc">
+      <%= transactions_fields.text_field :description %>
+    </div>
+    <div class="category">
+      <%= transactions_fields.text_field :category %>
+    </div>
+    <div class="amount">
+      <%= transactions_fields.text_field :amount %>
+    </div>
+    <dl>
+      <dt>Details</dt>
+      <dd>
+        You entered this <%= transaction.category %> transaction at <%=l transaction.created_at, :format => :short %>
+      </dd>
+    </dl>
+    <dl class="textarea">
+      <dt><%= transactions_fields.label :note, "Notes" %></dt>
+      <dd>
+        <%= transactions_fields.text_area :note, :rows => 3, :cols => 62 %>
+      </dd>
+    </dl>
 
-  <div class="date">
-    <%= f.text_field :created_at, :value => transaction.created_at.strftime('%b %d') %>
-  </div>
-  <div class="desc">
-    <%= f.text_field :description %>
-  </div>
-  <div class="category">
-    <%= f.text_field :category %>
-  </div>
-  <div class="amount">
-    <%= f.text_field :amount %>
-  </div>
-  <dl>
-    <dt>Details:</dt>
-    <dd>
-      You entered this <%= transaction.category %> transaction at <%=l transaction.created_at, :format => :short %>
-    </dd>
-  </dl>
-  <dl>
-    <dt><%= f.label :note, "Notes" %></dt>
-    <dd>
-      <%= f.text_area :note, :rows => 5 %>
-    </dd>
-  </dl>
-
-  <div class="buttons">
-    <%= f.submit 'Save' %>
-    <%= link_to "Cancel", '#', :class => "cancel" %>
-  </div>
+    <div class="buttons">
+      <%= transactions_fields.submit 'Save' %>
+      <%= link_to "Cancel", '#', :class => "cancel" %>
+    </div>
+  <% end -%>
 <% end -%>

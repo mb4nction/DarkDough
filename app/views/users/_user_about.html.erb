@@ -1,6 +1,6 @@
 <div class="block right tabbed about active">
   <h4>About you</h4>
-  <dl>
+  <dl class="edited-item">
     <dt>First name</dt>
     <dd class="activated">
       <%= current_user.first_name %>
@@ -14,7 +14,7 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Last name</dt>
     <dd class="activated">
       <%= current_user.last_name %>
@@ -28,7 +28,7 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Age</dt>
     <dd class="<%= activated_if(current_user.age) %>">
       <%= current_user.age ? current_user.age : 'You don\'t specified age yet' %>
@@ -42,7 +42,7 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Gender</dt>
     <dd class="<%= activated_if(current_user.gender) %>">
       <%= current_user.gender ? current_user.gender : 'You don\'t specified gender yet' %>
@@ -56,17 +56,17 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Marital status</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Education level</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Profession</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
@@ -80,12 +80,12 @@
       <%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %>
     </dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Post code</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Country</dt>
     <dd class="<%= activated_if(current_user.country) %>">
       <%= current_user.country ? current_user.country : 'You don\'t specified country yet' %>
@@ -101,14 +101,14 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Residential status</dt>
     <dd></dd>
     <dd>
       <%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %>
     </dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Household size</dt>
     <dd></dd>
     <dd>

@@ -1,6 +1,6 @@
 <div class="block right tabbed settings">
   <h4>General account settings</h4>
-  <dl>
+  <dl class="edited-item">
     <dt>Primary email</dt>
     <dd><%= current_user.email %></dd>
     <dd><%= link_to 'Edit', '#', :class => "edit" %></dd>
@@ -12,17 +12,17 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Secondary email</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Password</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Username</dt>
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit" %></dd>

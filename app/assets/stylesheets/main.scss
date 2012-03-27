@@ -51,12 +51,12 @@ table {
 .hidden { display: none; }
 
 #wrapper {
-  width: 960px;
+  width: 1000px;
   margin: 0 auto;
   height: 100%;
 
   footer {
-    width: 960px;
+    width: 1000px;
     margin: 20px 0;
     border: 1px solid #ccc;
   }
@@ -72,7 +72,7 @@ table {
   &.right {
     @include inline-block;
     @include box-sizing;
-    width: 675px;
+    width: 715px;
     margin: 0 0 0 20px;
     vertical-align: top;
   }

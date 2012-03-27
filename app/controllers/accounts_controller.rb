@@ -5,6 +5,9 @@ class AccountsController < ApplicationController
     @accounts = current_user.accounts.all
     @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
     @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
+
+    @transactions = current_user.transactions.all
+
     if params[:search]
       if Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.present?
         @account_name = Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.name
@@ -19,17 +22,31 @@ class AccountsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render :json => @accounts }
     end
   end
 
   def show
-    @account = Account.find(params[:id])
+    if params[:account]
+      @account = Account.find(params[:id])
+      @account.update_attributes(params[:account])
+    else
+      @account = Account.find(params[:id])
+    end
+
     @bank = Bank.find_by_id(@account.bank_id)
 
+    @transactions = current_user.transactions.all
+
+    @accounts = current_user.accounts.all
+    @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
+    @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
+
+
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
+      format.js
       format.json { render :json => @account }
     end
   end

@@ -26,38 +26,91 @@
   .date, .desc, .category, .amount {
     @include inline-block;
     @include box-sizing;
-    padding: 10px 5px;
+    padding: 5px;
   }
 
   .date {
-    width: 50px;
+    width: 80px;
     color: #9a9999;
   }
 
-  .desc { width: 300px; }
+  .desc { width: 310px; }
 
   .category {
-    width: 100px;
+    width: 140px;
     color: #9a9999;
   }
 
-  .amount { width: 60px; }
+  .amount {
+    width: 90px;
+    text-align: right;
+  }
 
   .sort {
     color: #9a9999;
     font-size: 11px;
+    padding-bottom: 0;
   }
 
   .transaction {
+    @include radius(3px);
     font-size: 12px;
     clear: right;
+    margin: 10px 0;
+
+    form {
+      display: none;
+    }
 
     &.active {
+      background-color: #f6f6f6;
+      border: 1px dashed #dfdee1;
+
       .info { display: none; }
 
       form {
+        display: block;
+        input[type=text] {
+          @include radius(1px);
+          @include box-sizing;
+          margin: 0;
+          padding: 1px 5px;
+          width: 100%;
+          font-size: 12px;
+          color: #3e4050;
+          border: 1px solid #e1dde6;
+        }
+
+        dl {
+          border: none;
+
+          dt {
+            width: 75px;
+            text-align: right;
+            color: #9a9999;
+            font-weight: normal;
+          }
+
+          dd {
+            color: #3e4050;
+            width: 420px;
+
+            textarea {
+              margin: 0;
+              resize: none;
+            }
+          }
+
+          &.textarea {
+            dt { padding-top: 15px; }
+
+            dd { padding-bottom: 5px; }
+          }
+        }
+
         .buttons {
-          margin-top: 10px;
+          margin-left: 85px;
+          margin-bottom: 10px;
 
           input[type=submit] { @include button-accented }
 
@@ -68,7 +121,11 @@
         }
       }
     }
-  }
 
-  .edit { float: right; }
+    .edit {
+      float: right;
+      padding: 5px 10px;
+      margin: 0;
+    }
+  }
 }

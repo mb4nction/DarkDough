@@ -1,6 +1,6 @@
 <div class="block right tabbed email">
   <h4>Email &amp; alerts</h4>
-  <dl>
+  <dl class="edited-item">
     <dt>Primary email</dt>
     <dd>
       <%= current_user.email %>
@@ -14,22 +14,22 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Secondary email</dt>
     <dd></dd>
     <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Send summary emails</dt>
     <dd></dd>
     <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Send advice emails</dt>
     <dd></dd>
     <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Your mobile number</dt>
     <dd class="<%= activated_if(current_user.phone_number) %>">
       <%= current_user.phone_number ? current_user.phone_number : 'You don\'t have a phone number now' %>
@@ -43,14 +43,14 @@
       </div>
     <% end -%>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>Send summary texts</dt>
     <dd></dd>
     <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
 
   <h4>Send alerts for</h4>
-  <dl>
+  <dl class="edited-item">
     <dt>
       <%= check_box_tag 'low_balance', '1', true %>
       Low balance
@@ -58,7 +58,7 @@
     <dd>if the balance of any of my accounts drops below</dd>
     <dd class="edit"></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>
       <%= check_box_tag 'bill_reminder', false %>
       Bill Reminders
@@ -66,7 +66,7 @@
     <dd>before my bills are due, by</dd>
     <dd class="edit"></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>
       <%= check_box_tag 'credit_available', false %>
       Credit Available
@@ -74,7 +74,7 @@
     <dd>if my credit available drops below</dd>
     <dd class="edit"></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>
       <%= check_box_tag 'total_credit_available', false %>
       Total Credit Available
@@ -82,7 +82,7 @@
     <dd>if my credit usage is high enough to hurt my credit score</dd>
     <dd class="edit"></dd>
   </dl>
-  <dl>
+  <dl class="edited-item">
     <dt>
       <%= check_box_tag 'unusual_spending', false %>
       Unusual Spending
