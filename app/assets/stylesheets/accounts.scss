@@ -26,7 +26,7 @@
   .date, .desc, .category, .amount {
     @include inline-block;
     @include box-sizing;
-    padding: 5px;
+    padding: 10px 5px;
   }
 
   .date {
@@ -34,18 +34,14 @@
     color: #9a9999;
   }
 
-  .desc {
-    width: 300px;
-  }
+  .desc { width: 300px; }
 
   .category {
     width: 100px;
     color: #9a9999;
   }
 
-  .amount {
-    width: 60px;
-  }
+  .amount { width: 60px; }
 
   .sort {
     color: #9a9999;
@@ -55,9 +51,24 @@
   .transaction {
     font-size: 12px;
     clear: right;
+
+    &.active {
+      .info { display: none; }
+
+      form {
+        .buttons {
+          margin-top: 10px;
+
+          input[type=submit] { @include button-accented }
+
+          a.cancel {
+            @include button;
+            color: #656673;
+          }
+        }
+      }
+    }
   }
 
-  .edit {
-    float: right;
-  }
+  .edit { float: right; }
 }

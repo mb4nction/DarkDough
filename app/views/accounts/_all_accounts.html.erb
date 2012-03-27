@@ -1,36 +1,39 @@
 <div class="block right tabbed all active">
   <h4>All accounts</h4>
 
-    <div class="totals">
-      <div class="cash">
-        <%= @income_amount %>
-        <span>Total cash, $</span>
-      </div>
-      <div class="debt">
-        &ndash; <%= @spending_amount %>
-        <span>Total debt, $</span>
-      </div>
+  <div class="totals">
+    <div class="cash">
+      <%= @income_amount %>
+      <span>Total cash, $</span>
     </div>
+    <div class="debt">
+      &ndash; <%= @spending_amount %>
+      <span>Total debt, $</span>
+    </div>
+  </div>
 
-    <div class="date sort">Date</div>
-    <div class="desc sort">Description</div>
-    <div class="category sort">Category</div>
-    <div class="amount sort">Amount, $</div>
+  <div class="date sort">Date</div>
+  <div class="desc sort">Description</div>
+  <div class="category sort">Category</div>
+  <div class="amount sort">Amount, $</div>
   <% @transactions.each do |transaction| %>
     <div class="transaction">
-      <div class="date">
-        <%=l transaction.created_at, :format => :short %>
+      <div class="info">
+        <div class="date">
+          <%=l transaction.created_at, :format => :short %>
+        </div>
+        <div class="desc">
+          <%= transaction.description %>
+        </div>
+        <div class="category">
+          <%= transaction.category %>
+        </div>
+        <div class="amount">
+          <%= transaction.amount %>
+        </div>
+        <%= link_to "Edit", '#', :class => "edit" %>
       </div>
-      <div class="desc">
-        <%= transaction.description %>
-      </div>
-      <div class="category">
-        <%= transaction.category %>
-      </div>
-      <div class="amount">
-        <%= transaction.amount %>
-      </div>
-      <%= link_to "Edit", '#', :class => "edit" %>
+      <%= render 'transaction_form', :transaction => transaction %>
     </div>
   <% end %>
 </div>
