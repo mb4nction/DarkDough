@@ -6,9 +6,12 @@
     <h5>Find your bank</h5>
     <span>Enter your bank's name</span>
     <div class="bank-search">
-      <%= text_field_tag :bank, {}, :id => "search-input" %>
-      <%= link_to '#', :class => "search-link" do %>
-        <i></i>
+      <%= form_tag accounts_path, :method => "get" do %>
+        <%= text_field_tag :bank_name, params[:bank_name], :id => "search-input" %>
+        <%= submit_tag "Search", :id => "search-submit" %>
+        <%= link_to '#', :class => "search-link" do %>
+          <i></i>
+        <% end %>
       <% end %>
       <div id="banks-list-wrapper">
         <div id="banks-list"><%= @banks.join(',') %></div>
@@ -28,7 +31,11 @@
           <span>
             <%= index + 1 %>.
           </span>
-          <%= link_to bank.name, '#' %><br />
+          <%= link_to bank.name, '#' %>
+          <%= form_tag accounts_path, :method => "get", :class => "hidden new-account-form" do %>
+            <%= text_field_tag :selected_bank_id, bank.id %>
+            <%= submit_tag "submit" %>
+          <% end -%>
         </div>
       <% end %>
     </div>

@@ -6,9 +6,14 @@ class AccountsController < ApplicationController
     @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
     @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
 
-    @banks = Bank.all.map{ |bank| bank.name }
-
     @transactions = current_user.transactions.all
+    @account = Account.new
+
+    @banks = Bank.all.map{ |bank| bank.name }
+    key = params[:bank_name]
+    @bank = Bank.find_by_name("#{params[:bank_name]}")
+    @searched_banks = Bank.where{name =~ "#{key}%"}
+    @selected_bank = Bank.find_by_id(params[:selected_bank_id])
 
     if params[:search]
       if Account.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]).first.present?
@@ -26,6 +31,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @accounts }
+      format.js
     end
   end
 
@@ -44,7 +50,6 @@ class AccountsController < ApplicationController
     @accounts = current_user.accounts.all
     @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
     @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
-
 
     respond_to do |format|
       format.html
@@ -72,7 +77,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, :notice => 'Account was successfully created.' }
+        format.html { redirect_to accounts_path, :notice => 'Account was successfully created.' }
         format.json { render :json => @account, :status => :created, :location => @account }
       else
         format.html { render :action => "new" }

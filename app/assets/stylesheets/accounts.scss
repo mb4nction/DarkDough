@@ -219,30 +219,36 @@
         position: relative;
         padding: 7px 0;
 
-        input {
-          width: 458px;
-          margin: 0 5px 0 0;
-          vertical-align: middle;
-          padding-right: 25px;
-        }
+        form {
+          input {
+            width: 458px;
+            margin: 0 5px 0 0;
+            vertical-align: middle;
+            padding-right: 25px;
+          }
 
-        .search-link {
-          @include button;
-          @include box-sizing;
-          position: relative;
-          padding: 0;
-          width: 40px;
-          height: 30px;
-          vertical-align: middle;
+          .search-link {
+            @include button;
+            @include box-sizing;
+            position: relative;
+            padding: 0;
+            width: 40px;
+            height: 30px;
+            vertical-align: middle;
 
-          i {
-            @include inline-block;
-            position: absolute;
-            left: 12px;
-            top: 7px;
-            width: 12px;
-            height: 14px;
-            background: image-url('ico/magnify.png') center center no-repeat;
+            i {
+              @include inline-block;
+              position: absolute;
+              left: 12px;
+              top: 7px;
+              width: 12px;
+              height: 14px;
+              background: image-url('ico/magnify.png') center center no-repeat;
+            }
+          }
+
+          input[type=submit] {
+            display: none;
           }
         }
       }
