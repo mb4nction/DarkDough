@@ -6,6 +6,10 @@
   <%= render :partial => 'accounts' %>
 </div>
 
+<div id="new-account-dialog" class="active">
+  <%= render :partial => 'new_account' %>
+</div>
+
 <%= javascript_tag do %>
   $('#accounts').customForm();
 <% end %>

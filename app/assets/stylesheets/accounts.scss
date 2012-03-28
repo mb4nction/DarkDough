@@ -1,5 +1,11 @@
 @import "mixins";
 
+.add-account {
+  @include add-link;
+  width: 220px;
+  margin: 25px 20px 20px;
+}
+
 #accounts {
   @include inline-block;
   font-family: Helvetica,Arial,sans-serif;
@@ -44,6 +50,10 @@
   .amount {
     width: 90px;
     text-align: right;
+
+    input {
+      text-align: right;
+    }
   }
 
   .sort {
@@ -126,6 +136,153 @@
       float: right;
       padding: 5px 10px;
       margin: 0;
+    }
+  }
+}
+
+/* new account dialog styles */
+#new-account-dialog {
+  display: none;
+
+  &.active {
+    @include inline-block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    font-family: Helvetica,Arial,sans-serif;
+
+    .dialog-block {
+      @include box-shadow(0 0 5px rgba(0,0,0,.75));
+      @include box-sizing;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -300px;
+      margin-top: -200px;
+      height: 400px;
+      width: 600px;
+      padding: 15px 20px;
+      border: 8px solid #4b3c65;
+      background: #fff;
+      color: #3e4050;
+      overflow: visible;
+      z-index: 5;
+      font-size: 12px;
+
+      a {
+        color: #29a3c7;
+        text-decoration: none;
+
+        &:hover { text-decoration: underline; }
+      }
+
+      h3 {
+        color: #3e4050;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      h5 {
+        margin: 30px 0 10px;
+        color: #3e4050;
+        font-size: 14px;
+        font-weight: normal;
+      }
+
+      h3 + h5 {
+        margin-top: 10px;
+      }
+
+      span {
+        color: #a1a1a1;
+        font-size: 11px;
+      }
+
+      .dialog-cancel {
+        @include inline-block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        text-indent: -9999px;
+        width: 16px;
+        height: 16px;
+        background: image-url('ico/modal_close.png') center center no-repeat;
+
+        &:hover {
+          background: image-url('ico/modal_close.png') center center no-repeat;
+        }
+      }
+
+      .bank-search {
+        position: relative;
+        padding: 7px 0;
+
+        input {
+          width: 458px;
+          margin: 0 5px 0 0;
+          vertical-align: middle;
+          padding-right: 25px;
+        }
+
+        .search-link {
+          @include button;
+          @include box-sizing;
+          position: relative;
+          padding: 0;
+          width: 40px;
+          height: 30px;
+          vertical-align: middle;
+
+          i {
+            @include inline-block;
+            position: absolute;
+            left: 12px;
+            top: 7px;
+            width: 12px;
+            height: 14px;
+            background: image-url('ico/magnify.png') center center no-repeat;
+          }
+        }
+      }
+
+      .popular-bank {
+        line-height: 1.5em;
+
+        span {
+          font-size: 12px;
+          color: #a1a1a1;
+        }
+      }
+    }
+
+    #overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.3);
+      z-index: 4;
+    }
+  }
+}
+
+#banks-list-wrapper {
+  display: none;
+
+  &.active {
+    @include inline-block;
+    #banks-list { display: none; }
+
+    .clear-bank {
+      @include inline-block;
+      position: absolute;
+      top: 17px;
+      left: 468px;
+      width: 11px;
+      height: 10px;
+      text-indent: -9999px;
+      background: image-url('ico/input_clear.png') center center no-repeat;
     }
   }
 }

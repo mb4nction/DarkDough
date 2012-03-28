@@ -1,18 +1,25 @@
 $(function(){
   $('.chosen').chosen();
 
-  var formSubmit = function() {
-    var searchContainer = $("#accounts_list"),
-        form = searchContainer.find("form"),
-        links = searchContainer.find("a"),
-        searchField = form.find("input[type=text]");
+  $('.add-account').click(function() {
+    $('#new-account-dialog').toggleClass('active');
+  });
 
-    links.click(function(){
-      searchField.val(this.text);
-      form.submit();
-      return false;
-    });
-  };
+  $('.dialog-cancel').click(function() {
+    $('#new-account-dialog').toggleClass('active');
+  });
 
-  formSubmit();
+  var availableBanks = $('#banks-list').html().split(',');
+  $('#search-input').autocomplete({
+    source: availableBanks,
+    select: function(event, ui) {
+      $('#banks-list-wrapper').addClass('active')
+    }
+  });
+
+  $('.clear-bank').click(function() {
+    var input = $(this).parent().siblings('input');
+    input.val('');
+    $('#banks-list-wrapper').removeClass('active')
+  });
 });

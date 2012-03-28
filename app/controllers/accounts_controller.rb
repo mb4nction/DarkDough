@@ -6,6 +6,8 @@ class AccountsController < ApplicationController
     @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
     @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
 
+    @banks = Bank.all.map{ |bank| bank.name }
+
     @transactions = current_user.transactions.all
 
     if params[:search]
