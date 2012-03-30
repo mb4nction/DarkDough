@@ -1,0 +1,56 @@
+<div id="dashboard">
+
+  <aside>
+    <div class="left-side">
+      <div id="current_user">
+        <%= full_name current_user %>
+      </div>
+      <%= acumen_test_menu(current_user, current_page_menu('acumen_tests')) %>
+    </div>
+    <div class="left-side">
+      <h3>Top users</h3>
+    </div>
+
+    <div class="left-side">
+      <h3>Videos</h3>
+    </div>
+
+    <div class="left-side">
+      <h3>Articles</h3>
+    </div>
+  </aside>
+
+  <div id="user-info">
+    <div class="block right">
+      <div id="goals">
+        <h2>Goals</h2>
+
+        <% @goals.each do |goal| %>
+          <%= link_to goal_path(goal) do %>
+            <%= goal.title %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="budgets">
+        <h2>Budget</h2>
+
+        <% @budgets.spending.each do |budget| %>
+          <%= (sprintf("%.3f", (budget.amount / @budgets.map(&:amount).sum)).to_f * 100).to_f %>% &ndash;
+          <%= budget.category %> &ndash;
+          <%= budget.amount %><br />
+        <% end %>
+      </div>
+
+      <div id="spending">
+        <h2>Historical spending</h2>
+
+        <% categorized(@spending_transactions).each do |category, amount| %>
+          <%= category %> &ndash;
+          <%= (sprintf("%.3f", (amount / @spending_transactions.map(&:amount).sum)).to_f * 100).to_f %>%<br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

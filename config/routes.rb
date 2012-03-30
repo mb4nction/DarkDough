@@ -1,9 +1,7 @@
 Pfm::Application.routes.draw do
 
-
   devise_for :users, :path_prefix => 'd'
   resources :users, :only => [:show, :edit, :update]
-
   resources :acumen_tests
 
   resources :accounts do
@@ -19,6 +17,7 @@ Pfm::Application.routes.draw do
       get :select
     end
   end
+
   resources :transactions
   resources :trends, :only => :index
 
@@ -81,7 +80,8 @@ Pfm::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'static#home'
+  root :to => "dashboard#show"
+  # root :to => 'static#home'
 
   # See how all your routes lay out with "rake routes"
 

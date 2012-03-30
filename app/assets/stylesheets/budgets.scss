@@ -8,7 +8,7 @@
 
 }
 
-#incomes, #spending {
+#result #incomes, #result #spending {
   width: 730px;
   padding-left: 20px;
 
@@ -34,14 +34,6 @@
     line-height: 16px;
     color: #9a9999;
 
-/*    .edit {
-      @include inline-block;
-      width: 14px;
-      height: 16px;
-      text-indent: -9999px;
-      background: image-url('ico/edit.png') center center no-repeat;
-    }
-*/
     &.income, &.spending {
       .spent {
         float: right;

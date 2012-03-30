@@ -1,0 +1,50 @@
+@import 'mixins';
+
+#dashboard {
+  padding-top: 20px;
+  clear: both;
+
+  aside {
+    @include inline-block;
+    width: 260px;
+    vertical-align: top;
+
+    .left-side {
+      @include box-sizing;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+
+      h3 {
+        margin: 5px 0;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  #user-info {
+    @include inline-block;
+    width: 715px;
+    margin-left: 15px;
+    vertical-align: top;
+
+    .block.right {
+      margin: 0 0 10px 0;
+
+      > div {
+        margin-top: 30px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      h2 {
+        margin: 0 0 20px;
+        font-size: 16px;
+        font-weight: normal;
+      }
+    }
+  }
+}
