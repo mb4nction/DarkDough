@@ -37,4 +37,8 @@ class Transaction < ActiveRecord::Base
       in_this_month.find(:all).map{|transaction| transaction.amount}.sum
     end
   end
+
+  def self.by_account(account)
+    find_all_by_account_id(account.id)
+  end
 end

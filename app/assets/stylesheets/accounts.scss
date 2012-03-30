@@ -29,57 +29,40 @@
     }
   }
 
-  .date, .desc, .category, .amount {
-    @include inline-block;
-    @include box-sizing;
-    padding: 5px;
-  }
+  table.transactions-table {
+    border: none;
+    border-spacing: none;
 
-  .date {
-    width: 80px;
-    color: #9a9999;
-  }
+    td, th {
+      border: none;
+      border-spacing: 0;
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: normal;
 
-  .desc { width: 310px; }
+      &.amount {
+        text-align: right;
+      }
 
-  .category {
-    width: 140px;
-    color: #9a9999;
-  }
-
-  .amount {
-    width: 90px;
-    text-align: right;
-
-    input {
-      text-align: right;
-    }
-  }
-
-  .sort {
-    color: #9a9999;
-    font-size: 11px;
-    padding-bottom: 0;
-  }
-
-  .transaction {
-    @include radius(3px);
-    font-size: 12px;
-    clear: right;
-    margin: 10px 0;
-
-    form {
-      display: none;
+      &.edit {
+        padding: 0;
+      }
     }
 
-    &.active {
-      background-color: #f6f6f6;
-      border: 1px dashed #dfdee1;
-
-      .info { display: none; }
+    tr.active {
+      td {
+        padding: 0;
+      }
 
       form {
-        display: block;
+        @include radius(3px);
+        font-size: 12px;
+        clear: right;
+        margin: 10px 0;
+        background-color: #f6f6f6;
+        border: 1px dashed #dfdee1;
+        width: 100%;
+
         input[type=text] {
           @include radius(1px);
           @include box-sizing;
@@ -129,8 +112,54 @@
             color: #656673;
           }
         }
+
       }
     }
+  }
+
+  .date, .description, .category, .amount {
+    @include inline-block;
+    @include box-sizing;
+    padding: 5px;
+
+    a {
+      color: #9a9999;
+      text-decoration: none;
+    }
+  }
+
+  .date {
+    width: 80px;
+    color: #9a9999;
+  }
+
+  .description { width: 310px; }
+
+  .category {
+    width: 140px;
+    color: #9a9999;
+  }
+
+  .amount {
+    width: 90px;
+    text-align: right;
+
+    input {
+      text-align: right;
+    }
+  }
+
+  .sort {
+    color: #9a9999;
+    font-size: 11px;
+    padding-bottom: 0;
+  }
+
+  .transaction {
+    @include radius(3px);
+    font-size: 12px;
+    clear: right;
+    margin: 10px 0;
 
     .edit {
       float: right;

@@ -179,6 +179,18 @@ menu.left-side {
   }
 }
 
+.sort a.asc {
+  @include inline-block;
+  padding-right: 12px;
+  background: image-url('ico/arrow_sort_up.png') right 2px no-repeat;
+}
+
+.sort a.desc {
+  @include inline-block;
+  padding-right: 12px;
+  background: image-url('ico/arrow_sort_down.png') right 2px no-repeat;
+}
+
 /* jQuery ui */
 .my_dialog.ui-dialog {
   @include radius(0 !important);

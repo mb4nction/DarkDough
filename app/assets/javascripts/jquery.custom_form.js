@@ -21,7 +21,12 @@
         var linkContainer = $(this).parents('.edited-item');
 
         $(this).hide();
-        linkContainer.toggleClass('active');
+        if (!linkContainer.next().hasClass('edited-item')) {
+          linkContainer.addClass('hidden');
+          linkContainer.next().toggleClass('hidden').addClass('active');
+        } else {
+          linkContainer.toggleClass('active');
+        }
         return false;
       });
 
@@ -49,11 +54,17 @@
       });
 
       cancelLinks.click(function() {
-        var container = $(this).parents('.edited-item'),
+        var linkClass = $(this).attr('class').split(/\s+/)[0],
+            container = $(this).parents().find('.'+ linkClass),
             editLink = $('a.edit', container);
 
         editLink.show();
-        container.toggleClass('active');
+        if (container.next().hasClass('edited-item')) {
+          container.toggleClass('active');
+        } else {
+          container.removeClass('hidden');
+          container.next().addClass('hidden').removeClass('active');
+        }
         return false;
       });
 

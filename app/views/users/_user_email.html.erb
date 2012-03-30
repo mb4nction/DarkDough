@@ -1,6 +1,6 @@
 <div class="block right tabbed email">
   <h4>Email &amp; alerts</h4>
-  <dl class="edited-item">
+  <dl class="item_7 edited-item">
     <dt>Primary email</dt>
     <dd>
       <%= current_user.email %>
@@ -10,7 +10,7 @@
       <%= f.email_field :email %>
       <div class="buttons">
         <%= f.submit "Save" %>
-        <%= link_to "Cancel", '#', :class => 'cancel' %>
+        <%= link_to "Cancel", '#', :class => 'item_7 cancel' %>
       </div>
     <% end -%>
   </dl>
@@ -29,7 +29,7 @@
     <dd></dd>
     <dd class="edit"><%#= link_to 'Edit', '#', :class => "edit" %></dd>
   </dl>
-  <dl class="edited-item">
+  <dl class="item_8 edited-item">
     <dt>Your mobile number</dt>
     <dd class="<%= activated_if(current_user.phone_number) %>">
       <%= current_user.phone_number ? current_user.phone_number : 'You don\'t have a phone number now' %>
@@ -39,7 +39,7 @@
       <%= f.phone_field :phone_number %>
       <div class="buttons">
         <%= f.submit "Save" %>
-        <%= link_to "Cancel", '#', :class => 'cancel' %>
+        <%= link_to "Cancel", '#', :class => 'item_8 cancel' %>
       </div>
     <% end -%>
   </dl>

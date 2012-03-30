@@ -3,7 +3,7 @@
     <div class="date">
       <%= transactions_fields.text_field :created_at, :value => transaction.created_at.strftime('%b %d') %>
     </div>
-    <div class="desc">
+    <div class="description">
       <%= transactions_fields.text_field :description %>
     </div>
     <div class="category">
@@ -27,7 +27,7 @@
 
     <div class="buttons">
       <%= transactions_fields.submit 'Save' %>
-      <%= link_to "Cancel", '#', :class => "cancel" %>
+      <%= link_to "Cancel", '#', :class => "item_#{transaction.id} cancel" %>
     </div>
   <% end -%>
 <% end -%>

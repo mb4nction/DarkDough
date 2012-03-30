@@ -9,13 +9,15 @@ $(function(){
     $('#new-account-dialog').toggleClass('active');
   });
 
-  var availableBanks = $('#banks-list').html().split(',');
-  $('#search-input').autocomplete({
-    source: availableBanks,
-    select: function(event, ui) {
-      $('#banks-list-wrapper').addClass('active')
-    }
-  });
+  if ($('#banks-list').length > 0) {
+    var availableBanks = $('#banks-list').html().split(',');
+    $('#search-input').autocomplete({
+      source: availableBanks,
+      select: function(event, ui) {
+        $('#banks-list-wrapper').addClass('active')
+      }
+    });
+  };
 
   $('.clear-bank').click(function() {
     var input = $(this).parent().siblings('input');

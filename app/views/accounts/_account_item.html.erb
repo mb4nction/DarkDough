@@ -12,30 +12,41 @@
     </div>
   </div>
 
-  <div class="date sort">Date</div>
-  <div class="desc sort">Description</div>
-  <div class="category sort">Category</div>
-  <div class="amount sort">Amount, $</div>
-
-  <% account.transactions.each do |transaction| %>
-    <div class="transaction edited-item">
-      <div class="info">
-        <div class="date">
-          <%=l transaction.created_at, :format => :short %>
-        </div>
-        <div class="desc">
-          <%= transaction.description %>
-        </div>
-        <div class="category">
-          <%= transaction.category %>
-        </div>
-        <div class="amount">
-          <%= transaction.amount %>
-        </div>
-        <%= link_to "Edit", '#', :class => "edit" %>
-      </div>
-      <%= render :partial => 'transaction_form', :locals => {:transaction => transaction, :account => account} %>
-    </div>
-  <% end %>
-
+  <table class="transactions-table">
+    <thead>
+      <tr>
+        <th class="date sort"><%= sortable "created_at", "Date" %></th>
+        <th class="description sort"><%= sortable "description" %></th>
+        <th class="category sort"><%= sortable "category" %></th>
+        <th class="amount sort"><%= sortable "amount" %></th>
+        <th class="edit"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.by_account(account).each do |transaction| %>
+        <tr class="item_<%= transaction.id %> transaction edited-item">
+          <td class="date">
+            <%=l transaction.created_at, :format => :short %>
+          </td>
+          <td class="description">
+            <%= transaction.description %>
+          </td>
+          <td class="category">
+            <%= transaction.category %>
+          </td>
+          <td class="amount">
+            <%= transaction.amount %>
+          </td>
+          <td class="edit">
+            <%= link_to "Edit", '#', :class => "edit" %>
+          </td>
+        </tr>
+        <tr class="hidden">
+          <td colspan='4'>
+            <%= render :partial => 'transaction_form', :locals => {:transaction => transaction, :account => transaction.account} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

@@ -1,12 +1,13 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   def index
     @accounts = current_user.accounts.all
     @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
     @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
 
-    @transactions = current_user.transactions.all
+    @transactions = current_user.transactions.order(sort_column + " " + sort_direction)
     @account = Account.new
 
     @banks = Bank.all.map{ |bank| bank.name }
@@ -25,7 +26,7 @@ class AccountsController < ApplicationController
       end
     else
       @account_name = "all accounts"
-      @transactions = current_user.transactions.all
+      # @transactions = current_user.transactions.all
     end
 
     respond_to do |format|
@@ -112,5 +113,15 @@ class AccountsController < ApplicationController
 
   def list
     @accounts = current_user.accounts.all
+  end
+
+  private
+
+  def sort_column
+    Transaction.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
