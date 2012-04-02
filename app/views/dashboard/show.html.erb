@@ -22,35 +22,14 @@
 
   <div id="user-info">
     <div class="block right">
-      <div id="goals">
-        <h2>Goals</h2>
-
-        <% @goals.each do |goal| %>
-          <%= link_to goal_path(goal) do %>
-            <%= goal.title %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div id="budgets">
-        <h2>Budget</h2>
-
-        <% @budgets.spending.each do |budget| %>
-          <%= (sprintf("%.3f", (budget.amount / @budgets.map(&:amount).sum)).to_f * 100).to_f %>% &ndash;
-          <%= budget.category %> &ndash;
-          <%= budget.amount %><br />
-        <% end %>
-      </div>
-
-      <div id="spending">
-        <h2>Historical spending</h2>
-
-        <% categorized(@spending_transactions).each do |category, amount| %>
-          <%= category %> &ndash;
-          <%= (sprintf("%.3f", (amount / @spending_transactions.map(&:amount).sum)).to_f * 100).to_f %>%<br />
-        <% end %>
-      </div>
+      <%= render 'goals', :goals => @goals %>
+      <%= render 'budgets', :budgets => @budgets %>
+      <%= render 'historical_spending', :spending => @spending_transactions %>
     </div>
   </div>
 
 </div>
+
+<%= javascript_tag do  %>
+  $('.dashboard.budgets').progressBar();
+<% end %>

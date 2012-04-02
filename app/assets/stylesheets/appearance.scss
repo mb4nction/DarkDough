@@ -191,6 +191,24 @@ footer {
   background: image-url('ico/arrow_sort_down.png') right 2px no-repeat;
 }
 
+/* colors */
+.negative-val { color: #f66f3f !important; }
+.positive-val { color: #83b043 !important; }
+
+.progress {
+  @include radius(3px);
+  height: 15px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  clear: right;
+  overflow: hidden;
+
+  div { @include radius(3px); }
+  .charged { @include gradient(#fb7a4d, #f56d3d); }
+  .active-bar { @include gradient(#93c453, #8fbb51); }
+}
+
+
 /* jQuery ui */
 .my_dialog.ui-dialog {
   @include radius(0 !important);

@@ -18,3 +18,6 @@
 
 //= require jquery.radio.js
 //= require jquery.progressBar.js
+
+//= require jQuery-Visualize/excanvas.js
+//= require jQuery-Visualize/visualize.jQuery.js

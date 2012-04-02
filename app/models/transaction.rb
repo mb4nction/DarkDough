@@ -41,4 +41,8 @@ class Transaction < ActiveRecord::Base
   def self.by_account(account)
     find_all_by_account_id(account.id)
   end
+
+  def self.transactions_by_month
+    spending_transactions.find(:all).group_by{ |transaction| transaction.created_at.strftime("%b") }
+  end
 end

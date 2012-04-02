@@ -1,0 +1,35 @@
+<div id="spending">
+  <h2>Historical spending</h2>
+
+  <table class="hiddens">
+    <caption>Historical spending</caption>
+    <thead>
+      <tr>
+        <td></td>
+        <% @transactions_by_month.each do |month, transactions| %>
+          <th scope="col"><%= month %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% categorized(spending).each do |category, amount| %>
+        <tr>
+          <th scope="row"><%= category %></th>
+          <% arr= [] %>
+          <% @transactions_by_month.each do |month, transactions| %>
+            <td>
+              <% transactions.each{ |tr| arr << tr if tr.created_at.strftime("%b") == month && tr.category == category} %>
+              <%= arr.map{ |tr| tr.amount}.sum %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= javascript_tag do %>
+  $(function(){
+  	$('table').visualize({type: 'area', width: '420px'});
+  });
+<% end %>
