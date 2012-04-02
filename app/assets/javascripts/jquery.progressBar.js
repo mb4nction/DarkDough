@@ -5,9 +5,9 @@
 
       items.each(function(elem){
         var progressBar = $('.progress', elem),
-            amount = parseFloat($('.end', elem).text()),
-            spended = parseFloat($('.start', elem).text()),
-            itemWidth = elem.offsetWidth,
+            amount = Math.abs(parseFloat($('.end', elem).text())),
+            spended = Math.abs(parseFloat($('.start', elem).text())),
+            itemWidth = progressBar.width(),
             progressWidth;
 
         if (amount < spended) {

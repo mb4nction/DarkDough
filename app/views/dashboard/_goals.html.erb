@@ -1,0 +1,9 @@
+<div id="goals">
+  <h2>Goals</h2>
+
+  <% goals.each do |goal| %>
+    <%= link_to goal_path(goal) do %>
+      <%= goal.title %>
+    <% end %>
+  <% end %>
+</div>

@@ -41,9 +41,67 @@
       }
 
       h2 {
-        margin: 0 0 20px;
+        margin: 0;
         font-size: 16px;
         font-weight: normal;
+      }
+
+      h2 + span {
+        @include inline-block;
+        margin-bottom: 2 0px;
+        font-size: 11px;
+        color: #9a9999;
+      }
+
+      .dashboard.budgets {
+        margin-top: 20px;
+
+        .item {
+          margin-top: 10px;
+          font-size: 12px;
+          line-height: 16px;
+          color: #9a9999;
+        }
+
+        .category, .budget, .left-over, .progress, .progress-range {
+          @include inline-block;
+          @include box-sizing;
+          margin: 0 5px;
+          vertical-align: top;
+          font-size: 11px;
+          color: #9a9999;
+          text-align: right;
+        }
+
+        .category {
+          width: 140px;
+        }
+
+        .progress, .progress-range {
+          width: 365px;
+          padding: 0;
+          height: 18px;
+        }
+
+        .budget {
+          width: 55px;
+        }
+
+        .left-over {
+          width: 55px;
+        }
+
+        .links {
+          font-size: 12px;
+        }
+
+        .progress-range {
+          text-align: left;
+
+          span {
+            float: right;
+          }
+        }
       }
     }
   }
