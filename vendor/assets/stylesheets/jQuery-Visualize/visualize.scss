@@ -1,3 +1,5 @@
+@import 'mixins';
+
 /*plugin styles*/
 .visualize { border: 1px solid #888; position: relative; background: #fafafa; }
 .visualize canvas { position: absolute; }
@@ -24,3 +26,62 @@
 .visualize-labels-y li span.label { right: 100%; margin-right: 5px; display: block; width: 100px; text-align: right; }
 .visualize-labels-y li span.line { border-top-width: 1px; width: 100%; }
 .visualize-bar .visualize-labels-x li span.label { width: 100%; text-align: center; }
+
+/* own styles */
+.visualize canvas {
+  position: static;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+.visualize {
+  margin-top: 40px;
+  margin-left: 60px;
+  padding: 0;
+  height: auto !important;
+  border: none;
+  background: none;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 11px;
+}
+
+.visualize .visualize-info {
+  position: static;
+  border: none;
+  margin-top: 30px;
+  background: none;
+  font-size: 11px;
+  color: #9a9999;
+}
+
+.visualize ul.visualize-key {
+  position: static;
+  width: auto;
+  background: none;
+}
+
+.visualize ul.visualize-key li {
+  @include inline-block;
+  float: none;
+  width: 75px;
+  padding-left: 22px;
+  line-height: 35px;
+}
+
+.visualize-labels-y li span.label, .visualize-labels-x li span.label {
+  font-size: 11px;
+  color: #9a9999;
+}
+
+.visualize ul.visualize-key .visualize-key-label {
+  color: #9a9999;
+  font-size: 11px;
+}
+
+.visualize ul.visualize-key .visualize-key-color {
+  @include radius(2px);
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+}
