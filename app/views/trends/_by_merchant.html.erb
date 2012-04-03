@@ -1,13 +1,13 @@
 <div id="by_merchant_partial">
   <div class="spending_container svg bubble-info">
-    <% if @spending_transactions %>
+    <% if @spending_transactions.any? %>
       <% merchanized(@spending_transactions).map do |key, val| %>
         <%= key %> &ndash; <%= val %><br />
       <% end %>
     <% else %>
       You do not have any spending transactions.
     <% end %>
-    <div class="hidden data"><%= merchanized(@spending_transactions).map{ |key, val| val}.join(",") %></div>
+    <div class="hidden data"><%= merchanized(@spending_transactions).map{ |key, val| val}.join(",") if @spending_transactions.any? %></div>
     <div class="hidden data-sum"><%= @spending_amount %></div>
   </div>
 

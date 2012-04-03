@@ -9,7 +9,7 @@
       You do not have any spending transactions in this period.
     <% end %>
 
-    <div class="hidden data"><%= categorized(@spending_transactions).map{ |key, val| val}.join(",") %></div>
+    <div class="hidden data"><%= categorized(@spending_transactions).map{ |key, val| val}.join(",") if @spending_transactions.any?%></div>
     <div class="hidden data-sum"><%= @spending_amount %></div>
   </div>
 

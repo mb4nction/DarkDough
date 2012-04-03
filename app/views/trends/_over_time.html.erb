@@ -1,13 +1,13 @@
 <div id="over_time_partial">
   <div class="spending_container svg bubble-info">
-    <% if @spending_transactions %>
+    <% if @spending_transactions.any? %>
       <% monthly(@spending_transactions).map do |key, val| %>
         <%= Date::MONTHNAMES[key] %> &ndash; <%= val %><br />
       <% end %>
     <% else %>
       You do not have any spending transactions.
     <% end %>
-    <div class="hidden data"><%= monthly(@spending_transactions).map{ |key, val| val}.join(",") %></div>
+    <div class="hidden data"><%= monthly(@spending_transactions).map{ |key, val| val}.join(",") if @spending_transactions.any? %></div>
     <div class="hidden data-sum"><%= @spending_amount %></div>
   </div>
 
@@ -29,8 +29,10 @@
       <%= Date::MONTHNAMES[key] %> &ndash; $<%= val %><br />
     <% end %><br /><br />
     Spending:<br />
-    <% monthly(@spending_transactions).each do |key,val| %>
-      <%= Date::MONTHNAMES[key] %> &ndash; $<%= val %><br />
+    <% if @spending_transactions.any? %>
+      <% monthly(@spending_transactions).each do |key,val| %>
+        <%= Date::MONTHNAMES[key] %> &ndash; $<%= val %><br />
+      <% end %>
     <% end %>
     <div class="hidden data"></div>
     <div class="hidden data-sum"></div>

@@ -7,11 +7,13 @@
       </tr>
     </thead>
     <tbody>
-      <% categorized(@spending_transactions).each do |spending| %>
-        <tr>
-          <td><%= spending[0] %></td>
-          <td>&#8358; <%= spending[1] %></td>
-        </tr>
+      <% if @spending_transactions.any? %>
+        <% categorized(@spending_transactions).each do |spending| %>
+          <tr>
+            <td><%= spending[0] %></td>
+            <td>&#8358; <%= spending[1] %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
     <tfoot>
