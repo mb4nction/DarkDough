@@ -43,6 +43,6 @@ class Transaction < ActiveRecord::Base
   end
 
   def self.transactions_by_month
-    spending_transactions.find(:all).group_by{ |transaction| transaction.created_at.strftime("%b") }
+    spending_transactions.find(:all).group_by{ |transaction| transaction.created_at.month }.sort
   end
 end
