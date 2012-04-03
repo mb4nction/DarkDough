@@ -63,8 +63,10 @@
 
 .visualize ul.visualize-key li {
   @include inline-block;
+  margin-left: 0;
+  margin-right: 15px;
   float: none;
-  width: 75px;
+  width: 100px;
   padding-left: 22px;
   line-height: 35px;
 }
