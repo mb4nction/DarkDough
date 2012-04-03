@@ -11,9 +11,9 @@
       <div class="item">
         <div class="category links"><%= budget.category %></div>
         <div class="progress"></div>
-        <div class="budget">$ <span class="end"><%= budget.amount %></span></div>
+        <div class="budget">&#8358; <span class="end"><%= budget.amount %></span></div>
         <div class="left-over <%= considering_the_sign budget.amount - current_user.transactions_sum_by_category(budget.category)%>">
-          $ <%= budget.amount - current_user.transactions_sum_by_category(budget.category) %>
+          &#8358; <%= budget.amount - current_user.transactions_sum_by_category(budget.category) %>
         </div>
         <span class="start hidden">
           <%= current_user.transactions_sum_by_category(budget.category) %>

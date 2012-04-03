@@ -1,8 +1,8 @@
 <div id="spending">
   <h3>Spending</h3>
   <div class="amount">
-    $<%= current_user.spending_amount %> spent of
-    $<%= @spending_budgets.map(&:amount).sum %>
+    &#8358; <%= current_user.spending_amount %> spent of
+    &#8358; <%= @spending_budgets.map(&:amount).sum %>
   </div>
 
   <%= link_to "Create a new budget", new_budget_path, :class => "new-budget" %>
@@ -15,10 +15,10 @@
           <%= link_to "edit", edit_budget_path(spending, :category => spending.category), :class => "edit" %>
           <div class="spent">
             <div class="b-start">
-              $<div class="start"><%= current_user.transactions_sum_by_category(spending.category) %></div>
+              &#8358;<div class="start"><%= current_user.transactions_sum_by_category(spending.category) %></div>
             </div> &nbsp;&nbsp;of&nbsp;&nbsp;
             <div class="b-end">
-              $<div class="end"><%= spending.amount %></div>
+              &#8358;<div class="end"><%= spending.amount %></div>
             </div>
           </div>
           <div class="progress"></div>

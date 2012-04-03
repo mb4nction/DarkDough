@@ -10,14 +10,14 @@
       <% categorized(@spending_transactions).each do |spending| %>
         <tr>
           <td><%= spending[0] %></td>
-          <td>$<%= spending[1] %></td>
+          <td>&#8358; <%= spending[1] %></td>
         </tr>
       <% end %>
     </tbody>
     <tfoot>
       <tr>
         <td>Total</td>
-        <td>$<%= @spending_amount %></td>
+        <td>&#8358; <%= @spending_amount %></td>
       </tr>
     </tfoot>
   </table>
@@ -35,14 +35,14 @@
       <% categorized(@income_transactions).each do |key, val| %>
         <tr>
           <td><%= key %></td>
-          <td>$<%= @income_amount %></td>
+          <td>&#8358; <%= @income_amount %></td>
         </tr>
       <% end %>
     </tbody>
     <tfoot>
       <tr>
         <td>Total</td>
-        <td>$<%= @income_amount %></td>
+        <td>&#8358; <%= @income_amount %></td>
       </tr>
     </tfoot>
   </table>
@@ -64,17 +64,17 @@
           TODO set month
         -->
         <td>Month</td>
-        <td>$<%= @income_amount %></td>
-        <td>$<%= @spending_amount %></td>
-        <td>$<%= @income_amount - @spending_amount %></td>
+        <td>&#8358; <%= @income_amount %></td>
+        <td>&#8358; <%= @spending_amount %></td>
+        <td>&#8358; <%= @income_amount - @spending_amount %></td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <td>Total</td>
-        <td>$<%= @income_amount %></td>
-        <td>$<%= @spending_amount %></td>
-        <td>$<%= @income_amount - @spending_amount %></td>
+        <td>&#8358; <%= @income_amount %></td>
+        <td>&#8358; <%= @spending_amount %></td>
+        <td>&#8358; <%= @income_amount - @spending_amount %></td>
       </tr>
     </tfoot>
   </table>

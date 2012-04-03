@@ -2,11 +2,11 @@
   <h3>Income</h3>
   <div class="amount">
     <div class="sum">
-      <div class="cur">$</div><%= current_user.transactions_sum_by_category("Income") %>
+      <div class="cur">&#8358;</div><%= current_user.transactions_sum_by_category("Income") %>
     </div>
     so far of
     <div class="sum">
-      <div class="cur">$</div><%= @income_budgets.map(&:amount).sum %>
+      <div class="cur">&#8358;</div><%= @income_budgets.map(&:amount).sum %>
     </div>
   </div>
 
@@ -22,10 +22,10 @@
           Income <%= link_to "edit", edit_budget_path(income, :category => income.category), :class => "edit" %>
           <div class="spent">
             <div class="b-start">
-              $<div class="start"><%= current_user.transactions_sum_by_category("Income") %></div>
+              &#8358;<div class="start"><%= current_user.transactions_sum_by_category("Income") %></div>
             </div> &nbsp;&nbsp;of&nbsp;&nbsp;
             <div class="b-end">
-              $<div class="end"><%= @income_budgets.map(&:amount).sum %></div>
+              &#8358;<div class="end"><%= @income_budgets.map(&:amount).sum %></div>
             </div>
           </div>
           <div class="progress"></div>
