@@ -104,5 +104,34 @@
         }
       }
     }
+
+    #goals {
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      .goal-item {
+        @include inline-block;
+        width: 115px;
+        text-align: center;
+        font-family: Helvetica,Arial,sans-serif;
+        vertical-align: top;
+
+        a {
+          font-size: 12px;
+          color: #29a3c7;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        
+        span {
+          font-size: 11px;
+          color: #9a9999;
+        }
+      }
+    }
   }
 }
