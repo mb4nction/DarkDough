@@ -12,21 +12,23 @@
   </div>
 
   <div class="income_container svg bubble-info by_category">
-    <% if @income_transactions %>
+    <% if @income_transactions.any? %>
       <% monthly(@income_transactions).map do |key, val| %>
         <%= Date::MONTHNAMES[key] %> &ndash; <%= val %><br />
       <% end %>
     <% else %>
       You do not have any income transactions.
     <% end %>
-    <div class="hidden data"><%= monthly(@income_transactions).map{ |key, val| val}.join(",") %></div>
+    <div class="hidden data"><%= monthly(@income_transactions).map{ |key, val| val}.join(",") if @income_transactions.any? %></div>
     <div class="hidden data-sum"> <%= @income_amount %></div>
   </div>
 
   <div class="net_income_container svg bubble-info by_category" style="vertical-align: top;">
-    Income:<br />
-    <% monthly(@income_transactions).each do |key,val| %>
-      <%= Date::MONTHNAMES[key] %> &ndash; $<%= val %><br />
+    <% if @income_transactions.any? %>
+      Income:<br />
+      <% monthly(@income_transactions).each do |key,val| %>
+        <%= Date::MONTHNAMES[key] %> &ndash; $<%= val %><br />
+      <% end %>
     <% end %><br /><br />
     Spending:<br />
     <% if @spending_transactions.any? %>

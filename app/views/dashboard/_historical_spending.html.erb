@@ -1,30 +1,32 @@
 <div id="spending">
-  <h2>Historical spending</h2>
-  <table height="300" class="hidden">
-    <thead>
-      <tr>
-        <td></td>
-        <% @transactions_by_month.last(10).each do |month, transactions| %>
-          <th scope="col"><%= Date::ABBR_MONTHNAMES[month] %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% categorized(spending).each do |category, amount| %>
+  <% if @spending_transactions.any? %>
+    <h2>Historical spending</h2>
+    <table height="300" class="hidden">
+      <thead>
         <tr>
-          <th scope="row"><%= category %></th>
+          <td></td>
           <% @transactions_by_month.last(10).each do |month, transactions| %>
-            <% arr = [] %>
-            <td>
-              <% transactions.each{ |tr| arr << tr if tr.created_at.month == month && tr.category == category} %>
-              <%= arr.map{ |tr| tr.amount}.sum %>
-            </td>
+            <th scope="col"><%= Date::ABBR_MONTHNAMES[month] %></th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <span class="visualize-currency hidden">&#8358;</span>
+      </thead>
+      <tbody>
+        <% categorized(spending).each do |category, amount| %>
+          <tr>
+            <th scope="row"><%= category %></th>
+            <% @transactions_by_month.last(10).each do |month, transactions| %>
+              <% arr = [] %>
+              <td>
+                <% transactions.each{ |tr| arr << tr if tr.created_at.month == month && tr.category == category} %>
+                <%= arr.map{ |tr| tr.amount}.sum %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <span class="visualize-currency hidden">&#8358;</span>
+  <% end %>
 </div>
 
 <%= javascript_tag do %>

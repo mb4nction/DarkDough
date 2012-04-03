@@ -34,11 +34,13 @@
       </tr>
     </thead>
     <tbody>
-      <% categorized(@income_transactions).each do |key, val| %>
-        <tr>
-          <td><%= key %></td>
-          <td>&#8358; <%= @income_amount %></td>
-        </tr>
+      <% if @income_transactions.any? %>
+        <% categorized(@income_transactions).each do |key, val| %>
+          <tr>
+            <td><%= key %></td>
+            <td>&#8358; <%= @income_amount %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
     <tfoot>

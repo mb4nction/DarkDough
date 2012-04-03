@@ -14,14 +14,14 @@
   </div>
 
   <div class="income_container svg bubble-info by_category">
-    <% if @income_transactions %>
+    <% if @income_transactions.any? %>
       <% categorized(@income_transactions).map do |key, val| %>
         <%= [key] %> &ndash; <%= val %><br />
       <% end %>
     <% else %>
       You do not have any income transactions in this period.
     <% end %>
-    <div class="hidden data"><%= categorized(@income_transactions).map{ |key, val| val}.join(',') %></div>
+    <div class="hidden data"><%= categorized(@income_transactions).map{ |key, val| val}.join(',') if @income_transactions.any? %></div>
     <div class="hidden data-sum"><%= @income_amount %></div>
   </div>
 

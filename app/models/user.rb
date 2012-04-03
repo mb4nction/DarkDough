@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def transactions_categories
-    self.transactions.map{ |transaction| transaction.category }.uniq!
+    self.transactions.any? ? self.transactions.map{ |transaction| transaction.category }.uniq! : []
   end
 
   def spending_amount
