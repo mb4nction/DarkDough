@@ -47,9 +47,15 @@
 
         node.append("text")
             .attr("text-anchor", "middle")
-            .attr("dy", ".3em")
-            .attr("font-size", function(d) { return Math.sqrt(d.r * .03) + "em"; })
+            .attr("dy", "1.5em")
+            .attr("font-size", function(d) { return Math.sqrt(d.r * .01) + "em"; })
             .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+        node.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", ".1em")
+            .attr("font-size", function(d) { return Math.sqrt(d.r * .12) + "em"; })
+            .text(function(d) { return format(d.value); });
 
         // Returns a flattened hierarchy containing all leaf nodes under the root.
         function classes(root) {
