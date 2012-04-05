@@ -45,6 +45,15 @@ $(function(){
       $('#filter_category').text(categoryName);
       $(this).parent().siblings().removeClass('active');
       $(this).parent().addClass('active');
+      if ($(this).hasClass('net_income')) {
+        $('#by_category').hide('hidden');
+        $('#by_merchant').hide('hidden');
+        $('#over_time').click();
+      }
+      else {
+        $('#by_category').show('hidden');
+        $('#by_merchant').show('hidden');
+      }
       return false;
     }))
   },
@@ -154,12 +163,9 @@ $(function(){
     });
 
     lastMonth.click(function(){
-      /*
-        TODO Talk to Mark about this behaviour
-      */
       $('#timeline div').removeClass('selected');
-      $('#timeline').slider("option", "values", [11,12]);
-      $('#timeline div.timeline-month').last().addClass('selected');
+      $('#timeline').slider("option", "values", [10,11]);
+      $('#timeline div.timeline-month:nth-child(11)').addClass('selected');
       return false;
     });
 

@@ -174,12 +174,9 @@ $(function() {
     });
 
     lastMonth.click(function(){
-      /*
-        TODO Talk to Mark about this behaviour
-      */
       $('#budgets_timeline div').removeClass('selected');
-      $('#budgets_timeline').slider("option", "values", [11,12]);
-      $('#budgets_timeline div.timeline-month').last().addClass('selected');
+      $('#budgets_timeline').slider("option", "values", [10,11]);
+      $('#budgets_timeline div.timeline-month:nth-child(11)').addClass('selected');
       return false;
     });
 
