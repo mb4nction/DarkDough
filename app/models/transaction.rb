@@ -16,7 +16,7 @@ class Transaction < ActiveRecord::Base
     by_category(category).map(&:amount).sum
   end
 
-  def self.search(start_date, end_date, category)
+  def self.search(start_date, end_date, category = '')
     if start_date && !(start_date == '')
       end_date == '' ? end_date = Time.now.utc : end_date
       find(:all, :conditions => ['created_at >= ? AND created_at <= ?', start_date, end_date.to_date + 1.day])

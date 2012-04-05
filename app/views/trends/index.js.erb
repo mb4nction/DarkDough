@@ -1,8 +1,5 @@
 $('#trends_statistic').html("<%= escape_javascript(render :partial => 'trends') %>");
 $('#sub_category_data').html("<%= escape_javascript(render :partial => 'sub_category_data') %>");
 
-$('.spending.json').html("<%= @spending_json.to_json %>")
-$('.income.json').html("<%= @income_json.to_json %>")
-
 $('#main_filter li.active a').click();
 $('#sub_filter li.active a').click();

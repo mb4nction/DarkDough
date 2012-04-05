@@ -10,12 +10,18 @@
       var $containersForDrawing = $('div[class*=container].svg');
 
       $containersForDrawing.each(function() {
-          var containerClass = $(this).attr('class').split(/\s+/)[0];
-          var partialId = $(this).parent().attr('id');
+          var containerClass = $(this).attr('class').split(/\s+/)[0],
+              partialId = $(this).parent().attr('id'),
+              sum = parseFloat($(this).find('.sum').text()),
+              siteCurrency = $('#site-currency').text();
 
         var r = 600,
             format = d3.format(",d"),
             fill = d3.scale.category10();
+
+        var fill_color = d3.scale.ordinal()
+                           .domain(["low", "medium", "high"])
+                           .range(["#7d8aed", "#fc9ebc", "#00cbd3", "#9077b3", "#ff5c5d", "#7ac7f4", "#b7d953", "#ffa283", "#ecd44d"])
 
         // return a new layout pack with size equals to SVG size (width & height)
         var bubble = d3.layout.pack()
@@ -43,7 +49,7 @@
 
         node.append("circle")
             .attr("r", function(d) { return d.r; })
-            .style("fill", function(d) { return fill(d.packageName); });
+            .style("fill", function(d) { return fill_color(d.packageName); });
 
         node.append("text")
             .attr("text-anchor", "middle")
@@ -54,8 +60,8 @@
         node.append("text")
             .attr("text-anchor", "middle")
             .attr("dy", ".1em")
-            .attr("font-size", function(d) { return Math.sqrt(d.r * .12) + "em"; })
-            .text(function(d) { return format(d.value); });
+            .attr("font-size", function(d) { return Math.sqrt(d.r * .1) + "em"; })
+            .text(function(d) { return sum ? (Math.round(d.value / sum * 100) + "%") : (siteCurrency + d.value); });
 
         // Returns a flattened hierarchy containing all leaf nodes under the root.
         function classes(root) {
