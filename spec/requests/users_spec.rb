@@ -32,6 +32,8 @@ describe "Users" do
           fill_in "Email",                 :with => "john@doe.com"
           fill_in "Password",              :with => "foobar"
           fill_in "Password confirmation", :with => "foobar"
+          fill_in "Age",                   :with => "22"
+          fill_in "Gender",                :with => "Male"
           check("I agree to the Terms of Use")
           click_button
           response.should be_success

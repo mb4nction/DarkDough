@@ -7,9 +7,9 @@ describe TransactionsController do
   end
 
   before :each do
-    @user = Factory(:user)
-    @account = Factory(:account, :user => @user)
-    @transaction = Factory(:transaction, :user => @user)
+    @user = FactoryGirl.create(:user)
+    @account = FactoryGirl.create(:account, :user => @user)
+    @transaction = FactoryGirl.create(:transaction, :user => @user)
     sign_in @user
   end
 
@@ -46,7 +46,7 @@ describe TransactionsController do
     describe "with valid params" do
       it "creates a new Transaction" do
         expect {
-          post :create, :transaction => @attr
+          post :create, :transaction => valid_attributes
         }.to change(Transaction, :count).by(1)
       end
 

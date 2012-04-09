@@ -3,7 +3,7 @@ require 'spec_helper'
 describe GoalsController do
 
   before :each do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     sign_in @user
     @valid_attributes = { :title => "Factory goal", :category => "Other",
                           :amount => "2000", :contribution => "200",

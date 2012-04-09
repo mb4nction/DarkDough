@@ -3,7 +3,8 @@ require 'spec_helper'
 describe User do
   before(:each) do
     @user_attr = { :email => "email@example.com", :first_name => "John", :last_name => "Doe",
-                   :password => "foobar", :password_confirmation => "foobar", :country => "Hungary" }
+                   :password => "foobar", :password_confirmation => "foobar",
+                   :country => "Hungary", :age => "22", :gender => "Male" }
   end
 
   it "should create a new instance given valid attributes" do
@@ -72,7 +73,7 @@ describe User do
   end
 
   it "should have valid country" do
-    user = Factory(:user, :country => "Ukraine")
+    user = FactoryGirl.create(:user, :country => "Ukraine")
     Carmen::country_names.should include(user.country)
   end
 

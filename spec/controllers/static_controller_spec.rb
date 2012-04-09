@@ -40,7 +40,7 @@ describe StaticController do
 
   describe "GET 'help_create_account'" do
     it "should be success" do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       sign_in @user
 
       get :help_create_account, :user => @user
