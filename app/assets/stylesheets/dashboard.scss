@@ -13,12 +13,92 @@
       @include box-sizing;
       width: 100%;
       margin-bottom: 10px;
-      padding: 10px;
+      padding: 20px;
 
       h3 {
         margin: 5px 0;
         font-size: 12px;
         font-weight: normal;
+      }
+    }
+  }
+
+  #current_user {
+    img {
+      @include inline-block;
+      @include radius(3px);
+      margin-right: 10px;
+      vertical-align: top;
+    }
+    .main_info {
+      margin-bottom: 15px;
+
+      .user_info {
+        @include inline-block;
+        @include box-sizing;
+        max-width: 140px;
+        vertical-align: top;
+        color: #3e4050;
+
+        .user_address {
+          display: block;
+          margin-top: 15px;
+          padding-left: 13px;
+          font-size: 11px;
+          color: #a1a1a1;
+          background: image-url('ico/address.png') left 0 no-repeat;
+        }
+      }
+    }
+
+    .test_info {
+      margin-bottom: 20px;
+
+      .test_progress {
+        .item {
+          .start, .end {
+            display: none;
+          }
+
+          .progress {
+            @include radius (10px);
+            height: 6px;
+            border: 1px solid #e3e3e3;
+            background-color: #efefef;
+
+            .active_bar {
+              height: 6px;
+              background: #9078b3;
+            }
+          }
+        }
+      }
+    }
+
+    .totems {
+      font-size: 14px;
+      font-family: helvetica, verdana, arial, sans-serif;
+
+      span {
+        color: #a1a1a1;
+      }
+
+      > div {
+        margin-top: 10px;
+      }
+
+      .totem {
+        @include inline-block;
+        margin-right: 7px;
+        height: 60px;
+        width: 45px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: image-url('bg/totems/totem.png');
+
+        &.first { background-image: image-url('bg/totems/first.png'); }
+        &.second { background-image: image-url('bg/totems/second.png'); }
+        &.third { background-image: image-url('bg/totems/third.png'); }
       }
     }
   }
@@ -117,16 +197,6 @@
         font-family: Helvetica,Arial,sans-serif;
         vertical-align: top;
 
-        a {
-          font-size: 12px;
-          color: #29a3c7;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-        
         span {
           font-size: 11px;
           color: #9a9999;

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Paperclip::Glue
+
   USER_AGES = (8..100)
   GENDERS = %w(Male Female Unspecified)
 
@@ -8,15 +10,22 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :phone_number, :email,
                   :password, :password_confirmation, :country, :tos_confirmation,
                   :email, :password, :password_confirmation, :remember_me,
-                  :age, :gender, :accounts_attributes
+                  :age, :gender, :accounts_attributes, :avatar
+
+  has_attached_file :avatar, styles: { medium: "65x65#", small: "40x40#" },
+                             default_url: 'default_img/anonymous.png',
+                             path: ":rails_root/public/system/:attachment/:id/:style/:filename",
+                             url: "/system/:attachment/:id/:style/:filename"
+
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, :last_name, :country, :presence => true
-  validates :first_name, :last_name, :length => { :maximum => 30 }
+  validates :first_name, :last_name, :country, presence: true
+  validates :first_name, :last_name, length: { maximum: 30 }
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
   validates :country, :inclusion => { :in => Carmen::country_names }

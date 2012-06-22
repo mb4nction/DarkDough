@@ -21,12 +21,6 @@ pre {
     margin-bottom: 10px; } }
 */
 
-a {
-  cursor: pointer;
-  color: #000;
-  &:hover {
-    text-decoration: none; } }
-
 #notice { color: green; }
 
 .field_with_errors {

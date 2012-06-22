@@ -42,8 +42,8 @@
         if (checkbox.is(':checked')) {
           $(this).toggleClass('active_checkbox')
         }
-
       });
+
       customCheckboxes.click(function() {
         var checkbox = $(this).siblings('input[type=checkbox]'),
             form = $(this).parents('form').first();
@@ -69,10 +69,10 @@
       });
 
       forms.each(function() {
-        $(this).on('submit', function(){
-          $.get(this.action, $(this).serialize(), null, "script");
-          return false;
-        })
+        var options ={
+          dataType: 'script'
+        }
+        $(this).ajaxForm(options);
       });
     };
 

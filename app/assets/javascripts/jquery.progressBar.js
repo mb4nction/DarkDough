@@ -15,10 +15,10 @@
           progressBar.prepend("<div style='width:100%;' class='charged'>&nbsp;</div>");
         } else if (spended == 0) {
           progressWidth = 0;
-          progressBar.prepend("<div class='active-bar' style='width:" + progressWidth + "px;'>&nbsp;</div>");
+          progressBar.prepend("<div class='active_bar' style='width:" + progressWidth + "px;'>&nbsp;</div>");
         } else {
           progressWidth = itemWidth *(spended / amount);
-          progressBar.prepend("<div class='active-bar' style='width:" + progressWidth + "px;'>&nbsp;</div>");
+          progressBar.prepend("<div class='active_bar' style='width:" + progressWidth + "px;'>&nbsp;</div>");
         };
       })
     }

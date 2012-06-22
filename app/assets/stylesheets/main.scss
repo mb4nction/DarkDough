@@ -6,12 +6,13 @@ html, body {
   padding: 0;
 }
 
-body { min-height: 100%; }
-
-h1, h2, h3, h4, h5, h6 {
+body {
+  min-height: 100%;
   font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
   color: #3e4050;
 }
+
+h1, h2, h3, h4, h5, h6 { color: #3e4050; }
 
 h1 {
   margin: 30px 0;
@@ -84,6 +85,16 @@ menu, ul, li {
 }
 
 li { list-style-type: none; }
+
+a {
+  font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
+  color: #29a3c7;
+  text-decoration: none;
+  font-size: 12px;
+
+  &:hover { text-decoration: underline; }
+}
+
 
 a.edit {
   @include inline-block;

@@ -8,7 +8,7 @@ module ApplicationHelper
     if !user.acumen_tests.any?
       link_to "Create Acumen Test", new_acumen_test_path, :class => html_class
     elsif !user.acumen_tests.last.finished == true
-      link_to "Continue Acumen Test", edit_acumen_test_path(user.acumen_tests.last), :class => html_class
+      link_to "Complete test to earn points", edit_acumen_test_path(user.acumen_tests.last), :class => html_class
     elsif user.acumen_tests.last.finished?
       link_to "Acumen Test Result", acumen_test_path(user.acumen_tests.last), :class => html_class
     end

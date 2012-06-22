@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 gem 'mysql2'
 gem 'json'
 gem 'squeel'
+gem "paperclip", "~> 3.0"
 
 # Authentication and authorization
 gem "devise", "1.5.3"

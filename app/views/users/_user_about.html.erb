@@ -1,5 +1,6 @@
 <div class="block right tabbed about active">
   <h4>About you</h4>
+
   <dl class="item_1 edited-item">
     <dt>First name</dt>
     <dd class="activated">
@@ -14,6 +15,7 @@
       </div>
     <% end -%>
   </dl>
+
   <dl class="item_2 edited-item">
     <dt>Last name</dt>
     <dd class="activated">
@@ -28,6 +30,7 @@
       </div>
     <% end -%>
   </dl>
+
   <dl class="item_3 edited-item">
     <dt>Age</dt>
     <dd class="<%= activated_if(current_user.age) %>">
@@ -42,6 +45,7 @@
       </div>
     <% end -%>
   </dl>
+
   <dl class="item_4 edited-item">
     <dt>Gender</dt>
     <dd class="<%= activated_if(current_user.gender) %>">
@@ -56,6 +60,20 @@
       </div>
     <% end -%>
   </dl>
+
+  <dl class="item_5 edited-item">
+    <dt>Avatar</dt>
+    <dd><%= File.basename(current_user.avatar.url) %></dd>
+    <dd><%= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
+    <%= form_for current_user, :html => { :mulitpart => true } do |f| -%>
+      <%= f.file_field :avatar %>
+      <div class="buttons">
+        <%= f.submit "Save" %>
+        <%= link_to "Cancel", '#', :class => 'item_3 cancel' %>
+      </div>
+    <% end -%>
+  </dl>
+
   <dl class="edited-item">
     <dt>Marital status</dt>
     <dd></dd>
@@ -85,6 +103,7 @@
     <dd></dd>
     <dd><%#= link_to 'Edit', '#', :class => "edit", :title => "Edit" %></dd>
   </dl>
+
   <dl class="item_5 edited-item">
     <dt>Country</dt>
     <dd class="<%= activated_if(current_user.country) %>">
@@ -101,6 +120,7 @@
       </div>
     <% end -%>
   </dl>
+
   <dl class="edited-item">
     <dt>Residential status</dt>
     <dd></dd>

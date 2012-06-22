@@ -205,7 +205,7 @@ footer {
 
   div { @include radius(3px); }
   .charged { @include gradient(#fb7a4d, #f56d3d); }
-  .active-bar { @include gradient(#93c453, #8fbb51); }
+  .active_bar { @include gradient(#93c453, #8fbb51); }
 }
 
 
