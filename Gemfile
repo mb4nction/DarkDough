@@ -6,6 +6,9 @@ gem 'json'
 gem 'squeel'
 gem "paperclip", "~> 3.0"
 
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
 # Authentication and authorization
 gem "devise", "1.5.3"
 gem "carmen", "0.2.12"

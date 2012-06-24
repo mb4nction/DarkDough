@@ -29,6 +29,8 @@
       @include radius(3px);
       margin-right: 10px;
       vertical-align: top;
+      max-width: 65px;
+      max-height: 65px;
     }
     .main_info {
       margin-bottom: 15px;

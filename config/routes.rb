@@ -1,5 +1,9 @@
 Pfm::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   devise_for :users, :path_prefix => 'd'
   resources :users, :only => [:show, :edit, :update]
   resources :acumen_tests
