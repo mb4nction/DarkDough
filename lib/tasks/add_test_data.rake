@@ -7,6 +7,9 @@ namespace :db do
                  :email => "user1@mailinator.com", :country => "Ukraine", :phone => "0123456789",
                  :password => "epyfnm", :password_confirmation => "epyfnm", :age => '26', :gender => 'Male')
 
+    AdminUser.create!(email: 'budget247admin@mailinator.com', password: 'epyfnm')
+    AdminUser.create!(email: 'admin@example.com', password: 'password')
+
     Rake::Task['db:reset'].invoke
     3.times do |n|
       Bank.create!(:name => "Bank #{n+1}")
