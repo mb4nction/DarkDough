@@ -14,4 +14,20 @@ ActiveAdmin.register User do
     column :gender
     default_actions
   end
+
+  form do |f|
+    f.inputs do
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      f.input :first_name
+      f.input :last_name
+      f.input :phone_number
+      f.input :country
+      f.input :age
+      f.input :gender, as: :select, collection: User::GENDERS
+    end
+    f.buttons
+  end
+
 end
