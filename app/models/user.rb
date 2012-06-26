@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, length: { maximum: 30 }
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
-  validates :country, :inclusion => { :in => Carmen::country_names }
+  # TODO specify this validation in admin section. Fix errro on edit user when active
+  # validates :country, :inclusion => { :in => Carmen::country_names }
   validates :age, :inclusion => { :in => USER_AGES }
   validates :gender, :inclusion => { :in => GENDERS }
 
