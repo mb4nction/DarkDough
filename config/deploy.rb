@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require "rvm/capistrano"                         # Load RVM's capistrano plugin.
 
 set :application, "pfm"
 set :deploy_to, "/var/www/apps/pfm"
@@ -16,9 +17,8 @@ set :rails_env, 'production'
 set :ip, 'dev.anahoret.com'
 
 # rvm-capistrano gem
-set :rvm_ruby_string, 'ruby-1.9.3-p194@pfm'
+set :rvm_ruby_string, '1.9.3@pfm'
 set :rvm_type, :system                           # defaults to using a user installation of rvm
-require "rvm/capistrano"                         # Load RVM's capistrano plugin.
 
 role :web, "#{deploy_by_user}@#{ip}"
 role :app, "#{deploy_by_user}@#{ip}"
