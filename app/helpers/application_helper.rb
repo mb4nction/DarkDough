@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title
-    site_title = "pfm"
+    site_title = "Budget 24-7"
     @title.nil? ? "#{site_title}" : "#{@title}"
   end
 
