@@ -208,4 +208,5 @@ Devise.setup do |config|
   # end
 
   config.rpx_application_name = "budget247"
+  config.rpx_additional_user_data = [:verifiedEmail, :name] # default [], get some extra profile info from https://rpxnow.com/docs#profile_data
 end

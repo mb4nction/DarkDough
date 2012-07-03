@@ -42,6 +42,18 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :accounts
 
+  def on_before_rpx_success(rpx_data)
+    # logger.info rpx_data.inspect + "-------------------------------"
+
+     name = rpx_data["name"]
+
+     unless name.nil?
+        self.first_name = name["givenName"]
+        self.last_name = name["familyName"] || name["givenName"]
+        self.save
+     end
+  end
+
   def transactions_sum_by_category(category)
     arr = []
     self.transactions.each do |transaction|
