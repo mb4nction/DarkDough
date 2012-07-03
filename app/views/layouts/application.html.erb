@@ -6,6 +6,8 @@
   <%= javascript_include_tag "application" %>
   <script src="http://malsup.github.com/jquery.form.js"></script>
   <%= csrf_meta_tags %>
+
+  <%= javascript_include_rpx(user_session_url) %>
 </head>
 <body>
   <div id="main">

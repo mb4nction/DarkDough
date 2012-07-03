@@ -44,5 +44,7 @@ module Pfm
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    RPXNow.api_key = "ae3ee5edb410826535b2a1aaac118383bb8e57e3"
   end
 end
