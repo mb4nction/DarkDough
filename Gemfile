@@ -11,6 +11,7 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 # Authentication and authorization
 gem "devise", "1.5.3"
+gem "devise_rpx_connectable"
 gem "carmen", "0.2.12"
 gem 'fastercsv', '=1.5.4'
 # Gems used only for assets and not required
