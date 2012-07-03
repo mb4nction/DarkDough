@@ -6,6 +6,8 @@ gem 'json'
 gem 'squeel'
 gem "paperclip", "~> 3.0"
 
+gem "haml-rails"
+
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 

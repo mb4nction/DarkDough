@@ -89,6 +89,12 @@ GEM
     ffi (1.0.11)
     formtastic (2.1.1)
       actionpack (~> 3.0)
+    haml (3.1.6)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     has_scope (0.5.1)
     highline (1.6.11)
     hike (1.2.1)
@@ -235,6 +241,7 @@ DEPENDENCIES
   factory_girl (~> 3.0)
   factory_girl_rails (~> 3.0)
   fastercsv (= 1.5.4)
+  haml-rails
   jquery-rails
   json
   meta_search (>= 1.1.0.pre)
