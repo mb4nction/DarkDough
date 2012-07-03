@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :phone_number, :email,
                   :password, :password_confirmation, :country, :tos_confirmation,
                   :email, :password, :password_confirmation, :remember_me,
-                  :age, :gender, :accounts_attributes, :avatar, :rpx_connectable
+                  :age, :gender, :accounts_attributes, :avatar
 
   has_attached_file :avatar, styles: { medium: "65x65#", small: "40x40#" },
                              default_url: 'default_img/anonymous.png',
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable
 
   validates :first_name, :last_name, :country, presence: true
   validates :first_name, :last_name, length: { maximum: 30 }
