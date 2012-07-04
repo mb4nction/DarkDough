@@ -35,6 +35,8 @@ Pfm::Application.routes.draw do
   resource :contact_us, :only => [:create]
   match '/contact_us' => 'contact_us#new'
 
+  root :to => "dashboard#show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -84,7 +86,6 @@ Pfm::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "dashboard#show"
   # root :to => 'static#home'
 
   # See how all your routes lay out with "rake routes"
