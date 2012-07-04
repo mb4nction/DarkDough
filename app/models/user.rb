@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Paperclip::Glue
 
-  USER_AGES = (8..100).to_a << 'undef'
+  USER_AGES = (8..100).to_a.map{ |e| e.to_s } << 'undef'
   GENDERS = %w(Male Female Unspecified)
 
   attr_accessor   :tos_confirmation
