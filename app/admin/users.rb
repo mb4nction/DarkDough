@@ -11,7 +11,6 @@ ActiveAdmin.register User do
     column :country
     column :age
     column :gender
-    column :gender
     default_actions
   end
 
