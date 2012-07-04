@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703112241) do
+ActiveRecord::Schema.define(:version => 20120704072721) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(:version => 20120703112241) do
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "country"
-    t.integer  "age"
+    t.string   "age"
     t.string   "gender"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
