@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Paperclip::Glue
 
-  USER_AGES = (8..100)
+  USER_AGES = (8..100).to_a << 'undef'
   GENDERS = %w(Male Female Unspecified)
 
   attr_accessor   :tos_confirmation
@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
      unless name.nil?
         self.first_name = name["givenName"]
         self.last_name = name["familyName"] || name["givenName"]
+        self.age = 'undef'
+        self.gender = 'Unspecified'
+        # TODO: country should be given from user current location or set to undefined
+        self.country = 'Afghanistan'
         self.save
      end
   end
