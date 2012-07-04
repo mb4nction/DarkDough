@@ -28,7 +28,7 @@
 
   <div class="field">
     <p><%= f.label :amount %></p>
-    $ <%= f.text_field :amount %>
+    &#8358; <%= f.text_field :amount %>
   </div>
   <div class="period hidden">
     every <%= select_tag :period, options_for_select(period_select, @budget.period) %>
