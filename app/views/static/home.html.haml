@@ -6,8 +6,26 @@
 
 .form
   = link_to "Get invited", '#', class: 'get_invited'
+  = form_tag do
+    %span.line.dear Dear 24-7,
+    %span.line
+      My name is
+      = text_field_tag 'invited_name', '', type: 'text'
+      and my email addres is
+    %span.line
+      = text_field_tag 'invited_email', '', type: 'email'
+      \. Please let me know when Budget 24-7
+    %span.line
+      is ready for me.
+
+    .actions
+      = submit_tag 'Request invite'
+    %span.watermark
 
 :javascript
   $('.get_invited').click(function(){
-    return false;
+    $(this).parents('.form').addClass('active');
+    $('body').animate({
+      scrollTop: $('#wrapper .title').offset().top + 50 + 'px'
+    }, 1000)
   })

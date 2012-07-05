@@ -1,5 +1,8 @@
 @import 'mixins';
 
+/* custom font */
+/*@import url(http://fonts.googleapis.com/css?family=Bree+Serif);*/
+
 body { background: image-url('bg/main.png'); }
 
 #main {
@@ -41,13 +44,91 @@ header {
 
   span {
     color: #6c548f;
-    font-family: 'Bree Serif';
+    font-family: 'Bree Serif', serif;
     font-size: 65px;
   }
 }
 
 .form {
   text-align: center;
+
+  form { display: none; }
+
+  &.active {
+    a {
+      display: none;
+    }
+
+    form {
+      @include inline-block;
+      @include radius;
+      @include box-sizing;
+      position: relative;
+      width: 740px;
+      height: 360px;
+      padding: 50px 70px;
+      text-align: left;
+      border: 1px solid #e3e3e3;
+      font-family: 'American Typewriter', sans-serif;
+      font-size: 17px;
+      line-height: 45px;
+      color: #3a3a3a;
+      background: image_url('public/bg/form.png') left top repeat;
+
+      input[type=text], input[type=email] {
+        width: 205px;
+        margin: 0 3px;
+        padding: 5px 5px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px dotted #b1b1b1;
+        outline: none;
+        font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
+        color: #3e4050;
+        font-size: 16px;
+        font-style: italic;
+      }
+
+      input[type=submit] {
+        @include inline-block;
+        @include radius(3px);
+        padding: 10px 25px;
+        border: none;
+        background-color: #b7b2c0;
+        font-size: 18px;
+        color: #fff;
+        font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #a19da9;
+        }
+      }
+
+      .actions {
+        text-align: right;
+        padding-top: 10px;
+        padding-right: 10px;
+      }
+    }
+
+    span.watermark {
+      @include inline-block;
+      width: 114px;
+      height: 106px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: image_url('public/bg/watermark.png') center center no-repeat;
+    }
+  }
+
+  span {
+    &.line { display: block; }
+
+    &.dear { padding-bottom: 15px; }
+  }
 }
 
 .get_invited {
