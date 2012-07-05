@@ -1,6 +1,8 @@
 class StaticController < ApplicationController
   before_filter :authenticate_user!, :only => :help_create_account
 
+  layout 'public'
+
   def home
     @title = "Home"
   end

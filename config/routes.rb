@@ -35,7 +35,10 @@ Pfm::Application.routes.draw do
   resource :contact_us, :only => [:create]
   match '/contact_us' => 'contact_us#new'
 
-  root :to => "dashboard#show"
+  # TODO: set special root for registered user
+
+  # root :to => "dashboard#show"
+  root :to => "static#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
