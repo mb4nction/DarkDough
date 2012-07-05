@@ -21,5 +21,7 @@
                 - transactions.each{ |tr| arr << tr if tr.created_at.month == month && tr.category == category}
                 = arr.map{ |tr| tr.amount}.sum
 
-= javascript_tag do
-  $(function() { $('table').visualize({ type: 'area',  width: '595px' }); });
+:javascript
+  $(function() { $('table').visualize(
+    { type: 'area', width: '595px'});
+  });

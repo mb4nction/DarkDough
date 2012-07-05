@@ -2,6 +2,20 @@
 %html
   %head
     %title Budget 24-7
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag "main"
+    = stylesheet_link_tag "public"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = javascript_include_rpx(user_session_url)
   %body
-    = yield
+    #main
+      %header
+        = image_tag 'public/logo.png'
+        %span Plan your Finances... Socially.
+      #wrapper
+        = yield
+      %footer
+        Another really helpful service brought to you by the insanely
+        = link_to "talented team", "#"
+        at
+        = link_to "Bellerophon", "#"
