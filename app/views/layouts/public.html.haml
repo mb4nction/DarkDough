@@ -3,13 +3,12 @@
   %head
     %title Budget 24-7
     = stylesheet_link_tag "application"
-    = stylesheet_link_tag "public"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = javascript_include_rpx(user_session_url)
 
     <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-  %body
+  %body#public
     #main
       %header
         = image_tag 'public/logo.png'

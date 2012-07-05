@@ -4,156 +4,159 @@
 /*@import url(http://fonts.googleapis.com/css?family=Bree+Serif);*/
 
 body { background: image-url('bg/main.png'); }
-
-#main {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -260px;
-}
-
-header {
-  height: 314px;
-  text-align: center;
-  background: image-url('public/bg/header.png') left top repeat-x;
-
-  img { padding-top: 70px; }
-
-  span {
-    display: block;
-    width: 1000px;
-    margin: 15px auto 0;
-    padding-right: 10px;
-    text-align: right;
-    font-size: 35px;
-    color: #fff;
+#public {
+  #main {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -260px;
   }
-}
 
-#wrapper {
-  width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-}
+  header {
+    height: 314px;
+    text-align: center;
+    background: image-url('public/bg/header.png') left top repeat-x;
 
-.title {
-  padding: 70px 0;
-  font-size: 45px;
-  color: #3e4050;
-  line-height: 50px;
+    img { padding-top: 70px; }
 
-  span {
-    color: #6c548f;
-    font-family: 'Bree Serif', serif;
-    font-size: 65px;
-  }
-}
-
-.form {
-  text-align: center;
-
-  form { display: none; }
-
-  &.active {
-    a {
-      display: none;
+    span {
+      display: block;
+      width: 1000px;
+      margin: 15px auto 0;
+      padding-right: 10px;
+      text-align: right;
+      font-size: 35px;
+      color: #fff;
     }
+  }
 
-    form {
-      @include inline-block;
-      @include radius;
-      @include box-sizing;
-      position: relative;
-      width: 740px;
-      height: 360px;
-      padding: 50px 70px;
-      text-align: left;
-      border: 1px solid #e3e3e3;
-      font-family: 'American Typewriter', sans-serif;
-      font-size: 17px;
-      line-height: 45px;
-      color: #3a3a3a;
-      background: image_url('public/bg/form.png') left top repeat;
+  #wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-      input[type=text], input[type=email] {
-        width: 205px;
-        margin: 0 3px;
-        padding: 5px 5px;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px dotted #b1b1b1;
-        outline: none;
-        font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
-        color: #3e4050;
-        font-size: 16px;
-        font-style: italic;
+  .title {
+    padding: 70px 0;
+    font-size: 45px;
+    color: #3e4050;
+    line-height: 50px;
+
+    span {
+      color: #6c548f;
+      font-family: 'Bree Serif', serif;
+      font-size: 65px;
+    }
+  }
+
+  .form {
+    text-align: center;
+
+    form { display: none; }
+
+    &.active {
+      a {
+        display: none;
       }
 
-      input[type=submit] {
+      form {
         @include inline-block;
-        @include radius(3px);
-        padding: 10px 25px;
-        border: none;
-        background-color: #b7b2c0;
-        font-size: 18px;
-        color: #fff;
-        font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
-        cursor: pointer;
-        font-weight: bold;
+        @include radius;
+        @include box-sizing;
+        position: relative;
+        width: 740px;
+        height: 360px;
+        padding: 50px 70px;
+        text-align: left;
+        border: 1px solid #e3e3e3;
+        font-family: 'American Typewriter', sans-serif;
+        font-size: 17px;
+        line-height: 45px;
+        color: #3a3a3a;
+        background: image_url('public/bg/form.png') left top repeat;
 
-        &:hover {
-          background-color: #a19da9;
+        input[type=text], input[type=email] {
+          width: 205px;
+          margin: 0 3px;
+          padding: 5px 5px;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px dotted #b1b1b1;
+          outline: none;
+          font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
+          color: #3e4050;
+          font-size: 16px;
+          font-style: italic;
+        }
+
+        input[type=submit] {
+          @include inline-block;
+          @include radius(3px);
+          padding: 10px 25px;
+          border: none;
+          background-color: #b7b2c0;
+          font-size: 18px;
+          color: #fff;
+          font-family: "Helvetica Neue", helvetica, verdana, arial, sans-serif;
+          cursor: pointer;
+          font-weight: bold;
+
+          &:hover {
+            background-color: #a19da9;
+          }
+        }
+
+        .actions {
+          text-align: right;
+          padding-top: 10px;
+          padding-right: 10px;
         }
       }
 
-      .actions {
-        text-align: right;
-        padding-top: 10px;
-        padding-right: 10px;
+      span.watermark {
+        @include inline-block;
+        width: 114px;
+        height: 106px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: image_url('public/bg/watermark.png') center center no-repeat;
       }
     }
 
-    span.watermark {
-      @include inline-block;
-      width: 114px;
-      height: 106px;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background: image_url('public/bg/watermark.png') center center no-repeat;
+    span {
+      &.line { display: block; }
+
+      &.dear { padding-bottom: 15px; }
     }
   }
 
-  span {
-    &.line { display: block; }
+  .get_invited {
+    @include inline-block;
+    @include radius;
+    @include gradient(#0b9eb9, #0993ac);
+    @include box-shadow(0 1px 1px #2db8d2 inset);
 
-    &.dear { padding-bottom: 15px; }
+    padding: 12px 55px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    border-top: 1px solid #0993ac;
+
+
+    &:hover {
+      @include gradient(#0993ac, #0b9eb9);
+      text-decoration: none;
+    }
   }
-}
 
-.get_invited {
-  @include inline-block;
-  @include radius;
-  @include gradient(#0b9eb9, #0993ac);
-  @include box-shadow(0 1px 1px #2db8d2 inset);
-
-  padding: 12px 55px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #fff;
-  border-top: 1px solid #0993ac;
-
-
-  &:hover {
-    @include gradient(#0993ac, #0b9eb9);
-    text-decoration: none;
+  footer {
+    margin-top: 100px;
+    font-size: 12px;
+    text-align: center;
+    background: none;
+    height: 40px;
   }
+
 }
 
-footer {
-  margin-top: 100px;
-  font-size: 12px;
-  text-align: center;
-  background: none;
-  height: 40px;
-}
