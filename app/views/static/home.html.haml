@@ -6,6 +6,8 @@
 
 .form
   = link_to "Get invited", '#', class: 'get_invited'
+  %p= link_to_rpx "Already a member?", user_session_url
+
   = form_tag do
     %span.line.dear Dear 24-7,
     %span.line
