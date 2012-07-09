@@ -19,13 +19,14 @@ body { background: image-url('bg/main.png'); }
     background: image-url('public/bg/header.png') left top repeat-x;
 
     h1 {
-      padding-top: 20px;
       margin: 0 auto;
       font-size: 152px;
     }
 
     span {
       @include box-sizing;
+      position: relative;
+      top: -185px;
       display: block;
       width: 1000px;
       margin: 0 auto;
@@ -43,6 +44,7 @@ body { background: image-url('bg/main.png'); }
   }
 
   .title {
+    position: relative;
     padding: 70px 0;
     font-size: 45px;
     color: #3e4050;

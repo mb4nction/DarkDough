@@ -174,8 +174,8 @@ var cluster = {
 	shape: 'circle',
 	speed: 1000,
 	timeout: -700,
-	// colors : ["#00B6B8","#ED5F4C","#F9A235","#2E3192"]
-	colors : ["#c24704","#d9cc3c","#ffeb79","#00ada7"]
+	// colors : ["#c24704","#d9cc3c","#ffeb79","#00ada7"]
+	colors : ["#fff", "#fff", "#fff", "#fff"]
 
 
 }
