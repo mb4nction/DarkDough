@@ -13,19 +13,25 @@ body { background: image-url('bg/main.png'); }
   }
 
   header {
+    position: relative;
     height: 314px;
     text-align: center;
     background: image-url('public/bg/header.png') left top repeat-x;
 
-    img { padding-top: 70px; }
+    h1 {
+      padding-top: 20px;
+      margin: 0 auto;
+      font-size: 152px;
+    }
 
     span {
+      @include box-sizing;
       display: block;
       width: 1000px;
-      margin: 15px auto 0;
-      padding-right: 10px;
-      text-align: right;
+      margin: 0 auto;
+      padding-right: 20px;
       font-size: 35px;
+      text-align: right;
       color: #fff;
     }
   }
