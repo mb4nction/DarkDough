@@ -14,9 +14,7 @@
 //     because I figure it you've made it this far you can figure it out.
 //	   Anyways. They are at the bottom.
 
-
 var cluster = {
-
 
  	shellac : function(object, styles){
 	      //style getter for both standards based browsers and that other browser
