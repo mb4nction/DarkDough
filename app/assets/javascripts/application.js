@@ -21,3 +21,4 @@
 
 //= require jQuery-Visualize/excanvas.js
 //= require jQuery-Visualize/visualize.jQuery.js
+//= require cluster.js
