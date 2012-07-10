@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   include Paperclip::Glue
 
+  before_validation :set_fields, :generate_password, :on => :create
+
+
   USER_AGES = (8..100).to_a.map{ |e| e.to_s } << 'undef'
   GENDERS = %w(Male Female Unspecified)
 
@@ -24,7 +27,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable
 
-  validates :first_name, :last_name, :country, presence: true
+  validates :first_name, presence: true
   validates :first_name, :last_name, length: { maximum: 30 }
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
@@ -100,5 +103,18 @@ class User < ActiveRecord::Base
 
   def total_income
     transactions_sum_by_category("Income")
+  end
+
+
+  private
+
+  def set_fields
+    self.age ||= 'undef'
+    self.gender ||= 'Unspecified'
+  end
+
+  def generate_password
+    o =  [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
+    self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
   end
 end

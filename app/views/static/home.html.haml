@@ -8,20 +8,21 @@
   = link_to "Get invited", '#', class: 'get_invited'
   %p= link_to_rpx "Already a member?", user_session_url
 
-  = form_tag do
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
     %span.line.dear Dear 24-7,
     %span.line
       My name is
-      = text_field_tag 'invited_name', '', type: 'text'
+      = f.text_field :first_name, type: 'text'
       and my email addres is
     %span.line
-      = text_field_tag 'invited_email', '', type: 'email'
+      = f.text_field :email, type: 'email'
       \. Please let me know when Budget 24-7
     %span.line
       is ready for me.
 
     .actions
-      = submit_tag 'Request invite'
+      = f.submit 'Request invite'
     %span.watermark
 
 :javascript
