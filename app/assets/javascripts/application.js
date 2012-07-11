@@ -6,7 +6,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// require_tree .
+
+//= require accounts
+//= require acumen_tests
+//= require budgets
+//= require dashboard
+//= require goals
+//= require jquery.custom_form
+//= require jquery.d3.trends
+//= require jquery.radio.js
+//= require jquery.progressBar.js
+//= require leftsideMenu.js
+//= require transactions
+//= require trends
+//= require users
 
 // vendor folder
 //= require chosen.jquery.min.js
@@ -14,10 +28,6 @@
 //= require underscore-min.js
 //= require protovis.min.js
 //= require d3.v2.min.js
-//= require leftsideMenu.js
-
-//= require jquery.radio.js
-//= require jquery.progressBar.js
 
 //= require jQuery-Visualize/excanvas.js
 //= require jQuery-Visualize/visualize.jQuery.js
