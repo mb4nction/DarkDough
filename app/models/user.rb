@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   before_validation :set_fields, :generate_password, on: :create
 
-
   USER_AGES = (8..100).to_a.map{ |e| e.to_s } << 'undef'
   GENDERS = %w(Male Female Unspecified)
 
@@ -104,7 +103,6 @@ class User < ActiveRecord::Base
   def total_income
     transactions_sum_by_category("Income")
   end
-
 
   private
 
