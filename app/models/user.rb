@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Paperclip::Glue
 
-  before_validation :set_fields, :generate_password, :on => :create
+  before_validation :set_fields, :generate_password, on: :create
 
 
   USER_AGES = (8..100).to_a.map{ |e| e.to_s } << 'undef'
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable
 
   validates :first_name, presence: true

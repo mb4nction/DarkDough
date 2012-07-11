@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704072721) do
+ActiveRecord::Schema.define(:version => 20120710110914) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20120704072721) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "encrypted_password",     :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -152,8 +152,12 @@ ActiveRecord::Schema.define(:version => 20120704072721) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "rpx_identifier"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["first_name"], :name => "index_users_on_first_name"
   add_index "users", ["last_name"], :name => "index_users_on_last_name"
