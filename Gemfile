@@ -11,6 +11,8 @@ gem "haml-rails"
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
+gem 'mongrel', '1.2.0.pre2'
+
 # Authentication and authorization
 gem "devise", "2.0"
 gem "devise_rpx_connectable"

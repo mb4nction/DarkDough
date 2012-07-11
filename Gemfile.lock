@@ -69,6 +69,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
+    daemons (1.0.10)
     devise (2.0.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -90,6 +91,7 @@ GEM
     ffi (1.0.11)
     formtastic (2.1.1)
       actionpack (~> 3.0)
+    gem_plugin (0.2.3)
     haml (3.1.6)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -122,6 +124,9 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.18)
+    mongrel (1.2.0.pre2)
+      daemons (~> 1.0.10)
+      gem_plugin (~> 0.2.3)
     multi_json (1.2.0)
     mysql2 (0.3.11)
     net-scp (1.0.4)
@@ -246,6 +251,7 @@ DEPENDENCIES
   jquery-rails
   json
   meta_search (>= 1.1.0.pre)
+  mongrel (= 1.2.0.pre2)
   mysql2
   paperclip (~> 3.0)
   rails (= 3.1.3)
