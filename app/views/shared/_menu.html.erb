@@ -10,7 +10,7 @@
         <li><%= link_to "Budgets", budgets_path, class: current_page_menu('budgets') %></li>
         <li><%= link_to "Goals", goals_path, class: current_page_menu('goals') %></li>
         <li><%= link_to "Trends", trends_path, class: current_page_menu('trends') %></li>
-        <li><%= link_to "Community", '' %></li>
+        <li><%= link_to "Community", 'http://budget247.wordpress.com' %></li>
         <li><%= link_to "Profile", current_user, class: current_page_menu('users') %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'sign_out' %></li>
       </ul>
