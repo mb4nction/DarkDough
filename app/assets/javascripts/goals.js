@@ -48,24 +48,24 @@ $(function() {
   },
 
   // calculation Amount for 'Save for an emergency' form
-  amountCalculation = function() {
-    var spending = $('#emergency_spending'),
-        spendingMonths = $('#date_spending');
+  // amountCalculation = function() {
+  //   var spending = $('#emergency_spending'),
+  //       spendingMonths = $('#date_spending');
 
-    selectedMonth = spendingMonths.find("option:selected").val();
-    spend = spending.val() * selectedMonth;
-    $('#spending_goal_amount').val(spend);
-    calculateContribution();
-  },
+  //   selectedMonth = spendingMonths.find("option:selected").val();
+  //   spend = spending.val() * selectedMonth;
+  //   $('#spending_goal_amount').val(spend);
+  //   calculateContribution();
+  // },
 
-  amountPresentation = function() {
-    var feildsBind = _([$('#emergency_spending'), $('#date_spending')]);
+  // amountPresentation = function() {
+  //   var feildsBind = _([$('#emergency_spending'), $('#date_spending')]);
 
-    amountCalculation();
-    feildsBind.each(function(elem) {
-      elem.bind('change', function() {amountCalculation()})
-    });
-  },
+  //   amountCalculation();
+  //   feildsBind.each(function(elem) {
+  //     elem.bind('change', function() {amountCalculation()})
+  //   });
+  // },
 
   // finish goal
   finishGoal = function() {
@@ -89,6 +89,6 @@ $(function() {
 
   presentContributionToUser();
   goalBalance();
-  amountPresentation();
+  // amountPresentation();
   finishGoal();
 });
