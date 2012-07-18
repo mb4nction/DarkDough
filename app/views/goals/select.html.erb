@@ -1,20 +1,8 @@
 <h1>Choose a Goal:</h1>
 
 <div id="choose_goal_category">
-  <%= link_to "Family / Personal Vacation", new_goal_path(:type => "family_personal_vacation") %>
-  <%= link_to "School Tuition",             new_goal_path(:type => "school_tuition")           %>
-  <%= link_to "Mortgage Contribution",      new_goal_path(:type => "mortgage_contribution")    %>
-  <%= link_to "Buy Home",                   new_goal_path(:type => "buy_home")                 %>
-  <%= link_to "Build Home",                 new_goal_path(:type => "build_home")               %>
-  <%= link_to "Investment Opportunity",     new_goal_path(:type => "investment_opportunity")   %>
-  <%= link_to "Safety Net",                 new_goal_path(:type => "safety_net")               %>
-  <%= link_to "Business Capital",           new_goal_path(:type => "business_capital")         %>
-  <%= link_to "Wedding",                    new_goal_path(:type => "wedding")                  %>
-  <%= link_to "Anniversary / Birthday",     new_goal_path(:type => "anniversary_birthday")     %>
-  <%= link_to "Charitable Giving",          new_goal_path(:type => "charitable_giving")        %>
-  <%= link_to "Car",                        new_goal_path(:type => "car")                      %>
-  <%= link_to "House Rent",                 new_goal_path(:type => "house_rent")               %>
-  <%= link_to "Repay Debt",                 new_goal_path(:type => "repay_debt")               %>
-  <%= link_to "Save for an emergency",      new_goal_path(:type => "save_for_an_emergency")    %>
-  <%= link_to "Create Custom Goal",         new_goal_path                                      %>
+  <%= link_to "Family / Personal Vacation", new_goal_path(type: "family_personal_vacation") %>
+  <%= link_to "School Tuition",             new_goal_path(type: "school_tuition")           %>
+  <%= link_to "Asset Purchase",             new_goal_path(type: "asset_purchase")           %>
+  <%= link_to "Create Your own Goal",       new_goal_path                                   %>
 </div>

@@ -9,12 +9,12 @@ module GoalsHelper
   end
 
   def render_goal_form(type)
-      render :partial => "/goals/types/#{type}"
+      render partial: "/goals/types/#{type}"
   end
 
   def edit_goal(goal)
     if Goal::GOAL_PREDEFINED_CATEGORIES.include?(goal.category)
-      link_to 'Edit', edit_goal_path(goal, :type => goal.category.parameterize.underscore.to_sym)
+      link_to 'Edit', edit_goal_path(goal, type: goal.category.parameterize.underscore.to_sym)
     else
       link_to 'Edit', edit_goal_path(goal)
     end
