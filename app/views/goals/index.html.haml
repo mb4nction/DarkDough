@@ -14,19 +14,19 @@
         %th
         %th
 
-    - @goals.each do |goal|
-      %tr
-        %td= goal.title
-        %td= goal.category
-        %td= goal.amount
-        %td= goal.planned_date
-        %td= goal.contribution
-        %td= link_to 'Show', goal
-        %td= edit_goal(goal) unless goal.finished?
-        %td= link_to 'Destroy', goal, confirm: 'Are you sure?', method: :delete
-        %td.finish_goal_td
-          - if goal.can_be_finished?
-            = render partial: "finish_goal", locals: { goal: goal }
+      - @goals.each do |goal|
+        %tr
+          %td= goal.title
+          %td= goal.category
+          %td= goal.amount
+          %td= goal.planned_date
+          %td= goal.contribution
+          %td= link_to 'Show', goal
+          %td= edit_goal(goal) unless goal.finished?
+          %td= link_to 'Destroy', goal, confirm: 'Are you sure?', method: :delete
+          %td.finish_goal_td
+            - if goal.can_be_finished?
+              = render partial: "finish_goal", locals: { goal: goal }
 
   %br
   = link_to 'Add Goal', select_goals_path
