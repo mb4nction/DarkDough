@@ -4,9 +4,9 @@ module ApplicationHelper
     @title.nil? ? "#{site_title}" : "#{@title}"
   end
 
-  def acumen_test_menu(user, html_class)
+  def acumen_test_menu(user, html_class="")
     if !user.acumen_tests.any?
-      link_to "Create Acumen Test", new_acumen_test_path, :class => html_class
+      link_to "Pass Acumen Test", new_acumen_test_path, :class => html_class
     elsif !user.acumen_tests.last.finished == true
       link_to "Complete test to earn points", edit_acumen_test_path(user.acumen_tests.last), :class => html_class
     elsif user.acumen_tests.last.finished?

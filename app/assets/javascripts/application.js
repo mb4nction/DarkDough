@@ -14,6 +14,7 @@
 //= require dashboard
 //= require goals
 //= require jquery.custom_form
+//= require jquery.acumenTestForm
 //= require jquery.d3.trends
 //= require jquery.radio.js
 //= require jquery.progressBar.js
