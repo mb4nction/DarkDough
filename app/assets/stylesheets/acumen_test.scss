@@ -61,6 +61,7 @@ blockquote {
       padding: 10px 10px 10px 75px;
       background: image-url('custom_form/checkbox_inactive.png') left center no-repeat;
       overflow: hidden;
+      cursor: pointer;
 
       input[type=checkbox] {
         position: absolute;
@@ -183,3 +184,71 @@ blockquote {
     }
   }
 }
+
+.acumen_test_form {
+  position: relative;
+
+  .test_info {
+    position: absolute;
+    right: 3%;
+    top: 190px;
+
+    div {
+      height: 38px;
+      padding-left: 40px;
+      line-height: 38px;
+      font-size: 12px;
+      color: #a1a1a1;
+      background-repeat: no-repeat;
+      background-position: left center;
+
+      &.strongly_disagree { background-image: url('ico/smiles/strongly_disagree_small.png'); }
+      &.moderately_disagree { background-image: url('ico/smiles/moderately_disagree_small.png'); }
+      &.neither_agree_nor_disagree { background-image: url('ico/smiles/neither_agree_nor_disagree_small.png'); }
+      &.moderately_agree { background-image: url('ico/smiles/moderately_agree_small.png'); }
+      &.strongly_agree { background-image: url('ico/smiles/strongly_agree_small.png'); }
+    }
+  }
+
+  h5 {
+    font-size: 14px;
+    color: #3e4050;
+  }
+
+  .input_fields {
+    .input {
+      @include inline-block;
+      width: 325px;
+      margin: 10px 120px 10px 0;
+
+      .question {
+        @include inline-block;
+        vertical-align: middle;
+        width: 180px;
+        font-size: 13px;
+        color: #9a9999;
+        word-wrap: break-word;
+      }
+
+      .answer {
+        @include inline-block;
+        width: 130px;
+        margin-left: 10px;
+        vertical-align: middle;
+        text-align: right;
+        background: image-url('ico/nara.png') left center no-repeat;
+
+        input {
+          @include inline-block;
+          width: 100px;
+          margin: 0;
+          vertical-align: middle;
+          font-size: 13px;
+          color: #3e4050;
+        }
+      }
+    }
+  }
+
+}
+
