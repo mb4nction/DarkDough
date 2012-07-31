@@ -7,7 +7,8 @@
           smiles = $('.smile', smilesContainer),
           smilesFields = $('.field', smilesContainer),
           fields = $('.field', fieldsContainer)
-          checkboxes = $('.question_fields.checkboxes .checkbox');
+          checkboxes = $('.question_fields.checkboxes .checkbox'),
+          inputCheckboxes = $('..input_fields .input.checkbox .answer');
 
       smiles.each(function() {
         var smileClass = $('input', $(this))[0].className,
@@ -56,7 +57,6 @@
             checkboxInput = $('input[type=checkbox]', that),
             container = that.parents('.question_fields');
 
-        // checkboxInput.attr('checked', !checkboxInput.attr('checked'));
         if (checkboxInput.is(':checked') == true) {
           checkboxInput.removeAttr('checked')
           that.removeClass('checked')
@@ -69,6 +69,24 @@
           checkAllCheckboxes(container);
         }
       });
+
+      inputCheckboxes.click(function() {
+        var that = $(this),
+            checkboxInput = $('input[type=checkbox]', that),
+            container = that.parents('.input_fields');
+
+        if (checkboxInput.is(':checked') == true) {
+          checkboxInput.removeAttr('checked')
+          that.removeClass('checked')
+
+          checkAllCheckboxes(container);
+        } else {
+          checkboxInput.prop('checked', true)
+          that.addClass('checked')
+
+          checkAllCheckboxes(container);
+        }
+      })
 
       var checkAllCheckboxes = function(container) {
         var checkbox = $('input[type=checkbox]:checked', container);

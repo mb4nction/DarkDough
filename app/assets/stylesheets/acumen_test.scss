@@ -68,9 +68,7 @@ blockquote {
         top: 100%;
       }
 
-      &.checked {
-        background: image-url('custom_form/checkbox_active.png') 4px center no-repeat;
-      }
+      &.checked { background: image-url('custom_form/checkbox_active.png') 4px center no-repeat; }
     }
   }
 }
@@ -114,9 +112,7 @@ blockquote {
     }
   }
 
-  &.with_fields {
-    margin-bottom: 30px;
-  }
+  &.with_fields { margin-bottom: 30px; }
 }
 
 
@@ -125,7 +121,6 @@ blockquote {
     @include gradient(#fff, #eee);
     @include radius(2px);
     @include inline-block;
-    /*max-width: 450px;*/
     position: relative;
     margin-bottom: 5px;
     margin-right: 10px;
@@ -170,17 +165,13 @@ blockquote {
     border: none;
     border-left: 1px solid #e1dde6;
 
-    &:first-child {
-      border-left: none;
-    }
+    &:first-child { border-left: none; }
 
     &.checked {
       @include box-shadow(inset 0 4px 9px -2px rgba(0,0,0,.17));
       background: #efefef;
 
-      span {
-        background: none;
-      }
+      span { background: none; }
     }
   }
 }
@@ -238,7 +229,7 @@ blockquote {
         text-align: right;
         background: image-url('ico/nara.png') left center no-repeat;
 
-        input {
+        input[type=text] {
           @include inline-block;
           width: 100px;
           margin: 0;
@@ -247,8 +238,28 @@ blockquote {
           color: #3e4050;
         }
       }
+
+      &.checkbox {
+        .answer {
+          @include box-sizing;
+          background: none;
+          text-align: left;
+
+          position: relative;
+          padding: 13px 0 13px 75px;
+          background: image-url('custom_form/checkbox_inactive.png') 15px center no-repeat;
+          overflow: hidden;
+          cursor: pointer;
+
+          input[type=checkbox] {
+            position: absolute;
+            top: 100%;
+          }
+
+          &.checked { background: image-url('custom_form/checkbox_active.png') 18px center no-repeat; }
+        }
+      }
     }
   }
-
 }
 
