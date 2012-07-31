@@ -261,5 +261,63 @@ blockquote {
       }
     }
   }
+
+  input[type=submit] {
+    @include inline-block;
+    @include radius(2px);
+    margin-top: 30px;
+    padding: 8px 17px;
+    border: 1px solid #8a6db4;
+    background: #9d86bf;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px rgba(255,255,255,.21);
+  }
+}
+
+.two_questions {
+  margin-top: 60px;
+
+  .input {
+    .question {
+      margin-bottom: 15px;
+      font-size: 13px;
+      color: #3e4050;
+      text-shadow:  0 1px 1px rgba(255,255,255,.3);
+    }
+
+    .answer {
+      font-size: 12px;
+      color: #9a9999;
+      text-shadow:  0 1px 1px rgba(255,255,255,.3);
+
+      input {
+        width: 18px;
+        padding: 3px 7px;
+      }
+    }
+  }
+
+  .slider { margin-top: 10px; }
+
+  .slider + .input { margin-top: 35px; }
+
+  .ui-slider-horizontal {
+    height: 3px;
+    width: 220px;
+    background-color: #ececec !important;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #fff;
+  }
+
+  .ui-slider-range { background: none; }
+
+  .ui-slider-handle {
+    height: 16px !important;
+    width: 16px !important;
+    top: -6px !important;
+    border: none !important;
+    background: image-url('ico/slider_handle.png') center center no-repeat !important;
+  }
 }
 

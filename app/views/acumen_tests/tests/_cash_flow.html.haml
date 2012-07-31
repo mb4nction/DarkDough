@@ -102,15 +102,40 @@
   %strong Total expenditures
   = acumen_test.total_expenditures_count unless acumen_test.new_record?
 
-%br
-%br
-%br
+.two_questions
 
-Finally, 2 simple questions
-- for answer in test_answers[107...109]
-  %p
+  %h5 Finally, 2 simple questions
+  - test_answers[107...109].each_with_index do |answer, index|
     = f.fields_for :answers, answer do |answer_form|
-      = answer_form.hidden_field :code
-      = answer_form.hidden_field :question
-      = answer.question
-      = answer_form.select :result, (1..99).to_a, :selected => (answer.result || "22")
+      .input
+        .question
+          = answer_form.hidden_field :code
+          = answer_form.hidden_field :question
+          = answer.question
+        .answer
+          = answer_form.text_field :result, id: "began_#{index}"
+          years old
+
+    .slider{class: "slider_#{index}"}
+
+:javascript
+  $('.slider_0').slider({
+    range: "min",
+    value: 22,
+    min: 1,
+    max: 99,
+    slide: function( event, ui ) {
+      $("#began_0").val(ui.value);
+    }
+  });
+  $('.slider_1').slider({
+    range: "min",
+    value: 50,
+    min: 1,
+    max: 99,
+    slide: function( event, ui ) {
+      $("#began_1").val(ui.value);
+    }
+  });
+  $( "#began_0" ).val($( ".slider_0" ).slider("value"));
+  $( "#began_1" ).val($( ".slider_1" ).slider("value"));
