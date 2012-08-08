@@ -52,4 +52,16 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  # for acumen test drag'n'drop elements
+  def number_to_class(index)
+    case index
+    when 0
+      return 'first'
+    when 1
+      return 'second'
+    when 2
+      return 'third'
+    end
+  end
 end
