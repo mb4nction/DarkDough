@@ -1,56 +1,50 @@
-%h2 Sign up
+.title
+  Your
+  %span Fun, Free & Fast
+  %br
+  way to organize your money
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
+.form
+  = link_to "Get invited", '#', class: 'get_invited'
+  %p= link_to_rpx "Already a member?", user_session_url
 
-  %div
-    = f.label :first_name, "First Name"
-    %br
-    = f.text_field :first_name
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    %span.line.dear Dear 24-7,
+    %span.line
+      My name is
+      .error-field
+        = f.text_field :first_name, type: 'text'
+        - if resource.errors[:first_name].any?
+          .field_with_errors= resource.errors[:first_name][0]
+      and my email addres is
+    %span.line
+      .error-field
+        = f.text_field :email, type: 'email'
+        - if resource.errors[:email].any?
+          .field_with_errors= resource.errors[:email][0]
 
-  %div
-    = f.label :last_name, "Last Name"
-    %br
-    = f.text_field :last_name
+      \. Please let me know when Budget 24-7
+    %span.line
+      is ready for me.
 
-  %div
-    = f.label :country, "Country"
-    %br
-    = f.select :country, Carmen::country_names
+    .actions
+      = f.submit 'Request invite'
+    %span.watermark
 
-  %div
-    = f.label :phone_number, "Phone number"
-    %br
-    = f.text_field :phone_number
+- if resource.errors.any?
+  :javascript
+    $(document).ready(function(){
+      var link = $('.get_invited')
+      link.click();
+    })
 
-  %div
-    = f.label :email
-    %br
-    = f.email_field :email
+:javascript
+  $('.get_invited').click(function() {
+    $(this).parents('.form').addClass('active');
+    $('body').animate({
+      scrollTop: $('#wrapper .title').offset().top + 50 + 'px'
+    }, 1000)
+  })
 
-  %div
-    = f.label :age
-    = f.select :age, User::USER_AGES
-
-  %div
-    = f.label :gender
-    = f.select :gender, User::GENDERS
-
-  %div
-    = f.label :password
-    %br
-    = f.password_field :password
-
-  %div
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation
-
-  %div
-    = f.check_box :tos_confirmation
-    = f.label :tos_confirmation, "I agree to the Terms of Use"
-
-  %div= f.submit "Sign up"
-
-
-= render :partial => "devise/shared/links"
+<script type="text/javascript" src="/assets/cluster.js"></script>

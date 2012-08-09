@@ -168,3 +168,33 @@ body { background: image-url('bg/main.png'); }
 
 }
 
+.field_with_errors {
+  @include inline-block;
+  padding: 0;
+  background-color: transparent;
+  line-height: normal;
+}
+
+.error-field {
+  @include inline-block;
+  position: relative;
+  line-height: normal;
+
+  .field_with_errors + .field_with_errors {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    padding: 2px 5px;
+    background-color: #fb5736;
+    text-shadow:0 -1px 1px rgba(200,58,20,.5);
+    font-size: 10px;
+    color: #fff;
+    line-height: normal;
+    font-family: 'Helvetica Neue', sans-serif;
+    text-align: center;
+  }
+}
+
+#error_explanation {
+  display: none;
+}

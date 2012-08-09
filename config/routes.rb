@@ -4,7 +4,10 @@ Pfm::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  devise_for :users, :path_prefix => 'd'
+  devise_for :users do
+    get "/" => "devise/registrations#new", :as => :new_user_registration
+  end
+
   resources :users, :only => [:show, :edit, :update]
   resources :acumen_tests
 
@@ -39,7 +42,7 @@ Pfm::Application.routes.draw do
   # TODO: set special root for registered user
 
   # root :to => "dashboard#show"
-  root :to => "static#home"
+  root to: 'devise/registrations#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
