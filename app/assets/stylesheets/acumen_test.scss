@@ -396,9 +396,10 @@ form > .notifier {
       font-weight: bold;
 
       i {
-        top: 14px;
+        top: 13px;
         background: image-url('ico/drop_cross.png') center center no-repeat;
         cursor: pointer;
+        z-index: 101;
       }
     }
   }

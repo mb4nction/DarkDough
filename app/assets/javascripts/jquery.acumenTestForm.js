@@ -136,23 +136,34 @@
             draggableElements.draggable({
               snap: draggableContainers,
               snapMode: 'inner',
-              zIndex: 1000
+              zIndex: 100
             });
 
             draggableContainers.droppable({
               drop: function(event, ui) {
                 var thisClass = $(this)[0].className.split(/\s+/)[1],
-                    containerClas = parseInt(ui.draggable[0].className.split(/\s+/)[0].split('_')[1]);
+                    containerClass = parseInt(ui.draggable[0].className.split(/\s+/)[0].split('_')[1]);
                 // console.log(ui.draggable);  // this element
                 // console.log($(this));       // will be dropped to this element
 
-                $(this).addClass('activated');
+                $(this).addClass('activated').removeClass('initial');
                 ui.draggable.addClass('dropped')
-                $('.drag_input.' + numberToClass(containerClas)).val(classToNumber(thisClass));
+                $('.drag_input.' + numberToClass(containerClass)).val(classToNumber(thisClass));
+
+                $('.dropped i').live('click', function() {
+                  $(this).parents('span').css('position', 'relative').css('left', 'auto').css('top', 'auto').removeClass('dropped');
+                  $('.drag_input.' + numberToClass(containerClass)).val('');
+                })
               }
             })
       }
+
+      var returnDragged = function() {
+
+        dragElements();
+      }
       dragElements();
+      // returnDragged();
 
 
       // var checkProgress = function(form){
