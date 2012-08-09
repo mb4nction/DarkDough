@@ -5,7 +5,7 @@ class StaticController < ApplicationController
   layout 'public'
 
   def home
-    @title = "Home - Budget 24/7"
+    @title = "Budget 24/7"
   end
 
   def about
