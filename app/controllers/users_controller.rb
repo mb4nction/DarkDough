@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :check_account
 
   def show
+    @title = 'Profile - Budget 24/7'
     params[:user] ? @user = current_user.update_attributes(params[:user]) : @user = current_user
     @accounts = current_user.accounts
     respond_to do |format|

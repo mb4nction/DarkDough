@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
+    @title = 'Accounts - Budget 24/7'
     @accounts = current_user.accounts.all
     @income_amount = current_user.transactions.by_category("income").map(&:amount).sum
     @spending_amount = current_user.transactions.spending_transactions.map(&:amount).sum
@@ -60,6 +61,7 @@ class AccountsController < ApplicationController
   end
 
   def new
+    @title = "Create Account - Budget 24/7"
     @account = Account.new
     @user = current_user
 

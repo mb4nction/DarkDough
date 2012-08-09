@@ -1,5 +1,6 @@
 class ContactUsController < ApplicationController
   def new
+    @title = "Contact us - Budget 24/7"
     @contact_us = ContactUs.new
   end
 

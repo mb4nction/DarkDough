@@ -2,6 +2,7 @@ class GoalsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @title = "Goals - Budget 24/7"
     @goals = Goal.all
 
     respond_to do |format|
@@ -11,6 +12,7 @@ class GoalsController < ApplicationController
   end
 
   def show
+    @title = 'The Goal - Budget 24/7'
     @goal = Goal.find(params[:id])
 
     respond_to do |format|
@@ -20,6 +22,7 @@ class GoalsController < ApplicationController
   end
 
   def new
+    @title = 'New Goal - Budget 24/7'
     @goal = Goal.new
 
     respond_to do |format|
@@ -29,6 +32,7 @@ class GoalsController < ApplicationController
   end
 
   def edit
+    @title = 'Edit Goal - Budget 24/7'
     @goal = current_user.goals.find(params[:id])
   end
 
@@ -71,5 +75,7 @@ class GoalsController < ApplicationController
     end
   end
 
-  def select; end
+  def select
+      @title = 'New Goal - Budget 24/7'
+  end
 end

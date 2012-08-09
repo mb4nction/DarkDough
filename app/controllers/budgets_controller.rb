@@ -2,6 +2,7 @@ class BudgetsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @title = 'Budgets - Budget 24/7'
     @budget = Budget.new
     @budgets =  current_user.budgets.search(params[:budgets_start], params[:budgets_end])
     @income_budgets = current_user.budgets.income.search(params[:budgets_start], params[:budgets_end])

@@ -5,27 +5,27 @@ class StaticController < ApplicationController
   layout 'public'
 
   def home
-    @title = "Home"
+    @title = "Home - Budget 24/7"
   end
 
   def about
-    @title = "About"
+    @title = "About - Budget 24/7"
   end
 
   def how_it_works
-    @title = "How it works"
+    @title = "How it works - Budget 24/7"
   end
 
   def faq
-    @title = "FAQ"
+    @title = "FAQ - Budget 24/7"
   end
 
   def terms_of_use
-    @title = "Terms of use"
+    @title = "Terms of use - Budget 24/7"
   end
 
   def help_create_account
-    @title = "Help create account"
+    @title = "Help create account - Budget 24/7"
   end
 
   private

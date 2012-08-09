@@ -3,6 +3,7 @@ class TrendsController < ApplicationController
   require 'active_support/core_ext/date/conversions'
 
   def index
+    @title = "Trends - Budget 24/7"
     @top_merchant = current_user.top_merchant
     @most_purchased  = current_user.most_purchased
     @most_expensive = current_user.transactions.find(:all, :order => 'amount DESC').first
