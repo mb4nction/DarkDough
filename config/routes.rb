@@ -42,7 +42,7 @@ Pfm::Application.routes.draw do
   # TODO: set special root for registered user
 
   # root :to => "dashboard#show"
-  root to: 'devise/registrations#new'
+  root to: 'static#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
