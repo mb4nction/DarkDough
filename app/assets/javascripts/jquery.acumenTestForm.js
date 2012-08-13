@@ -79,22 +79,43 @@
           checkboxInput.removeAttr('checked')
           that.removeClass('checked')
 
-          checkAllCheckboxes(container);
+          checkAllCheckboxes();
         } else {
           checkboxInput.prop('checked', true)
           that.addClass('checked')
 
-          checkAllCheckboxes(container);
+          checkAllCheckboxes();
         }
       })
 
-      var checkAllCheckboxes = function(container) {
-        var checkbox = $('input[type=checkbox]:checked', container);
+      var checkAllCheckboxes = function() {
+        var checkbox = $('input[type=checkbox]:checked'),
+            checkboxContainer = checkbox.parents('.input_fields');
         if (checkbox.length > 0) {
-          container.addClass('done');
+          checkboxContainer.addClass('done');
         } else {
-          container.removeClass('done');
+          checkboxContainer.removeClass('done');
         }
+      }
+
+      var checkAllRadios = function() {
+        var radio = $('input[type=radio]:checked'),
+            radioContainer1 = radio.parents('.smile'),
+            radioContainer2 = radio.parents('.field'),
+            answerContainer = radio.parents('.question_fields');
+        if (radio.length > 0) {
+          radioContainer1.addClass('checked')
+          radioContainer2.addClass('checked')
+          answerContainer.addClass('done')
+        } else {
+          container.removeClass('checked');
+        }
+      }
+
+      var checnCheckboxesOnEdit = function() {
+        var checkbox = $('input[type=checkbox]:checked'),
+            checkboxContainer = checkbox.parents('.checkbox');
+        checkboxContainer.addClass('checked')
       }
 
       var checkAnswerPresent = function(container) {
@@ -173,7 +194,9 @@
       //       dragFields = ;
       // }
 
-      checkAnswerPresent();
+      checkAllRadios();
+      checnCheckboxesOnEdit();
+      // checkAnswerPresent();
     };
 
     return init.call(this);

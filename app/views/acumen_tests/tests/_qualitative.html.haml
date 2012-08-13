@@ -151,7 +151,7 @@
 
   - if test_answers[52]
     - answer = test_answers[52]
-    = fields_for :answer, answer do |answer_form|
+    = f.fields_for :answers, answer do |answer_form|
       .drag-field
         = answer_form.hidden_field :code
         = answer_form.hidden_field :question
@@ -163,7 +163,7 @@
 
   - if test_answers[53]
     - answer = test_answers[53]
-    = fields_for :answer, answer do |answer_form|
+    = f.fields_for :answers, answer do |answer_form|
       .drag-field
         = answer_form.hidden_field :code
         = answer_form.hidden_field :question
@@ -175,7 +175,7 @@
 
   - if test_answers[54]
     - answer = test_answers[54]
-    = fields_for :answer, answer do |answer_form|
+    = f.fields_for :answers, answer do |answer_form|
       .drag-field
         = answer_form.hidden_field :code
         = answer_form.hidden_field :question
