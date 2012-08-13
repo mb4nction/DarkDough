@@ -1,5 +1,5 @@
 .block
-  %h1 Listing goals
+  %h1 Goals
 
   #goals_list
     %table
@@ -23,7 +23,7 @@
           %td= goal.contribution
           %td= link_to 'Show', goal
           %td= edit_goal(goal) unless goal.finished?
-          %td= link_to 'Destroy', goal, confirm: 'Are you sure?', method: :delete
+          %td= link_to 'Abandon', goal, confirm: 'Are you sure?', method: :delete
           %td.finish_goal_td
             - if goal.can_be_finished?
               = render partial: "finish_goal", locals: { goal: goal }
