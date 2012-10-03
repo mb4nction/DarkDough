@@ -1,7 +1,8 @@
 require "bundler/capistrano"
 
 set :application, "blog_app"
-set :user, "blogger"
+set :user, "mark"
+set :scm_passphrase, "p@ssw0rd"
 
 set :scm, :git
 #set :repository, "https://github.com/YOUR_GITHUB_ACCOUNT/YOUR_REPO.git"
