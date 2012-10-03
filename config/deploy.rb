@@ -10,7 +10,7 @@ set :branch, "master"
 set :use_sudo, true
 
 #server "YOUR_IP_ADDRESS_HERE", :web, :app, :db, primary: true
-server "168.61.17.69", :web, :app, :db, primary: true
+server "10.175.152.96", :web, :app, :db, primary: true
     
 set :deploy_to, "/home/#{user}/apps/#{application}"
 default_run_options[:pty] = true
