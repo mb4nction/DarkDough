@@ -13,6 +13,7 @@ default_run_options[:pty] = true
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
+after 'deploy', 'deploy:migrate'
 
 namespace :deploy do
   task :start do ; end
