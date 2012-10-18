@@ -11,13 +11,12 @@ gem "haml-rails"
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
-gem 'mongrel', '1.2.0.pre2'
-
 # Authentication and authorization
 gem "devise", "2.0"
 gem "devise_rpx_connectable"
 gem "carmen", "0.2.12"
 gem 'fastercsv', '=1.5.4'
+
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails',   '3.1.4'
@@ -44,12 +43,11 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the web server
-gem 'unicorn'
-
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'capistrano-ext'
 gem 'rvm-capistrano'
+
 # To use debugger
 # gem 'ruby-debug'
 
