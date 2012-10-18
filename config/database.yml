@@ -22,8 +22,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: pfm_production
+  database: budget247_prod
   pool: 5
-  username: pfm
-  password: epyfnm
+  username: budget247_prod
+  password: Aeraegee7DiP8ved1uh5
   socket: <%= ['/var/lib/mysql/mysql.sock', '/var/run/mysqld/mysqld.sock', '/tmp/mysql.sock'].detect{ |socket| File.exist?(socket) } %>
