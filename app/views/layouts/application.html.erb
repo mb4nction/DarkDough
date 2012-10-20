@@ -7,6 +7,7 @@
   <script src="http://malsup.github.com/jquery.form.js"></script>
   <%= csrf_meta_tags %>
   <%= javascript_include_rpx(user_session_url) %>
+  <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
   <div id="main">

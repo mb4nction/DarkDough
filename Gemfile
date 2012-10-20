@@ -17,6 +17,9 @@ gem "devise_rpx_connectable"
 gem "carmen", "0.2.12"
 gem 'fastercsv', '=1.5.4'
 
+# Google analitycs
+gem 'google-analytics-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails',   '3.1.4'

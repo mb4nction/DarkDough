@@ -1,6 +1,8 @@
 EMAIL = 'pfm.sup.psodhfoih2904@gmail.com'
 PASSWORD = "pfmepyfnm"
 
+GA.tracker = "UA-35714250-1"
+
 Pfm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -22,6 +24,7 @@ Pfm::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH

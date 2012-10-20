@@ -93,6 +93,7 @@ GEM
     ffi (1.0.11)
     formtastic (2.1.1)
       actionpack (~> 3.0)
+    google-analytics-rails (0.0.3)
     haml (3.1.6)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -254,6 +255,7 @@ DEPENDENCIES
   factory_girl (~> 3.0)
   factory_girl_rails (~> 3.0)
   fastercsv (= 1.5.4)
+  google-analytics-rails
   haml-rails
   jquery-rails
   json
