@@ -31,6 +31,8 @@ group :development do
   gem "rspec-rails", "2.6.1"
   gem 'webrat', '0.7.1'
   gem 'capybara', '1.1.2'
+  gem 'sqlite3'
+  gem 'letter_opener'
 end
 
 group :test do
