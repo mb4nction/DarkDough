@@ -1,7 +1,8 @@
 class Budget < ActiveRecord::Base
-  attr_accessible :category, :amount, :period, :start, :user_id
+  acts_as_taggable
+  attr_accessible :category, :amount, :period, :start, :user_id, :tag_list
   belongs_to :user
-
+  
   validates :category, :amount, :period, :presence => true
   validates :amount, :period, :numericality => true
 

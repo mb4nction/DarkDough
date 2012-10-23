@@ -6,10 +6,14 @@ gem 'json'
 gem 'squeel'
 gem "paperclip", "~> 3.0"
 
-gem "haml-rails"
+gem 'haml-rails'
+gem 'jquery-rails'
 
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+
+# Tagging
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 # Authentication and authorization
 gem "devise", "2.0"
@@ -44,8 +48,6 @@ group :test do
   gem "factory_girl", "~> 3.0"
   gem "factory_girl_rails", "~> 3.0"
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
