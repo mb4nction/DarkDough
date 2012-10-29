@@ -13,11 +13,7 @@ module ApplicationHelper
       link_to "Acumen Test Result", acumen_test_path(user.acumen_tests.last), :class => html_class
     end
   end
-
-  def display_if(cond, val='block')
-    "style = 'display: #{cond ? val : 'none'};'"
-  end
-
+  
   def activated_if(cond)
     if cond
       'activated'

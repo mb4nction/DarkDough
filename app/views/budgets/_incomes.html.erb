@@ -10,9 +10,9 @@
     </div>
   </div>
 
-  <%= link_to "Create a new income", new_budget_path(:category => 'Income'), :class => "new-budget add_new", :title => "New budget" %>
+  <%= link_to "Create a new income", new_budget_path(:budget_type => 'income'), :class => "new-budget add_new", :title => "New budget" %>
   <div id="create_new_budget">
-    <%= render 'form' %>
+    <%= render :partial => 'form', :locals => {:budget_type => 'income'} %>
   </div>
 
   <% if @income_budgets.any? %>

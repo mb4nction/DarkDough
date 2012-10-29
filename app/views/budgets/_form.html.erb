@@ -1,14 +1,9 @@
-<%= form_for @budget, :remote => true do |f| %>
+<%= simple_form_for Budget.new, :remote => true do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-
-  <div class="field" <%= display_if(params[:category].nil?) %>>
-    <% if  params[:category].nil? %>
-      <p><%= f.label :category, 'Choose a category' %></p>
-      <%= f.select :category, Transaction::CATEGORIES %>
-    <% else %>
-      <p><%= f.label :category %></p>
-      <%= f.select :category, Transaction::CATEGORIES, :selected => (params[:category] unless params[:category].nil?) %>
-    <% end %>
+  <%= f.input :budget_type, :as => 'hidden', :input_html => { :value => budget_type } %>
+  <div class="field">
+    <p><%= f.label :category, 'Choose a category' %></p>
+    <%= f.select :category, Transaction::CATEGORIES %>
   </div>
 
   <div class="field radios">

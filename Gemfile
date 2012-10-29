@@ -12,6 +12,9 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
+# Forms
+gem 'simple_form'
+
 # Tagging
 gem 'acts-as-taggable-on', '~> 2.3.1'
 

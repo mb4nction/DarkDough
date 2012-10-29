@@ -1,16 +1,17 @@
 class Budget < ActiveRecord::Base
   acts_as_taggable
-  attr_accessible :category, :amount, :period, :start, :user_id, :tag_list
+  attr_accessible :category, :amount, :period, :start, :user_id, :tag_list, :budget_type
   belongs_to :user
   
-  validates :category, :amount, :period, :presence => true
+  validates :category, :amount, :period, :budget_type, :presence => true
   validates :amount, :period, :numericality => true
+  validates :budget_type, :inclusion => { :in => %w(income spending) }
 
-  scope :income, where(:category => 'income')
-  scope :spending, lambda { where("category != ?", "income") }
+  scope :income, where(:budget_type => 'income')
+  scope :spending, where(:budget_type => 'spending')
   scope :in_this_month, :conditions => ["created_at >= ?", Date.today.beginning_of_month]
-
-
+  
+  
   def self.search(start_date, end_date)
     if start_date && !(start_date == '')
       end_date == '' ? end_date = Time.now.utc : end_date

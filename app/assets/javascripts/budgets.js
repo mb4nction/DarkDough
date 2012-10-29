@@ -221,7 +221,6 @@ $(function() {
     return false;
   });
 
-  $('#budget_category').chosen();
   $('.start #budget_start_1i').chosen();
   $('.start #budget_start_2i').chosen();
   $('.period #period').chosen();

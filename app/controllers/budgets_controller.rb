@@ -26,7 +26,7 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = Budget.new
-
+    
     respond_to do |format|
       format.html
       format.json { render :json => @budget }
