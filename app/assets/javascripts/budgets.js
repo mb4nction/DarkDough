@@ -197,30 +197,6 @@ $(function() {
     });
   };
 
-  // forms. jQuery.ui used
-  $('#create_new_budget').dialog({
-    autoOpen: false,
-    resizable: false,
-    modal: true,
-    minWidth: 490,
-    dialogClass: 'my_dialog',
-    title: "New budget",
-    buttons: {
-      'Save': function() {
-        $('#new_budget').submit()
-        $(this).dialog('close')
-      },
-      'Cancel': function() {
-        $(this).dialog('close')
-      }
-    }
-  })
-
-  $('.new-budget').on("click", function() {
-    $('#create_new_budget').dialog("open");
-    return false;
-  });
-
   $('.start #budget_start_1i').chosen();
   $('.start #budget_start_2i').chosen();
   $('.period #period').chosen();

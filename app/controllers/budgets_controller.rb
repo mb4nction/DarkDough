@@ -1,5 +1,7 @@
 class BudgetsController < ApplicationController
   before_filter :authenticate_user!
+  
+  layout Proc.new { |controller| controller.request.xhr? ? 'popup' : 'application' }
 
   def index
     @title = 'Budgets - Budget 24/7'
