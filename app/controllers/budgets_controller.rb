@@ -3,7 +3,7 @@ class BudgetsController < ApplicationController
 
   def index
     @title = 'Budgets - Budget 24/7'
-    @budget = Budget.new
+    @budget = Budget.new(:budget_type => 'income')
     @budgets =  current_user.budgets.search(params[:budgets_start], params[:budgets_end])
     @income_budgets = current_user.budgets.income.search(params[:budgets_start], params[:budgets_end])
     @spending_budgets = current_user.budgets.spending.search(params[:budgets_start], params[:budgets_end])

@@ -1,6 +1,6 @@
-<%= simple_form_for Budget.new, :remote => true do |f| %>
+<%= simple_form_for @budget, :remote => true do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <%= f.input :budget_type, :as => 'hidden', :input_html => { :value => budget_type } %>
+  <%= f.input :budget_type, :as => 'hidden' %>
   <div class="field">
     <p><%= f.label :category, 'Choose a category' %></p>
     <%= f.select :category, Transaction::CATEGORIES %>
