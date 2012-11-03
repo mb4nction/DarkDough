@@ -21,14 +21,8 @@
     </div>
   </div>
 
-  <div class="field">
-    <p><%= f.label :amount %></p>
-    &#8358; <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <p><%= f.label :tag_list %></p>
-    <%= f.text_field :tag_list %>
-  </div>
+  <%= f.input :amount %>
+  <%= f.input :tag_list %>
   <div class="period hidden">
     every <%= select_tag :period, options_for_select(period_select, @budget.period) %>
   </div>
