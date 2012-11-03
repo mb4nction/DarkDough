@@ -20,7 +20,7 @@
     <div id="incomes-list">
       <% @income_budgets.each do |income| %>
         <div class="income item">
-          Income <%= link_to "edit", edit_budget_path(income, :category => income.category), :class => "edit" %>
+          <%= income.category %> <%= link_to "edit", edit_budget_path(income, :category => income.category), :class => "edit" %>
           <div class="spent">
             <div class="b-start">
               &#8358;<div class="start"><%= current_user.transactions_sum_by_category("Income") %></div>
