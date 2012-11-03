@@ -41,7 +41,9 @@ class BudgetsController < ApplicationController
 
   def create
     @budget = current_user.budgets.build params[:budget]
-
+    
+    @budget.amount = -@budget.amount if @budget.budget_type == 'spending'
+    
     respond_to do |format|
       if @budget.save
         format.html { redirect_to budgets_path(budget_type: @budget.budget_type), :notice => 'Budget was successfully created.' }
