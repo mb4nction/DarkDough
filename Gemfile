@@ -15,6 +15,9 @@ gem "meta_search",    '>= 1.1.0.pre'
 # Forms
 gem 'simple_form'
 
+# Validations
+gem 'client_side_validations'
+
 # Tagging
 gem 'acts-as-taggable-on', '~> 2.3.1'
 

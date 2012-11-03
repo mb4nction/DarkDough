@@ -27,7 +27,7 @@ class BudgetsController < ApplicationController
   end
 
   def new
-    @budget = Budget.new
+    @budget = Budget.new(budget_type: params[:budget_type])
     
     respond_to do |format|
       format.html
@@ -44,7 +44,7 @@ class BudgetsController < ApplicationController
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to budgets_path, :notice => 'Budget was successfully created.' }
+        format.html { redirect_to budgets_path(budget_type: @budget.budget_type), :notice => 'Budget was successfully created.' }
         format.json { render :json => @budget, :status => :created, :location => @budget }
       else
         format.html { render :action => "new" }

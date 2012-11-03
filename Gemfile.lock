@@ -66,6 +66,7 @@ GEM
     carmen (0.2.12)
     childprocess (0.3.1)
       ffi (~> 1.0.6)
+    client_side_validations (3.2.1)
     cocaine (0.2.1)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
@@ -255,6 +256,7 @@ DEPENDENCIES
   capistrano-ext
   capybara (= 1.1.2)
   carmen (= 0.2.12)
+  client_side_validations
   coffee-rails (~> 3.1.1)
   devise (= 2.0)
   devise_rpx_connectable

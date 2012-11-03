@@ -1,4 +1,4 @@
-<%= simple_form_for @budget, :remote => true do |f| %>
+<%= simple_form_for @budget, :validate => true do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <%= f.input :budget_type, :as => 'hidden' %>
   <div class="field">

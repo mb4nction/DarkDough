@@ -22,7 +22,7 @@
     &#8358; <%= @spending_budgets.map(&:amount).sum %>
   </div>
 
-  <%= link_to "Create a new budget", new_budget_path, :class => "new-budget" %>
+  <%= link_to "Create a new budget", new_budget_path(:budget_type => 'spending'), :class => "new-budget" %>
 
   <% if @spending_budgets.any? %>
       <div id="spending-list">
