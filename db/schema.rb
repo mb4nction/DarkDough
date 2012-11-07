@@ -88,8 +88,7 @@ ActiveRecord::Schema.define(:version => 20121101114427) do
   end
 
   create_table "budgets", :force => true do |t|
-    t.string   "category"
-    t.decimal  "amount",      :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "amount",      :default => 0.0
     t.string   "period"
     t.datetime "start"
     t.integer  "user_id"

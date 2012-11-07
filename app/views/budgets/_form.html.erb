@@ -1,10 +1,7 @@
 <%= simple_form_for @budget, :validate => true do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <%= f.input :budget_type, :as => 'hidden' %>
-  <div class="field">
-    <p><%= f.label :category, 'Choose a category' %></p>
-    <%= f.select :category, Transaction::CATEGORIES %>
-  </div>
+  <%= f.input :category, :collection => Category.send(@budget.budget_type) %>
 
   <div class="field radios">
     <p>When will this happen?</p>
