@@ -15,6 +15,10 @@ gem "meta_search",    '>= 1.1.0.pre'
 # Forms
 gem 'simple_form'
 
+# Permissions
+gem 'cancan'
+gem 'rolify'
+
 # Validations
 gem 'client_side_validations'
 

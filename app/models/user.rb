@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   include Paperclip::Glue
 
   before_validation :set_fields, :generate_password, on: :create
