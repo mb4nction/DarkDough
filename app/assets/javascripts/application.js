@@ -6,32 +6,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require rails.validations
-// require_tree .
+//= require jquery-ui
+//= require cluster
 
-//= require accounts
-//= require acumen_tests
-//= require budgets
-//= require dashboard
-//= require goals
-//= require jquery.custom_form
-//= require jquery.acumenTestForm
-//= require jquery.d3.trends
-//= require jquery.radio.js
-//= require jquery.progressBar.js
-//= require leftsideMenu.js
-//= require transactions
-//= require trends
-//= require users
 
-// vendor folder
-//= require chosen.jquery.min.js
-//= require jquery-ui-1.8.17.custom.min.js
-//= require underscore-min.js
-//= require protovis.min.js
-//= require d3.v2.min.js
-
-//= require jQuery-Visualize/excanvas.js
-//= require jQuery-Visualize/visualize.jQuery.js
-//= require bootstrap-modal
-
+//Function to Open & close popups
+function close_overlay($id){
+  document.getElementById($id).style.display = 'none';
+}
+function show_overlay($id){
+  document.getElementById($id).style.display = 'block';
+}
+//End Function

@@ -25,9 +25,14 @@ gem 'client_side_validations'
 # Tagging
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
+# Static pages
+gem 'high_voltage'
+
 # Authentication and authorization
 gem "devise", "2.0"
 gem "devise_rpx_connectable"
+
+
 gem "carmen", "0.2.12"
 gem 'fastercsv', '=1.5.4'
 

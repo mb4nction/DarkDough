@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable
 
-  validates :first_name, presence: true
+  validates :first_name, :email, presence: true
   validates :first_name, :last_name, length: { maximum: 30 }
 
   validates :tos_confirmation, :acceptance => true, :if => :new_record?
