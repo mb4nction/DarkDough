@@ -38,6 +38,7 @@ Pfm::Application.routes.draw do
   match '/sundry_legal_information' => 'pages#show', :id => 'sundry_legal_information'
   match '/privacy_security_policy' => 'pages#show', :id => 'privacy_security_policy'
   match '/community_policy' => 'pages#show', :id => 'community_policy'
+  match '/pricing' => 'pages#show', :id => 'pricing'
   
 
   resource :contact_us, :only => [:create]
