@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require cluster
+//= require smooth_scroll
 
 
 //Function to Open & close popups
