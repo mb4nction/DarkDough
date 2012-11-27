@@ -7,10 +7,13 @@ gem 'squeel'
 gem "paperclip", "~> 3.0"
 
 gem 'haml-rails'
-gem 'jquery-rails'
 
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+
+# JS
+gem 'jquery-rails'
+gem 'underscore-rails'
 
 # Forms
 gem 'simple_form'

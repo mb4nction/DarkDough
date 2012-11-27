@@ -10,13 +10,13 @@ class Budget < ActiveRecord::Base
 
   scope :income, where(:budget_type => 'income')
   scope :spending, where(:budget_type => 'spending')
-  scope :in_this_month, :conditions => ["created_at >= ?", Date.today.beginning_of_month]
+  scope :in_this_month, where('created_at >= ?', Date.today.beginning_of_month)
   
   
   def self.search(start_date, end_date)
     if start_date && !(start_date == '')
-      end_date == '' ? end_date = Time.now.utc : end_date
-      find(:all, :conditions => ['created_at >= ? AND created_at <= ?', start_date, end_date.to_date + 1.day])
+      end_date == '' ? end_date = Time.zone.now : end_date
+      where('created_at >= ? AND created_at <= ?', start_date, end_date.to_date + 1.day)
     else
       in_this_month
     end

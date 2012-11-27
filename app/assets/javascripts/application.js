@@ -7,8 +7,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require underscore
+//= require chosen.jquery
+//= require jquery.radio
+//= require jquery.progress_bar
 //= require cluster
 //= require smooth_scroll
+//= require budgets
 
 
 //Function to Open & close popups
