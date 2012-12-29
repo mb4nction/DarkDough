@@ -15,11 +15,11 @@
 
 %br
 
-= render 'qualitative_test_results', :acumen_test => @acumen_test if @acumen_test.qualitative_test_finished?
+/= render 'qualitative_test_results', :acumen_test => @acumen_test if @acumen_test.qualitative_test_finished?
 %br
-= render 'quantitative_test_results', :acumen_test => @acumen_test if @acumen_test.quantitative_test_finished?
+/= render 'quantitative_test_results', :acumen_test => @acumen_test if @acumen_test.quantitative_test_finished?
 %br
-= render 'cash_flow_test_result', :acumen_test => @acumen_test if @acumen_test.cash_flow_test_finished?
+/= render 'cash_flow_test_result', :acumen_test => @acumen_test if @acumen_test.cash_flow_test_finished?
 %br
 %br
 %p

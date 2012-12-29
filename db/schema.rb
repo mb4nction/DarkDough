@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114221540) do
+ActiveRecord::Schema.define(:version => 20121226114312) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20121114221540) do
   end
 
   create_table "budgets", :force => true do |t|
-    t.decimal  "amount",      :default => 0.0
+    t.decimal  "amount",      :precision => 10, :scale => 2, :default => 0.0
     t.string   "period"
     t.datetime "start"
     t.integer  "user_id"
@@ -125,6 +125,16 @@ ActiveRecord::Schema.define(:version => 20121114221540) do
     t.boolean  "finished",                                    :default => false
   end
 
+  create_table "questions", :force => true do |t|
+    t.integer  "korder"
+    t.string   "answer_type"
+    t.integer  "qgroup"
+    t.string   "trait"
+    t.string   "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -151,6 +161,15 @@ ActiveRecord::Schema.define(:version => 20121114221540) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "tests", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "question_id"
+    t.text     "answer"
+    t.string   "answer_sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "transactions", :force => true do |t|
@@ -191,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20121114221540) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "sms"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

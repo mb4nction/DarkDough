@@ -4,7 +4,7 @@ class PagesController < HighVoltage::PagesController
   before_filter :set_title
 
   layout 'public'
-
+	
 private
   def set_title
     @title = case params[:id]

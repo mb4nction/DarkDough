@@ -8,11 +8,12 @@ class AcumenTestsController < ApplicationController
 
   def new
     @acumen_test = AcumenTest.new
-    Answer::QUESTIONS.each do |i|
-      i.each do |code, title|
-        @acumen_test.answers.build :code => code, :question => title
-      end
-    end
+    #Answer::QUESTIONS.each do |i|
+    #  i.each do |code, title|
+    #    @acumen_test.answers.build :code => code, :question => title
+    #  end
+    #end
+		
   end
 
   def create

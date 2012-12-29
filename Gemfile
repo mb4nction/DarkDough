@@ -11,7 +11,7 @@ gem 'haml-rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
-# JS
+#  JS
 gem 'jquery-rails'
 gem 'underscore-rails'
 
@@ -44,6 +44,9 @@ gem 'google-analytics-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
+
+gem 'bootstrap-sass', '2.0.0'
+
 gem 'sass-rails',   '3.1.4'
 group :assets do
   gem 'coffee-rails', '~> 3.1.1'
@@ -77,4 +80,13 @@ gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
+
+
+
+
+gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
+#gem "aws-ses", "~> 0.3.2", :require => 'aws/ses'
+gem "nexmo"
+gem "recaptcha", :require => "recaptcha/rails"
+
 

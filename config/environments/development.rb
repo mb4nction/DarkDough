@@ -33,13 +33,28 @@ Pfm::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.action_mailer.delivery_method = :smtp
+#  config.action_mailer.delivery_method = :smtp
+
+	config.action_mailer.delivery_method = :ses
+
+#  config.action_mailer.smtp_settings = {
+#    :address              => "smtp.gmail.com",
+#    :port                 => 587,
+#    :domain               => 'dev.anahoret.com',
+#    :user_name            => "#{EMAIL}",
+#    :password             => "#{PASSWORD}",
+#    :authentication       => 'plain',
+#    :enable_starttls_auto => true  }
+
+
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "email-smtp.us-east-1.amazonaws.com",
     :port                 => 587,
-    :domain               => 'localhost',
-    :user_name            => "#{EMAIL}",
-    :password             => "#{PASSWORD}",
+    :domain               => 'dev.anahoret.com',
+    :user_name            => "AKIAJQ3PHB3IYG77YHPA",
+    :password             => "AptRNSDPfVKuZOrrWh2lsGEk8h5DJLQDrNfBX8UkdhYf",
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+
+
 end

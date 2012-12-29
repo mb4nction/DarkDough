@@ -4,10 +4,12 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  # config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "WarmWelcome@budget247.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+	config.mailer = "BudgetMailer"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -210,4 +212,5 @@ Devise.setup do |config|
 
   config.rpx_application_name = "mybudget247"
   config.rpx_additional_user_data = [:verifiedEmail, :name] # default [], get some extra profile info from https://rpxnow.com/docs#profile_data
+	
 end

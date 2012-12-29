@@ -14,6 +14,8 @@
 //= require cluster
 //= require smooth_scroll
 //= require budgets
+//= require home
+//= require confirmation
 
 
 //Function to Open & close popups

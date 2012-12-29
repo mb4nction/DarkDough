@@ -1,8 +1,19 @@
 Pfm::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
+	get '/confirmation', :to=>'users#confirmation', :as=>'confirmation'
+	post '/socialsignin', :to=>'users#socialsignin', :as=>'socialsignin'
+	post '/verification', :to=>'users#verification', :as=>'verification'
 
+  ActiveAdmin.routes(self)
+	
   devise_for :admin_users, ActiveAdmin::Devise.config
+	 
+	devise_for :questions do
+		match '/admin/questions/:id/orderup' => 'admin/questions#orderup', :as=>'question_order_up'
+		match '/admin/questions/:id/orderdown' => 'admin/questions#orderdown', :as=>'question_order_down'
+	end
+	
+	devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
 
   devise_for :users do
     get "/" => "devise/registrations#new", :as => :new_user_registration
@@ -10,6 +21,7 @@ Pfm::Application.routes.draw do
 
   resources :users, :only => [:show, :edit, :update]
   resources :acumen_tests
+  resources :tests
 
   resources :accounts do
     collection do
@@ -27,6 +39,14 @@ Pfm::Application.routes.draw do
 
   resources :transactions
   resources :trends, :only => :index
+	
+	
+	get '/questions/touchfeely', :to=> 'questions#touchfeely', :as => 'touchfeely'
+	get '/questions/hardfacts', :to=> 'questions#hardfacts', :as => 'hardfacts'
+	get '/questions/cashflow', :to=> 'questions#cashflow', :as => 'cashflow'
+	get '/questions/testresult', :to=> 'questions#testresult', :as => 'testresult'
+
+  resources :questions
 
   match '/home' => 'pages#show', :id => 'home'
   match '/about' => 'pages#show', :id => 'about'

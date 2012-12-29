@@ -18,3 +18,4 @@
 webrat.log
 public/system
 public/.DS_Store
+/nbproject/private/

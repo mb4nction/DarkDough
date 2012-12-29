@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
 
   attr_accessible :name, :status, :bank_id, :user_id, :amount, :transactions_attributes
 
-  validates :name, :status, :presence => true
+  validates :name, :status, :presence => true 
   validates :status, :inclusion => { :in => ACCOUNT_STATUSES }
 
   belongs_to :user
