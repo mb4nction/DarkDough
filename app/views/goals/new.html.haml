@@ -1,6 +1,9 @@
 .block.goal
-  %h1 Create a Goal
+	%h1 Create a Goal
+	= params[:type] ? render_goal_form(params[:type]) : (render 'form')
+	%br
+	%br
+	%br
+	%br
 
-  = params[:type] ? render_goal_form(params[:type]) : (render 'form')
-
-  = link_to 'Back', goals_path
+	= link_to 'Back', goals_path

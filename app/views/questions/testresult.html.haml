@@ -1,15 +1,357 @@
 %script{:src=>"/assets/_cashflow.js"}
+%link{:href=>"/bubble/css/jquery-bubble-popup-v3.css", :rel=>"stylesheet",:type=>"text/css"}
+%script{:src=>"/bubble/scripts/jquery-bubble-popup-v3.min.js"}
 :javascript
 	var g_testresult_path = "#{testresult_path}";
+	var g_ruler_data = {
+		'first-job': #{@personal_info[:first_job]},
+		'age': #{@personal_info[:age]},
+		'retirement-age': #{@personal_info[:retirement_age]},
+		'life-expectancy': #{@personal_info[:life_expectancy]}
+	};
+	
+	$(function(){
+		fn_put_mark(0);
+		fn_put_mark(50);
+		fn_put_mark(100);
+
+		fn_put_nullmark(10);
+		fn_put_nullmark(20);
+		fn_put_nullmark(30);
+		fn_put_nullmark(40);
+		fn_put_nullmark(60);
+		fn_put_nullmark(70);
+		fn_put_nullmark(80);
+		fn_put_nullmark(90);
+
+		fn_put_vmark(g_ruler_data['first-job']);
+		fn_put_vmark(g_ruler_data['age']);
+		fn_put_vmark(g_ruler_data['retirement-age']);
+		fn_put_vmark(g_ruler_data['life-expectancy']);
+		
+		fn_set_scaler_group(0, g_ruler_data['first-job']);
+		fn_set_scaler_group(1, g_ruler_data['retirement-age']-g_ruler_data['first-job']);
+		fn_set_scaler_group(2, g_ruler_data['life-expectancy']-g_ruler_data['retirement-age']);
+
+		fn_set_scaler_group_sub(0, 15);
+		fn_set_scaler_group_sub(1, 15);
+		
+		fn_control_status_caption();
+
+
+		$('.question:lt(3)').each(function(){
+			$(this).CreateBubblePopup({
+				position : 'top',
+				align	 : 'left',
+				selectable : true,
+				innerHtml: $(this).attr('data'),
+				innerHtmlStyle: {
+					color:'#fff', 
+					'text-align':'left',
+					'max-width':'400px'
+				},
+				themeName : 'all-black',
+				themePath: '/bubble/jquerybubblepopup-themes',
+				tail : {
+					align:'left'
+				}
+			});
+		});
+		
+		
+		
+		$('.p_comment').each(function(){
+			$(this).CreateBubblePopup({
+				position : 'right',
+				align	 : 'middle',
+				selectable : true,
+				innerHtml: $(this).attr('data'),
+				innerHtmlStyle: {
+					color:'#fff', 
+					'text-align':'left',
+					'max-width':'300px'
+				},
+				themeName : 'all-black',
+				themePath: '/bubble/jquerybubblepopup-themes',
+				tail : {
+					align:'center'
+				}
+			});
+		});
+		
+		
+		$('.p2_comment').each(function(){
+			$(this).CreateBubblePopup({
+				position : 'right',
+				align	 : 'middle',
+				selectable : true,
+				innerHtml: $(this).attr('data'),
+				innerHtmlStyle: {
+					color:'#fff', 
+					'text-align':'left',
+					'max-width':'300px'
+				},
+				themeName : 'all-black',
+				themePath: '/bubble/jquerybubblepopup-themes',
+				tail : {
+					align:'center'
+				}
+			});
+		});
+		
+		$('.p3_comment').each(function(){
+			$(this).CreateBubblePopup({
+				position : 'right',
+				align	 : 'middle',
+				selectable : true,
+				innerHtml: $(this).attr('data'),
+				innerHtmlStyle: {
+					color:'#fff', 
+					'text-align':'left',
+					'max-width':'300px'
+				},
+				themeName : 'all-black',
+				themePath: '/bubble/jquerybubblepopup-themes',
+				tail : {
+					align:'center'
+				}
+			});
+		});
+		
+
+
+		$('.question:gt(2)').each(function(){
+			$(this).CreateBubblePopup({
+				position : 'top',
+				align	 : 'right',
+				selectable : true,
+				innerHtml: $(this).attr('data'),
+				innerHtmlStyle: {
+					color:'#fff', 
+					'text-align':'left',
+					'max-width':'400px'
+				},
+				themeName : 'all-black',
+				themePath: '/bubble/jquerybubblepopup-themes',
+				tail : {
+					align:'right'
+				}
+			});
+		});
+
+	});
+	
+	
+	function fn_put_nullmark(val){
+			$("<div class='nullmark'/>")
+			.appendTo('.scaler')
+			.css('left',val*4);
+	}
+
+	function fn_put_mark(val){
+		val=((val>100)?100:val);
+			$("<div class='mark'/>")
+			.appendTo('.scaler')
+			.html(val)
+			.css('left',val*4);
+	}
+
+	function fn_put_vmark(val){
+		val=((val>100)?100:val);
+		$("<div class='vmark'/>")
+			.appendTo('.scaler')
+			.html(val)
+			.css('left',val*4);
+	}
+	
+	function fn_set_scaler_group(nth, val){
+		$('.scaler-group > .sg').eq(nth).width(val*4);
+	}
+	
+	function fn_set_scaler_group_sub(nth, val){
+		$('.scaler-group .sub-sg').eq(nth).width(val*4);
+	}
+	
+	function fn_control_status_caption(){
+		$("<div class='first-job' />")
+			.appendTo('.status-captions')
+			.css('left', g_ruler_data['first-job']*4);
+
+		$("<div class='age' />")
+			.appendTo('.status-captions')
+			.css('left', g_ruler_data['age']*4);
+
+		$("<div class='retirement-age' />")
+			.appendTo('.status-captions')
+			.css('left', g_ruler_data['retirement-age']*4);
+
+		$("<div class='life-expectancy' />")
+			.appendTo('.status-captions')
+			.css('left', g_ruler_data['life-expectancy']*4);
+
+	}
+	
 
 %h2.page-title
-	Test Result Page
-#full-width.grid_17.full-c
-	= render :partial=>'questions/shared/progress', :locals=>{:final=> true}
-	#ac-test
-		Design will be coming soon...
-		%br
-		%br
-		%br
-		%br
-		=link_to 'Go Back', cashflow_path, :class=>'grey-btn goback-btn'
+	Accumen Test Result
+.testresult
+	.personal-info
+		.wrapper
+			.info
+				.left
+					.picture
+						=image_tag @personal_info[:picture]
+				.right
+					.name=@personal_info[:name]
+					.location
+						.icon
+						.desc=@personal_info[:location]
+			.test
+				.taken
+					Test Taken : 
+					=@personal_info[:taken]
+				.next
+					Next Test on: 
+					=@personal_info[:next]
+					=image_tag '/assets/icon-question-mark.png', :align=>'absmiddle', :class=>'p_comment',
+						:data=>@personal_info[:next_comment]
+			.clear
+			.ruler
+				.clear
+				.scaler-group
+					.sg
+						.caption
+							Preparatory Years
+						.bottom
+					.sg.middle
+						.caption
+							.sub-sg.sg-1
+								.sub-caption
+									Preparatory Years
+								.bottom
+							Accumulation Years
+							.sub-sg.sg-2
+								.sub-caption
+									Preparatory Years
+								.bottom
+						.bottom
+					.sg
+						.caption
+							Post-Retirement
+						.bottom
+				.clear
+				.scaler
+				.status-captions
+	.personality
+		.wrapper
+			.bar
+				.personality-type
+					%span.desc Personality Type:
+					%span.type=@personality[:type]
+					=image_tag '/assets/icon-adherent.png', :align=>'absmiddle', :width=>28, :height=>26
+				.saving-rate
+					.desc Recommended Savings Rate:
+					.rate="#{@personality[:saving_rate]}%"
+			.WSMTD
+				.mwsed-c.ww
+					.desc Worry
+					.clear
+					.progress-bar
+						.bar
+							.sprogress-bar{:style=>"width:#{@mwsed_percent[:ww]}%;"}
+						.percent="#{@mwsed_percent[:ww]}%"
+				.mwsed-c.ee
+					.desc Thrill Seeker
+					.progress-bar
+						.bar
+							.sprogress-bar{:style=>"width:#{@mwsed_percent[:ee]}%;"}
+						.percent="#{@mwsed_percent[:ee]}%"
+				.mwsed-c.ss
+					.desc Self Interest
+					.progress-bar
+						.bar
+							.sprogress-bar{:style=>"width:#{@mwsed_percent[:ss]}%;"}
+						.percent="#{@mwsed_percent[:ss]}%"
+				.mwsed-c.dd
+					.desc Dicipline
+					.progress-bar
+						.bar
+							.sprogress-bar{:style=>"width:#{@mwsed_percent[:dd]}%;"}
+						.percent="#{@mwsed_percent[:dd]}%"
+				.mwsed-c.mm
+					.desc Motivation
+					.progress-bar
+						.bar
+							.sprogress-bar{:style=>"width:#{@mwsed_percent[:mm]}%;"}
+						.percent="#{@mwsed_percent[:mm]}%"
+	.clear
+	.personality-1
+		.wrapper
+			.mwsed-r.ww.question{:data=>@personality_1[:ww][:comment]}
+				="#{@personality_1[:ww][:value]}"
+			.mwsed-r.ss.question{:data=>@personality_1[:ss][:comment]}
+				="#{@personality_1[:ss][:value]}"
+			.mwsed-r.mm.question{:data=>@personality_1[:mm][:comment]}
+				="#{@personality_1[:mm][:value]}"
+			.mwsed-r.ee.question{:data=>@personality_1[:ee][:comment]}
+				="#{@personality_1[:ee][:value]}"
+			.mwsed-r.dd.question{:data=>@personality_1[:dd][:comment]}
+				="#{@personality_1[:dd][:value]}"
+	.personality-2
+		.wrapper
+			-k = 0
+			-@personality_2.each do |p|
+				- k = k + 1
+				.price-panel
+					.asset
+						.left
+							.picture
+								=image_tag "/assets/icon-assets-#{k}.png"
+						.right
+							.desc=p[:name]
+							.currency
+								.unit
+								.value=p[:value]
+					.average
+						.desc
+							Age Group Average
+							=image_tag '/assets/icon-question-mark.png', :align=>'absmiddle', :class=>"p2_comment", :data=>p[:comment]
+						.prgress-bar
+							.bar
+								.sprogress-bar{:style=>"background:#{p[:color]} !important;"}
+							.percent
+								=image_tag '/assets/icon-unit-1.png', :align=>'absmiddle'
+								=p[:value]
+					.clear
+					.line
+	.personality-3
+		.wrapper
+			- k = 0
+			- @personality_3.each do |p|
+				- k = k + 1
+				.ratio
+					.title
+						= p[:title]
+					.clear
+					.date
+						Date of Assesment:
+						= p[:date]
+					.clear
+					.left
+						=image_tag "/assets/bg-pie-chart-#{k}.png"
+					.right
+						.desc
+							Your Score
+						.percent
+							= "#{p[:percent]}%"
+						.line
+						.desc1
+							Average
+							=image_tag '/assets/icon-question-mark.png', :align=>'absmiddle', :class=>"p3_comment", :data=>p[:comment]
+						.percent1
+							Top 10%: 
+							%span 90.02%
+						.percent2
+							Bottom 10%: 
+							%span 24.96%
+	

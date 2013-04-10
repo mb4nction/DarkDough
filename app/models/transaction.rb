@@ -4,8 +4,8 @@ class Transaction < ActiveRecord::Base
 
   CATEGORIES = YAML.load_file("#{Rails.root}/config/categories.yml")
 
-  validates :category, :amount, :description, :presence => true
-  validates :amount, :numericality => true
+  #validates :category, :amount, :description, :presence => true
+  validates :amount,:debit, :credit, :numericality => true
   validates :category, :inclusion => { :in => CATEGORIES }
 
   scope :by_category, lambda { |q| {:conditions => ["category like :q", {:q => "%#{q}%"}]} }

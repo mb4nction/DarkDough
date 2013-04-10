@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226114312) do
+ActiveRecord::Schema.define(:version => 20130327094544) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -85,6 +85,11 @@ ActiveRecord::Schema.define(:version => 20121226114312) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "api_key"
+    t.string   "api_secret"
+    t.string   "website"
+    t.boolean  "approve"
+    t.string   "type"
   end
 
   create_table "budgets", :force => true do |t|
@@ -113,16 +118,33 @@ ActiveRecord::Schema.define(:version => 20121226114312) do
     t.datetime "updated_at"
   end
 
+  create_table "goal_details", :force => true do |t|
+    t.string   "desc"
+    t.boolean  "checked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "goal_id"
+  end
+
   create_table "goals", :force => true do |t|
     t.string   "title"
     t.string   "category"
-    t.decimal  "amount",       :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "amount",         :precision => 10, :scale => 2, :default => 0.0
     t.date     "planned_date"
-    t.decimal  "contribution", :precision => 10, :scale => 2, :default => 0.0
-    t.integer  "user_id",                                                        :null => false
+    t.decimal  "contribution",   :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "user_id",                                                          :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "finished",                                    :default => false
+    t.boolean  "finished",                                      :default => false
+    t.float    "current_amount"
+  end
+
+  create_table "mfilters", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "filter_id"
+    t.integer  "step"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "questions", :force => true do |t|
@@ -175,12 +197,17 @@ ActiveRecord::Schema.define(:version => 20121226114312) do
   create_table "transactions", :force => true do |t|
     t.string   "category"
     t.text     "description"
-    t.decimal  "amount",      :precision => 10, :scale => 2
+    t.decimal  "amount",           :precision => 10, :scale => 2
     t.text     "note"
     t.integer  "account_id"
-    t.integer  "user_id",                                    :null => false
+    t.integer  "user_id",                                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "debit",            :precision => 10, :scale => 2
+    t.decimal  "credit",           :precision => 10, :scale => 2
+    t.date     "value_date"
+    t.date     "transaction_date"
+    t.integer  "status"
   end
 
   create_table "users", :force => true do |t|

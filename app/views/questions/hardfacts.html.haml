@@ -1,4 +1,3 @@
-%script{:src=>"/assets/_hardfacts.js"}
 :javascript
 	var g_cashflow_path = "#{cashflow_path}";
 
@@ -54,3 +53,5 @@
 		%br
 		=link_to 'Go Back', touchfeely_path, :class=>'grey-btn goback-btn'
 		=link_to 'Proceed', 'javascript:void(0)', :class=>'grey-btn proceed-btn'
+%script{:src=>"/assets/_hardfacts.js"}
+%script{:src=>"/assets/_common_acumen.js"}

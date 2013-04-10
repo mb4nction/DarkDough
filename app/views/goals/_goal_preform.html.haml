@@ -1,0 +1,31 @@
+=stylesheet_link_tag 'goals.preform.css'
+.goal-preform-dialog
+	.btn-close
+	.wrapper
+		.dlg-title Save for anniversary or birthday
+		.desc
+			Dedicating an account to a goal allows us to track your progress and 
+			gives you the discipline not to touch the money for other things.
+		.options
+			=link_to raw('<span></span>I`ll use an existing account'), '#', :class=>'btn-choose selected'
+			%br
+			=link_to raw('<span></span>I need to open a new account'), '#', :class=>'btn-choose'
+			%br
+			=link_to raw('<span></span>I need to open a new account'), '#', :class=>'btn-choose'
+			%br
+		.accounts
+			.desc Choose accounts
+			.list
+				.account
+					%button{:id=>"1", :class=>"switch selected"}
+					%span.label Wells Fargo &#8358;4,546.19
+				.account
+					%button{:id=>"2", :class=>"switch"}
+					%span.label Citibank &#8358;450.99
+				.account
+					%button{:id=>"3", :class=>"switch"}
+					%span.label Charles Schwab &#8358;24,345.67
+		.actions
+			=link_to 'Next', '#', :class=>'btn-next'
+
+=javascript_include_tag 'goals.preform.js'

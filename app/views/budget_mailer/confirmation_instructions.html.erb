@@ -1,9 +1,397 @@
-<p>Welcome <%= @resource.email %>!</p>
+<style  type="text/css">
+#top-bar {
+  background-color: #2a282c;
+  border-radius: 0 0 18px 18px;
+  color: #FFFFFF;
+}
+#header{border-radius: 18px 18px 18px 18px;box-shadow: 1px 1px 7px 3px rgba(221,221,221,1);}
+#content .actions {
+  font-weight: bold;
+  padding-bottom: 10px;
+  display: block;
+}
+#content .steps {
+  padding: 6px 0px;
+}
+#content .step {
+  background-image: url("http://budget247.com/assets/step-bg.png");
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  display: inline-block;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 20px;
+  height: 36px;
+  line-height: 28px;
+  padding-left: 16px;
+  width: 27px;
+}
+.step-title {
+  background-color: #ECECEC;
+  color: #585858;
+  display: inline-block;
+  font-size: 14px;
+  min-width: 213px;
+  padding: 4px;
+  position: relative;
+}
+#content .step-progress {
+  font-size: 12px;
+}
+#content .step-check {
+  background-image: url("http://budget247.com/assets/step-check.png");
+  height: 12px;
+  width: 12px;
+  margin-right: 4px;
+  display: inline-block;
+}
+#content .step-checkbox {
+  background-image: url("http://budget247.com/assets/step-checkbox.png");
+  height: 14px;
+  width: 14px;
+  margin-right: 4px;
+  display: inline-block;
+}
+#content .overlay {
+  background: #000;
+  background-repeat: repeat;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+#content .pop-width {
+  margin: 0 auto;
+  width: 493px;
+}
+#content .pop-container {
+  background-color: #FFF;
+  z-index: 3 !important;
+  max-width: 443px;
+  margin: 0px auto;
+  border: 8px solid #4b3c65;
+  padding: 15px 25px;
+  top: 120px;
+}
+#content .close {
+  background-image: url("http://budget247.com/assets/close.png");
+  height: 15px;
+  width: 15px;
+  float: right;
+  display: inline-block;
+  margin-top: 10px;
+}
+#content .close:hover {
+  background-position: 15px 0px;
+}
+#content .pop-up-title {
+  color: #3E4050;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+#content .pop-up input[type="text"] {
+  width: 120px;
+}
+#content .pop-up p {
+  font-size: 11px;
+  color: #a1a1a1;
+  display: inline-block;
+}
+/* line 120, D:/rails/cholmin-project/app/assets/stylesheets/mailers/build_mailer.css.scss */
+#content .pop-up .btn-save {
+margin-top: 15px;
+}
+/* line 124, D:/rails/cholmin-project/app/assets/stylesheets/mailers/build_mailer.css.scss */
+#content .pop-up .switch {
+position: relative;
+top: 7px;
+margin: 0px 4px;
+}
+/* line 129, D:/rails/cholmin-project/app/assets/stylesheets/mailers/build_mailer.css.scss */
+#content .popup-selector {
+background-color: #ffffff;
+background: -moz-linear-gradient(top, white 0%, #eeeeee 100%);
+/* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #eeeeee));
+/* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, white 0%, #eeeeee 100%);
+/* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, white 0%, #eeeeee 100%);
+/* Opera 11.10+ */
+background: -ms-linear-gradient(top, white 0%, #eeeeee 100%);
+/* IE10+ */
+background: linear-gradient(top, white 0%, #eeeeee 100%);
+/* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff ', endColorstr='#eeeeee',GradientType=0 );
+/* IE6-9 */
+font-size: 13px;
+color: #9a9999;
+padding: 6px 4px;
+border: 1px solid #e1dde6;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+min-width: 185px;
+display: inline-block;
+margin-right: 4px;
+}   
+</style>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" id="background-table" style="font-family:Segoe UI;">
+	<tbody>
+    <tr>
+      <td align="center" bgcolor="#ececec">
+        <table class="w514" style="margin:0 10px;" width="514" cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr>
+              <td class="w514" width="514" height="20"></td>
+            </tr>
+            <tr>
+              <td class="w514" width="514">
+                <table width="514" cellspacing="0" cellpadding="0" border="0" bgcolor="#2a282c" class="w514" id="top-bar">
+                  <tbody>
+                    <tr>
+                      <td class="w30" width="23"></td>
+                      <td class="w580" height="12" width="108"></td>
+                      <td class="w30" width="326"></td>
+                      <td class="w30" width="34"></td>
+                      <td class="w30" width="23"></td>
+                    </tr>
+                    <tr>
+                      <td class="w30" width="23"></td>
+                      <td class="w580" height="12" width="108">
+                        <%= image_tag "logo.png", :title => "Budget 24-7", :style=>"width:104px;height:21px;" %>
+                      </td>
+                      <td class="w30" width="326"></td>
+                      <td class="w30" width="34">
+                        
+                      </td>
+                      <td class="w30" width="23"></td>
+                    </tr>
+                    <tr>
+                      <td class="w30" width="23"></td>
+                      <td class="w580" height="12" width="108"></td>
+                      <td class="w30" width="326"></td>
+                      <td class="w30" width="34"></td>
+                      <td class="w30" width="23"></td>
+                    </tr>
+                  </tbody>
+                </table>                        
+                    </td>
+            </tr>
+            <tr>
+              <td class="w514" width="514" height="13"></td>
+            </tr>
+            <tr>
+              <td id="header" class="w514" width="514" align="center" bgcolor="#ffffff" height="112">
+                <table class="w514" width="514" cellpadding="0" cellspacing="0" border="0">
+                  <tbody>
+                    <tr>
+                      <td class="w30" width="50"></td>
+                      <td class="w580" width="418" height="20"></td>
+                      <td class="w30" width="50"></td>
+                    </tr>
+                    <tr>
+                      <td class="w30" width="50"></td>
+                      <td class="w580" width="418" height="24" style="text-align: center;">
+                        <strong><singleline label="Title" style="text-shadow: -1px 0px 2px #43276b;font-size:33px;font-family:Segoe UI;color:#644a89; ">CONGRATULATIONS!</singleline></strong>
+                      </td>
+                      <td class="w30" width="50"></td>
+                    </tr>
+                    <tr>
+                      <td class="w30" width="50"></td>
+                      <td class="w580" width="428" height="24" style=" font-size: 16px; text-align: center;">You are Just 1 Step Away from getting your account Ready!</td>
+                      <td class="w30" width="50"></td>
+                    </tr>
+                    <tr>
+                      <td class="w30" width="50"></td>
+                      <td class="w580" width="418" height="26"></td>
+                      <td class="w30" width="50"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="w514" width="514" height="13"></td>
+            </tr>
+            <tr>
+              <td class="w514" width="514" style="border-radius: 18px 18px 18px 18px;background-color: #ffffff;">
+                  <table class="w514" width="514" cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <tr>
+                        <td class="w170" width="36" height="21"></td>
+                        <td class="w300" width="222" height="21"></td>
+                        <td class="w170" width="16" height="21"></td>
+                        <td class="w300" width="240" height="21"></td>
+                      </tr>
+                      <tr>
+                        <td class="w170" height="21" colspan="2">
+                          <div style="font-size: 14px;color: #3E4050;text-align: center;">Please Complete your Sign up</div>
+                        </td>
+                        <td class="w170" width="16" height="21"></td>
+                        <td class="w300" width="240" height="21"></td>
+                      </tr>
+                      <tr>
+                        <td class="w300" height="12" colspan="4"></td>
+                      </tr>
+                      <tr>
+                        <td class="w170" width="36" height="21">
+                          <%= image_tag "mail/tab1.png", :title => "Budget 24-7", :style=>"left:-4px; margin-left: -8px;" %>
+                        </td>
+                        <td class="w300" width="222" height="21"><span class="step-title">Sign up on Budget 24-7</span></td>
+                        <td class="w170" width="16" height="21"><span class="step-check"></span></td>
+                        <td class="w300" width="240" height="21">Well Done! You Have Already Signed Up</td>
+                      </tr>
+                      <tr>
+                        <td class="w300" height="12" colspan="4"></td>
+                      </tr>
+                      <tr>
+                        <td class="w170" width="36" height="21"></td>
+                        <td class="w300" width="222" height="21"><span class="step-title">Look for Email in your inbox</span></td>
+                        <td class="w170" width="16" height="21"><span class="step-check"></span></td>
+                        <td class="w300" width="240" height="21">Check your Inbox</td>
+                      </tr>
+                      <tr>
+                        <td class="w300" height="12" colspan="4"></td>
+                      </tr>
+                      <tr>
+                        <td class="w170" width="36" height="21"></td>
+                        <td class="w300" width="222" height="21"><span class="step-title">Click the activation link</span></td>
+                        <td class="w170" width="16" height="21"><span class="step-check"></span></td>
+                        <td class="w300" width="240" height="21">Check link to activate your Account!</td>
+                      </tr>
+                      <tr>
+                        <td class="w300" height="12" colspan="4"><hr></td>
+                      </tr>
+                    </tbody>
+                  </table>                  
+                  <table class="w514" width="514" cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <tr>
+                        <td class="w170" width="170" height="15"></td>
+                        <td class="w300" width="300" height="15"></td>
+                        <td class="w170" width="" height="15"></td>
+                      </tr>
+                      <tr>
+                        <td class="w170" width="170" height="15"></td>
+                        <td class="w300" width="300" height="15"></td>
+                        <td class="w170" width="" height="15"></td>
+                      </tr>
+                      <tr>
+                        <td class="w170" width="170" height="15"></td>
+                        <td class="w300" width="300" height="15"></td>
+                        <td class="w170" width="" height="15"></td>
+                      </tr>
+                    </tbody>
+                  </table>                  
+                </td>
+            </tr>
+            <tr>
+              <td class="w514" width="514" height="13"></td>
+            </tr>
+            <tr>
+              <td class="w514" width="514">
+              <table id="footer" class="w514" width="514" cellpadding="0" cellspacing="0" border="0" bgcolor="#043948">
+                <tbody>
+                  <tr>
+                    <td class="w30" width="30"></td><td class="w580 h0" width="360" height="30"></td><td class="w0" width="60"></td><td class="w0" width="160"></td><td class="w30" width="30"></td></tr>
+                <tr>
+                    <td class="w30" width="30"></td>
+                    <td class="w580" width="360" valign="top">
+                    <span class="hide"><p id="permission-reminder" align="left" class="footer-content-left"></p></span>
+                    <p align="left" class="footer-content-left"><preferences lang="en">Edit your subscription</preferences> | <unsubscribe>Unsubscribe</unsubscribe></p>
+                    </td>
+                    <td class="hide w0" width="60"></td>
+                    <td class="hide w0" width="160" valign="top">
+                    <p id="street-address" align="right" class="footer-content-right"></p>
+                    </td>
+                    <td class="w30" width="30"></td>
+                </tr>
+                <tr><td class="w30" width="30"></td><td class="w580 h0" width="360" height="15"></td><td class="w0" width="60"></td><td class="w0" width="160"></td><td class="w30" width="30"></td></tr>
+                </tbody>
+              </table>
+          </td>
+                </tr>
+                <tr><td class="w514" width="514" height="60"></td></tr>
+            </tbody></table>
+          </td>
+    </tr>
+  </tbody>
+</table>
+<section id="congratulation">
+ <p>Welcome <%= @resource.email %>!</p>
 
-<p>You can confirm your account through the link below:</p>
+  <p>You can confirm your account through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+  <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
 
-<p>And please check your phone to check SMS code.</p>
+  <p>And please check your phone to check SMS code.</p>
 
-<p>Have a nice day!</p>
+  <p>Have a nice day!</p>  
+</section>
+<section id="content">
+  <div style="max-width:490px;" class="pop-container">
+    <span class="pop-up-title">
+      <strong>Please Complete your Sign up</strong>
+    </span>
+    <div class="clear"></div>
+    <div class="steps">
+      <span class="step">1</span>
+      <span class="step-title">Sign up on Budget 24-7</span>
+      <span class="step-progress"><span class="step-check"></span>Well Done! You Have Already Signed Up
+      </span>
+    </div>
+    <div class="clear"></div>
+    <div class="steps">
+      <span class="step">2</span>
+      <span class="step-title">Look for Email in your inbox</span>
+      <span class="step-progress"><span class="step-checkbox"></span>Check your Inbox
+      </span>
+    </div>
+    <div class="clear"></div>
+    <div class="steps">
+      <span class="step">3</span>
+      <span class="step-title">Click the activation link</span>
+      <span class="step-progress">Check link to activate your Account!</span>
+    </div>
+  </div>
+</section>
+<footer>
+ 
+  <table width="320" cellspacing="0" cellpadding="0" border="0" align="center" style="font-size:12px;line-height:1.8;color:#262626;font-family:Arial, Arial, Helvetica, sans-serif">
+
+    <tbody>
+      <tr>
+
+        <td width="80" height="60" align="center">
+
+          <a target="_blank" href="http://email.sendgrid.com/mpss/c/BwA/TI8EAA/7-Cco71_Tteo6ATP6F8-cg/h2/3dx8OwrXipPdfIUOLA2C8-2FukzzJax8TQ0C0fMPVSJyKBCl2ETG-2FIRSXRPPO8oj5j-2F13RLxT4L3JcdKDQaUHosPAqnC8bsvCW19cBCCnKdfcPGx48vFiIDJa6IJZjmlnf"> <img border="0" src="https://s3.amazonaws.com/static.sendgrid.com/images/help.jpg" alt="Support"> </a></td>
+
+        <td width="80" height="60" align="center">
+
+          <a target="_blank" href="http://email.sendgrid.com/mpss/c/BwA/TI8EAA/7-Cco71_Tteo6ATP6F8-cg/h3/9RXDenI7BReTpKa-2F42PXTEUKDvdCtJkNQ16jjbKADe7f97yXGr5SFd0pBUy24JIKv3Xc4rbk8h1wwz5y0Zz3t6KsNLFID8baA7dFOAbHJN7vDC5E124cI2UZk-2Fug4Cjh"> <img border="0" src="https://s3.amazonaws.com/static.sendgrid.com/images/twitter.jpg" alt="Follow Us on Twitter"> </a></td>
+
+        <td width="80" height="60" align="center">
+
+          <a target="_blank" href="http://email.sendgrid.com/mpss/c/BwA/TI8EAA/7-Cco71_Tteo6ATP6F8-cg/h4/hSL9bD-2BrTXUxbAIixEW3krtDYhz-2FOTQ4psevrV2J7U4rG53edfGPj5vOjkBRUpOgp1jaUlj7TEdDB7OrcyO150vQB8GuiZ9fbINRj4PAhI12OIKTDVledhqzO5vX8sJi"> <img border="0" src="https://s3.amazonaws.com/static.sendgrid.com/images/facebook.jpg" alt="Like Us on Facebook"> </a></td>
+
+        <td width="80" height="60" align="center">
+
+          <a target="_blank" href="http://email.sendgrid.com/mpss/c/BwA/TI8EAA/7-Cco71_Tteo6ATP6F8-cg/h5/o-2FRJ28VgEEyU1JT5bPtbuZC7d1o1-2FmnG-2BdIvDG-2BoXsLrjXsA-2BVJUhjolBMN5psiFl4cUJbo4JuzpxqJjhTl9TOs9mVJfoVxy4iKOasXp-2FFRamWjK3koImxD7zwGoVFiSrMsH-2Bqurfc0Srys-2BlkkA4w-3D-3D"> <img border="0" src="https://s3.amazonaws.com/static.sendgrid.com/images/rss.jpg" alt="Subscribe via RSS"> </a></td>
+
+        <td width="80" height="35" align="center">
+
+          <a target="_blank" href="http://email.sendgrid.com/mpss/c/BwA/TI8EAA/7-Cco71_Tteo6ATP6F8-cg/h6/SIAyHUC-2FJzErNIzn2If0aWnZ-2BHmdOuPZQ3v-2BEkv-2Fd5tnwx7X05mEt8o31Qw4pXm-2BumZm56gUO0sOdWUEXkjwpA9VrTO57uyrG-2BvmpGnXWgGv8bHkJDgASoDedIsFE6oM9MC-2FFrdhMd-2BJrdq-2BOZM0FBkfnc1y8m9P4ufpLyMj4d3WMuRIovKNjyvk8qSadFUi"> <img border="0" src="https://s3.amazonaws.com/static.sendgrid.com/images/subscribe.jpg" alt="Subscribe via Email"> </a></td>
+
+      </tr>
+    </tbody>
+
+  </table>
+</footer>

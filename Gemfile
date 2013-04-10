@@ -61,6 +61,8 @@ group :development do
   gem 'capybara', '1.1.2'
   gem 'sqlite3'
   gem 'letter_opener'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -85,8 +87,9 @@ gem 'rvm-capistrano'
 
 
 gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
-#gem "aws-ses", "~> 0.3.2", :require => 'aws/ses'
-gem "nexmo"
+#gem "nexmo"
+gem 'twilio-ruby'
 gem "recaptcha", :require => "recaptcha/rails"
-
+gem "jquery-migrate-rails", "~> 1.0.0"
+#gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'  
 

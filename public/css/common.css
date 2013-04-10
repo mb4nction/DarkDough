@@ -26,12 +26,16 @@
 	opacity: 0.5;
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	overflow: hidden;
 	display: none;
 	z-index: 9999;
+}
+
+.overlay.black{
+	background-color: black;
 }
 
 .loading_mini{

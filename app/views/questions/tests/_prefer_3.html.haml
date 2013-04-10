@@ -1,4 +1,13 @@
-= form_for @test, :html=>{:submitted=>'no'} do |f|
+:css
+	.prefer_3-sort-items{
+		float: left;
+		margin-left: 10px;
+		line-height: 40px;
+	}
+	.prefer_3-sort-items button{
+		
+	}
+= form_for @test, :html=>{:submitted=>'no',:onsubmit=>'return false'} do |f|
 	- t = @tests[:"t_#{question.id}"]
 	- t = {:answer=>''} if t==nil
 	= f.hidden_field :question_id, :value=>question.id
@@ -7,6 +16,43 @@
 	%span=question.question
 	- answer_type_type = Question::ANSWER_TYPE[:"#{question.answer_type}"][:type]
 	.test_options{:class=>"padd #{question.answer_type} #{answer_type_type}_type"}
-		- Question::ANSWER_TYPE[:"#{question.answer_type}"][:answers].each do |a|
-			- select_class = ((t[:answer]==a[:id])?"selected":"")
-			%button{:id=>a[:id], :class=>"#{a[:class]} #{select_class}"}=raw a[:sentence]
+		- if t[:answer]==nil || t[:answer].blank?
+			- Question::ANSWER_TYPE[:"#{question.answer_type}"][:answers].each do |k, a|
+				.prefer_3-sort-items.bgdotted
+					%button{:id=>a[:id], :class=>"#{a[:class]}"}=raw a[:sentence]
+		-else
+			- t[:answer].scan(/[\w']+/) do |word|
+				- a = Question::ANSWER_TYPE[:"#{question.answer_type}"][:answers][:"#{word}"]
+				.prefer_3-sort-items.bgdotted
+					%button{:id=>a[:id], :class=>"#{a[:class]}"}=raw a[:sentence]
+
+:javascript
+	//$(function(){
+		$('.radio_with_multivalue_type').sortable({
+			update: function( event, ui ) {
+				$('.radio_with_multivalue_type .prefer_3-sort-items').removeClass('selected');
+				$('.radio_with_multivalue_type .prefer_3-sort-items:first').addClass('selected').find("span").html("1.");
+				$('.radio_with_multivalue_type .prefer_3-sort-items:eq(1)').find("span").html("2.");
+				$('.radio_with_multivalue_type .prefer_3-sort-items:eq(2)').find("span").html("3.");
+				fn_feed_multivalue_type();
+			}
+		});
+		$('.radio_with_multivalue_type .prefer_3-sort-items').each(function(){
+			var html = $('button',this).html();
+			var id = $('button',this).attr('id');
+			$(this).html(html).attr('id',id);
+		});
+		$('.radio_with_multivalue_type .prefer_3-sort-items:first').addClass('selected');
+		fn_feed_multivalue_type();
+	//});
+	
+	function fn_feed_multivalue_type(){
+		var _this = $('.radio_with_multivalue_type .prefer_3-sort-items:first');
+		var form = $(_this).parents('form');
+		var answer = "";
+		$('.radio_with_multivalue_type .prefer_3-sort-items').each(function(){
+			answer += "," + $(this).attr('id');
+		});
+		answer = answer.substr(1);
+		$('#test_answer', form).val(answer);
+	}

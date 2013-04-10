@@ -1,0 +1,29 @@
+.goal_category_list{
+	list-style: none;
+	margin: auto;
+	padding: 0;
+	line-height: 20px;
+	text-indent: 0;
+	li{
+		float: left;
+		width: 100px;
+		height: 80px;
+		margin-bottom: 25px;
+		.image{
+			width: 100px;
+			height: 60px;
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+		.link{
+			height: 20px;
+			text-align: center;
+			a{
+				color: #999999;
+				&:hover{
+					color: #0091bd;
+				}
+			}
+		}
+	}
+}

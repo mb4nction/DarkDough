@@ -1,6 +1,6 @@
 // JavaScript Document
 
-$(function(){
+//$(function(){
 	$('form#new_test').submit(function(){
 		var passed = true;
 		$('.error').remove();
@@ -13,7 +13,7 @@ $(function(){
 		});
 		$("input.answer[value!='']", this).each(function(){
 			var v = $(this).val();
-			if(/[^0-9]/.test(v)){
+			if(/[^0-9,.]/.test(v)){
 				passed = false;
 				if($(this).siblings('.error').size()==0){
 					$(this).after("<div class='error invalid'/>")
@@ -45,5 +45,7 @@ $(function(){
 	$('.proceed-btn').on('click', function(){
 		$('form#new_test').submit();
 	});
-});
-
+  $("input[name='answer[]']").change(function(){
+    $(this).val(CommaFormatted(CurrencyFormatted(this.value)));
+  });
+//});

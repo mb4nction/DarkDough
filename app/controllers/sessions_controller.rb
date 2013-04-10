@@ -1,9 +1,9 @@
 class SessionsController < Devise::SessionsController
-	def create
+	def new
 		super
 	end
 	
-	def new
+	def create
 		super
 	end
 end

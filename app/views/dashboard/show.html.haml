@@ -1,49 +1,472 @@
-#dashboard
-  %aside
-    .left-side
-      #current_user
-        .main_info
-          = image_tag current_user.avatar(:medium)
-          .user_info
-            = current_user.first_name
-            = current_user.last_name
-            %span.user_address= current_user.country
-        .test_info
-          .test_progress
-            .item
-              .start 0
-              .end 100
-              .progress
-          /= acumen_test_menu(current_user, current_page_menu('acumen_tests'))
-          = link_to 'New Question', touchfeely_path
-        .totems
-          My totems
-          %span 0
-          %div
-            .totem.first
-            .totem.second
-            .totem
-            .totem
+%script{:src=>"http://code.highcharts.com/highcharts.js"}
+%script{:src=>"http://code.highcharts.com/modules/exporting.js"}
+%link{:href=>"/bubble/css/jquery-bubble-popup-v3.css", :rel=>"stylesheet",:type=>"text/css"}
+%script{:src=>"/bubble/scripts/jquery-bubble-popup-v3.min.js"}
 
-    / .left-side
-    /   %h3 Top users
+%link{:href=>"/m-customized-scrollbar/jquery.mCustomScrollbar.css", :rel=>"stylesheet",:type=>"text/css"}
+%script{:src=>"/m-customized-scrollbar/jquery.mousewheel.min.js"}
+%script{:src=>"/m-customized-scrollbar/jquery.mCustomScrollbar.min.js"}
 
-    / .left-side
-    /   %h3 My friends
+.overlay
 
-    / .left-side
-    /   %h3 Videos
+.dialog
+	.add-friend
+		.wrapper
+			.title Add friend
+			=link_to ' ','javascript:void(0);', :class=>'close-btn'
+			.buttons
+				%a.grey-btn.find Find friend
+				%a.grey-btn.invite.selected Invite friend
+			.inputs
+				.info
+					.first_name
+						.desc First name
+						.input
+							%input
+					.last_name
+						.desc Last name
+						.input
+							%input
+					.email
+						.desc Email
+						.input
+							%input
+				.desc
+					A login and a password for entering Budget 24-7 will be sent to the email.
+			.buttons
+				%a.btn.send-invite-btn Send invitation
 
-    / .left-side
-    /   %h3 Articles
+	.find-friend
+		.wrapper
+			.title Find friends
+			=link_to ' ','javascript:void(0);', :class=>'close-btn'
+			.buttons
+				%a.grey-btn.find.selected Find friend
+				%a.grey-btn.invite Invite friend
+			.users
+				.find-users
+					%input
+				.lists
+					%ul
+						%li{:first_name=>'first1', :last_name=>'last1', :email=>'test1@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-1.png'
+							.info
+								.name=link_to 'Kenny Reem', '#'
+								.location Washington, DC
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first2', :last_name=>'last2', :email=>'test2@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-2.png'
+							.info
+								.name=link_to 'Kenny Nashville', '#'
+								.location Washington, DC
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first3', :last_name=>'last3', :email=>'test3@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-3.png'
+							.info
+								.name=link_to 'Kenny Jimenez', '#'
+								.location Washington, DC
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first4', :last_name=>'last4', :email=>'test4@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-4.png'
+							.info
+								.name=link_to 'Kenny Quaroni', '#'
+								.location Milan, Italy
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first5', :last_name=>'last5', :email=>'test5@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-5.png'
+							.info
+								.name=link_to 'Kenny Cruz', '#'
+								.location Santo Andre, Brazil
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first6', :last_name=>'last6', :email=>'test6@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-6.png'
+							.info
+								.name=link_to 'Kenny Salah', '#'
+								.location Milan, Italy
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first7', :last_name=>'last7', :email=>'test7@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-7.png'
+							.info
+								.name=link_to 'Kenny Pierson', '#'
+								.location Istanbul, Turkey
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first1', :last_name=>'last1', :email=>'test1@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-1.png'
+							.info
+								.name=link_to 'Kenny Reem', '#'
+								.location Washington, DC
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first2', :last_name=>'last2', :email=>'test2@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-2.png'
+							.info
+								.name=link_to 'Kenny Nashville', '#'
+								.location Washington, DC
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first3', :last_name=>'last3', :email=>'test3@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-3.png'
+							.info
+								.name=link_to 'Kenny Jimenez', '#'
+								.location Washington, DC
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first4', :last_name=>'last4', :email=>'test4@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-4.png'
+							.info
+								.name=link_to 'Kenny Quaroni', '#'
+								.location Milan, Italy
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first5', :last_name=>'last5', :email=>'test5@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-5.png'
+							.info
+								.name=link_to 'Kenny Cruz', '#'
+								.location Santo Andre, Brazil
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first6', :last_name=>'last6', :email=>'test6@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-6.png'
+							.info
+								.name=link_to 'Kenny Salah', '#'
+								.location Milan, Italy
+							.action
+								=link_to ' ', 'javascript:void(0);'
+						%li{:first_name=>'first7', :last_name=>'last7', :email=>'test7@gmail.com'}
+							.picture=image_tag '/assets/icon-friends-7.png'
+							.info
+								.name=link_to 'Kenny Pierson', '#'
+								.location Istanbul, Turkey
+							.action
+								=link_to ' ', 'javascript:void(0);'
+	.video
+		.wrapper
+			.title One for the money
+			.actions
+				=link_to 'Hide', '#'
+				|
+				=link_to 'Close', '#'
+			.clear
+			.player
+				%iframe{:allowfullscreen => "", :frameborder => "0", :height => "360", :src => "http://www.youtube.com/embed/qxjQUib6kV4?feature=player_profilepage", :width => "640"}
 
-  #user-info
-    .block.right
-      = render 'goals', goals: @goals
-      = render 'budgets', budgets: @budgets
-      = render 'historical_spending', spending: @spending_transactions
+.dashboard
+	.left
+		.profile
+			.info
+				.picture
+					=image_tag '/assets/person.png'
+				.name= @personal_info[:name]
+				.location=@personal_info[:location]
+				.clear
+				.progress-bar
+					.sprogress-bar
+				.test-link
+					=link_to 'Complete test to earn points', touchfeely_path
+			.my-totems
+				.desc
+					%span.caption My totems
+					%span.count 3
+				.icon-group
+					.icon
+						=image_tag '/assets/icon-medal-1.png'
+					.icon
+						=image_tag '/assets/icon-medal-2.png'
+					.icon
+						=image_tag '/assets/icon-medal-3.png'
+					.icon
+						=image_tag '/assets/icon-medal-1.png'
+					.icon.null
+						=image_tag '/assets/icon-medal-null.png'
+		
+		.users
+			.top-users
+				.desc Top users
+				.icon-group
+					.icon
+						=image_tag '/assets/icon-person-1.png'
+					.icon
+						=image_tag '/assets/icon-person-2.png'
+					.icon
+						=image_tag '/assets/icon-person-3.png'
+					.icon
+						=image_tag '/assets/icon-person-4.png'
+					.icon
+						=image_tag '/assets/icon-person-5.png'
+					.icon
+						=image_tag '/assets/icon-person-1.png'
+			.my-friends
+				.more-btn.left-more
+				.more-btn.right-more
+				.desc
+					%span.desc My friends
+					%span.count=link_to '18', 'javascript:void(0);'
+				.icon-group
+					.icon.add
+						=image_tag '/assets/icon-person-add.png'
+					.icon{:data=>'name2...'}
+						=image_tag '/assets/icon-person-6.png'
+					.icon{:data=>'name3...'}
+						=image_tag '/assets/icon-person-7.png'
+					.icon{:data=>'name4...'}
+						=image_tag '/assets/icon-person-8.png'
+					.icon{:data=>'name5...'}
+						=image_tag '/assets/icon-person-9.png'
+					.icon{:data=>'name6...'}
+						=image_tag '/assets/icon-person-6.png'
+					.icon{:data=>'name7...'}
+						=image_tag '/assets/icon-person-6.png'
+					.icon{:data=>'name8...'}
+						=image_tag '/assets/icon-person-7.png'
+					.icon{:data=>'name9...'}
+						=image_tag '/assets/icon-person-9.png'
+					.icon{:data=>'name10...'}
+						=image_tag '/assets/icon-person-6.png'
+					.icon{:data=>'name11...'}
+						=image_tag '/assets/icon-person-9.png'
+					.icon{:data=>'name12...'}
+						=image_tag '/assets/icon-person-6.png'
+					.icon{:data=>'name13...'}
+						=image_tag '/assets/icon-person-6.png'
+					.icon{:data=>'name14...'}
+						=image_tag '/assets/icon-person-7.png'
+					.icon{:data=>'name15...'}
+						=image_tag '/assets/icon-person-9.png'
+		.videos
+			.video
+				.more-btn.left-more
+				.more-btn.right-more
+				.desc
+					%span.caption Videos
+					%span.count=link_to '8','javascript:void(0);'
+				.icon-group
+					.icon.first
+						.picture
+							=image_tag '/assets/icon-video-2.png'
+						.caption=link_to 'What is Money?','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '1Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '2Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '3Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '4Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '5Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '6Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '7Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '8Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '9Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '10Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '11Dreams That Money Can Buy','javascript:void(0);'
+					.icon
+						.picture
+							=image_tag '/assets/icon-video-1.png'
+						.caption=link_to '12Dreams That Money Can Buy','javascript:void(0);'
+		.stories
+			.story
+				.desc
+					%span.caption Stories
+				.icon-group
+					.icon.first
+						.picture
+							=image_tag '/assets/icon-story-2.png'
+						.caption=link_to 'Things are truly getting better','#'
+					.icon
+						.picture
+							=image_tag '/assets/icon-story-1.png'
+						.caption=link_to 'Why the job market still stinks','#'
+	.right
+		.right-panel
+			.goal
+				.desc Goals
+				.icon-group
+					.icon.first
+						.picture
+							=image_tag '/assets/icon-goal-1.png'
+						.link=link_to 'Buy a home', '#'
+						.progress-bar
+							.sprogress-bar
+						.desc
+							.percent 32%
+							.cost 4,560,000
+					.icon
+						.picture
+							=image_tag '/assets/icon-goal-2.png'
+						.link=link_to 'Save for wedding', '#'
+						.progress-bar
+							.sprogress-bar
+						.desc
+							.percent 24%
+							.cost 370,000
+					.icon
+						.picture
+							=image_tag '/assets/icon-goal-3.png'
+						.link=link_to 'Tutition', '#'
+						.progress-bar
+							.sprogress-bar
+						.desc
+							.percent 90%
+							.cost 25,000
+					.icon.add
+						.picture
+							=image_tag '/assets/icon-goal-add.png'
+						.link=link_to 'Add a goal', select_goals_url
+			.budget
+				.desc Budget
+				.date December 2011
+				.chart
+					.row.first
+						.caption
+						.progress-custom
+							.percent1 0%
+							.percent2 100%
+						.cost1 Budget
+						.cost2 Left/Over
+
+					- @budgets.each do |k, budget|
+						.row
+							.caption
+								- if k=='_total'
+									= budget[:_caption]
+								-else
+									= link_to budget[:_caption], ''
+							.progress-custom
+								.progress-bar
+									.sprogress-bar{:style=>"width:#{budget[:_percent]};background: #{budget[:_bgcolor]};"}
+							.cost1
+								.cost-with-unit=budget[:_cost1]
+							.cost2{:class=>budget[:_cost2_color]}
+								.cost-with-unit=budget[:_cost2]
+						.clear
 
 
-= javascript_tag do
-  $('.dashboard.budgets').progressBar();
-  $('.test_progress').progressBar();
+			.historical-spending
+				.desc Historical Spending
+				.chart
+					#chart_container
+
+:javascript
+	var chart;
+	$(function () {
+		$(document).ready(function() {
+			chart = new Highcharts.Chart({
+					chart: {
+							renderTo: 'chart_container',
+							type: 'area'
+					},
+					title: {
+							text: 'US and USSR nuclear stockpiles',
+							style: {
+								'display': 'none'
+							}
+					},
+					xAxis: {
+							labels: {
+									formatter: function() {
+											return this.value; // clean, unformatted number for year
+									}
+							}
+					},
+					yAxis: {
+						title:{
+							text: null
+						}
+					},
+					tooltip: {
+							formatter: function() {
+									return this.series.name +' produced <b>'+
+											Highcharts.numberFormat(this.y, 0) +'</b><br/>warheads in '+ this.x;
+							}
+					},
+					plotOptions: {
+							area: {
+									pointStart: 194,
+									type: 'datetime',
+									marker: {
+											enabled: false,
+											symbol: 'circle',
+											radius: 2,
+											states: {
+													hover: {
+															enabled: true
+													}
+											}
+									}
+							}
+					},
+					series: [{
+							name: 'Groceries',
+							data:[
+								null, null, null, null, null, 6 , 11, 32, 110, 235, 369, 640,
+								1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
+								27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
+								26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
+								24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
+								22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
+								10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 
+							]
+					}, {
+							name: 'Credit Card',
+							data: [
+								null, null, null, null, null, null, null , null , null ,null,
+								5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
+								4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
+								15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
+								33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
+								35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
+								21000, 20000, 19000, 18000, 18000, 17000, 16000
+							]
+					}],
+					exporting:{
+						buttons:{
+							printButton:{
+								enabled: false
+							},
+							exportButton:{
+								enabled: false
+							}
+						}
+					}
+			});
+		});
+	});
+
+
+%script{:src=>"/assets/dashboard.js"}

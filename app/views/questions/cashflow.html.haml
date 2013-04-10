@@ -1,4 +1,3 @@
-%script{:src=>"/assets/_cashflow.js"}
 :javascript
 	var g_testresult_path = "#{testresult_path}";
 
@@ -12,6 +11,9 @@
 			.cashflow-income
 				%h2
 					Income (cash inflows)
+				.cell
+					Unless otherwise stated, please enter annual amounts.  
+				.clear
 				=render :partial=>'questions/shared/cashflow_input', :locals=>{:id=>"_income"}
 			.clear
 			%br
@@ -33,3 +35,5 @@
 		%br
 		=link_to 'Go Back', hardfacts_path, :class=>'grey-btn goback-btn'
 		=link_to 'Proceed', 'javascript:void(0)', :class=>'grey-btn proceed-btn'
+%script{:src=>"/assets/_cashflow.js"}
+%script{:src=>"/assets/_common_acumen.js"}

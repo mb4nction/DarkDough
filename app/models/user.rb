@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "65x65#", small: "40x40#" },
                              default_url: 'default_img/anonymous.png',
-                             path: ":rails_root/public/system/:attachment/:id/:style/:filename",
-                             url: "/system/:attachment/:id/:style/:filename"
+                             path: ":rails_root/public/system/:class/:id/:style/:filename",
+                             url: "/system/:class/:id/:style/:filename"
 
 
 
@@ -44,11 +44,12 @@ class User < ActiveRecord::Base
   has_many :budgets
   has_many :answers, :through => :acumen_tests
   has_many :goals
-
+	has_many :mfilters
+	
   accepts_nested_attributes_for :accounts
 
   def on_before_rpx_success(rpx_data)
-     #logger.info rpx_data.inspect + "\n--before_rpx_success-------------------------------"
+     logger.info rpx_data.inspect + "\n--before_rpx_success-------------------------------"
      name = rpx_data["name"]
      unless name.nil?
         self.first_name = name["givenName"]

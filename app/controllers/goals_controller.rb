@@ -4,6 +4,21 @@ class GoalsController < ApplicationController
   def index
     @title = "Goals - Budget 24/7"
     @goals = Goal.all
+		@goal_detail = GoalDetail.new
+
+		@current_goals = []
+		k = 0
+		@goals = @goals.each do |goal|
+			@current_goals.push(goal) unless goal.finished
+			k = k + 1
+		end
+
+		@completed_goals = []
+		@goals = @goals.each do |goal|
+			@completed_goals.push(goal) if goal.finished
+		end
+
+		@goal = Goal.new
 
     respond_to do |format|
       format.html
@@ -34,13 +49,14 @@ class GoalsController < ApplicationController
   def edit
     @title = 'Edit Goal - Budget 24/7'
     @goal = current_user.goals.find(params[:id])
+		render :partial=>'goal_form'
   end
 
   def create
     @goal = current_user.goals.new(params[:goal])
-
     respond_to do |format|
       if @goal.save
+				render :json=>{:status=>true } and return
         format.html { redirect_to @goal, :notice => 'Goal was successfully created.' }
         format.json { render :json => @goal, :status => :created, :location => @goal }
       else
@@ -56,6 +72,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.update_attributes(params[:goal])
+				render :json=>{:status=>true } and return
         format.html { redirect_to @goal, :notice => 'Goal was successfully updated.' }
         format.json { head :ok }
       else
@@ -68,6 +85,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal = Goal.find(params[:id])
     @goal.destroy
+		render :text=>'success' and return
 
     respond_to do |format|
       format.html { redirect_to goals_url }
@@ -76,6 +94,10 @@ class GoalsController < ApplicationController
   end
 
   def select
-      @title = 'New Goal - Budget 24/7'
+    @title = 'New Goal - Budget 24/7'
   end
+	
+	def movitation
+		@mfilter = Mfilter.new
+	end
 end

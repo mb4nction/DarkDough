@@ -1,0 +1,150 @@
+.combowrap {
+	position: relative;
+	color:#333;
+	padding:3px;
+	border-collapse:collapse;
+	border-spacing:0;
+	border:solid 1px #e1dde6;
+	-moz-border-radius:0px;
+	-webkit-border-radius: 0px;
+	border-radius:0px;
+	background:url(bg.png); 
+	background-color: #fff; 
+	overflow:hidden;
+	padding:0;
+}
+
+
+.combowrap ul, li {
+	margin: 0;
+	padding: 0;
+	font-weight: inherit;
+	font-style: inherit;
+}
+
+.combowrap input[type=text]:focus,
+.combowrap input.focus {
+	background-color:#fff;
+	outline: none;
+}
+
+.ui-autocomplete-input:focus {
+	outline: none;
+}
+
+/* Combobox styles */
+
+.combowrap .combogrey {
+	background-color: #f2f3f2; 
+}		
+
+.combowrap input {
+	border:0;
+	background:none;
+	-webkit-box-shadow:none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border-radius:0;
+	float: left;
+	width: 100%;
+	height: 23px;
+	text-indent: 8px;
+	padding-left: 0;
+	padding-right: 0;
+	font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+	font-size: 12px !important;
+}
+
+.ui-autocomplete-input {
+	width:100%;
+	line-height:18px;
+	margin:0;
+	padding-left: 0;
+	padding-right: 0;
+	text-indent: 8px;
+	cursor:default;
+	font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+	font-size: 12px !important;
+}
+
+
+.goal-create-dialog .ui-button {
+	border:none;
+	border-spacing:0;
+	background:transparent url('arrow.png') no-repeat center 10px;
+	padding:6px 0;
+	height:23px;
+	width:23px;
+	cursor:pointer;
+	vertical-align: bottom;
+	position: absolute;
+	right:0;
+	top: 0;
+}
+
+.goal-create-dialog .ui-button:hover {
+	background-position:center -18px;
+}
+
+.combowrap input[type=text]:focus,
+.combowrap input[type=email]:focus,
+.combowrap input.hasvalue {
+	background:none;
+}
+
+.ui-autocomplete {
+	position: absolute; 
+	cursor: default;    
+	background:#fff; 
+	border:1px solid #999;
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border-radius:0;
+	-webkit-box-shadow:0 3px 5px rgba(0,0,0,0.35);
+	-moz-box-shadow: 0 3px 5px rgba(0,0,0,0.35);
+	box-shadow: 0 3px 5px rgba(0,0,0,0.35); 
+	overflow-y:auto;
+	overflow-x:hidden;
+	max-height: 290px;
+}	
+
+.goal-create-dialog .ui-menu {
+	display:block;
+}
+
+.goal-create-dialog .ui-menu .ui-menu {
+	margin-top: -3px;
+}
+
+.goal-create-dialog .ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	width: 100%;
+}
+
+.goal-create-dialog .ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:0 20px 0 8px;
+	line-height:24px;
+	font-size:12px;
+	color:#666;
+	white-space:nowrap;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	background: none;
+	border-width: 1px;
+	border-color: transparent;
+	background-color:#54bdcc !important;
+	color:#fff;
+}
+
+
+.ui-menu .ui-menu-item a:hover {
+	background-color:#54bdcc !important;
+	color:#fff;
+}

@@ -90,9 +90,9 @@
 
 @mixin button-accented {
   @include button;
+	@include radius(4px);
   @include gradient(#9d86bf, #9078b3);
   text-shadow: 0 -1px 1px rgba(0,0,0,.21);
   color: #fff;
-  
   &:hover { @include gradient(#9078b3, #9d86bf) };
 }

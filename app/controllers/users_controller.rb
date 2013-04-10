@@ -63,10 +63,10 @@ class UsersController < ApplicationController
 					user.sms = _sms
 				end
 				phone_number = phone_number.gsub(/[^0-9]/,'')
-				if !send_sms(phone_number, _sms)
-					flash[:alert] = "There was an error while sending the sms to your phone #{phone_number}. Please check again."
-					redirect_to root_path and return
-				end
+				#if !send_sms(phone_number, _sms)
+				#	flash[:alert] = "There was an error while sending the sms to your phone #{phone_number}. Please check again."
+				#	redirect_to root_path and return
+				#end
 				user.save
 				flash[:is_signedup] = true
 				redirect_to root_path and return
@@ -92,9 +92,11 @@ class UsersController < ApplicationController
 		user.confirmation_token = nil
 		user.sms = nil
 		user.save
-		sign_in user and redirect_to dashboard_path
+		sign_in user and redirect_to welcome_path(user)
 	end
-	
+	def welcome
+    
+  end
 
   private
 

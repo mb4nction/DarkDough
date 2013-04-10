@@ -1,210 +1,856 @@
 @import 'mixins';
 
-#dashboard {
-  padding-top: 20px;
-  clear: both;
+.dialog{
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 10000;
+	width: 100%;
+	height: 100%;
+	display: none;
+	
+	.add-friend{
+		$add-friend-width: 420px;
+		$add-friend-height: 350px;
+		width: $add-friend-width;
+		height: $add-friend-height;
+		border: solid 8px #4b3c65;
+		position: absolute;
+		display: none;
+		left: 50%;
+		margin-left: -$add-friend-width/2;
+		top: 50%;
+		margin-top: -$add-friend-height/2;
+		background-color: white;
+		.wrapper{
+			width: 363px;
+			height: ($add-friend-height - 60);
+			position: absolute;
+			left: 50%;
+			margin-left: -183px;
+			top: 50%;
+			margin-top: -(($add-friend-height - 60)/2);
+			font-size: 10.5pt;
+			.title{
+				font-size: 17px;
+				height: 35px;
+			}
+			.close-btn{
+				width: 15px;
+				height: 15px;
+				background: url(/assets/icon-close.png) no-repeat center center;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			.buttons{
+				width: 280px;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+				.find{}
+				.invite{ margin-left: -12px; }
+				.send-invite-btn{
+					margin-top: 20px;
+					background: hsl(265, 29%, 61%);
+				}
+			}
+			.inputs{
+				margin-top: 25px;
+				overflow: visible;
+				.info{
+					overflow: hidden;
+					& > div{
+						margin-top: 5px;
+						height: 30px;
+						line-height: 30px;
+					}
+					.desc{
+						float: left;
+						height: 25px;
+						line-height: 25px;
+					}
+					.input{
+						float: right;
+						width: 280px;
+						height: 30px;
+						input{
+							width: 275px;
+							height: 20px;
+							text-indent: 3px;
+						}
+					}
+				} /* .info */
+				
+				& > .desc{
+					width: 280px;
+					float: right;
+					font-size: 12px;
+					color: gray;
+				}
+			}
+			
+		}
+	} /* .add-friend */
+	
+	.find-friend{
+		$find-friend-width: 420px;
+		$find-friend-height: 533px;
+		width: $find-friend-width;
+		height: $find-friend-height;
+		border: solid 8px #4b3c65;
+		position: absolute;
+		left: 50%;
+		margin-left: -($find-friend-width/2);
+		top: 50%;
+		margin-top: -($find-friend-height/2);
+		background-color: white;
+		display: none;
 
-  aside {
-    @include inline-block;
-    width: 260px;
-    vertical-align: top;
+		.wrapper{
+			width: 363px;
+			height: ($find-friend-height - 60);
+			position: absolute;
+			left: 50%;
+			margin-left: -183px;
+			top: 50%;
+			margin-top: -(($find-friend-height - 60)/2);
+			font-size: 10.5pt;
 
-    .left-side {
-      @include box-sizing;
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 20px;
+			.title{
+				font-size: 17px;
+				height: 35px;
+			}
+			.close-btn{
+				width: 15px;
+				height: 15px;
+				background: url(/assets/icon-close.png) no-repeat center center;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			.buttons{
+				width: 280px;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+				.find{}
+				.invite{ margin-left: -12px; }
+				.send-invite-btn{
+					margin-top: 15px;
+					background: hsl(265, 29%, 61%);
+				}
+			}
+			
+			.users {
+				width: 365px;
+				height: 385px;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+				border: solid 1px gainsboro;
+				.find-users{
+					height: 30px;
+					border-bottom: solid 1px gainsboro;
+					input{
+						width: 100%;
+						height: 27px;
+						line-height: 27px;
+						padding: 0;
+						margin-top: 2px;
+						background: url(/assets/icon-find.png) no-repeat 5px center;
+						text-indent: 25px;
+						border: none;
+					}
+				}
+				
+				.lists{
+					height: 350px;
+					margin-top: 2px;
+					overflow: auto;
+					background-color: #fafafa;
+					
+					.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+						width: 8px;
+						background: hsla(0, 0%, 70%, 0.75);
+					}
+					
+					.mCSB_scrollTools .mCSB_draggerRail{
+						width: 0;
+					}
+					
+					.mCSB_container{
+						margin-right: 0px;
+					}
+					
+					ul{
+						margin-top: 10px;
+						margin-bottom: 10px;
+						li{
+							list-style: none;
+							height: 46px;
+							margin-bottom: 1px;
+							display: block;
+							.picture{
+								width: 40px;
+								height: 40px;
+								float: left;
+								margin-left: 14px;
+								margin-top: 3px;
+								img{
+									width: 100%;
+									height: 100%;
+								}
+							}
+							.info{
+								width: 223px;
+								height: 40px;
+								float: left;
+								font-size: 12px;
+								margin-left: 7px;
+								margin-top: 3px;
+								.name{
+									margin-top: 3px;
+									height: 18px;
+								}
+								.location{
+									height: 18px;
+								}
+							}
+							.action{
+								width: 50px;
+								height: 40px;
+								float: right;
+								a{
+									display: block;
+									width: 35px;
+									height: 28px;
+									margin-right: auto;
+									margin-top: 5px;
+									background: url(/assets/icon-friend-add.png) no-repeat center center;
+								}
+							}
+							
+							&:hover{
+								cursor: pointer;
+								background-color: #eceaf0;
+								.action{
+									width: 50px;
+									height: 40px;
+									float: right;
+									a{
+										display: block;
+										width: 35px;
+										height: 28px;
+										margin-right: auto;
+										margin-top: 8px;
+										background: url(/assets/icon-friend-add-over.png) no-repeat center center;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}    /* .find-friend */
+	
+	.video{
+		$video-width: 700px;
+		$video-height: 435px;
+		width: $video-width;
+		height: $video-height;
+		position: absolute;
+		left: 50%;
+		margin-left: -$video-width/2;
+		top: 50%;
+		margin-top: -$video-height/2;
+		background-color: black;
+		display: none;
+		.title{
+			float: left;
+			font-size: 10.0pt;
+			line-height: 30px;
+			height: 30px;
 
-      h3 {
-        margin: 5px 0;
-        font-size: 12px;
-        font-weight: normal;
-      }
-    }
-  }
+			color: #ccc;
+			margin-left: 20px;
+		}
+		
+		.actions{
+			float: right;
+			font-size: 10.0pt;
+			line-height: 30px;
+			height: 30px;
+			margin-right: 20px;
+			color: #ccc;
+			a{
+				color: #ccc;
+			}
+		}
+		
+		.player{
+			width: $video-width - 40;
+			height: $video-height - 50;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: black;
+			text-align: center;
+		}
 
-  #current_user {
-    img {
-      @include inline-block;
-      @include radius(3px);
-      margin-right: 10px;
-      vertical-align: top;
-      max-width: 65px;
-      max-height: 65px;
-    }
-    .main_info {
-      margin-bottom: 15px;
-
-      .user_info {
-        @include inline-block;
-        @include box-sizing;
-        max-width: 140px;
-        vertical-align: top;
-        color: #3e4050;
-        word-wrap: break-word;
-
-        .user_address {
-          display: block;
-          margin-top: 15px;
-          padding-left: 13px;
-          font-size: 11px;
-          color: #a1a1a1;
-          background: image-url('ico/address.png') left 0 no-repeat;
-        }
-      }
-    }
-
-    .test_info {
-      margin-bottom: 20px;
-
-      .test_progress {
-        .item {
-          .start, .end {
-            display: none;
-          }
-
-          .progress {
-            @include radius (10px);
-            height: 6px;
-            border: 1px solid #e3e3e3;
-            background-color: #efefef;
-
-            .active_bar {
-              height: 6px;
-              background: #9078b3;
-            }
-          }
-        }
-      }
-    }
-
-    .totems {
-      font-size: 14px;
-      font-family: helvetica, verdana, arial, sans-serif;
-
-      span {
-        color: #a1a1a1;
-      }
-
-      > div {
-        margin-top: 10px;
-      }
-
-      .totem {
-        @include inline-block;
-        margin-right: 7px;
-        height: 60px;
-        width: 45px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-image: image-url('bg/totems/totem.png');
-
-        &.first { background-image: image-url('bg/totems/first.png'); }
-        &.second { background-image: image-url('bg/totems/second.png'); }
-        &.third { background-image: image-url('bg/totems/third.png'); }
-      }
-    }
-  }
-
-  #user-info {
-    @include inline-block;
-    width: 715px;
-    margin-left: 15px;
-    vertical-align: top;
-
-    .block.right {
-      margin: 0 0 10px 0;
-
-      > div {
-        margin-top: 50px;
-
-        &:first-child {
-          margin-top: 0;
-        }
-      }
-
-      h2 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: normal;
-      }
-
-      h2 + span {
-        @include inline-block;
-        margin-bottom: 2 0px;
-        font-size: 11px;
-        color: #9a9999;
-      }
-
-      .dashboard.budgets {
-        margin-top: 20px;
-
-        .item {
-          margin-top: 10px;
-          font-size: 12px;
-          line-height: 16px;
-          color: #9a9999;
-        }
-
-        .category, .budget, .left-over, .progress, .progress-range {
-          @include inline-block;
-          @include box-sizing;
-          margin: 0 5px;
-          vertical-align: top;
-          font-size: 11px;
-          color: #9a9999;
-          text-align: right;
-        }
-
-        .category {
-          width: 140px;
-        }
-
-        .progress, .progress-range {
-          width: 365px;
-          padding: 0;
-          height: 18px;
-        }
-
-        .budget {
-          width: 55px;
-        }
-
-        .left-over {
-          width: 55px;
-        }
-
-        .links {
-          font-size: 12px;
-        }
-
-        .progress-range {
-          text-align: left;
-
-          span {
-            float: right;
-          }
-        }
-      }
-    }
-
-    #goals {
-      h2 {
-        margin-bottom: 15px;
-      }
-
-      .goal-item {
-        @include inline-block;
-        width: 115px;
-        text-align: center;
-        font-family: Helvetica,Arial,sans-serif;
-        vertical-align: top;
-
-        span {
-          font-size: 11px;
-          color: #9a9999;
-        }
-      }
-    }
-  }
+	}
 }
+
+
+
+.dashboard{
+	width: 940px;
+	height: 960px;
+	overflow: visible;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	color: #3e4050;
+	.left{
+		width: 275px;
+		float: left;
+		& > div{
+			@include box-shadow(2px 3px 3px -2px #dcdcdc);
+			background-color: white;
+			border: solid 1px transparent;
+			margin-top: 10px;
+		}
+		.profile{
+			width: 100%;
+			height: 220px;
+			margin-top: 0;
+			.info{
+				width: 232px;
+				height: 100px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 21px;
+				.picture{
+					width: 55px;
+					height: 55px;
+					float: left;
+				}
+				.name{
+					width: 85px;
+					height: 35px;
+					float: left;
+					margin-left: 8px;
+					margin-top: -2px;
+				}
+				.location{
+					width: 115px;
+					height: 18px;
+					margin-left: 8px;
+					margin-top: 5px;
+					line-height: 18px;
+					font-size: 10px;
+					color: #a1a1a1;
+					background: url(/assets/icon-location.png) no-repeat left center;
+					text-indent: 12px;
+					float: left;
+				}
+				.progress-bar{
+					height: 8px;
+					margin-bottom: 0px;
+					.sprogress-bar{
+						width: 70%;
+						height: 9px;
+						margin-left: 0;
+						margin-top: 0;
+						background: #9078b3 !important;
+					}
+				}
+				.test-link{}
+			}
+			.my-totems{
+				width: 232px;
+				margin-left: auto;
+				margin-right: auto;
+				.desc{
+					height: 33px;
+					line-height: 33px;
+					font-size: 11pt;
+					color: black;
+					.count{
+						color: #a1a1a1;
+						a{
+							font-size: 11pt;
+						}
+					}
+				}
+				.icon-group{
+					width: 100%;
+					height: 52px;
+					.icon{
+						width: 38px;
+						height: 52px;
+						text-align: center;
+						float: left;
+						margin-right: 10px;
+					}
+					.icon.null{
+						margin-right: 0px;
+					}
+				}
+			}
+		}
+		.users{
+			width: 100%;
+			height: 195px;
+			position: relative;
+			.top-users{
+				width: 232px;
+				height: 80px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 11px;
+				.desc{
+					font-size: 11pt;
+					color: black;
+					height: 33px;
+					line-height: 33px;
+				}
+				.icon-group{
+					width: 100%;
+					height: 45px;
+					.icon{
+						width: 35px;
+						height: 43px;
+						overflow: hidden;
+						float: left;
+						margin-left: 2px;
+						text-align: center;
+					}
+				}
+			}
+			.my-friends{
+				width: 232px;
+				height: 100px;
+				overflow: hidden;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 6px;
+				.desc{
+					font-size: 11pt;
+					color: black;
+					height: 33px;
+					line-height: 33px;
+					.caption{}
+					.count{
+						a{
+							font-size: 11pt;
+						}
+					}
+				}
+				.icon-group{
+					width: 230px;
+					height: 36px;
+					overflow: hidden;
+					.icon{
+						width: 35px;
+						height: 36px;
+						overflow: hidden;
+						text-align: center;
+						float: left;
+						margin-left: 2px;
+					}
+					.icon.add{}
+				}
+				
+				&.more{
+					cursor: pointer;
+					@include box-shadow(0 0 3px 3px #ddd);
+					height: 100px;
+					position: absolute;
+					left: 1px;
+					background: white;
+					padding-left: 20px;
+					overflow: visible;
+					.more-btn{
+						position: absolute;
+						top: 50%;
+						margin-top: -29px;
+						height: 61px;
+						width: 30px;
+					}
+					.left-more{
+						left: -30px;
+						background: url(/assets/icon-my-friends-more-left.png) no-repeat center center;
+					}
+					.right-more{
+						right: -30px;
+						background: url(/assets/icon-my-friends-more-right.png) no-repeat center center;
+					}
+					
+					.icon-group{
+						height: 36px;
+						overflow: hidden;
+					}
+					
+				} /* .my-frieds.more */
+				
+			} /* .my-frieds */
+		}
+		.videos{
+			width: 100%;
+			height: 170px;
+			position: relative;
+			.video{
+				width: 235px;
+				height: 170px;
+				overflow: hidden;
+				margin-left: auto;
+				margin-right: auto;
+				.desc{
+					margin-top: 11px;
+					height: 33px;
+					font-size: 11pt;
+					color: black;
+					line-height: 33px;
+					.caption{}
+					.count{
+						a{
+							font-size: 11pt;
+						}
+					}
+				}
+				.icon-group{
+					width: 100%;
+					height: 107px;
+					overflow: hidden;
+					.icon{
+						width: 105px;
+						height: 107px;
+						float: left;
+						margin-left: 10px;
+						.picture{
+							width: 100%;
+							height: 70px;
+							overflow: hidden;
+							text-align: center;
+							img{
+								width: 100%;
+							}
+						}
+						.caption{
+							width: 100%;
+							height: 25px;
+							margin-top: 8px;
+							font-size: 10px;
+						}
+						
+						&.last{
+							margin-right: 0;
+						}
+					}
+				}
+				
+				
+				&.more{
+					cursor: pointer;
+					@include box-shadow(0 0 3px 3px #ddd);
+					height: 170px;
+					position: absolute;
+					z-index: 10;
+					left: 0;
+					background: white;
+					padding-left: 20px;
+					overflow: visible;
+					.more-btn{
+						position: absolute;
+						top: 50%;
+						margin-top: -29px;
+						height: 61px;
+						width: 30px;
+					}
+					.left-more{
+						left: -30px;
+						background: url(/assets/icon-my-friends-more-left.png) no-repeat center center;
+					}
+					.right-more{
+						right: -30px;
+						background: url(/assets/icon-my-friends-more-right.png) no-repeat center center;
+					}
+					
+					.icon-group{
+						overflow: hidden;
+					}
+				} /* .video.more */
+				
+			} /* .video */
+		}
+
+		.stories{
+			width: 100%;
+			height: 170px;
+			.story{
+				width: 232px;
+				height: 80px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 11px;
+				.desc{
+					height: 33px;
+					font-size: 11pt;
+					color: black;
+					line-height: 33px;
+					.caption{}
+					.count{
+						a{
+							font-size: 11pt;
+						}
+					}
+				}
+				.icon-group{
+					width: 100%;
+					height: 95px;
+					.icon{
+						width: 105px;
+						height: 102px;
+						float: left;
+						margin-left: 10px;
+						.picture{
+							width: 100%;
+							height: 70px;
+							overflow: hidden;
+							text-align: center;
+							img{
+								width: 100%;
+							}
+						}
+						.caption{
+							width: 100%;
+							height: 25px;
+							margin-top: 8px;
+							font-size: 10px;
+						}
+					}
+					.icon.first{
+						margin-left: 0;
+					}
+				}
+			}
+		}
+
+
+
+		
+	}
+	.right{
+		width: 650px;
+		float: left;
+		margin-left: 12px;
+		margin-bottom: 10px;
+		background-color: white;
+		@include box-shadow(2px 3px 3px -2px #dcdcdc);
+		.right-panel{
+			overflow: auto;
+			.goal{
+				width: 600px;
+				height: 155px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20px;
+				.desc{
+					height: 33px;
+					font-size: 13pt;
+					color: black;
+					line-height: 33px;
+				}
+				.icon-group{
+					width: 100%;
+					height: 120px;
+					.icon.first{
+						margin-left: 0;
+					}
+					.icon{
+						width: 115px;
+						height: 120px;
+						float: left;
+						margin-left: 40px;
+						.picture{
+							width: 100%;
+							height: 64px;
+							position: relative;
+							img{
+								width: 72px;
+								height: 54px;
+								position: absolute;
+								left: 50%;
+								margin-left: -36px;
+								top: 50%;
+								margin-top: -27px;
+							}
+						}
+						.link{
+							text-align: center;
+						}
+						.progress-bar{
+							margin-bottom: 0;
+							height: 7px;
+							.sprogress-bar{
+								width: 47%;
+								height: 7px;
+								margin-left: 0;
+								margin-top: 0;
+							}
+						}
+						
+						.desc{
+							width: 100%;
+							height: 23px;
+							font-size: 12px;
+							color: #9a9999;
+							.percent{
+								float: left;
+								height: 23px;
+								line-height: 23px;
+								color: #333;
+							}
+							.cost{
+								height: 23px;
+								line-height: 23px;
+								float: right;
+								background: url(/assets/unit_number.png) no-repeat left center;
+								text-indent: 13px;
+							}
+						}
+					}
+				}
+			}
+			.budget{
+				width: 600px;
+				overflow: auto;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20px;
+				.desc{
+					height: 33px;
+					font-size: 13pt;
+					color: #333;
+					line-height: 33px;
+				}
+				.date{
+					font-size: 10pt;
+					color: #999;
+					height: 23px;
+				}
+				.chart{
+					color: #999;
+					font-size: 10pt;
+					overflow: hidden;
+					margin-bottom: 20px;
+					.row{
+						width: 600px;
+						height: 33px;
+						line-height: 33px;
+
+						& > div{
+							height: 20px;
+						}
+						.caption{
+							width: 120px;
+							float: left;
+							text-align: right;
+						}
+						
+						.progress-custom{
+							width: 330px;
+							float: left;
+							margin-left: 15px;
+							.progress-bar{
+								margin-bottom: 0;
+								margin-top: 11px;
+								height: 12px;
+								@include radius(3px);
+								.sprogress-bar{
+									@include radius(3px);
+									height: 12px;
+									margin-left: 0;
+									margin-top: 0;
+								}
+							}
+						}
+						
+						.cost1, .cost2{
+							float: left;
+							text-align: right;
+							margin-left: 12px;
+							.cost-with-unit{
+								float: right;
+								text-indent: 12px;
+								background: url(/assets/unit_number.png) no-repeat left center;
+							}
+						}
+
+						.cost1{
+							width: 60px;
+						}
+						
+						.cost2{
+							width: 50px;
+						}
+						
+						.cost2.green{
+							color: green;
+						}
+
+						.cost2.red{
+							color: red;
+						}
+
+					} /* .row */
+					
+					.row.first{
+						.progress-custom{
+							.percent1{
+								float: left;
+							}
+							.percent2{
+								float: right;
+							}
+						}
+						.cost2{
+							text-align: center;
+						}
+					}
+				}
+			} /* budget */
+			
+			.historical-spending{
+				width: 600px;
+				overflow: auto;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				.desc{
+					height: 33px;
+					font-size: 13pt;
+					color: #333;
+					line-height: 33px;
+				}
+				.chart{
+					width: 585px;
+					height: 364px;
+					/* background: url(/assets/bg-chart.png) no-repeat center center; */
+					#chart_container{
+						min-width: 400px; 
+						height: 360px; 
+						margin: 0 auto;
+						background-color: transparent;
+					}
+				}
+				
+			} /* historical-spending */
+
+		} /* right-panel */
+	} /* right */
+} /* dashboard */

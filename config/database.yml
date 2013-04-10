@@ -5,7 +5,7 @@ development:
   database: budget247_prod
   pool: 5
   username: root
-  password: slwfjrjs123
+  password: root
 
 #development:
 #  adapter: sqlite3
@@ -36,6 +36,13 @@ production:
   reconnect: false
   database: budget247_prod
   pool: 5
-  username: budget247_prod
-  password: Aeraegee7DiP8ved1uh5
-  socket: <%= ['/var/lib/mysql/mysql.sock', '/var/run/mysqld/mysqld.sock', '/tmp/mysql.sock'].detect{ |socket| File.exist?(socket) } %>
+  username: root
+  password: slwfjrjs123
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: budget247_prod
+#  pool: 5
+#  username: budget247_prod
+#  password: Aeraegee7DiP8ved1uh5
+#  socket: <%= ['/var/lib/mysql/mysql.sock', '/var/run/mysqld/mysqld.sock', '/tmp/mysql.sock'].detect{ |socket| File.exist?(socket) } %>

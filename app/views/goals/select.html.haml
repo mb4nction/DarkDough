@@ -1,7 +1,26 @@
-%h1 Choose a Goal:
+= stylesheet_link_tag "goals.select.css?_=1"
+= javascript_include_tag "goals.select.js"
 
-#choose_goal_category
-  = link_to "Family / Personal Vacation", new_goal_path(type: "family_personal_vacation")
-  = link_to "School Tuition",             new_goal_path(type: "school_tuition")
-  = link_to "Asset Purchase",             new_goal_path(type: "asset_purchase")
-  = link_to "Create Your own Goal",       new_goal_path
+#goals_select
+	%h1.title Achieve
+	#goals_category
+		.wrapper
+			.title Choose a goal
+			=render :partial=>'goal_category_list'
+	#goals_hint
+		.wrapper
+			.title
+				About Achieve
+			.desc
+				Understand your investment options
+				Whether you want to get out of debt, buy a home, or save for retirement, Mint helps you reach your financial goals.
+				
+			%ul.desc_list
+				%li
+					To get started, choose a goal from our list or create your own.
+				%li
+					Use our calculator to determine how much you need to save.
+				%li
+					Set a goal with either an end date or monthly amount in mind.
+				%li
+					Link your goal to an account so it's easy to stick to your plan.

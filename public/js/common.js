@@ -6,9 +6,6 @@ function fn_init_waiter(){
 
   jQuery('.overlay').remove();
   jQuery('<div class="overlay"/>')
-    .css({
-      height:jQuery('body').height()
-    })
     .appendTo('body')
     .show();
 	jQuery('.loading').click(function(){
@@ -17,8 +14,8 @@ function fn_init_waiter(){
 }
 
 function fn_clear_waiter(){
-  jQuery('.loading').remove();
-  jQuery('.overlay').remove();
+  jQuery('.loading').hide();
+  jQuery('.overlay').hide();
 }
 
 

@@ -1,0 +1,28 @@
+= stylesheet_link_tag "goals.category_list.css?_=1"
+= javascript_include_tag "goals.common.js"
+
+%script{:src => "/custom-select-box/jquery.combobox.js", :type => "text/javascript"}
+%link{:href => "/custom-select-box/style.css?_=2", :rel => "stylesheet", :type => "text/css"}/
+
+%ul.goal_category_list
+	- Goal::GOAL_CATEGORIES_EXT.each do |k, v|
+		%li
+			.image{:style=>"background-image:url(/assets/#{v[:'image']})"}
+			.link
+				=link_to v[:'title'], '#', :id=>k
+	%li
+		.image{:style=>"background-image:url(/assets/icon-goal-add.png)"}
+		.link
+			=link_to 'Another goal', '#'
+
+
+:javascript
+	var g_goal_form_dialog_html = "#{escape_javascript render({:partial=>'goal_form'})}";
+	var g_goal_preform_dialog_html = "#{escape_javascript render({:partial=>'goal_preform'})}";
+	var g_selected_category_id = 0;
+	var g_selected_category_name = "";
+	$('.goal_category_list a').click(function(){
+		g_selected_category_id = $(this).attr('id');
+		g_selected_category_name = $(this).text();
+		fn_show_dialog(g_goal_preform_dialog_html);
+	});

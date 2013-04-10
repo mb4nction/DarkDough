@@ -5,9 +5,12 @@
 *= require chosen
 *= require budgets
 *= require home
+*= require welcome
 *= require confirmation
+*= require dashboard
 *= require acumen_test
 *= require signin
+*= require testresult
 */
 
 
@@ -32,6 +35,7 @@ body{
   margin:0px;
   padding:0px;
   font-family:"Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+	font-size: 10pt;
   background-image:url(image-path('inner_bg_rpt.png'));
 }
 
@@ -1286,22 +1290,22 @@ input[type="text"] {
       }
       
       .update-btn{
-         background-color: #1D1C1E;
-    border-radius: 50px 50px 50px 50px;
-  -moz-border-radius: 50px 50px 50px 50px;
-  -webkit-border-radius: 50px 50px 50px 50px;
-    box-shadow: 0 0 14px #00A11E;
-  -moz-box-shadow: 0 0 14px #00A11E;
-  -webkit-box-shadow: 0 0 14px #00A11E;
-    color: #FFFFFF;
-    display: inline-block;
-    font-size: 24px !important;
-    font-weight: normal !important;
-    height: 60px;
-    line-height: 55px;
-    margin-top: 25px;
-    text-align: center;
-    width: 220px;
+				background-color: #1D1C1E;
+				border-radius: 50px 50px 50px 50px;
+				-moz-border-radius: 50px 50px 50px 50px;
+				-webkit-border-radius: 50px 50px 50px 50px;
+				box-shadow: 0 0 14px #00A11E;
+				-moz-box-shadow: 0 0 14px #00A11E;
+				-webkit-box-shadow: 0 0 14px #00A11E;
+				color: #FFFFFF;
+				display: inline-block;
+				font-size: 24px !important;
+				font-weight: normal !important;
+				height: 60px;
+				line-height: 55px;
+				margin-top: 25px;
+				text-align: center;
+				width: 220px;
       }
       
       #clothed .pd-about{
@@ -1363,6 +1367,13 @@ input[type="text"] {
 	color: red;
 	font-weight: bold;
 }
+
+.ui-dialog{
+	.ui-button{
+		font-size: 10pt;
+	}
+}
+
 
             
 /*End Pricing*/

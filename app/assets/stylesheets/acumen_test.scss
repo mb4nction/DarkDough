@@ -530,6 +530,7 @@
 			float: left;
 			span{
 				color: red;
+        display:none;
 			}
 		}
 		.unit{
@@ -606,10 +607,12 @@
 			}
 		}
 		&._grossary_income_tax_class{
-			width: 100px;
+			width: 105px;
+			padding-left: 9px;
 		}
 		&._business_income_box_class{
 			width: 150px !important;
+			padding-left: 9px;
 		}
 	}
 
@@ -618,17 +621,29 @@
 		width: 340px;
 		overflow: auto;
 		margin-bottom: 10px;
+		color: #333;
 		&.left{
 			margin-right: 50px;
 		}
 		&._grossary_income_tax{
 			height: 90px;
+      .title{
+        width: 190px;
+      }
+      .input{
+        text-align: left;
+        width: 130px;
+      }    
 		}
+    &._business_income_tax {
+      .input{
+        text-align: left;
+      }
+    }  
 		.title{
-			color: #333;
 			font-size: 10.5pt;
 			width: 210px;
-			height: 40px;
+			height: 52px;
 			float: left;
 			span{
 				color: red;
@@ -654,6 +669,10 @@
 				width: 100px;
 				height: 20px;
 			}
+      .radio{
+        width:20px;
+        height: 5px;
+      }
 			
 			.check-group{
 				overflow: visible;
@@ -716,10 +735,10 @@
 		margin-right: 0 !important;
 		width: 390px;
 		.title{
-			width: 127px;
+			width: 190px;
 		}
 		.input{
-			width: 190px;
+			width: 130px;
 			height: 90px !important;
 			button.grey-btn{
 				width: 190px !important;

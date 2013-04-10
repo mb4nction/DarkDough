@@ -1,0 +1,522 @@
+@mixin shadow{
+  box-shadow: 2px 3px 3px -2px #dcdcdc;
+  -moz-box-shadow:  2px 3px 3px -2px #dcdcdc;
+  -webkit-box-shadow: 2px 3px 3px -2px #dcdcdc;
+}
+
+
+.testresult{
+	width: 872px;
+	height: 1060px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	& > div{
+		float: left;
+		background-color: white;
+		@include shadow;
+	}
+	
+	.personal-info{
+		width: 462px;
+		height: 220px;
+		.wrapper{
+			width: 430px;
+			height: 170px;
+			margin-left: 20px;
+			margin-top: 23px;
+			.info{
+				width: 200px;
+				height: 70px;
+				float: left;
+				.left{
+					width: 55px;
+					height: 55px;
+					float: left;
+				}
+				.right{
+					float: left;
+					width: 110px;
+					height: 55px;
+					margin-left: 7px;
+					.name{
+						width: 100px;
+						height: 32px;
+						font-size: 15px;
+					}
+					.location{
+						margin-top: 10px;
+						.icon{
+							width: 10px;
+							height: 12px;
+							background: url(/assets/icon-location.png) no-repeat center center;
+							float: left;
+						}
+						.desc{
+							float: left;
+							font-size: 10px;
+							color: #a1a1a1;
+						}
+					}
+				}
+			} /* .info */
+			
+			.test{
+				width: 180px;
+				height: 45px;
+				float: right;
+				font-size: 12px;
+				line-height: 20px;
+				.taken{}
+				.next{
+					img{
+						cursor: pointer;
+					}
+				}
+			} /* .test */
+			
+			.ruler{
+				position: relative;
+				margin-top: 23px;
+				width: 436px;
+				height: 100px;
+				.scaler-group{
+					margin-top: 10px;
+					margin-left: 11px;
+					position: relative;
+					.sg{
+						height: 30px;
+						float: left;
+						vertical-align: baseline;
+						.caption{
+							position: relative;
+							font-size: 9px;
+							white-space: nowrap;
+							color: #333;
+							height: 16px;
+							background:url(/assets/icon-scale-bar.png?_=1) no-repeat center bottom;
+							text-align: center;
+							.sub-sg{
+								position: absolute; top: -15px;
+								.sub-caption{
+									height: 17px;
+									background:url(/assets/icon-scale-bar.png?_=1) no-repeat center bottom;
+								}
+							}
+							.sg-1{left: 0; text-align: left;}
+							.sg-2{right: 0; }
+						}
+						.bottom{
+							border: solid 1px #999;
+							border-bottom: none;
+							height: 8px;
+						}
+					}
+				}
+				
+				.scaler{
+					width: 424px; height: 28px;
+					position: relative;
+					background:url(/assets/bg-ruler-bar.png?_=1) no-repeat center bottom;
+					.mark{
+						position: absolute;
+						width: 23px;
+						height: 20px;
+						background: url(/assets/icon-scale-bar.png) no-repeat center bottom;
+						font-size: 11px;
+						color: #999;
+						text-align: center;
+					}
+					.vmark{
+						position: absolute;
+						top: 2px;
+						width: 23px;
+						height: 20px;
+						background: url(/assets/icon-scale-bar.png) no-repeat center bottom;
+						font-size: 11px;
+						color: #333;
+						text-align: center;
+					}
+					
+					.nullmark{
+						position: absolute;
+						top: 2px;
+						width: 23px;
+						height: 20px;
+						background: url(/assets/icon-scale-bar.png) no-repeat center bottom;
+						font-size: 11px;
+						color: #333;
+						text-align: center;
+					}
+					
+				} /* .scaler */
+				
+				
+				.status-captions{
+					position: relative;
+					height: 12px;
+					margin-left: 13px;
+					& > div{ position: absolute; }
+					.first-job{ 
+						margin-left: -24px;
+						width: 48px; height: 23px;
+						background:url(/assets/icon-first-job.png?_=2) no-repeat center center; }
+					.age{ 
+						width: 47px; height: 23px;
+						margin-left: -24px;
+						background:url(/assets/icon-age.png) no-repeat center center; }
+					.retirement-age{ 
+						width: 75px; height: 23px;
+						margin-left: -38px;
+						background:url(/assets/icon-retirement-age.png) no-repeat center center; }
+					.life-expectancy{ 
+						width: 75px; height: 23px;
+						margin-left: -38px;
+						background:url(/assets/icon-life-expectancy.png) no-repeat center center; }
+				}
+			}
+		}
+	}
+	
+	.personality{
+		width: 400px;
+		height: 220px;
+		margin-left: 8px;
+		
+		.wrapper{
+			margin-top: 20px;
+			height: 180px;
+			& > .bar{
+				height: 35px;
+				border: none;
+				border-top: solid 1px #ddd;
+				border-bottom: solid 1px #ddd;
+				font-size: 11px;
+				.personality-type{
+					float: left;
+					margin-left: 10px;
+					height: 32px;
+					width: 190px;
+					overflow: hidden;
+					line-height: 32px;
+					.desc{
+						color: #9b9b9b;
+					}
+					.type{
+						font-weight: bold;
+						color: #333;
+					}
+				} /* .personality-type */
+				
+				.saving-rate{
+					float: right;
+					height: 32px;
+					margin-right: 10px;
+					.desc{
+						color: #9b9b9b;
+						float: left;
+						height: 32px;
+						line-height: 32px;
+					}
+					.rate{
+						float: left;
+						margin-left: 4px;
+						width: 35px;
+						height: 32px;
+						text-align: center;
+						line-height: 32px;
+						color: white;
+						background: url(/assets/bg-percent-1.png) no-repeat center center;
+					}
+				}
+			} /* bar */
+			
+			.WSMTD{
+				width: 350px;
+				height: 120px;
+				margin-left: auto;
+				margin-right: auto;
+				.mwsed-c{
+					width: 155px;
+					height: 30px;
+					margin-top: 18px;
+					color: #333;
+					font-size: 11px;
+					.desc{
+						height: 8px;
+						line-height: 8px;
+					}
+					.progress-bar{
+						background: none;
+						border: none;
+						margin: 0;
+						margin-top: 5px;
+						& > .bar, & > .percent{
+							height: 8px;
+							float: left;
+						}
+						.bar{
+							width: 120px;
+							margin-top: 3px;
+							background: url(/assets/bg-ruler-bar-1.png) no-repeat center center;
+							.sprogress-bar{
+								height: 8px;
+								margin: 0;
+							}
+						}
+						.percent{
+							margin-left: 3px;
+							width: 25px;
+						}
+					}
+					
+					&.ww{ float: left; 
+						.sprogress-bar{
+							background: #eb1819 !important;
+						}
+					}
+					&.ss{ float: left; 
+						.sprogress-bar{
+							background: #00b4bb !important;
+						}
+					}
+					&.mm{ float: left; 
+						.sprogress-bar{
+							background: #325cb7 !important;
+						}
+					}
+					&.ee{ float: right; 
+						.sprogress-bar{
+							background: #69a917 !important;
+						}
+					}
+					&.dd{ float: right; 
+						.sprogress-bar{
+							background: #2a282c !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	.personality-1{
+		width: 870px;
+		height: 215px;
+		margin-top: 8px;
+		.wrapper{
+			width: 790px;
+			height: 140px;
+			margin-top: 35px;
+			margin-left: auto;
+			margin-right: auto;
+			.mwsed-r{
+				width: 138px;
+				height: 138px;
+				float: left;
+				margin-left: 25px;
+				color: white;
+				line-height: 140px;
+				font-size: 18px;
+				text-align: center;
+				cursor: pointer;
+				&.ww{
+					margin-left: 0;
+					background: url(/assets/bg-worry.png?_=2) no-repeat center center;
+				}
+				&.ss{
+					background: url(/assets/bg-self-interest.png?_=2) no-repeat center center;
+				}
+				&.mm{
+					background: url(/assets/bg-movitation.png?_=2) no-repeat center center;
+				}
+				&.ee{
+					background: url(/assets/bg-thrill-seeker.png?_=2) no-repeat center center;
+				}
+				&.dd{
+					background: url(/assets/bg-dicipline.png?_=2) no-repeat center center;
+				}
+			}
+		}
+	}
+	.personality-2{
+		width: 870px;
+		height: 370px;
+		margin-top: 8px;
+
+		.wrapper{
+			width: 810px;
+			height: 318px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 25px;
+			.price-panel{
+				width: 245px;
+				height: 145px;
+				float: left;
+				margin-bottom: 25px;
+				margin-left: 12px;
+				margin-right: 10px;
+				.asset{
+					height: 85px;
+					background-color: #f5f5f5;
+					.left{
+						width: 60px;
+						height: 60px;
+						margin-top: 15px;
+						margin-left: 12px;
+						float: left;
+						.picture{
+							img{
+								width: 100%;
+								height: 100%;
+							}
+						}
+					}
+					.right{
+						margin-top: 15px;
+						margin-left: 7px;
+						float: left;
+						.desc{
+							height: 30px;
+							font-size: 16px;
+						}
+						.currency{
+							height: 30px;
+							.unit{
+								width: 18px;
+								height: 25px;
+								float: left;
+								background: url(/assets/icon-unit.png) no-repeat center bottom;
+							}
+							.value{
+								width: 120px;
+								min-width: 120px;
+								height: 25px;
+								float: left;
+								font-size: 24px;
+								font-weight: bold;
+								color: #3e4050;
+							}
+						}
+					}
+				}
+
+				.average{
+					.desc{
+						font-size: 12px;
+						line-height: 33px;
+						height: 33px;
+						margin-left: 15px;
+						img{
+							cursor: pointer;
+						}
+					}
+					.prgress-bar{
+						height: 10px;
+						margin-left: 15px;
+						.bar{
+							width: 155px;
+							height: 12px;
+							float: left;
+							background:url(/assets/bg-ruler-bar-2.png?_=1) no-repeat right bottom;
+							.sprogress-bar{
+								height: 7px;
+								margin-left: 0;
+							}
+						}
+						.percent{
+							width: 60px;
+							height: 12px;
+							float: left;
+							font-size: 12px;
+							text-indent: 8px;
+						}
+					}
+				} /* average */
+				
+				.line{
+					height: 1px;
+					margin-top: 10px;
+					background-color: #ddd;
+				}
+			} /* price-panel */
+		}
+			
+				
+					
+	}
+	.personality-3{
+		width: 870px;
+		height: 220px;
+		margin-top: 8px;
+		margin-bottom: 50px;
+		.wrapper{
+			width: 810px;
+			height: 180px;
+			margin-top: 23px;
+			margin-left: auto;
+			margin-right: auto;
+			.ratio{
+				width: 245px;
+				margin-left: 12px;
+				margin-right: 12px;
+				background-color: #f9f9f9;
+				float: left;
+				.title{
+					font-size: 14px;
+					color: #3e4050;
+					margin-top: 10px;
+					margin-left: 10px;
+				}
+				.date{
+					margin-left: 10px;
+					font-size: 11px;
+					color: #3e4050;
+				}
+				.left{
+					margin-left: 10px;
+					width: 110px;
+					margin-top: 17px;
+					float: left;
+					text-align: center;
+				}
+				.right{
+					width: 117px;
+					margin-top: 17px;
+					float: left;
+					font-size: 11px;
+					text-align: right;
+					.desc{
+						font-size: 11px;
+					}
+					.percent{
+						font-size: 28px;
+						font-weight: bold;
+					}
+					.line{
+						background-color: #bcbcbc;
+						height: 1px;
+					}
+					.desc1{
+						height: 28px;
+						line-height: 28px;
+						img{
+							cursor: pointer;
+						}
+					}
+					.percent1{
+						span{
+							font-weight: bold;
+						}
+					}
+					.percent2{
+						span{
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

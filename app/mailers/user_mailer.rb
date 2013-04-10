@@ -25,7 +25,7 @@ class UserMailer < ActionMailer::Base
          :from => "WarmWelcome@budget247.com",
          :content_type => 'text/html',
          :subject => "Budget 24-7 | Your budget is exceeded",
-				 :body => 'Hi, there!'
+				 :body => 'Hi, there!!!'
   end
 
 end

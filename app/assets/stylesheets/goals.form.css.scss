@@ -1,0 +1,217 @@
+@import 'mixins';
+
+.overlay{
+	display: block;
+}
+
+.goal-create-dialog{
+	width: 380px;
+	height: 490px;
+	background-color: white;
+	border: solid 8px #4b3c65;
+	position: absolute;
+	z-index: 10000;
+	left: 50%;
+	margin-left: -190px;
+	top: 50%;
+	margin-top: -235px;
+
+	.loading-overlay{
+		display: none;
+		position: absolute;
+		width: 380px;
+		height: 490px;
+		background: url(/assets/icon-loading.gif) no-repeat center center;
+		z-index: 10000;
+	}
+		
+
+	.btn-close{
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		width: 15px;
+		height: 15px;
+		background: url(/assets/close.png) no-repeat;
+		cursor: pointer;
+		z-index: 100;
+	}
+	.wrapper{
+		width: 340px;
+		height: 390px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 17px;
+		color: #666;
+		position: relative;
+		.dlg-title{
+			font-size: 20px;
+			height: 35px;
+			color: #000;
+		}
+		.goal{
+			overflow: auto;
+			margin-bottom: 10px;
+			.desc{
+				font-size: 16px;
+				height: 30px;
+			}
+			.title{
+				height: 40px;
+				font-size: 10pt;
+				.caption{
+					float: left;
+					width: 80px;
+					text-align: right;
+					line-height: 25px;
+					height: 25px;
+					margin-right: 10px;
+				}
+				.input{
+					float: left;
+					input{
+						width: 245px;
+						height: 20px;
+						text-indent: 5px;
+					}
+				}
+			}
+			.amount{
+				height: 40px;
+				font-size: 10pt;
+				float: left;
+				.caption{
+					float: left;
+					width: 80px;
+					text-align: right;
+					line-height: 25px;
+					height: 25px;
+					margin-right: 10px;
+				}
+				.input{
+					float: left;
+					input{
+						width: 75px;
+						height: 20px;
+						text-indent: 5px;
+					}
+				}
+				&.current{
+					
+				}
+			}
+		}
+		.balance{
+			height: 55px;
+			.current{
+				width: 140px;
+				float: left;
+				.value{
+					font-size: 18px;
+					color: #555;
+				}
+				.desc{
+					font-size: 12px;
+				}
+			}
+			.needed{
+				width: 140px;
+				float: left;
+				.value{
+					font-size: 18px;
+					color: #555;
+				}
+				.desc{
+					font-size: 12px;
+				}
+			}
+		}
+		.plan{
+			.desc{
+				font-size: 16px;
+				height: 30px;
+			}
+			.planned{
+				height: 40px;
+				font-size: 10pt;
+				.caption{
+					float: left;
+					width: 80px;
+					text-align: left;
+					line-height: 15px;
+					height: 25px;
+					margin-right: 10px;
+				}
+				.input{
+					float: left;
+					.month{
+						float: left;
+						width: 100px;
+					}
+					.year{
+						float: left;
+						width: 80px;
+						margin-left: 3px;
+					}
+				}
+			}
+			.monthly{
+				height: 50px;
+				font-size: 10pt;
+				float: left;
+				.caption{
+					float: left;
+					width: 80px;
+					text-align: left;
+					line-height: 15px;
+					height: 25px;
+					margin-right: 10px;
+				}
+				.input{
+					float: left;
+					input{
+						width: 98px;
+						height: 20px;
+					}
+				}
+				&.finished{
+					.caption{
+						width: 50px;
+						margin-left: 20px;
+						height: 25px;
+						line-height: 25px;
+					}
+					.input{
+						float: left;
+						input{
+							width: 15px;
+						}
+					}
+				}
+			}
+		}
+		.projected_date{
+			.desc{
+				height: 30px;
+			}
+			.detail{
+				font-size: 10pt;
+				b{}
+			}
+		}
+		
+		.actions{
+			margin-top: 10px;
+			text-align: right;
+			.btn-back{
+				@include button;
+				color: #666;
+			}
+			.btn-save-goal{
+				@include button-accented;
+			}
+		}
+	}/*.wrapper*/
+
+}
+

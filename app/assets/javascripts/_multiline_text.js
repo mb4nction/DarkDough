@@ -1,6 +1,25 @@
 // JavaScript Document
 var LOADING_MODE = true;
-$(function(){
+
+function fn_feed_form(_this){
+	var form = $(_this).parents('form');
+	var table = $(_this).parents('.multiline_text_type');
+	var s = "";
+	$('input.added', table).each(function(){
+		var val = $(this).val();
+		if(val!="")s += "\n"+val;
+	});
+	s = s.substr(1);
+	$('#test_answer', form).val(s);
+}
+
+
+function fn_feed_form_keyup(){
+	fn_feed_form(this);
+}
+
+
+//$(function(){
 	$('.multiline_text_type .save').on('click', function(){
 		$(this).toggleClass('selected');
 		var form = $(this).parents('form');
@@ -45,23 +64,5 @@ $(function(){
 	});
 
 
-});
-
-
-function fn_feed_form(_this){
-	var form = $(_this).parents('form');
-	var table = $(_this).parents('.multiline_text_type');
-	var s = "";
-	$('input.added', table).each(function(){
-		var val = $(this).val();
-		if(val!="")s += "\n"+val;
-	});
-	s = s.substr(1);
-	$('#test_answer', form).val(s);
-}
-
-
-function fn_feed_form_keyup(){
-	fn_feed_form(this);
-}
+//});
 

@@ -4,7 +4,7 @@
 <file name="accounts_controller.rb" local="129992790198902136" remote="129999852800000000" testing="0" />
 <file name="acumen_tests_controller.rb" local="129985604090000000" remote="129999852810000000" testing="0" />
 <file name="answers_controller.rb" local="129985604090000000" remote="129999852830000000" testing="0" />
-<file name="application_controller.rb" local="129991820939223653" remote="129999852840000000" testing="0" />
+<file name="application_controller.rb" local="130030014641337811" remote="130030016120000000" testing="0" />
 <file name="budgets_controller.rb" local="129985604090000000" remote="129999852860000000" testing="0" />
 <file name="contact_us_controller.rb" local="129985604090000000" remote="129999852870000000" testing="0" />
 <file name="dashboard_controller.rb" local="129985604090000000" remote="129999852880000000" testing="0" />
@@ -12,5 +12,7 @@
 <file name="transactions_controller.rb" local="129985604090000000" remote="129999853220000000" testing="0" />
 <file name="trends_controller.rb" local="129985604090000000" remote="129999853230000000" testing="0" />
 <file name="users_controller.rb" local="129999846759157557" remote="129999853250000000" testing="0" />
-<file name="registrations_controller.rb" local="130001552508762279" remote="130001552730000000" testing="0" />
+<file name="registrations_controller.rb" local="130029962292303617" remote="130029962370000000" testing="0" />
+<file name="sessions_controller.rb" local="130019713442455605" remote="130019713600000000" testing="0" />
+<file name="tests_controller.rb" local="130021191686330955" remote="130021191770000000" testing="0" />
 </dwsync>

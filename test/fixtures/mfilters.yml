@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  filter_id: 1
+  step: 1
+
+two:
+  user_id: 1
+  filter_id: 1
+  step: 1

@@ -1,6 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
 	include ApplicationHelper
 	def create
+		user = User.find_by_email(params[:user][:email])
+		if user!=nil
+			flash.now[:alert] = "The email address exists already. Please try again with another."
+			flash.delete :recaptcha_error
+			build_resource
+			clean_up_passwords(resource)
+			render :new
+			return
+		end
 		phone_number = params[:user][:phone_number]
 		sms = params[:user][:sms]
 		is_success = true
@@ -25,9 +34,9 @@ class RegistrationsController < Devise::RegistrationsController
 			render :new
 		else
 			flash[:is_signedup] = true
-			super
+			user = User.new(params[:user])
+			user.save
+			redirect_to root_path
 		end
 	end
-	
 end
-

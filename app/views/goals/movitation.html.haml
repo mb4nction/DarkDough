@@ -1,0 +1,38 @@
+= stylesheet_link_tag "goals.movitation.css?_=2"
+= javascript_include_tag "goals.common.js"
+
+#goals_select
+	%h1.title Achieve
+	#goals_category
+		.wrapper
+			.title &nbsp;
+			%ul.list
+				- Goal::GOAL_CATEGORIES_EXT.each do |k, v|
+					%li
+						.image-panel
+							.image{:style=>"background-image:url(/assets/#{v[:'image']})", :id=>"#{k}"}
+						.link
+							%a=v[:'title']
+			.clear
+			%br/
+			.title Motivation Filter
+			.movitation-panel
+				.icon-loading
+				= form_for @mfilter do |f|
+					= f.hidden_field :user_id, :value=>current_user.id
+					= f.hidden_field :filter_id
+					= f.hidden_field :step
+				.btn-delete=image_tag '/assets/icon-delete.png'
+				- k1 = 0
+				- Mfilter::FILTERS.each do |k, v|
+					-k1 = k1 + 1
+					.pyramid{:max=>v[:max], :step=>v[:step], :bg_img=>v[:bg_img], :class=>"p#{k1}"}
+						= image_tag 'bg-pyramid-null.png', :align=>'absmiddle'
+						- filters = current_user.mfilters.where({:step=>v[:step]})
+						- unless filters==nil
+							- filters.each do |filter|
+								= image_tag Goal::GOAL_CATEGORIES_EXT[:"#{filter.filter_id}"][:image], :class=>'mov-image', :align=>'absmiddle', :id=>filter.filter_id, :"data-id"=>filter.id
+				.pyramid-off.p6
+	=render :partial=>'some_hints'
+
+= javascript_include_tag "goals.movitation.js"

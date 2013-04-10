@@ -1,13 +1,15 @@
 Pfm::Application.routes.draw do
 
+  get "mfilters/create"
+
 	get '/confirmation', :to=>'users#confirmation', :as=>'confirmation'
+	post '/socialsignin', :to=>'users#socialsignin', :as=>'socialsignin'
 	post '/socialsignin', :to=>'users#socialsignin', :as=>'socialsignin'
 	post '/verification', :to=>'users#verification', :as=>'verification'
 
   ActiveAdmin.routes(self)
 	
   devise_for :admin_users, ActiveAdmin::Devise.config
-	 
 	devise_for :questions do
 		match '/admin/questions/:id/orderup' => 'admin/questions#orderup', :as=>'question_order_up'
 		match '/admin/questions/:id/orderdown' => 'admin/questions#orderdown', :as=>'question_order_down'
@@ -19,9 +21,11 @@ Pfm::Application.routes.draw do
     get "/" => "devise/registrations#new", :as => :new_user_registration
   end
 
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, :only => [:show, :edit, :update] 
   resources :acumen_tests
   resources :tests
+	resources :mfilters
+	resources :goal_details
 
   resources :accounts do
     collection do
@@ -34,6 +38,7 @@ Pfm::Application.routes.draw do
   resources :goals do
     collection do
       get :select
+			get :movitation
     end
   end
 
@@ -59,11 +64,13 @@ Pfm::Application.routes.draw do
   match '/privacy_security_policy' => 'pages#show', :id => 'privacy_security_policy'
   match '/community_policy' => 'pages#show', :id => 'community_policy'
   match '/pricing' => 'pages#show', :id => 'pricing'
-  
+  match '/welcome' => 'pages#welcome',:id => 'welcome'
 
   resource :contact_us, :only => [:create]
   match '/contact_us' => 'contact_us#new'
 
   root to: 'pages#home'
-
+#  if Rails.env.development?
+#    mount MailPreview => 'mail_view'
+#  end
 end

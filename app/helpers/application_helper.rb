@@ -66,6 +66,5 @@ module ApplicationHelper
 		o =  [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
 		sms = (0..4).map{ o[rand(o.length)] }.join
 	end
-
 	
 end

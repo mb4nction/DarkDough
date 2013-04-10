@@ -1,32 +1,126 @@
-.block
-  %h1 Goals
+= stylesheet_link_tag 'goals.index.css'
+:javascript
+	var g_goals_path = "#{goals_path}";
+	var g_goal_details_path = "#{goal_details_path}";
 
-  #goals_list
-    %table
-      %tr
-        %th Title
-        %th Category
-        %th Amount
-        %th Planned date
-        %th Contribution
-        %th
-        %th
-        %th
-        %th
+.movitation-filter-dialog.hidden
+	.close-btn
+	.wrapper
+		.title Motivation Filter
+		.desc
+			Do you want to really understand why you set the goals you do? 
+			Try our 
+			%b Motivation
+			Filter now to find out
+		.actions
+			.btn-yes{:next_url=>movitation_goals_path} Yes, show me
+			.btn-no No, not right now
 
-      - @goals.each do |goal|
-        %tr
-          %td= goal.title
-          %td= goal.category
-          %td= goal.amount
-          %td= goal.planned_date
-          %td= goal.contribution
-          %td= link_to 'Show', goal
-          %td= edit_goal(goal) unless goal.finished?
-          %td= link_to 'Abandon', goal, confirm: 'Are you sure?', method: :delete
-          %td.finish_goal_td
-            - if goal.can_be_finished?
-              = render partial: "finish_goal", locals: { goal: goal }
+#goaled_index
+	%h1.title Achieve
+	#goaled_list
+		.wrapper
+			.actions
+				- no_goals = false
+				- if @current_goals.size()==0 && @completed_goals.size()==0
+					- no_goals = true
+				.btn-add{:class=>('off' if no_goals)}
+					=link_to 'Add a new goal', '#'
+				.goal_category_list{:class=>('hidden' unless no_goals)}
+					=render :partial=>'goal_category_list'
+			.clear
+			-if @current_goals.size()>0
+				.goals.current
+					.desc Current
+					.list
+						-@current_goals.each do |goal|
+							- image = Goal::GOAL_CATEGORIES_EXT[:"#{goal.category}"][:image]
+							.item
+								.picture{:style=>"background-image: url(/assets/#{image});"}
+								.m-progress
+									.detail
+										.title=goal.title
+										.amount
+											%span.current &#8358;#{goal.current_amount} 
+											of 
+											%span.total &#8358;#{goal.amount}
+										.clear
+									.bar
+										.progress-bar
+											- if goal.amount>0
+												- percent = ((goal.current_amount.to_f/goal.amount.to_f)*100).ceil
+											- else
+												- percent = 0
+											- percent = 100 if percent>100
+											.sprogress-bar{:style=>"width: #{percent}%;"}
+								.check
+									.check.off
+							.item-add-panel
+								.wrapper
+									.actions
+										.button.btn-edit{:url=>"#{edit_goal_path(goal.id)}"}
+											=image_tag '/assets/icon-edit.png'
+											Edit
+										.button.btn-delete{:id=>goal.id}
+											=image_tag '/assets/icon-delete.png'
+											Delete
+									.desc Goals details
+									.status
+										.goal-amount 
+											.value &#8358;25,000
+											.desc Goal amount
+										.today-balance
+											.value &#8358;742
+											.desc Today's balance
+										.this-month
+											.value &#8358;2,400
+											.desc This month
+										.planned-date
+											.value May 24, 2013
+											.desc Planned date
+										.projected-date
+											.value May 24, 2013
+											.desc Projected date
+									.next-steps{:id=>goal.id}
+										.desc Next steps
+										.list
+											- k1 = 0
+											- goal.goal_details.each do |goal_detail|
+												- k1 = k1 + 1
+												.item{:class=>('first' if k1==1)}
+													%input{:type=>'checkbox'}
+													%span.desc1=goal_detail.desc
+													.over-action
+														.button.edit{:id=>goal_detail.id}=image_tag '/assets/icon-edit.png'
+														.button.delete{:id=>goal_detail.id}=image_tag '/assets/icon-delete.png'
+										.actions
+											= form_for @goal_detail do |f|
+												= f.hidden_field :goal_id, :value=>goal.id
+												.input
+													= f.text_field :desc
+												.btn-plus
+													=link_to '+', 'javascript:;'
+							.clear
+			-if @completed_goals.size()>0
+				.goals.completed
+					.desc Completed
+					.list
+						-@completed_goals.each do |goal|
+							- image = Goal::GOAL_CATEGORIES_EXT[:"#{goal.category}"][:image]
+							.item
+								.picture{:style=>"background-image: url(/assets/#{image});"}
+								.m-progress
+									.detail
+										.title=goal.title
+										.amount
+											Completed
+										.clear
+									.bar
+										.progress-bar
+											.sprogress-bar{:style=>"width: 100%;"}
+								.check
+									.check.on
+							.clear
+	=render :partial=>'some_hints'
 
-  %br
-  = link_to 'Add Goal', select_goals_path
+= javascript_include_tag 'goals.index.js'

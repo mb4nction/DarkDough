@@ -1,0 +1,149 @@
+@import 'mixins';
+#goals_select{
+	width: 900px;
+	height: 945px;
+	margin-left: auto;
+	margin-right: auto;
+	& > .title{
+		font-size: 22px;
+	}
+	#goals_category{
+		width: 630px;
+		height: 845px;
+		@include box-shadow(3px 5px 4px -3px #dcdcdc);
+		background-color: white;
+		float: left;
+		.wrapper{
+			width: 630px;
+			height: 310px;
+			margin-top: 25px;
+			margin-left: auto;
+			margin-right: auto;
+			.title{
+				text-indent: 22px;
+				font-size: 19px;
+			}
+			.list{
+				list-style: none;
+				margin: 0;
+				margin-top: 15px;
+				padding: 0;
+				li{
+					float: left;
+					width: 100px;
+					height: 80px;
+					margin-bottom: 35px;
+					.image-panel{
+						width: 100px;
+						height: 70px;
+						background-position: center center;
+						background-repeat: no-repeat;
+						.image{
+							width: 100px;
+							height: 70px;
+							background-position: center center;
+							background-repeat: no-repeat;
+						}
+						&.mov-1{
+							background: url(/assets/icon-goal-bg-1.png?_=3) no-repeat center center;
+						}
+						&.mov-2{
+							background: url(/assets/icon-goal-bg-2.png?_=3) no-repeat center center;
+						}
+						&.mov-3{
+							background: url(/assets/icon-goal-bg-3.png?_=3) no-repeat center center;
+						}
+						&.mov-4{
+							background: url(/assets/icon-goal-bg-4.png?_=3) no-repeat center center;
+						}
+						&.mov-5{
+							background: url(/assets/icon-goal-bg-5.png?_=3) no-repeat center center;
+						}
+					}
+					.link{
+						height: 20px;
+						text-align: center;
+						a{
+							color: #999999;
+							&:hover{
+								color: #0091bd;
+							}
+						}
+					}
+				}
+			}/* .list */
+
+
+
+			
+			.movitation-panel{
+				width: 620px;
+				overflow: auto;
+				margin-left: auto;
+				margin-right: auto;
+				
+				.btn-delete{
+					@include button;
+					width: 17px;
+					height: 17px;
+					padding: 0;
+					text-align: center;
+					display: none;
+					position: absolute;
+				}
+				.pyramid, .pyramid-off{
+					width: 607px;
+					height: 56px;
+					margin-top: 2px;
+					text-align: center;
+					border: solid 1px transparent;
+					background-repeat: no-repeat;
+					.mov-image{
+						margin-left: 2px;
+						margin-right: 2px;
+					}
+					&.p1{
+						background-image: url(/assets/bg-pyramid-1.png);
+						& > img.mov-image{
+							width: 32px;
+							margin-top: 16px;
+						}
+					}
+					&.p2{
+						background-image: url(/assets/bg-pyramid-2.png);
+					}
+					&.p3{
+						background-image: url(/assets/bg-pyramid-3.png);
+					}
+					&.p4{
+						background-image: url(/assets/bg-pyramid-4.png);
+					}
+					&.p5{
+						background-image: url(/assets/bg-pyramid-5.png);
+					}
+					&.p6{
+						background-image: url(/assets/bg-pyramid-6.png);
+					}
+				}
+
+				.icon-loading{
+					display: none;
+					position: absolute;
+					left: 50%;
+					margin-left: -16px;
+					top: 50%;
+					margin-top: 100px;
+					width: 32px;
+					height: 32px;
+					right: 30px;
+					bottom: 30px;
+					background: url(/assets/icon-loading.gif) no-repeat center center;
+				}
+			}
+		}
+	}
+}
+
+.ui-state-hover{
+	border: dashed 1px red !important;
+}

@@ -3,7 +3,7 @@
 	%head
 		%title= title
 		%link{:href => "/assets/favicon.ico", :rel => "shortcut icon"}
-		%link{:href => "/css/common.css", :rel => "stylesheet"}
+		%link{:href => "/css/common.css?_=1", :rel => "stylesheet"}
 		= stylesheet_link_tag "application"
 		= javascript_include_tag "application"
 
@@ -14,6 +14,7 @@
 		%meta{:content => "4_j70O_xIftPsQxnpuH4j4cNy87tO9iyEj_NUJpSadI", :name => "google-site-verification"}/
 		= csrf_meta_tags
 	%body
+		.overlay
 		#container.container_24
 			= render :partial =>	'layouts/header'
 			

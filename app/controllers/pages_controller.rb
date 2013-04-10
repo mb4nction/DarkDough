@@ -18,6 +18,8 @@ private
       "Terms of use - Budget 24/7"
     when 'help_create_account'
       "Help create account - Budget 24/7"
+    when 'welcome'
+      "Welcome - Budget 24/7"
     else
       "Budget 24/7"
     end

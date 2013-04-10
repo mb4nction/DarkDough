@@ -1,0 +1,72 @@
+=stylesheet_link_tag 'goals.form.css'
+.goal-create-dialog
+	= form_for @goal, :id=>"frm_goal_create_form" do |f|
+		.loading-overlay
+		.btn-close
+		=f.hidden_field :id
+		.wrapper
+			.dlg-title Save for anniversary or birthday
+			.goal
+				.desc Your goal
+				.title
+					.caption Your title
+					.input
+						=f.text_field :title
+				.clear
+				.amount
+					.caption Goal amount
+					.input
+						=f.text_field :amount
+				.amount.current
+					.caption Current
+					.input
+						=f.text_field :current_amount
+			.balance
+				.current
+					.value &#8358;23,546.19
+					.desc Your current balance
+				.needed
+					.value &#8358;3,454.81
+					.desc Amount needed
+			.plan
+				.desc Your plan
+				.planned
+					.caption Your planned date
+					.input
+						=f.hidden_field :planned_date
+						=f.hidden_field :category
+						.combowrap.month
+							- if @goal.id==nil
+								= select_month Date.today, {} , :class=>"combolist"
+							- else
+								= select_month @goal.planned_date, {} , :class=>"combolist"
+						.combowrap.year
+							- if @goal.id==nil
+								= select_year Date.today, {:start_year => Date.today.year} , :class=>"combolist"
+							- else
+								= select_year @goal.planned_date, {:start_year => Date.today.year} , :class=>"combolist"
+						:javascript
+							$('.combolist').combobox();
+				.monthly
+					.caption Your monthly contribution
+					.input
+						= f.text_field :contribution
+				.monthly.finished
+					.caption Finished
+					.input
+						= f.check_box :finished, :disabled=>(true if @goal.id==nil)
+				.clear
+			.projected_date
+				.desc Projected date
+				.detail
+					You are ahead of schedule! By saving 
+					%b &#8358;2,255 per month
+					, we project that 
+					you will reach your 
+					%b goal 11 months 
+					before your planned date of 
+					%b February, 2013
+			.actions
+				=link_to 'Back', '#', :class=>'btn-back'
+				=link_to 'Save goal', '#', :class=>'btn-save-goal'
+	=javascript_include_tag 'goals.form.js?_=1'

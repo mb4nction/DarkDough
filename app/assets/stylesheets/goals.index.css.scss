@@ -1,0 +1,352 @@
+@import 'mixins';
+
+.movitation-filter-dialog{
+	position: absolute;
+	width: 390px;
+	height: 180px;
+	left: 50%;
+	margin-left: -180px;
+	top: 30%;
+	margin-top: -90px;
+	z-index: 10000;
+	background-color: white;
+	border: solid 8px #4b3c65;
+	.close-btn{
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		width: 15px;
+		height: 15px;
+		background: url(/assets/close.png) no-repeat;
+		cursor: pointer;
+	}
+	.wrapper{
+		width: 345px;
+		height: 130px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		color: #666;
+		.title{
+			height: 40px;
+			font-size: 16px;
+			color: #000;
+		}
+		.desc{
+			height: 60px;
+			font-size: 10pt;
+			b{
+				color: #000;
+			}
+		}
+		.actions{
+			.btn-yes{
+				@include button-accented;
+			}
+			.btn-no{
+				@include button;
+				color: #656673;
+			}
+		}
+	}
+}
+
+
+
+
+#goaled_index{
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	overflow: auto;
+	.title{
+		font-size: 22px;
+		font-weight: normal;
+	}
+	#goaled_list{
+		width: 620px;
+		float: left;
+		background-color: white;
+		@include box-shadow(3px 5px 4px -3px #dcdcdc);
+		.wrapper{
+			width: 575px;
+			margin: 20px auto;
+			.actions{
+				width: 100%;
+				overflow: auto;
+				line-height: 28px;
+				text-indent: 30px;
+				border: dashed 1px #e3e2e5;
+				@include radius(3px);
+				background-color: #f6f6f6;
+				.btn-add{
+					height: 30px;
+					background: url(/assets/icon-plus.png) no-repeat 10px center #f6f6f6;
+					&.on{
+						background-image: url(/assets/icon-plus.png);
+					}
+					&.off{
+						background-image: url(/assets/icon-minus.png);
+					}
+					a{
+						color: #b6b1be;
+						&:hover{
+							color: #0094bf;
+						}
+					}
+				}
+				.goal_category_list{
+					width: 520px;
+				}
+			}
+			.goals{
+				margin-top: 20px;
+				.desc{
+					font-size: 18px;
+					color: #000;
+					height: 30px;
+					line-height: 30px;
+				}
+				.list{
+					width:575px;
+					overflow: visible;
+					.item{
+						width: 100%;
+						height: 60px;
+						margin-top: 10px;
+						& > diva{
+							background-color: green;
+							margin-left: 1px;
+						}
+						&.over, &.selected{
+							cursor: pointer;
+							background-color: #f6f6f6;
+						}
+						.picture{
+							float: left;
+							width: 75px;
+							height: 60px;
+							background-position: center center;
+							background-repeat: no-repeat;
+						}
+						.m-progress{
+							width: 445px;
+							height: 50px;
+							float: left;
+							margin-top: 10px;
+							.detail{
+								margin-top: 4px;
+								.title{
+									font-size: 13px;
+									height: 18px;
+									line-height: 18px;
+									color: #333;
+									float: left;
+								}
+								.amount{
+									font-size: 12px;
+									float: right;
+									height: 18px;
+									line-height: 18px;
+									color: #9a9999;
+									span{
+										&.current{
+											color: #666;
+										}
+										&.total{}
+									}
+								}
+							}
+							.bar{
+								.progress-bar{
+									height: 8px;
+									.sprogress-bar{
+										height: 100%;
+										margin: 0;
+									}
+								}
+							}
+						}
+						.check{
+							width: 50px;
+							height: 60px;
+							float: left;
+							position: relative;
+							.check{
+								width: 21px;
+								height: 24px;
+								position: absolute;
+								left: 50%;
+								margin-left: -10px;
+								top: 50%;
+								margin-top: -12px;
+								background: url(/assets/icon-check.png) no-repeat;
+								&.on{
+									background-position: 0 0;
+								}
+								&.off{
+									background-position: -21px 0;
+								}
+							}
+						}
+					} /* .item */
+					
+					.item-add-panel{
+						display: none;
+						background-color: #f6f6f6;
+						border: solid 1px transparent;
+						position: relative;
+						.wrapper{
+							border: solid 1px transparent;
+							width: 90%;
+							overflow: auto;
+							margin-left: auto;
+							margin-right: auto;
+							& > .actions{
+								position: absolute;
+								width: 200px;
+								height: 50px;
+								overflow: auto;
+								right: 0px;
+								top: 10px;
+								border: none;
+								.button{
+									@include button;
+									width: 60px;
+									height: 20px;
+									line-height: 20px;
+									text-align: center;
+									text-indent: 0;
+									padding: 5px;
+									&.btn-edit{
+										float: left;
+									}
+									&.btn-delete{
+										margin-left: 10px;
+										float: left;
+									}
+								}
+							}
+							& > .desc{
+								font-size: 12pt;
+								color: #000;
+							}
+							.status{
+								margin-top: 15px;
+								height: 50px;
+								& > div{
+									height: 40px;
+									overflow: auto;
+									float: left;
+									border-left: solid 1px #aaa;
+									padding-left: 5px;
+									margin-right: 10px;
+									&.goal-amount{
+										padding-left: 0;
+										border-width: 0;
+									}
+									& > .value{
+										color: #666;
+										font-weight: bold;
+										font-size: 10pt;
+										min-width: 50px;
+									}
+									& > .desc{
+										font-size: 12px;
+										color: #9a9999;
+										height: 20px;
+										line-height: 20px;
+									}
+								}
+							}
+							.next-steps{
+								width: 400px;
+								font-size: 10pt;
+								.desc{
+									font-size: 12pt;
+									color: #000;
+								}
+								.list{
+									width: 99%;
+									.item{
+										position: relative;
+										width: 99%;
+										height: 35px;
+										line-height: 35px;
+										border-top: dashed 1px #ccc;
+										margin: 0;
+										cursor: pointer;
+										&.first{
+											border-top: none;
+										}
+										input{}
+										span{}
+										.over-action{
+											display: none;
+											position: absolute;
+											right: 0;
+											top: 0;
+											width: 46px;
+											.button{
+												@include button;
+												float: left;
+												width: 18px;
+												height: 18px;
+												padding: 0;
+												margin-top: 8px;
+												text-align: center;
+												&.edit{
+													
+												}
+												&.delete{
+													margin-left: 2px;
+													
+												}
+											}
+										}
+									}
+								}
+								.actions{
+									border: none;
+									.input{
+										float: left;
+										text-indent: 0;
+										width: 355px;
+										input{
+											width: 100%;
+											font-size: 10.5pt;
+											height: 21px;
+											text-indent: 5px;
+											border: solid 1px #ccc;
+										}
+									}
+									.btn-plus{
+										float: left;
+										text-indent: 0;
+										margin-left: 5px;
+										a{
+											@include button;
+											width: 32px;
+											height: 25px;
+											line-height: 25px;
+											padding: 0;
+											text-indent: 0;
+											text-align: center;
+											font-size: 13pt;
+											font-weight: bold;
+										}
+									}
+								}
+							}
+						} /* .wrapper */
+					} /* .item-add-panel */
+				} /* .list */
+			} /* .current */
+			
+			.completed{
+			
+			}
+		} /* .wrapper */
+	}
+}

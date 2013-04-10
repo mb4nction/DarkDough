@@ -1,0 +1,36 @@
+@import 'mixins';
+#goals_hint{
+	width: 250px;
+	height: 230px;
+	float: left;
+	margin-left: 15px;
+	@include box-shadow(3px 5px 4px -3px #dcdcdc);
+	background-color: white;
+	.wrapper{
+		width: 200px;
+		overflow: auto;
+		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 12px;
+		color: #999999;
+		line-height: 17px;
+		.title{
+			font-size: 20px;
+			margin-bottom: 15px;
+			color: #333;
+		}
+		.sub-title{
+			font-size: 10.5pt;
+			color: #000;
+		}
+		ul{
+			list-style-type: decimal;
+			padding: 15px;
+			margin: 0;
+			li{
+				margin-bottom: 5px;
+			}
+		}
+	}
+}

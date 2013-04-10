@@ -1,4 +1,4 @@
-= form_for @test, :html=>{:submitted=>'no'} do |f|
+= form_for @test, :html=>{:submitted=>'no',:onsubmit=>'return false'} do |f|
 	- t = @tests[:"t_#{question.id}"]
 	- t = {:answer=>''} if t==nil
 	= f.hidden_field :question_id, :value=>question.id
@@ -11,11 +11,11 @@
 		- t[:answer].lines.each do |t_line|
 			- k,v = t_line.strip.gsub(/\r\n/,'').split(/\=\>/)
 			- tt[:"#{k}"] = v
-		- Question::ANSWER_TYPE[:"#{question.answer_type}"][:answers].each do |a|
+		- Question::ANSWER_TYPE[:"#{question.answer_type}"][:answers].each do |k, a|
 			.row{:id=>"#{a[:id]}"}
 				%span{:class=>"#{a[:class]}"}=raw(a[:sentence])
 				%br
-				- Question::ANSWER_TYPE[:"#{question.answer_type}"][:scores].each do |s|
+				- Question::ANSWER_TYPE[:"#{question.answer_type}"][:scores].each do |k, s|
 					- select_class = (( tt[:"#{a[:id]}"]==s[:id] )?"selected":"")
 					%button.group{:id=>s[:id], :class=>"#{select_class}"}=s[:sentence]
 			.clear
